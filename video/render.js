@@ -19,7 +19,7 @@ const port = args.port || 8765;
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: scale });
   page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') console.error('[page]', m.text()); });
   page.on('pageerror', (e) => console.error('[pageerror]', e.message));
-  await page.goto(`http://localhost:${port}/web/index.html`);
+  await page.goto(`http://localhost:${port}/web/index.html?shadow=${args.shadow || 2048}`);
   await page.waitForFunction('window.READY === true', null, { timeout: 120000 });
   const tl = await page.evaluate('window.TL');
   const fps = tl.fps;

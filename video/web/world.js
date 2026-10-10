@@ -313,45 +313,59 @@ export function buildJason() {
   const hair = std('#17161C', { roughness: 0.65 });
 
   const cap = (r, l, m) => new THREE.Mesh(new THREE.CapsuleGeometry(r, l, 8, 20), m);
+  // Proportions of a ~1.70 m adult (about 7.3 heads tall): hip 0.90, knee 0.48, shoulder 1.39, chin 1.49
   // legs (hip pivots)
   const legs = [];
   for (const s of [-1, 1]) {
-    const hip = new THREE.Group(); hip.position.set(s * 0.09, 0.86, 0);
-    const thigh = cap(0.068, 0.36, pants); thigh.position.y = -0.22; hip.add(thigh);
+    const hip = new THREE.Group(); hip.position.set(s * 0.095, 0.9, 0);
+    const thigh = cap(0.082, 0.3, pants); thigh.position.y = -0.2; hip.add(thigh);
     const knee = new THREE.Group(); knee.position.y = -0.42; hip.add(knee);
-    const shin = cap(0.06, 0.3, pants); shin.position.y = -0.18; knee.add(shin);
-    const foot = new THREE.Mesh(new RoundedBoxGeometry(0.11, 0.08, 0.24, 3, 0.035), shoe); foot.position.set(0, -0.39, 0.04); knee.add(foot);
+    const kneeBall = new THREE.Mesh(new THREE.SphereGeometry(0.07, 16, 12), pants); knee.add(kneeBall);
+    const shin = cap(0.064, 0.3, pants); shin.position.y = -0.2; knee.add(shin);
+    const foot = new THREE.Mesh(new RoundedBoxGeometry(0.1, 0.075, 0.25, 3, 0.03), shoe); foot.position.set(0, -0.44, 0.045); knee.add(foot);
     body.add(hip); legs.push({ hip, knee });
   }
-  // torso
-  const torso = cap(0.19, 0.38, jacket); torso.position.y = 1.16; torso.scale.set(1, 1, 0.72); body.add(torso);
-  const tee = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.09, 0.3, 24, 1, false, -0.7, 1.4), shirt); tee.position.set(0, 1.2, 0.07); tee.rotation.y = 0; body.add(tee);
-  const neck = cap(0.05, 0.06, skin); neck.position.y = 1.43; body.add(neck);
+  const pelvis = new THREE.Mesh(new RoundedBoxGeometry(0.29, 0.15, 0.16, 4, 0.07), pants); pelvis.position.y = 0.9; body.add(pelvis);
+  // torso: tapered lathe (waist narrower than shoulders), slightly flattened front-to-back
+  const prof = [[0.0, 0.84], [0.165, 0.845], [0.17, 0.9], [0.158, 0.97], [0.15, 1.06], [0.162, 1.18], [0.185, 1.3], [0.19, 1.35], [0.165, 1.405], [0.1, 1.435], [0.0, 1.44]]
+    .map(([r, y]) => new THREE.Vector2(r, y));
+  const torso = new THREE.Mesh(new THREE.LatheGeometry(prof, 40), jacket); torso.scale.z = 0.66; body.add(torso);
+  const hem = new THREE.Mesh(new THREE.TorusGeometry(0.163, 0.018, 10, 40), std('#2F5A94')); hem.rotation.x = Math.PI / 2; hem.scale.y = 0.66; hem.position.y = 0.85; body.add(hem);
+  const tee = new THREE.Mesh(new RoundedBoxGeometry(0.11, 0.34, 0.02, 3, 0.008), shirt); tee.position.set(0, 1.21, 0.103); tee.rotation.x = -0.05; body.add(tee);
+  const zipL = new THREE.Mesh(new THREE.BoxGeometry(0.012, 0.42, 0.012), std('#2F5A94')); zipL.position.set(-0.062, 1.17, 0.104); body.add(zipL);
+  const zipR = zipL.clone(); zipR.position.x = 0.062; body.add(zipR);
+  // neck + collar
+  const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.046, 0.052, 0.12, 24), skin); neck.position.y = 1.47; body.add(neck);
+  const collar = new THREE.Mesh(new THREE.TorusGeometry(0.064, 0.015, 12, 32), jacket); collar.rotation.x = Math.PI / 2 + 0.15; collar.position.set(0, 1.425, -0.005); collar.scale.set(1.05, 1, 0.9); body.add(collar);
   // head
-  const headG = new THREE.Group(); headG.position.y = 1.55; body.add(headG);
-  const head = new THREE.Mesh(new THREE.SphereGeometry(0.115, 48, 32), skin); head.scale.set(0.95, 1.08, 1); headG.add(head);
-  const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.122, 48, 32, 0, Math.PI * 2, 0, Math.PI * 0.52), hair);
-  hairCap.position.set(0, 0.012, -0.008); hairCap.rotation.x = -0.25; hairCap.scale.set(0.98, 1.1, 1.04); headG.add(hairCap);
-  const fringe = new THREE.Mesh(new THREE.SphereGeometry(0.06, 24, 16), hair); fringe.scale.set(1.6, 0.5, 0.8); fringe.position.set(0.02, 0.085, 0.075); fringe.rotation.z = 0.2; headG.add(fringe);
+  const headG = new THREE.Group(); headG.position.y = 1.585; body.add(headG);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.105, 48, 32), skin); head.scale.set(0.93, 1.12, 1); headG.add(head);
+  const jaw = new THREE.Mesh(new THREE.SphereGeometry(0.075, 32, 20), skin); jaw.scale.set(1, 0.8, 1); jaw.position.set(0, -0.055, 0.02); headG.add(jaw);
+  const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.112, 48, 32, 0, Math.PI * 2, 0, Math.PI * 0.52), hair);
+  hairCap.position.set(0, 0.016, -0.008); hairCap.rotation.x = -0.25; hairCap.scale.set(0.96, 1.12, 1.04); headG.add(hairCap);
+  const fringe = new THREE.Mesh(new THREE.SphereGeometry(0.055, 24, 16), hair); fringe.scale.set(1.6, 0.5, 0.8); fringe.position.set(0.02, 0.085, 0.07); fringe.rotation.z = 0.2; headG.add(fringe);
   const eyeM = std('#1a1a1a', { roughness: 0.3 });
   const eyes = [], brows = [];
   for (const s of [-1, 1]) {
-    const e = new THREE.Mesh(new THREE.SphereGeometry(0.014, 16, 12), eyeM); e.position.set(s * 0.04, 0.012, 0.104); e.scale.y = 1.25; headG.add(e); eyes.push(e);
-    const b = new THREE.Mesh(new RoundedBoxGeometry(0.04, 0.009, 0.01, 2, 0.004), hair); b.position.set(s * 0.042, 0.05, 0.104); headG.add(b); brows.push(b);
-    const ear = new THREE.Mesh(new THREE.SphereGeometry(0.025, 16, 12), skin); ear.position.set(s * 0.11, 0.0, 0); ear.scale.set(0.5, 1, 0.8); headG.add(ear);
+    const e = new THREE.Mesh(new THREE.SphereGeometry(0.012, 16, 12), eyeM); e.position.set(s * 0.036, 0.012, 0.097); e.scale.y = 1.25; headG.add(e); eyes.push(e);
+    const b = new THREE.Mesh(new RoundedBoxGeometry(0.036, 0.008, 0.01, 2, 0.004), hair); b.position.set(s * 0.038, 0.045, 0.097); headG.add(b); brows.push(b);
+    const ear = new THREE.Mesh(new THREE.SphereGeometry(0.024, 16, 12), skin); ear.position.set(s * 0.1, 0.0, 0); ear.scale.set(0.5, 1, 0.8); headG.add(ear);
   }
-  const nose = new THREE.Mesh(new THREE.SphereGeometry(0.014, 12, 10), skin); nose.position.set(0, -0.012, 0.115); headG.add(nose);
-  const mouthGeo = (k) => new THREE.TorusGeometry(0.026, 0.0045, 8, 24, Math.PI * 0.7);
-  const mouth = new THREE.Mesh(mouthGeo(), std('#7A3B2E')); mouth.position.set(0, -0.045, 0.1); headG.add(mouth);
-  // arms (shoulder pivots)
+  const nose = new THREE.Mesh(new THREE.SphereGeometry(0.013, 12, 10), skin); nose.position.set(0, -0.012, 0.106); headG.add(nose);
+  const mouthGeo = (k) => new THREE.TorusGeometry(0.022, 0.004, 8, 24, Math.PI * 0.7);
+  const mouth = new THREE.Mesh(mouthGeo(), std('#7A3B2E')); mouth.position.set(0, -0.045, 0.093); headG.add(mouth);
+  // arms (shoulder pivots); upper arm 0.29, forearm 0.25 -> hand at mid-thigh
   const arms = [];
   for (const s of [-1, 1]) {
-    const sh = new THREE.Group(); sh.position.set(s * 0.215, 1.36, 0);
-    const up = cap(0.055, 0.24, jacket); up.position.y = -0.15; sh.add(up);
-    const el = new THREE.Group(); el.position.y = -0.3; sh.add(el);
-    const fo = cap(0.048, 0.22, jacket); fo.position.y = -0.13; el.add(fo);
-    const hand = new THREE.Mesh(new THREE.SphereGeometry(0.048, 16, 12), skin); hand.position.y = -0.28; el.add(hand);
-    sh.rotation.z = s * 0.1;
+    const sh = new THREE.Group(); sh.position.set(s * 0.2, 1.37, 0);
+    const ball = new THREE.Mesh(new THREE.SphereGeometry(0.062, 20, 14), jacket); ball.position.x = -s * 0.012; sh.add(ball);
+    const elb = new THREE.Mesh(new THREE.SphereGeometry(0.05, 14, 10), jacket); elb.position.y = -0.29; sh.add(elb);
+    const up = cap(0.054, 0.2, jacket); up.position.y = -0.14; sh.add(up);
+    const el = new THREE.Group(); el.position.y = -0.29; sh.add(el);
+    const fo = cap(0.046, 0.17, jacket); fo.position.y = -0.11; el.add(fo);
+    const cuff = new THREE.Mesh(new THREE.CylinderGeometry(0.044, 0.044, 0.03, 16), std('#2F5A94')); cuff.position.y = -0.21; el.add(cuff);
+    const hand = new THREE.Mesh(new THREE.SphereGeometry(0.042, 16, 12), skin); hand.scale.set(0.85, 1.25, 0.65); hand.position.y = -0.26; el.add(hand);
+    sh.rotation.z = s * 0.07;
     body.add(sh); arms.push({ sh, el, hand });
   }
   // shopping tote in left hand (s=-1 -> index 0)
@@ -363,7 +377,7 @@ export function buildJason() {
   // groceries peeking out
   const baguette = new THREE.Mesh(new THREE.CapsuleGeometry(0.025, 0.2, 6, 12), std('#D9A35B')); baguette.position.set(0.06, -0.02, 0); baguette.rotation.z = -0.3; bag.add(baguette);
   const greens = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 12), std(C.green)); greens.position.set(-0.07, -0.05, 0); bag.add(greens);
-  bag.position.y = -0.3; arms[0].el.add(bag);
+  bag.position.y = -0.27; arms[0].el.add(bag);
 
   // phone (hidden by default) in right hand
   const phoneTex = canvasTex(256, 512, (g, w, h) => { g.fillStyle = C.cream; g.fillRect(0, 0, w, h); });
@@ -485,14 +499,19 @@ export function buildStreet() {
     const h = 4.5 + (i % 3) * 0.8;
     const bd = new THREE.Mesh(new THREE.BoxGeometry(4.5, h, 2), std(wall, { roughness: 0.85 })); bd.position.y = h / 2; b.add(bd);
     const glassMat = new THREE.MeshStandardMaterial({ color: '#9FC3D9', roughness: 0.15, metalness: 0.1, emissive: '#FFC27A', emissiveIntensity: 0 });
-    const glass = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 1.8), glassMat); glass.position.set(-0.3, 1.25, 1.01); b.add(glass); windows.push(glassMat);
-    const door = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 2.1), std('#5D4037')); door.position.set(1.6, 1.05, 1.01); b.add(door);
-    const up1 = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 1.1), glassMat); up1.position.set(-1.1, h - 1.2, 1.01); b.add(up1);
-    const up2 = up1.clone(); up2.position.x = 1.1; b.add(up2);
+    // windows are recessed boxes inside a frame (no coplanar faces -> no z-fighting flicker)
+    const frameMat = std('#3C4A5C', { roughness: 0.5 });
+    const win = (w, hh, x, y) => {
+      const fr = new THREE.Mesh(new THREE.BoxGeometry(w + 0.12, hh + 0.12, 0.08), frameMat); fr.position.set(x, y, 1.0); b.add(fr);
+      const gl = new THREE.Mesh(new THREE.BoxGeometry(w, hh, 0.03), glassMat); gl.position.set(x, y, 1.05); b.add(gl);
+    };
+    win(3.0, 1.7, -0.35, 1.25);
+    const door = new THREE.Mesh(new THREE.BoxGeometry(0.8, 2.1, 0.06), std('#5D4037')); door.position.set(1.6, 1.05, 1.03); b.add(door);
+    win(1.0, 1.0, -1.1, h - 1.2); win(1.0, 1.0, 1.1, h - 1.2);
     // awning
     const aw = new THREE.Mesh(new THREE.BoxGeometry(4.3, 0.08, 1.1), std(col, { roughness: 0.7 })); aw.position.set(0, 2.75, 1.45); aw.rotation.x = 0.25; b.add(aw);
     const sign = new THREE.Mesh(new THREE.PlaneGeometry(3, 0.55), new THREE.MeshStandardMaterial({ map: signTex(name, col, '#fff'), emissive: 0xffffff, emissiveIntensity: 0.15, emissiveMap: null }));
-    sign.position.set(0, 3.25, 1.02); b.add(sign);
+    sign.position.set(0, 3.25, 1.05); b.add(sign);
     shadowAll(b);
     street.add(b);
   });
@@ -517,7 +536,7 @@ export function buildStreet() {
 
   // tram stop shelter at x=-9
   const ts = new THREE.Group(); ts.position.set(-9, 0, 2.3);
-  const glassM = new THREE.MeshStandardMaterial({ color: '#CFE6F2', transparent: true, opacity: 0.35, roughness: 0.05 });
+  const glassM = new THREE.MeshStandardMaterial({ color: '#CFE6F2', transparent: true, opacity: 0.35, roughness: 0.05, depthWrite: false });
   const frameM = std('#3C4A5C', { metalness: 0.4, roughness: 0.4 });
   const roof = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.08, 1.4), std('#2F7D63')); roof.position.y = 2.45; ts.add(roof);
   for (const x of [-1.5, 1.5]) for (const z of [-0.6, 0.6]) { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 2.45, 10), frameM); p.position.set(x, 1.22, z); ts.add(p); }

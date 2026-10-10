@@ -76,7 +76,7 @@ SCENES = [
         ("s9c", NARR, "Next, we'll test a low-fidelity prototype with residents across languages, and check whether they trust and correct the AI's output.", None),
     ]},
     # 10 Tagline
-    {"id": 10, "name": "Tagline", "lines": [
+    {"id": 10, "name": "Tagline", "tail": 2.8, "lines": [
         ("s10a", NARR, "Potato: Public Opinion Translation And Tracking Outpost.",
          "POTATO: Public Opinion Translation And Tracking Outpost."),
         ("s10b", NARR, "Voices from the ground up.", None),
@@ -107,7 +107,7 @@ def to_json():
     out = {"scenes": [], "sfx": SFX, "gap": GAP, "lead_in": LEAD_IN, "tail": TAIL}
     for sc in SCENES:
         out["scenes"].append({
-            "id": sc["id"], "name": sc["name"],
+            "id": sc["id"], "name": sc["name"], "tail": sc.get("tail"),
             "lines": [{"id": i, "voice": v, "tts": t, "sub": s or t} for (i, v, t, s) in sc["lines"]],
         })
     return out

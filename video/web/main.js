@@ -32,7 +32,7 @@ const pmrem = new THREE.PMREMGenerator(renderer);
 const envTex = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 scene.environment = envTex;
 
-const camera = new THREE.PerspectiveCamera(35, 16 / 9, 0.05, 200);
+const camera = new THREE.PerspectiveCamera(35, 16 / 9, 0.1, 120);
 
 function skyTex(top, mid, bottom) {
   const cv = document.createElement('canvas'); cv.width = 16; cv.height = 512;
@@ -51,7 +51,9 @@ const SKY = {
 const hemi = new THREE.HemisphereLight('#FFFFFF', '#B9A88F', 1.1);
 const sun = new THREE.DirectionalLight('#FFF1DC', 2.4);
 sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048);
+const SHQ = +(new URLSearchParams(location.search).get('shadow') || 2048);
+sun.shadow.mapSize.set(SHQ, SHQ);
+if (SHQ < 2048) renderer.shadowMap.type = THREE.PCFShadowMap;
 sun.shadow.camera.left = -4; sun.shadow.camera.right = 4; sun.shadow.camera.top = 4; sun.shadow.camera.bottom = -4;
 sun.shadow.camera.near = 0.5; sun.shadow.camera.far = 30;
 sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.02; sun.shadow.radius = 4;
@@ -142,7 +144,7 @@ snapScene.remove(snapSpud.group);
 const snapJason = WD.buildJason(); snapScene.add(snapJason.root);
 for (const [k, ex] of [['confused', -1], ['happy', 1]]) {
   snapJason.pose(0, 0, { expr: ex, look: ex < 0 ? 0.25 : -0.1, nod: ex < 0 ? 0.08 : -0.05 });
-  IMG.jason[k] = snap(snapJason.root, new THREE.Vector3(0.12, 1.6, 0.85), new THREE.Vector3(0, 1.52, 0));
+  IMG.jason[k] = snap(snapJason.root, new THREE.Vector3(0.12, 1.62, 0.85), new THREE.Vector3(0, 1.55, 0));
 }
 snapScene.remove(snapJason.root);
 

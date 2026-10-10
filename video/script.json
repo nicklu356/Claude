@@ -3,6 +3,7 @@
   {
    "id": 1,
    "name": "Title",
+   "tail": null,
    "lines": [
     {
      "id": "s1a",
@@ -33,6 +34,7 @@
   {
    "id": 2,
    "name": "Problem",
+   "tail": null,
    "lines": [
     {
      "id": "s2a",
@@ -75,6 +77,7 @@
   {
    "id": 3,
    "name": "Persona",
+   "tail": null,
    "lines": [
     {
      "id": "s3a",
@@ -99,6 +102,7 @@
   {
    "id": 4,
    "name": "Discover",
+   "tail": null,
    "lines": [
     {
      "id": "s4a",
@@ -123,6 +127,7 @@
   {
    "id": 5,
    "name": "Understand & speak",
+   "tail": null,
    "lines": [
     {
      "id": "s5a",
@@ -165,6 +170,7 @@
   {
    "id": 6,
    "name": "NFC & tracking",
+   "tail": null,
    "lines": [
     {
      "id": "s6a",
@@ -201,6 +207,7 @@
   {
    "id": 7,
    "name": "Q&A & share",
+   "tail": null,
    "lines": [
     {
      "id": "s7a",
@@ -225,6 +232,7 @@
   {
    "id": 8,
    "name": "Benefits",
+   "tail": null,
    "lines": [
     {
      "id": "s8a",
@@ -243,6 +251,7 @@
   {
    "id": 9,
    "name": "Limits & next steps",
+   "tail": null,
    "lines": [
     {
      "id": "s9a",
@@ -267,6 +276,7 @@
   {
    "id": 10,
    "name": "Tagline",
+   "tail": 2.8,
    "lines": [
     {
      "id": "s10a",

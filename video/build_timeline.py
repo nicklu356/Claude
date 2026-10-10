@@ -125,7 +125,7 @@ def main():
                              "line": ln["id"]})
                 ct += cd
             cursor += dur
-        end = cursor + tail
+        end = cursor + (sc.get("tail") or tail)
         scenes.append({"id": sc["id"], "name": sc["name"], "start": round(start, 3), "end": round(end, 3),
                        "dur": round(end - start, 3), "lines": lines})
         lines_all += lines
