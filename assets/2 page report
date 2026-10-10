@@ -1,0 +1,47 @@
+# INFO90006 Fieldwork for Design
+## Design Concept — VoicePost
+
+**Team Sweet Potatoes — Group 14**
+
+| Team Member | Student ID |
+|---|---|
+| Jia-Ying Lee | 1790130 |
+| Xintong Fu | 1840227 |
+| Yu-Hao Lu | 1781474 |
+| Yen-Chu Ou Yang | 1801365 |
+
+**Design concept video:** [Insert video link here]
+
+---
+
+## 1. Concept Overview
+
+**VoicePost** is a street-side civic information post paired with a mobile app. It helps international residents discover, understand, and respond to local government decisions in their own languages.
+
+Our fieldwork found that the main barriers to civic participation are not necessarily a lack of interest, but difficulties finding relevant information, understanding government terminology, and knowing what happens after feedback is submitted (Themes 1–5).
+
+VoicePost addresses these barriers through two connected components:
+
+- **Physical information post:** Helps residents discover relevant local issues, understand public information, and provide quick feedback along their everyday walking routes.
+- **Mobile app:** Allows residents to save issues, receive notifications, access support, and track the progress of issues they care about.
+
+The design aims to make civic participation more accessible, understandable, and convenient for international residents.
+
+## 2. Key Features
+
+### 2.1 Physical Information Post
+
+The digital post is designed for everyday public spaces, such as library entrances and streets near university campuses.
+
+**Side display — Council and community information**
+- Displays verified council, library, and community event posters.
+- Highlights relevant public activities and local information.
+- Keeps civic information separate from commercial advertising to maintain trust.
+
+**Upper touchscreen — Local issues and feedback**
+- Displays nearby public issues ranked by relevance, prioritising proximity and approaching consultation deadlines.
+- Allows users to filter issues by topic, such as parks, housing, and student life.
+- Provides plain-language summaries and explanations of key government terms in the user's preferred language.
+- Lets users speak to a friendly mascot to express their opinions in their own language.
+- Uses AI to translate and summarise feedback into a structured comment.
+- Allows users to review and edit the original comment and
