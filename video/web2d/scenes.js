@@ -108,112 +108,78 @@ export function buildScenes(ctx) {
     return { svg, ui };
   };
 
-  // ------------------------------------------------------------ 1 Title
+  // ------------------------------------------------------------ 1 Title: who we are and what we studied
   {
     const { svg, ui } = mk(1);
     const BG = A.streetWorld({ width: 2400 }); svg.appendChild(BG);
-    const post = A.post(); svg.appendChild(post);
-    const bubble = el(`<div class="bubble" style="left:560px;top:120px">Hi there! I'm Spud.</div>`);
-    const title = el(`<div class="abs" style="left:930px;top:200px;width:920px">
-      <div class="chip c0" style="background:#fff;color:var(--purple);box-shadow:0 8px 24px rgba(31,42,68,.18)">${ic('sprout', '#C96A10', 30, 3.6)}Team Sweet Potatoes · Group 14 · INFO90006</div>
-      <div class="word" style="font:800 170px/1 'Baloo 2';margin-top:22px;white-space:nowrap">${'HearHere'.split('').map((c, i) => `<span style="display:inline-block;color:${i < 4 ? '#fff' : 'var(--orange)'};-webkit-text-stroke:${i < 4 ? '0' : '0'};text-shadow:0 6px 0 ${i < 4 ? 'var(--purple-d)' : '#8A4A08'},0 12px 24px rgba(0,0,0,.25)">${c}</span>`).join('')}</div>
-      <div class="sub card" style="margin-top:14px;padding:16px 24px;font:800 30px/1.3 Nunito;color:var(--navy)">A street post that helps international residents <b style="color:var(--purple)">understand</b> and <b style="color:var(--orange-d)">answer</b> local council decisions</div>
-      <div class="acr card" style="margin-top:18px;padding:16px 24px;display:flex;align-items:center;gap:18px">
-        <span style="flex:none">${melbIcon(74, 'happy')}</span>
-        <div><div class="k">Meet the mascot</div><div style="font:900 36px Nunito;line-height:1.15">${['Street', 'Post for', 'Understanding', 'Decisions'].map(w => `<span style="margin-right:10px"><b style="color:var(--orange)">${w[0]}</b>${w.slice(1)}</span>`).join('')}</div></div></div>
-      <div class="tagl chip" style="margin-top:20px;background:var(--orange);color:#fff;font-size:38px;padding:12px 30px">${ic('mic', '#fff', 38, 3.6)}Your street, your say.</div></div>`);
-    ui.append(bubble, title);
-    const letters = $$(title, '.word span');
+    const potato = `<svg width="150" height="100" viewBox="-135 -75 270 150"><path d="M-120 0 C -110 -60, 90 -70, 130 -10 C 150 30, 40 70, -40 60 C -100 52, -130 30, -120 0z" fill="#B5487A"/>
+      <path d="M-80 -20 q30 -14 60 -6 M10 10 q30 -10 60 4" stroke="#8E3560" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="-30" cy="-18" r="9" fill="#fff" opacity=".3"/>
+      <path d="M118 -18 C 130 -50, 150 -60, 168 -56 C 160 -36, 144 -22, 118 -18z" fill="#1E9BB0" transform="translate(-30 0)"/></svg>`;
+    const team = el(`<div class="abs card" style="left:360px;top:230px;width:1200px;height:420px;padding:40px 56px">
+      <div style="display:flex;align-items:center;gap:30px">${potato}
+        <div><div class="k">Group 14 · INFO90006 Fieldwork for Design</div><div style="font:800 86px/1 'Baloo 2';color:var(--purple)">Team Sweet Potatoes</div></div></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px">
+        ${[['Jia-Ying Lee', '1790130'], ['Xintong FU', '1840227'], ['Yu-Hao LU', '1781474'], ['Yen-Chu OU YANG', '1801365']].map(([n, id], i) => `<div class="mb mb${i}" style="background:var(--cream);border-radius:20px;padding:18px 20px;text-align:center">
+          <div style="width:64px;height:64px;margin:0 auto;border-radius:50%;background:${['#7B4B94', '#F28C28', '#16707F', '#3A63D1'][i]};display:grid;place-items:center">${ic('user', '#fff', 38, 3.4)}</div>
+          <div style="font:900 24px Nunito;margin-top:10px">${n}</div><div style="font:800 19px Nunito;color:var(--navy-2)">${id}</div></div>`).join('')}</div></div>`);
+    const rq = el(`<div class="abs card" style="left:360px;top:690px;width:1200px;height:150px;padding:0 40px;display:flex;align-items:center;gap:26px">
+      <span style="width:84px;height:84px;border-radius:24px;background:var(--orange);display:grid;place-items:center;flex:none">${ic('search', '#fff', 48, 3.6)}</span>
+      <div><div class="k">Our investigation</div><div style="font:900 34px/1.2 Nunito">How do international residents in Melbourne take part in local council decisions?</div></div></div>`);
+    ui.append(team, rq);
     out[1] = {
       svg, ui, update(t) {
-        const a = L(1, 's1a'), b = L(1, 's1b'), c = L(1, 's1c'), d = L(1, 's1d');
+        const a = L(1, 's1a'), b = L(1, 's1b');
         cam(BG, 960, 540, 1);
-        const r = backOut(prog(t, 0.0, 0.8));
-        place(post, 450, POSTY, PS * 1.55 * (0.3 + 0.7 * r));
-        post.setAttribute('opacity', clamp(t / 0.3));
-        const talking = (t > a && t < a + 1.0) || (t > c && t < LE(1, 's1c'));
-        A.posePost(post, { mood: talking || t > d ? 'happy' : 'idle', talk: talking ? Math.abs(Math.sin(t * 12)) : 0, t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 4, screen: 'idle', look: { x: 8, y: 0 }, tilt: Math.sin(t * 1.3) * 3 });
-        show(bubble, t, a, { kind: 'pop', out: b + 1.0 });
-        show($(title, '.c0'), t, b + 0.1, { kind: 'left' });
-        letters.forEach((s, i) => { const p = backOut(prog(t, b + 0.5 + i * 0.07, 0.45)); s.style.transform = `translateY(${(1 - p) * 120}px) scale(${0.6 + 0.4 * p})`; s.style.opacity = clamp(p * 2); });
-        show($(title, '.sub'), t, b + 2.2, { kind: 'up' });
-        show($(title, '.acr'), t, c + 0.2, { kind: 'up' });
-        show($(title, '.tagl'), t, d, { kind: 'pop' });
+        show(team, t, 0.1, { kind: 'pop' });
+        [0, 1, 2, 3].forEach(i => show($(team, '.mb' + i), t, a + 0.8 + i * 0.25, { kind: 'up', dist: 20 }));
+        show(rq, t, b + 0.2, { kind: 'up' });
       },
     };
   }
 
-  // ------------------------------------------------------------ 2 Problem
+  // ------------------------------------------------------------ 2 Five problems (the five fieldwork themes)
   {
     const { svg, ui } = mk(2);
     const BG = backdrop(svg, 21); A.worldFx(BG, { x: 960, y: 540, z: 1 }, 0, 0);
     ui.insertAdjacentHTML('beforeend', frost());
-    const townHall = `<svg width="420" height="330" viewBox="0 0 420 330">
-      <rect x="196" y="6" width="5" height="60" fill="#46506A"/><path d="M201 8 h46 l-10 12 l10 12 h-46z" fill="#F28C28"/>
-      <path d="M30 120 L210 50 L390 120z" fill="#7B4B94"/><rect x="40" y="120" width="340" height="22" fill="#5A3370"/>
-      <rect x="50" y="142" width="320" height="150" fill="#FFF4E0"/>
-      ${[0, 1, 2, 3, 4].map(i => `<rect x="${72 + i * 62}" y="152" width="26" height="130" rx="6" fill="#E9DCCB"/>`).join('')}
-      <rect x="180" y="210" width="60" height="82" rx="8" fill="#7B4B94"/><circle cx="210" cy="96" r="18" fill="#FFF4E0"/>
-      <rect x="20" y="292" width="380" height="20" rx="6" fill="#D9CBB8"/><rect x="0" y="312" width="420" height="16" rx="6" fill="#C9B9A4"/></svg>`;
-    const hall = el(`<div class="abs" style="left:750px;top:250px;width:420px;text-align:center">${townHall}
-      <div style="margin-top:6px"><span class="card" style="display:inline-block;padding:4px 18px;font:800 24px Nunito;color:var(--navy-2)">Local council</span></div></div>`);
-    const h = el(`<div class="abs" style="left:0;right:0;top:100px;text-align:center"><span class="card h1" style="display:inline-block;padding:10px 34px;font-size:56px">Council decisions shape daily life</span></div>`);
-    const topics = [['tree', 'Parks', C.green, C.greenL, 470, 380], ['house', 'Housing', C.orange, C.orangeL, 1260, 330], ['tram', 'Transport', C.purple, C.purpleL, 1220, 560]]
-      .map(([i, n, c, bg, x, y]) => el(`<div class="abs chip card" style="left:${x}px;top:${y}px;width:250px;font-size:32px;padding:14px 22px;border-radius:999px">
-        <span style="width:62px;height:62px;border-radius:50%;background:${bg};display:grid;place-items:center">${ic(i, c, 40, 3.6)}</span>${n}</div>`));
-    const stats = el(`<div class="abs" style="left:0;right:0;top:660px;display:flex;justify-content:center;gap:22px">
-      ${[['people', '8 interviews'], ['camera', '4 observation sites'], ['dashboard', '5 themes']].map(([i, s]) => `<div class="chip card st" style="font-size:28px;padding:12px 26px">${ic(i, '#7B4B94', 34, 3.6)}${s}</div>`).join('')}</div>`);
-    const stamp = el(`<div class="abs" style="left:640px;top:780px;width:640px;text-align:center;font:900 46px 'Baloo 2';color:var(--red);border:6px solid var(--red);border-radius:20px;padding:6px 0;transform:rotate(-4deg)">It's not a lack of interest</div>`);
-    const prob = [
-      ['search', 'Can\'t find it', 'Relevant local issues are hard to find', C.purple, C.purpleL,
-        `<svg width="240" height="170" viewBox="0 0 240 170"><rect x="10" y="20" width="180" height="130" rx="14" fill="#DDF1F5"/><path d="M10 90 C 60 70, 110 120, 190 80" stroke="#C3DCE6" stroke-width="18" fill="none"/>
-         <path d="M60 20 v130 M120 20 v130" stroke="#fff" stroke-width="6"/><circle cx="150" cy="80" r="46" fill="#fff" stroke="#7B4B94" stroke-width="12" opacity=".95"/>
-         <path d="M184 114 l40 40" stroke="#7B4B94" stroke-width="16" stroke-linecap="round"/><text x="150" y="98" font-family="Baloo 2" font-weight="800" font-size="52" fill="#E0544B" text-anchor="middle">?</text></svg>`],
-      ['translate', 'Can\'t understand it', 'Even translated, the jargon remains', C.orange, C.orangeL,
-        `<svg width="240" height="170" viewBox="0 0 240 170"><rect x="40" y="6" width="160" height="160" rx="12" fill="#fff" stroke="#E9DCCB" stroke-width="4"/>
-         ${[30, 54, 78, 102, 126].map((y, i) => `<rect x="60" y="${y}" width="${[110, 90, 120, 70, 100][i]}" height="10" rx="5" fill="#D6D9E2"/>`).join('')}
-         <rect x="56" y="48" width="96" height="22" rx="6" fill="#FFE08A"/><text x="104" y="65" font-family="Nunito" font-weight="900" font-size="15" fill="#B85C00" text-anchor="middle">consultation</text>
-         <rect x="86" y="96" width="104" height="22" rx="6" fill="#FFE08A"/><text x="138" y="113" font-family="Nunito" font-weight="900" font-size="15" fill="#B85C00" text-anchor="middle">off-leash area</text></svg>`],
-      ['send', 'No idea what happens', 'Feedback disappears without a reply', C.green, C.greenL,
-        `<svg width="240" height="170" viewBox="0 0 240 170"><path d="M20 140 C 70 120, 90 70, 150 70" stroke="#C9CCD6" stroke-width="5" stroke-dasharray="10 10" fill="none"/>
-         <path d="M20 110 l70 -30 l-20 60 l-12 -22z" fill="#1E9BB0"/><path d="M58 118 l32 -38" stroke="#16707F" stroke-width="4"/>
-         <g fill="#E6E9F0"><circle cx="170" cy="70" r="36"/><circle cx="205" cy="80" r="28"/><circle cx="140" cy="84" r="26"/><rect x="140" y="80" width="90" height="30" rx="15"/></g>
-         <text x="182" y="98" font-family="Baloo 2" font-weight="800" font-size="46" fill="#9AA0B4" text-anchor="middle">?</text></svg>`],
-    ].map(([i, k, s, c, bg, art], n) => el(`<div class="abs card pc" style="left:${150 + n * 560}px;top:300px;width:500px;padding:28px 30px">
-      <div style="height:180px;display:grid;place-items:center;background:${bg};border-radius:20px">${art}</div>
-      <div style="display:flex;align-items:center;gap:12px;margin-top:20px"><span style="width:48px;height:48px;border-radius:14px;background:${c};display:grid;place-items:center">${ic(i, '#fff', 30, 3.6)}</span>
-      <div class="h2" style="font-size:38px">${k}</div></div><div style="font:700 26px Nunito;color:var(--navy-2);margin-top:8px">${s}</div></div>`));
-    const split = el(`<div class="abs" style="inset:0">
-      <div class="abs card sa" style="left:190px;top:200px;width:620px;height:560px;padding:30px;text-align:center">
-        <div class="k">How council news arrives</div><div class="h2" style="margin-top:6px">Mail &amp; flyers</div>
-        <svg width="420" height="360" viewBox="0 0 420 360" style="margin-top:10px">
-          <rect x="196" y="190" width="24" height="160" fill="#8A5A3B"/><path d="M110 120 a70 70 0 0 1 140 0 v90 h-140z" fill="#E0544B"/><rect x="110" y="170" width="140" height="40" fill="#C0453A"/>
-          <rect x="250" y="100" width="12" height="70" fill="#46506A"/><path d="M262 100 h40 v26 h-40z" fill="#F28C28"/>
-          <g transform="rotate(-10 120 90)"><rect x="40" y="40" width="130" height="90" rx="8" fill="#fff" stroke="#E9DCCB" stroke-width="4"/><rect x="58" y="60" width="90" height="10" rx="5" fill="#7B4B94"/><rect x="58" y="80" width="70" height="8" rx="4" fill="#D6D9E2"/><rect x="58" y="96" width="80" height="8" rx="4" fill="#D6D9E2"/></g>
-          <g transform="rotate(8 330 230)"><rect x="280" y="200" width="110" height="140" rx="8" fill="#FFE6CC"/><rect x="296" y="220" width="78" height="40" rx="6" fill="#F28C28"/><rect x="296" y="276" width="70" height="8" rx="4" fill="#C96A10"/></g></svg></div>
-      <div class="abs neq" style="left:870px;top:400px;width:180px;text-align:center;font:900 150px 'Baloo 2';color:var(--red)">≠</div>
-      <div class="abs card sb" style="left:1110px;top:200px;width:620px;height:560px;padding:30px;text-align:center">
-        <div class="k">Where newer residents look</div><div class="h2" style="margin-top:6px">Instagram &amp; friends</div>
-        <div style="margin:18px auto 0;width:300px;height:380px;border-radius:40px;background:#1C2133;padding:12px">
-          <div style="width:100%;height:100%;border-radius:30px;background:#fff;padding:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;align-content:start">
-            <div style="grid-column:1/4;display:flex;align-items:center;gap:8px;font:800 18px Nunito"><span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(45deg,#F9A825,#E91E63,#7B4B94)"></span>Feed</div>
-            ${['#FFD9AE', '#CFE7F0', '#E7D4F1', '#BFD9F2', '#FFC7C2', '#FFE08A', '#D3E6EE', '#F3D2E4', '#C8D6EE'].map(c => `<div style="aspect-ratio:1;border-radius:10px;background:${c}"></div>`).join('')}
-            <div style="grid-column:1/4;font:800 17px Nunito;color:#E0544B;margin-top:4px">♥ 128 · 💬 12</div></div></div></div></div>`);
-    ui.append(h, hall, ...topics, stats, stamp, ...prob, split);
+    const h = el(`<div class="abs" style="left:0;right:0;top:96px;text-align:center"><span class="card h1" style="display:inline-block;padding:10px 34px;font-size:54px">Five problems from our fieldwork</span></div>`);
+    const stats = el(`<div class="abs" style="left:0;right:0;top:196px;display:flex;justify-content:center;gap:24px">
+      ${[['people', '8 interviews'], ['camera', '4 observation sites'], ['dashboard', '5 themes']].map(([i, t]) => `<div class="chip card st" style="width:300px;justify-content:center;font-size:26px;padding:10px 20px">${ic(i, '#7B4B94', 32, 3.6)}${t}</div>`).join('')}</div>`);
+    const ART = [
+      `<svg width="150" height="120" viewBox="0 0 240 190"><rect x="40" y="10" width="160" height="170" rx="12" fill="#fff" stroke="#E9DCC4" stroke-width="4"/>${[34, 60, 86, 112, 138].map((y, i) => `<rect x="60" y="${y}" width="${[110, 90, 120, 70, 100][i]}" height="10" rx="5" fill="#D6D9E2"/>`).join('')}
+        <rect x="56" y="54" width="104" height="24" rx="6" fill="#FFE08A"/><text x="108" y="72" font-family="Nunito" font-weight="900" font-size="16" fill="#B85C00" text-anchor="middle">consultation</text>
+        <rect x="80" y="106" width="110" height="24" rx="6" fill="#FFE08A"/><text x="135" y="124" font-family="Nunito" font-weight="900" font-size="16" fill="#B85C00" text-anchor="middle">off-leash area</text></svg>`,
+      `<svg width="150" height="120" viewBox="0 0 240 190"><circle cx="90" cy="95" r="66" fill="#fff" stroke="#3A63D1" stroke-width="10"/><path d="M90 52 v45 l30 18" stroke="#1F2A44" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M196 60 c-22 0 -36 16 -36 34 c0 26 36 62 36 62 s36 -36 36 -62 c0 -18 -14 -34 -36 -34z" fill="#E0544B"/><circle cx="196" cy="94" r="12" fill="#fff"/></svg>`,
+      `<svg width="150" height="120" viewBox="0 0 240 190"><circle cx="120" cy="95" r="80" fill="#FFE6CC"/><path d="M120 150 C 60 110, 60 60, 92 52 C 108 48, 118 58, 120 66 C 122 58, 132 48, 148 52 C 180 60, 180 110, 120 150z" fill="#F28C28"/>
+        <circle cx="168" cy="48" r="20" fill="#7B4B94"/><path d="M160 48 l6 6 l10 -12" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`,
+      `<svg width="150" height="120" viewBox="0 0 240 190"><path d="M30 80 L120 30 L210 80z" fill="#7B4B94"/><rect x="40" y="80" width="160" height="90" fill="#FFF4E0"/>${[0, 1, 2, 3].map(i => `<rect x="${56 + i * 38}" y="90" width="18" height="70" rx="4" fill="#E9DCC4"/>`).join('')}
+        <circle cx="190" cy="40" r="30" fill="#fff" stroke="#E0544B" stroke-width="6"/><text x="190" y="54" font-family="Baloo 2" font-weight="800" font-size="42" fill="#E0544B" text-anchor="middle">?</text></svg>`,
+      `<svg width="150" height="120" viewBox="0 0 240 190"><rect x="44" y="110" width="12" height="70" fill="#8A5A3B"/><path d="M14 70 a36 36 0 0 1 72 0 v46 h-72z" fill="#E0544B"/><rect x="14" y="96" width="72" height="20" fill="#C0453A"/>
+        <text x="120" y="110" font-family="Baloo 2" font-weight="800" font-size="56" fill="#E0544B" text-anchor="middle">≠</text>
+        <rect x="160" y="30" width="70" height="140" rx="14" fill="#1C2133"/><rect x="166" y="40" width="58" height="120" rx="8" fill="#fff"/>${[0, 1, 2, 3, 4, 5].map(i => `<rect x="${170 + (i % 2) * 26}" y="${46 + Math.floor(i / 2) * 36}" width="22" height="30" rx="4" fill="${['#FFD9AE', '#CFE7F0', '#E7D4F1', '#BFD9F2', '#FFC7C2', '#FFE08A'][i]}"/>`).join('')}</svg>`,
+    ];
+    const P5 = [
+      ['Language', 'Translated, but still hard to understand', 'Policy terms confuse even with multilingual material', '#F28C28', 1],
+      ['Time & distance', 'Hard to attend in person', 'Busy schedules, travel and event fees', '#3A63D1', 2],
+      ['Relevance', 'Only joins when it feels personal', 'People engage when an issue affects their daily life', '#C96A10', 3],
+      ['Communication', 'Who do I contact? Was I heard?', 'Unclear departments and no feedback loop', '#7B4B94', 4],
+      ['Channels', 'Mail and flyers vs Instagram', 'Newer residents rarely see council mail', '#E0544B', 5],
+    ];
+    const cards = P5.map(([k, t2, d2, c, n], i) => el(`<div class="abs card" style="left:${110 + i * 346}px;top:290px;width:316px;height:520px;padding:0;overflow:hidden">
+      <div style="height:190px;background:var(--cream);display:grid;place-items:center;position:relative">${ART[i]}
+        <span style="position:absolute;left:16px;top:16px;width:52px;height:52px;border-radius:50%;background:${c};color:#fff;display:grid;place-items:center;font:900 30px Nunito">${n}</span></div>
+      <div style="padding:20px 22px"><div class="k" style="color:${c}">${k}</div><div style="font:900 28px/1.15 Nunito;margin-top:6px">${t2}</div>
+        <div style="font:700 21px/1.35 Nunito;color:var(--navy-2);margin-top:10px">${d2}</div>
+        <span class="tag" style="position:absolute;left:22px;bottom:20px;background:var(--navy);color:#fff;font-size:17px">Theme ${n}</span></div></div>`));
+    ui.append(h, stats, ...cards);
     out[2] = {
       svg, ui, update(t) {
         A.worldFx(BG, { x: 960, y: 540, z: 1 }, t, 0);
-        const a = L(2, 's2a'), b = L(2, 's2b'), c = L(2, 's2c'), f = L(2, 's2f');
-        show(h, t, a, { kind: 'down', out: c - 0.3 });
-        show(hall, t, a + 0.1, { kind: 'pop', out: c - 0.3 });
-        topics.forEach((e, i) => show(e, t, a + 0.7 + i * 0.5, { kind: 'pop', out: c - 0.3 }));
-        $$(stats, '.st').forEach((e, i) => show(e, t, b + 0.4 + i * 0.35, { kind: 'up', out: c - 0.3 }));
-        show(stamp, t, b + 2.9, { kind: 'pop', out: c - 0.3 });
-        stamp.style.transform += ' rotate(-4deg)';
-        ['s2c', 's2d', 's2e'].forEach((id, i) => show(prob[i], t, L(2, id), { kind: 'up', out: f - 0.2 }));
-        show($(split, '.sa'), t, f + 0.1, { kind: 'left' });
-        show($(split, '.neq'), t, f + 2.2, { kind: 'pop' });
-        show($(split, '.sb'), t, f + 2.8, { kind: 'right' });
+        const a = L(2, 's2a');
+        show(h, t, a - 0.2, { kind: 'down' });
+        $$(stats, '.st').forEach((e, i) => show(e, t, a + 0.4 + i * 0.3, { kind: 'up' }));
+        ['s2b', 's2c', 's2d', 's2e', 's2f'].forEach((id, i) => show(cards[i], t, L(2, id) - 0.1, { kind: 'up' }));
       },
     };
   }
@@ -255,26 +221,28 @@ export function buildScenes(ctx) {
       <div class="zh" style="font:900 34px 'Noto Sans TC'">${ZH.who}<span style="font:800 26px Nunito;color:var(--navy-2)"> Who do I tell?</span></div>
       <div class="zh" style="font:900 34px 'Noto Sans TC';margin-top:6px">${ZH.words}<span style="font:800 26px Nunito;color:var(--navy-2)"> Which words?</span></div></div>`);
     const dots = el(`<div class="abs" style="left:440px;top:300px"><div style="position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(31,42,68,.15)"></div><div style="position:absolute;left:30px;top:50px;width:20px;height:20px;border-radius:50%;background:#fff"></div></div>`);
-    ui.append(card, th, dots);
+    const sat3 = el(`<div class="abs card" style="left:1300px;top:150px;padding:12px 24px;display:flex;align-items:center;gap:12px;font:900 30px Nunito">${ic('calendar', '#7B4B94', 34, 3.6)}Saturday · 8:00 am</div>`);
+    ui.append(card, th, dots, sat3);
     out[3] = {
       svg, ui, update(t) {
         const c = { x: 960, y: 540, z: 1 }; cam(world, c.x, c.y, c.z); A.worldFx(world, c, t, 0);
-        const wk = clamp((t - 2.9) / 2.4), jx = lerp(-520, 560, easeOut(wk)), walking = wk > 0 && wk < 1;
+        const wk = clamp((t - L(3, 's3b') - 1.2) / 2.4), jx = lerp(-520, 560, easeOut(wk)), walking = wk > 0 && wk < 1;
         const ph = t * 1.6;
-        const look = t > L(3, 's3c') + 0.4 ? -4 : 0;
-        const hands = A.poseJason(jas, { walk: walking ? ph : null, mouth: t > L(3, 's3c') ? 'worried' : 'neutral', blink: blink(t, 3.4), armF: walking ? null : 16, elbowF: walking ? null : 30, look });
+        const look = t > L(3, 's3c') + 0.6 ? -4 : 0;
+        const hands = A.poseJason(jas, { walk: walking ? ph : null, mouth: t > L(3, 's3d') ? 'worried' : 'neutral', blink: blink(t, 3.4), armF: walking ? null : 16, elbowF: walking ? null : 30, look });
         place(jas, jx, FEET, 0.9);
         const dx = jx + 250;
         A.poseDog(dog, { walk: walking ? ph * 1.3 : null, t, look: walking ? 0 : Math.sin(t * 2) * 4 });
         place(dog, dx, FEET, 0.75);
         leashTo(leash, toW(hands.F, jx, 0.9), dx, 0.75);
         // persona card: centred and large for the first ~2.5 s, then docks top-right
-        const k = ease(prog(t, 2.9, 0.8)), op = Math.min(easeOut(prog(t, 0.1, 0.4)), 1 - clamp((t - L(3, 's3c') - 0.2) / 0.35));
+        const k = ease(prog(t, L(3, 's3b') + 1.0, 0.8)), op = Math.min(easeOut(prog(t, 0.1, 0.4)), 1 - clamp((t - L(3, 's3c') + 0.1) / 0.35));
         card.style.opacity = op; card.style.visibility = op > 0 ? 'visible' : 'hidden';
-        card.style.transform = `translate(${lerp(-648, 0, k)}px, ${lerp(10, 0, k)}px) scale(${lerp(1.18, 0.86, k)})`;
-        show(dots, t, L(3, 's3c') + 1.6, { kind: 'pop' });
-        show(th, t, L(3, 's3c') + 2.0, { kind: 'pop' });
+        card.style.transform = `translate(${lerp(-648, 0, k)}px, ${lerp(40, 0, k)}px) scale(${lerp(1.18, 0.86, k)})`;
+        show(dots, t, L(3, 's3d') - 0.2, { kind: 'pop' });
+        show(th, t, L(3, 's3d') + 0.1, { kind: 'pop' });
         sv(sign, t, L(3, 's3c') + 0.4, { kind: 'pop' });
+        show(sat3, t, L(3, 's3c'), { kind: 'left' });
       },
     };
   }
@@ -358,7 +326,7 @@ export function buildScenes(ctx) {
         <div class="chip" style="background:var(--orange-l);color:var(--orange-d)">${ic('doc', '#C96A10', 28, 3.6)}Library events</div>
         <div class="chip" style="background:var(--green-l);color:var(--green-d)">${ic('people', '#16707F', 28, 3.6)}Community groups</div></div>
       <div style="margin-top:16px;font:800 22px Nunito;color:var(--green-d)">${ic('check', '#16707F', 26, 4)} No commercial ads</div></div>`);
-    const when = el(`<div class="abs card" style="left:56px;top:120px;padding:12px 24px;display:flex;align-items:center;gap:12px;font:900 30px Nunito">${ic('calendar', '#7B4B94', 34, 3.6)}Saturday · 8:00 am</div>`);
+    const when = el(`<div class="abs card" style="left:56px;top:150px;padding:12px 24px;display:flex;align-items:center;gap:12px;font:900 30px Nunito">${ic('calendar', '#7B4B94', 34, 3.6)}Saturday · 8:00 am</div>`);
     const bub = el(`<div class="bubble" style="left:0;top:0;font-size:36px">Hi! <span class="zh">${ZH.hello}</span> I'm all ears!</div>`);
     const panel = screenPanel(ui, issueList, 'POST TOUCHSCREEN');
     ui.append(badge, bub, when);
@@ -507,7 +475,7 @@ export function buildScenes(ctx) {
     const Q = s => $(phone, s);
     out[6] = {
       svg, ui, update(t) {
-        const a = L(6, 's6a'), b = L(6, 's6b'), c = L(6, 's6c'), d = L(6, 's6d'), e = L(6, 's6e'), f = L(6, 's6f');
+        const a = L(6, 's6a'), b = L(6, 's6b'), c = L(6, 's6c'), d = L(6, 's6d'), f = L(6, 's6f'), e = d + 5.6;
         const cm = lerpCam(SIDE, C6, ease(prog(t, 0, 0.9)));
         cam(W.world, cm.x, cm.y, cm.z); A.worldFx(W.world, cm, t, 0);
         poseWalkers(W, t, 2300, false, { mouth: 'smile', look: -3 });
@@ -548,9 +516,29 @@ export function buildScenes(ctx) {
     };
   }
 
-  // ------------------------------------------------------------ 11 How it works (from the concept sketch)
+  const SYS_HTML = (card3) => {
+    return el(`<div class="abs" style="inset:0">
+      <div class="hd abs" style="left:0;right:0;top:112px;text-align:center"><span class="card" style="display:inline-block;padding:12px 30px;font:800 46px 'Baloo 2'">One post, three connected channels</span></div>
+      <div class="abs" style="left:110px;top:230px">${card3('c0', 'Official social media', '@hearhere.spud · official account', `
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:58px;height:58px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(48, 'happy')}</span>
+          <div><div style="font:900 22px Nunito">HearHere Spud <span style="background:#3A63D1;color:#fff;border-radius:50%;padding:0 7px;font-size:16px">✓</span></div><div style="font:700 17px Nunito;color:var(--navy-2)">Verified council posts only</div></div></div>
+        <div style="margin-top:14px;height:120px;border-radius:14px;background:linear-gradient(135deg,#FFE6CC,#EDE3F3);display:grid;place-items:center;font:800 22px Nunito;color:var(--purple)">Have your say: park rules</div>
+        <div style="margin-top:12px;font:800 19px Nunito;color:#16707F">${ic('lock', '#16707F', 22, 4)} Verified content only, so it can't be impersonated</div>`, 'linear-gradient(135deg,#E1306C,#F77737)')}</div>
+      <div class="plus abs p0" style="left:600px;top:420px;font:900 70px Nunito;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.3)">+</div>
+      <div class="abs" style="left:725px;top:230px">${card3('c1', 'AI agent', 'Answers from official documents', `
+        <div class="msg me" style="margin:0 0 10px auto;font-size:19px">Which department do I contact?</div>
+        <div class="msg bot" style="font-size:19px;margin:0">Parks &amp; Open Space. See the draft rule, p. 4.<div><span class="src">${ic('doc', '#16707F', 16, 4)}Source cited</span></div></div>
+        <div style="margin-top:12px;font:800 19px Nunito;color:var(--navy-2)">${ic('user', '#46506A', 22, 4)} Hands over to a person when unsure</div>`, 'linear-gradient(135deg,#7B4B94,#9C6DB8)')}</div>
+      <div class="plus abs p1" style="left:1215px;top:420px;font:900 70px Nunito;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.3)">+</div>
+      <div class="abs" style="left:1340px;top:230px">${card3('c2', 'HearHere app', 'Saved issues + tracker', `
+        ${[['Received', '#1E9BB0', '✓'], ['In review', '#7B4B94', '2'], ['Outcome', '#CFD3DC', '3']].map(([n, c, m]) => `<div class="step" style="padding:6px 0"><span class="dot" style="background:${c}">${m}</span><div style="font:900 22px Nunito">${n}</div></div>`).join('')}
+        <div style="margin-top:8px;font:800 19px Nunito;color:var(--navy-2)">${ic('bell', '#46506A', 22, 4)} Notifies when the status changes</div>`, 'linear-gradient(135deg,#16707F,#1E9BB0)')}</div>
+      <div class="th5 abs card" style="left:110px;top:770px;padding:14px 24px;display:flex;align-items:center;gap:14px;font:800 24px Nunito">${ic('globe', '#C96A10', 32, 3.6)}<span><b style="color:var(--orange-d)">Theme 5:</b> reach residents on the channels they already use</span></div>
+      <div class="sk abs card" style="left:1340px;top:740px;padding:10px 14px;display:flex;align-items:center;gap:12px"><img src="img/sk_three.png" style="height:96px"><span style="font:800 18px/1.3 Nunito;color:var(--navy-2)">From our<br>concept sketch</span></div></div>`);
+  };
+  // ------------------------------------------------------------ 12 Introducing HearHere: pillar + AI helper, Spud, product views
   {
-    const { svg, ui } = mk(11);
+    const { svg, ui } = mk(12);
     const BG = A.streetWorld({ width: 2400 }); svg.appendChild(BG);
     const post = A.post(); svg.appendChild(post);
     // Spud's head from four angles, redrawn from the sketch's side / front / top / down views
@@ -580,95 +568,109 @@ export function buildScenes(ctx) {
     const calls = el(`<div class="abs" style="inset:0">
       <svg class="abs" width="1920" height="1080" style="left:0;top:0">${parts.map(([, py, c], i) => `<path class="cl cl${i}" d="M${HX + 70} ${HY + py * HS} L ${HX + 150} ${HY + py * HS} L 690 ${callY[i] + 30}" stroke="${c}" stroke-width="3.5" fill="none"/><circle class="cl cl${i}" cx="${HX + 70}" cy="${HY + py * HS}" r="7" fill="${c}"/>`).join('')}</svg>
       ${parts.map(([n, , c, i], k) => `<div class="abs card co co${k}" style="left:690px;top:${callY[k]}px;width:280px;height:60px;padding:0 16px;display:flex;align-items:center;gap:10px;font:900 19px/1.15 Nunito;border-left:8px solid ${c}">${ic(i, c, 28, 3.6)}${n}</div>`).join('')}</div>`);
-    const card3 = (cls, title, sub, body, c) => `<div class="abs card ${cls}" style="width:470px;height:430px;padding:0;overflow:hidden">
-      <div style="padding:18px 24px;background:${c};color:#fff"><div style="font:900 30px Nunito">${title}</div><div style="font:800 19px Nunito;opacity:.9">${sub}</div></div>
-      <div style="padding:20px 24px">${body}</div></div>`;
-    const sys = el(`<div class="abs" style="inset:0">
-      <div class="hd abs" style="left:0;right:0;top:112px;text-align:center"><span class="card" style="display:inline-block;padding:12px 30px;font:800 46px 'Baloo 2'">One post, three connected channels</span></div>
-      <div class="abs" style="left:110px;top:230px">${card3('c0', 'Official social media', '@hearhere.spud · official account', `
-        <div style="display:flex;align-items:center;gap:12px"><span style="width:58px;height:58px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(48, 'happy')}</span>
-          <div><div style="font:900 22px Nunito">HearHere Spud <span style="background:#3A63D1;color:#fff;border-radius:50%;padding:0 7px;font-size:16px">✓</span></div><div style="font:700 17px Nunito;color:var(--navy-2)">Verified council posts only</div></div></div>
-        <div style="margin-top:14px;height:120px;border-radius:14px;background:linear-gradient(135deg,#FFE6CC,#EDE3F3);display:grid;place-items:center;font:800 22px Nunito;color:var(--purple)">Have your say: park rules</div>
-        <div style="margin-top:12px;font:800 19px Nunito;color:#16707F">${ic('lock', '#16707F', 22, 4)} Verified content only, so it can't be impersonated</div>`, 'linear-gradient(135deg,#E1306C,#F77737)')}</div>
-      <div class="plus abs p0" style="left:600px;top:420px;font:900 70px Nunito;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.3)">+</div>
-      <div class="abs" style="left:725px;top:230px">${card3('c1', 'AI agent', 'Answers from official documents', `
-        <div class="msg me" style="margin:0 0 10px auto;font-size:19px">Which department do I contact?</div>
-        <div class="msg bot" style="font-size:19px;margin:0">Parks &amp; Open Space. See the draft rule, p. 4.<div><span class="src">${ic('doc', '#16707F', 16, 4)}Source cited</span></div></div>
-        <div style="margin-top:12px;font:800 19px Nunito;color:var(--navy-2)">${ic('user', '#46506A', 22, 4)} Hands over to a person when unsure</div>`, 'linear-gradient(135deg,#7B4B94,#9C6DB8)')}</div>
-      <div class="plus abs p1" style="left:1215px;top:420px;font:900 70px Nunito;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.3)">+</div>
-      <div class="abs" style="left:1340px;top:230px">${card3('c2', 'HearHere app', 'Saved issues + tracker', `
-        ${[['Received', '#1E9BB0', '✓'], ['In review', '#7B4B94', '2'], ['Outcome', '#CFD3DC', '3']].map(([n, c, m]) => `<div class="step" style="padding:6px 0"><span class="dot" style="background:${c}">${m}</span><div style="font:900 22px Nunito">${n}</div></div>`).join('')}
-        <div style="margin-top:8px;font:800 19px Nunito;color:var(--navy-2)">${ic('bell', '#46506A', 22, 4)} Notifies when the status changes</div>`, 'linear-gradient(135deg,#16707F,#1E9BB0)')}</div>
-      <div class="th5 abs card" style="left:110px;top:770px;padding:14px 24px;display:flex;align-items:center;gap:14px;font:800 24px Nunito">${ic('globe', '#C96A10', 32, 3.6)}<span><b style="color:var(--orange-d)">Theme 5:</b> reach residents on the channels they already use</span></div>
-      <div class="sk abs card" style="left:1340px;top:740px;padding:10px 14px;display:flex;align-items:center;gap:12px"><img src="img/sk_three.png" style="height:96px"><span style="font:800 18px/1.3 Nunito;color:var(--navy-2)">From our<br>concept sketch</span></div></div>`);
-    ui.append(prod, calls, sys);
-    out[11] = {
+    // --- intro cards: physical pillar + AI customised helper = HearHere, then Spud
+    const intro = el(`<div class="abs" style="inset:0">
+      <div class="ti abs card" style="left:1000px;top:130px;width:860px;height:190px;padding:26px 34px">
+        <div class="k">Introducing</div>
+        <div style="font:800 92px/1 'Baloo 2'"><span style="color:var(--purple)">Hear</span><span style="color:var(--orange)">Here</span></div>
+        <div style="font:800 24px Nunito;color:var(--navy-2);margin-top:8px">A digital device for local council decisions</div></div>
+      <div class="ea abs card" style="left:1000px;top:350px;width:380px;height:220px;padding:24px 26px">
+        <span style="width:66px;height:66px;border-radius:20px;background:#16707F;display:grid;place-items:center">${ic('doc', '#fff', 38, 3.6)}</span>
+        <div style="font:900 28px/1.15 Nunito;margin-top:14px">Physical information pillar</div>
+        <div style="font:700 20px Nunito;color:var(--navy-2);margin-top:6px">Verified notices on your street</div></div>
+      <div class="eq abs" style="left:1388px;top:418px;width:84px;height:84px;border-radius:50%;background:#fff;box-shadow:0 8px 20px rgba(31,42,68,.18);display:grid;place-items:center;font:900 56px/1 Nunito;color:var(--orange)">+</div>
+      <div class="eb abs card" style="left:1480px;top:350px;width:380px;height:220px;padding:24px 26px">
+        <span style="width:66px;height:66px;border-radius:20px;background:var(--purple);display:grid;place-items:center">${ic('chat', '#fff', 38, 3.6)}</span>
+        <div style="font:900 28px/1.15 Nunito;margin-top:14px">AI customised helper</div>
+        <div style="font:700 20px Nunito;color:var(--navy-2);margin-top:6px">Your language, your area</div></div>
+      <div class="ac abs card" style="left:1000px;top:600px;width:860px;height:130px;padding:0 30px;display:flex;align-items:center;gap:22px">
+        <span style="flex:none">${melbIcon(86, 'happy')}</span>
+        <div><div class="k">Meet the mascot</div><div style="font:900 34px Nunito"><b style="color:var(--orange)">S</b>treet <b style="color:var(--orange)">P</b>ost for <b style="color:var(--orange)">U</b>nderstanding <b style="color:var(--orange)">D</b>ecisions</div></div></div>
+      <div class="bu bubble" style="left:540px;top:250px">Hi there! I'm Spud.</div></div>`);
+    ui.append(intro, prod, calls);
+    out[12] = {
       svg, ui, update(t) {
-        const a = L(11, 'h1'), b = L(11, 'h2'), c = L(11, 'h3');
+        const a = L(12, 'i1'), b = L(12, 'i2'), c = L(12, 'i3');
         cam(BG, 960, 540, 1);
-        const pin = easeOut(prog(t, a, 0.6)), pout = 1 - clamp((t - b) / 0.4);
-        place(post, 430 + (960 - 960), 950 + 50, PS * 1.25);
-        post.setAttribute('opacity', Math.min(pin, pout));
-        A.posePost(post, { mood: 'happy', t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 3, screen: 'idle', tilt: Math.sin(t * 0.9) * 4 });
-        show(prod, t, a, { kind: 'left', out: b - 0.1 });
-        [0, 1, 2, 3].forEach(i => { const o = show($(calls, '.co' + i), t, a + 0.5 + i * 0.35, { kind: 'left', out: b - 0.1 }); $$(calls, '.cl' + i).forEach(e => e.style.opacity = o); });
-        // keep the sketch thumbnails clear of the rendered post
-        show($(sys, '.hd'), t, b, { kind: 'down' });
-        show($(sys, '.c0'), t, b + 0.3, { kind: 'up' });
-        show($(sys, '.p0'), t, c - 0.2, { kind: 'pop' });
-        show($(sys, '.c1'), t, c, { kind: 'up' });
-        show($(sys, '.p1'), t, c + 1.6, { kind: 'pop' });
-        show($(sys, '.c2'), t, c + 1.8, { kind: 'up' });
-        show($(sys, '.th5'), t, b + 2.0, { kind: 'left' });
-        show($(sys, '.sk'), t, c + 2.6, { kind: 'pop' });
+        const pin = backOut(prog(t, 0.1, 0.7));
+        place(post, 430, 1000, PS * 1.25 * (0.4 + 0.6 * pin));
+        post.setAttribute('opacity', clamp(t / 0.3));
+        const talking = t > b && t < LE(12, 'i2');
+        A.posePost(post, { mood: t > b ? 'happy' : 'idle', talk: talking ? Math.abs(Math.sin(t * 12)) : 0, t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 3, screen: 'idle', tilt: Math.sin(t * 0.9) * 3, look: { x: 8, y: 0 } });
+        const out1 = c - 0.15;
+        show($(intro, '.ti'), t, a + 0.3, { kind: 'down', out: out1 });
+        show($(intro, '.ea'), t, a + 2.6, { kind: 'up', out: out1 });
+        show($(intro, '.eq'), t, a + 3.6, { kind: 'pop', out: out1 });
+        show($(intro, '.eb'), t, a + 4.2, { kind: 'up', out: out1 });
+        show($(intro, '.ac'), t, b + 0.6, { kind: 'up', out: out1 });
+        show($(intro, '.bu'), t, b, { kind: 'pop', out: out1 });
+        show(prod, t, c + 0.2, { kind: 'right' });
+        [0, 1, 2, 3].forEach(i => { const o = show($(calls, '.co' + i), t, c + 0.4 + i * 0.3, { kind: 'left' }); $$(calls, '.cl' + i).forEach(e => e.style.opacity = o); });
       },
     };
   }
 
-  // ------------------------------------------------------------ 7 Q&A & share
+  // ------------------------------------------------------------ 11 How it works: one post, three channels (sketch: social + AI agent + app)
+  {
+    const { svg, ui } = mk(11);
+    const BG = A.streetWorld({ width: 2400 }); svg.appendChild(BG);
+    const card3 = (cls, title, sub, body, c) => `<div class="abs card ${cls}" style="width:470px;height:430px;padding:0;overflow:hidden">
+      <div style="padding:18px 24px;background:${c};color:#fff"><div style="font:900 30px Nunito">${title}</div><div style="font:800 19px Nunito;opacity:.9">${sub}</div></div>
+      <div style="padding:20px 24px">${body}</div></div>`;
+    const sys = SYS_HTML(card3);
+    ui.append(sys);
+    out[11] = {
+      svg, ui, update(t) {
+        const a = L(11, 'h2'), b = L(11, 'h3');
+        cam(BG, 960, 540, 1);
+        show($(sys, '.hd'), t, a - 0.2, { kind: 'down' });
+        show($(sys, '.c0'), t, a + 1.6, { kind: 'up' });
+        show($(sys, '.th5'), t, a + 3.4, { kind: 'left' });
+        show($(sys, '.p0'), t, b - 0.2, { kind: 'pop' });
+        show($(sys, '.c1'), t, b, { kind: 'up' });
+        show($(sys, '.p1'), t, b + 1.6, { kind: 'pop' });
+        show($(sys, '.c2'), t, b + 1.8, { kind: 'up' });
+        show($(sys, '.sk'), t, b + 2.6, { kind: 'pop' });
+      },
+    };
+  }
+
+  // ------------------------------------------------------------ 7 Share to social
   {
     const { svg, ui } = mk(7);
     const BG = backdrop(svg, 27); A.worldFx(BG, { x: 960, y: 540, z: 1 }, 0, 0);
     ui.insertAdjacentHTML('beforeend', frost());
-    const phone = el(`<div class="phone" style="left:300px;top:110px">
+    const phone = el(`<div class="phone" style="left:300px;top:150px">
       <div class="ps"><div class="notch"></div>
-        <div class="app-h"><span style="width:60px;height:60px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(50)}</span><div><div class="n">Ask Spud</div><div class="s">Q&amp;A assistant · official sources</div></div></div>
-        <div style="padding:16px 20px">
-          <div class="msg me m0"><span class="zh">${ZH.ask}</span><br><span style="opacity:.8;font-size:16px">Which department do I contact?</span></div>
-          <div class="msg bot m1"><span class="zh">${ZH.answer}</span>
-            <div><span class="src">${ic('doc', '#16707F', 18, 4)}Draft rule, p. 4</span><span class="src">${ic('building', '#16707F', 18, 4)}council.vic.gov.au</span></div></div>
-          <div class="card m2" style="margin-top:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 12px rgba(31,42,68,.08)">
-            <span style="width:52px;height:52px;border-radius:50%;background:#DDE8FF;display:grid;place-items:center">${ic('user', '#3A63D1', 34, 3.6)}</span>
-            <div><div style="font:900 19px Nunito">Not sure? Talk to a person</div><div style="font:700 16px Nunito;color:var(--navy-2)">Sam Chen · Parks &amp; Open Space</div></div></div>
-          <div class="typing m3" style="margin-top:8px;font:900 30px Nunito;color:#9AA0B4">• • •</div></div></div></div>`);
-    const feats = el(`<div class="abs" style="left:880px;top:200px;width:880px">
-      <div class="card hd7" style="padding:18px 26px"><div class="k">HearHere app</div><div class="h1" style="font-size:54px">Answers you can check</div></div>
-      ${[['doc', 'Answers from official documents', C.green], ['check', 'Cites its sources', C.orange], ['user', 'Hands over to a named contact', C.purple]].map(([i, s, c], n) => `
-      <div class="f${n} card" style="margin-top:20px;padding:18px 24px;display:flex;align-items:center;gap:18px;font:900 32px Nunito"><span style="width:60px;height:60px;border-radius:18px;background:${c};display:grid;place-items:center">${ic(i, '#fff', 34, 3.6)}</span>${s}</div>`).join('')}</div>`);
-    const share = el(`<div class="abs" style="left:880px;top:150px;width:900px;height:700px">
-      <div class="story card" style="position:absolute;left:180px;top:20px;width:400px;height:640px;padding:0;overflow:hidden;background:linear-gradient(160deg,#7B4B94,#F28C28)">
-        <div style="padding:30px;color:#fff"><div style="display:flex;align-items:center;gap:10px;font:800 20px Nunito"><span style="width:44px;height:44px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(38, 'happy')}</span>@hearhere.melb</div>
+        <div class="app-h"><span style="width:60px;height:60px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(50, 'happy')}</span><div><div class="n">HearHere</div><div class="s">My issues</div></div></div>
+        <div style="padding:22px 22px">
+          <div class="card" style="padding:18px 20px;box-shadow:0 6px 16px rgba(31,42,68,.08)">
+            <div class="zh" style="font:900 26px 'Noto Sans TC'">${ZH.issueTitle}</div><div style="font:800 17px Nunito;color:var(--navy-2)">Park rule changes · fictional example</div>
+            <div style="display:flex;gap:8px;margin-top:12px"><span class="tag" style="background:#DDF1F5;color:#16707F">Received ✓</span><span class="tag" style="background:var(--purple-l);color:var(--purple)">In review</span></div></div>
+          <div class="card" style="margin-top:16px;padding:16px 20px;box-shadow:0 6px 16px rgba(31,42,68,.08);font:800 19px/1.4 Nunito;color:var(--navy-2)">
+            Closes in 5 days. Neighbours can still have their say.</div>
+          <div class="shb" style="margin-top:22px;display:flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#E1306C,#F77737);color:#fff;border-radius:18px;padding:16px;font:900 24px Nunito">${ic('share', '#fff', 30, 3.6)}Share to Instagram</div>
+          <div class="tap tp7" style="left:220px;top:470px"></div></div></div></div>`);
+    const share = el(`<div class="abs" style="left:880px;top:100px;width:900px;height:760px">
+      <div class="story card" style="position:absolute;left:250px;top:40px;width:400px;height:640px;padding:0;overflow:hidden;background:linear-gradient(160deg,#7B4B94,#F28C28)">
+        <div style="padding:30px;color:#fff"><div style="display:flex;align-items:center;gap:10px;font:800 20px Nunito"><span style="width:44px;height:44px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(38, 'happy')}</span>@hearhere.spud</div>
           <div style="font:800 54px/1.05 'Baloo 2';margin-top:70px">Have your say!</div>
           <div class="zh" style="font:900 34px 'Noto Sans TC';margin-top:14px">${ZH.issueTitle}</div>
           <div style="font:800 24px Nunito;margin-top:8px;opacity:.95">Park rule changes · closes in 5 days<br><span style="font-size:18px;opacity:.85">(fictional example)</span></div>
           <div style="margin-top:60px;background:#fff;color:var(--purple);border-radius:999px;padding:14px 20px;text-align:center;font:900 24px Nunito">Open in HearHere</div></div></div>
-      ${[[40, 90, '#FFD9AE'], [640, 60, '#CFE7F0'], [60, 470, '#E7D4F1'], [660, 430, '#BFD9F2'], [700, 250, '#FFC7C2']].map(([x, y, c], i) => `
-        <div class="nb nb${i}" style="position:absolute;left:${x}px;top:${y}px;text-align:center"><div style="width:110px;height:110px;border-radius:50%;background:${c};display:grid;place-items:center;box-shadow:0 8px 20px rgba(31,42,68,.15)">${ic('user', '#46506A', 60, 3.4)}</div>
-        <div style="font:900 30px Nunito;color:var(--red);margin-top:-14px">♥</div></div>`).join('')}</div>`);
-    ui.append(phone, feats, share);
+      ${[[40, 60], [740, 60], [40, 320], [740, 320], [40, 580], [740, 580]].map(([x, y], i) => `
+        <div class="nb nb${i}" style="position:absolute;left:${x}px;top:${y}px;width:120px;text-align:center"><div style="width:110px;height:110px;margin:0 auto;border-radius:50%;background:${['#FFD9AE', '#CFE7F0', '#E7D4F1', '#BFD9F2', '#FFC7C2', '#FFE08A'][i]};display:grid;place-items:center;box-shadow:0 8px 20px rgba(31,42,68,.15)">${ic('user', '#46506A', 60, 3.4)}</div>
+        <div style="margin-top:8px"><span class="card" style="display:inline-block;padding:2px 12px;font:900 22px Nunito;color:var(--red)">♥</span></div></div>`).join('')}</div>`);
+    ui.append(phone, share);
     out[7] = {
       svg, ui, update(t) {
         A.worldFx(BG, { x: 960, y: 540, z: 1 }, t, 0);
-        const a = L(7, 's7a'), b = L(7, 's7b'), c = L(7, 's7c');
-        show(phone, t, a - 0.3, { kind: 'up' });
-        show($(phone, '.m0'), t, a + 0.3, { kind: 'pop' });
-        const ty = $(phone, '.m3'); ty.style.opacity = t > a + 0.8 && t < b + 0.6 ? 0.4 + 0.6 * Math.abs(Math.sin(t * 6)) : 0;
-        show($(phone, '.m1'), t, b + 0.6, { kind: 'up' });
-        show($(phone, '.m2'), t, b + 5.0, { kind: 'up' });
-        show($(feats, '.hd7'), t, b + 0.2, { kind: 'up', out: c - 0.2 });
-        [0, 1, 2].forEach(i => show($(feats, '.f' + i), t, b + [1.2, 3.0, 4.8][i], { kind: 'right', out: c - 0.2 }));
-        show($(share, '.story'), t, c + 0.3, { kind: 'pop' });
-        [0, 1, 2, 3, 4].forEach(i => show($(share, '.nb' + i), t, c + 1.5 + i * 0.3, { kind: 'pop' }));
+        const c = L(7, 's7c');
+        show(phone, t, 0.0, { kind: 'up' });
+        tapAt($(phone, '.tp7'), t, c + 0.6);
+        $(phone, '.shb').style.transform = t > c + 0.6 ? `scale(${1 - 0.06 * Math.sin(prog(t, c + 0.6, 0.3) * Math.PI)})` : '';
+        show($(share, '.story'), t, c + 0.9, { kind: 'pop' });
+        [0, 1, 2, 3, 4, 5].forEach(i => show($(share, '.nb' + i), t, c + 1.8 + i * 0.3, { kind: 'pop' }));
       },
     };
   }
@@ -780,19 +782,22 @@ export function lowerThirds(TL) {
   const at = (id) => TL.scenes.flatMap(s => s.lines).find(l => l.id === id).start;
   const end = (sid) => S[sid].end - 0.3;
   return [
-    { a: at('s3a'), b: end(3), k: 'Persona', text: 'Jason Lee', icon: 'user' },
+    { a: at('s3b') + 1.0, b: at('s3c'), k: 'Persona', text: 'Jason Lee', icon: 'user' },
+    { a: at('s3c'), b: end(3), k: 'Scenario', text: 'A new park rule (fictional)', icon: 'warn' },
+    { a: at('i1') + 0.3, b: at('i2'), k: 'Our concept', text: 'HearHere', icon: 'box' },
+    { a: at('i2'), b: at('i3'), k: 'Mascot', text: 'Spud', icon: 'chat' },
+    { a: at('i3'), b: end(12), k: 'Product', text: 'Views from every side', icon: 'box' },
+    { a: at('h2'), b: end(11), k: 'How it works', text: 'Social + AI agent + app', icon: 'share' },
     { a: at('s4a') + 0.3, b: at('s4b'), k: 'Scenario', text: 'Saturday morning dog walk', icon: 'pin' },
     { a: at('s4b') + 0.3, b: at('s4s'), k: 'Feature', text: 'Verified notices on the pillar', icon: 'doc' },
-    { a: at('s4s'), b: at('s4c'), k: 'Mascot', text: 'Spud · Street Post for Understanding Decisions', icon: 'chat' },
+    { a: at('s4s'), b: at('s4c'), k: 'Mascot', text: 'Spud says hi', icon: 'chat' },
     { a: at('s4c') + 0.6, b: end(4), k: 'Feature', text: 'Local issues, ranked', icon: 'pin' },
     { a: at('s5a'), b: at('s5c') + 0.8, k: 'Feature', text: 'Plain-language summary', icon: 'translate' },
     { a: at('s5c') + 0.8, b: at('s5d'), k: 'Feature', text: 'Speak in your language', icon: 'mic' },
     { a: at('s5d'), b: end(5), k: 'Feature', text: 'Structured comment', icon: 'chat' },
     { a: at('s6a'), b: at('s6c'), k: 'Feature', text: 'NFC hand-off', icon: 'lock' },
-    { a: at('s6c'), b: end(6), k: 'Feature', text: 'Progress tracker', icon: 'steps' },
-    { a: at('h1'), b: at('h2'), k: 'How it works', text: 'Product views', icon: 'box' },
-    { a: at('h2'), b: end(11), k: 'How it works', text: 'Social + AI agent + app', icon: 'share' },
-    { a: at('s7a'), b: at('s7c'), k: 'Feature', text: 'Q&A assistant', icon: 'chat' },
+    { a: at('s6c'), b: at('s6f'), k: 'Feature', text: 'Progress tracker', icon: 'steps' },
+    { a: at('s6f'), b: end(6), k: 'Feature', text: 'Badge collection', icon: 'pin' },
     { a: at('s7c'), b: end(7), k: 'Feature', text: 'Share to social', icon: 'share' },
   ];
 }

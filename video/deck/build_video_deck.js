@@ -40,12 +40,12 @@ const THEME = {
   pres.author = 'Team Sweet Potatoes, Group 14';
   pres.theme = { headFontFace: THEME.headFontFace, bodyFontFace: THEME.bodyFontFace };
 
-  let section = null;
+  let section = null, secNo = 0, secTitle = '';
   for (const [i, s] of slides.entries()) {
-    if (s.name !== section) { section = s.name; pres.addSection({ title: `${s.scene === 11 ? '6b' : s.scene}. ${s.name}` }); }
+    if (s.name !== section) { section = s.name; secTitle = `${++secNo}. ${s.name}`; pres.addSection({ title: secTitle }); }
     const bg = V('bgjpg', `bg_${String(i + 1).padStart(2, '0')}.jpg`);
     await sharp(still('bg', s.frame)).jpeg({ quality: 86 }).toFile(bg);
-    const slide = pres.addSlide({ sectionTitle: `${s.scene === 11 ? '6b' : s.scene}. ${s.name}` });
+    const slide = pres.addSlide({ sectionTitle: secTitle });
     slide.background = { path: bg };
     slide.addImage({ path: still('fg', s.frame), x: 0, y: 0, w: 10, h: 5.625, objectName: 'Foreground: characters and UI', altText: `${s.name}: ${s.text}` });
     slide.addMedia({ type: 'audio', path: V('audio', `${s.id}.mp3`), x: 9.62, y: 5.25, w: 0.3, h: 0.3, objectName: `Narration ${s.id}` });

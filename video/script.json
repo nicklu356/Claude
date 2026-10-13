@@ -3,87 +3,75 @@
   {
    "id": 1,
    "name": "Title",
-   "tail": 0.6,
+   "tail": 0.3,
    "lines": [
     {
      "id": "s1a",
-     "voice": "spud",
-     "tts": "Hi there! I'm Spud.",
-     "sub": "Hi there! I'm Spud."
+     "voice": "narrator",
+     "tts": "Hi! We're Group 14, Team Sweet Potatoes.",
+     "sub": "Hi! We're Group 14, Team Sweet Potatoes."
     },
     {
      "id": "s1b",
      "voice": "narrator",
-     "tts": "We're Group 14, Team Sweet Potatoes, and this is HearHere.",
-     "sub": "We're Group 14, Team Sweet Potatoes, and this is HearHere."
-    },
-    {
-     "id": "s1c",
-     "voice": "spud",
-     "tts": "Spud stands for Street Post for Understanding Decisions.",
-     "sub": "Spud stands for Street Post for Understanding Decisions."
-    },
-    {
-     "id": "s1d",
-     "voice": "narrator",
-     "tts": "HearHere. Your street, your say.",
-     "sub": "HearHere. Your street, your say."
+     "tts": "We studied how international residents in Melbourne take part in council decisions.",
+     "sub": "We studied how international residents in Melbourne take part in council decisions."
     }
    ]
   },
   {
    "id": 2,
-   "name": "Problem",
-   "tail": null,
+   "name": "Five problems",
+   "tail": 0.5,
    "lines": [
     {
      "id": "s2a",
      "voice": "narrator",
-     "tts": "Melbourne's councils make decisions about parks, housing and transport.",
-     "sub": "Melbourne's councils make decisions about parks, housing and transport."
+     "tts": "Our investigation found five problems.",
+     "sub": "Our investigation found five problems."
     },
     {
      "id": "s2b",
      "voice": "narrator",
-     "tts": "Our fieldwork with eight international residents found the barrier isn't a lack of interest.",
-     "sub": "Our fieldwork with eight international residents found the barrier isn't a lack of interest."
+     "tts": "One: even when it's translated, council language is hard to understand.",
+     "sub": "One: even when it's translated, council language is hard to understand."
     },
     {
      "id": "s2c",
      "voice": "narrator",
-     "tts": "People can't find relevant information.",
-     "sub": "People can't find relevant information."
+     "tts": "Two: time, distance and fees keep people from attending.",
+     "sub": "Two: time, distance and fees keep people from attending."
     },
     {
      "id": "s2d",
      "voice": "narrator",
-     "tts": "Translated policies still use terms they don't understand.",
-     "sub": "Translated policies still use terms they don't understand."
+     "tts": "Three: people only take part when an issue feels personally relevant.",
+     "sub": "Three: people only take part when an issue feels personally relevant."
     },
     {
      "id": "s2e",
      "voice": "narrator",
-     "tts": "And they don't know where their feedback goes.",
-     "sub": "And they don't know where their feedback goes."
+     "tts": "Four: they don't know which department to contact, or whether they were heard.",
+     "sub": "Four: they don't know which department to contact, or whether they were heard."
     },
     {
      "id": "s2f",
      "voice": "narrator",
-     "tts": "Meanwhile, council news arrives by mail and flyers, but newer residents live on Instagram.",
-     "sub": "Meanwhile, council news arrives by mail and flyers, but newer residents live on Instagram."
+     "tts": "Five: council news arrives by mail and flyers, but newer residents live on Instagram.",
+     "sub": "Five: council news arrives by mail and flyers, but newer residents live on Instagram."
     }
    ]
   },
   {
    "id": 3,
-   "name": "Persona",
+   "name": "Persona & scenario",
    "tail": null,
    "lines": [
     {
      "id": "s3a",
      "voice": "narrator",
-     "tts": "Meet Jason.",
-     "sub": "Meet Jason."
+     "tts": "Let's meet Jason.",
+     "sub": "Let's meet Jason."
     },
     {
      "id": "s3b",
@@ -94,8 +82,58 @@
     {
      "id": "s3c",
      "voice": "narrator",
-     "tts": "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use.",
-     "sub": "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use."
+     "tts": "One Saturday morning, a new park rule limits when his dog can be off the leash.",
+     "sub": "One Saturday morning, a new park rule limits when his dog can be off the leash."
+    },
+    {
+     "id": "s3d",
+     "voice": "narrator",
+     "tts": "He disagrees, but doesn't know who to tell, or which words to use.",
+     "sub": "He disagrees, but doesn't know who to tell, or which words to use."
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "name": "Introducing HearHere",
+   "tail": 2.2,
+   "lines": [
+    {
+     "id": "i1",
+     "voice": "narrator",
+     "tts": "So we introduce HearHere: a digital device that combines a physical information pillar with an AI customised helper.",
+     "sub": "So we introduce HearHere: a digital device that combines a physical information pillar with an AI customised helper."
+    },
+    {
+     "id": "i2",
+     "voice": "spud",
+     "tts": "Hi there! I'm Spud, the Street Post for Understanding Decisions.",
+     "sub": "Hi there! I'm Spud, the Street Post for Understanding Decisions."
+    },
+    {
+     "id": "i3",
+     "voice": "narrator",
+     "tts": "Here's the post from every side.",
+     "sub": "Here's the post from every side."
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "name": "How it works",
+   "tail": 0.4,
+   "lines": [
+    {
+     "id": "h2",
+     "voice": "narrator",
+     "tts": "It connects three channels. Spud's official account shares only verified council posts, where residents already scroll.",
+     "sub": "It connects three channels. Spud's official account shares only verified council posts, where residents already scroll."
+    },
+    {
+     "id": "h3",
+     "voice": "narrator",
+     "tts": "An AI agent answers questions, and the HearHere app tracks each issue.",
+     "sub": "An AI agent answers questions, and the HearHere app tracks each issue."
     }
    ]
   },
@@ -107,8 +145,8 @@
     {
      "id": "s4a",
      "voice": "narrator",
-     "tts": "Saturday, 8 a.m. Jason walks his dog past a HearHere post.",
-     "sub": "Saturday, 8 a.m. Jason walks his dog past a HearHere post."
+     "tts": "Back to Saturday, 8 a.m. Jason walks his dog past a HearHere post.",
+     "sub": "Back to Saturday, 8 a.m. Jason walks his dog past a HearHere post."
     },
     {
      "id": "s4b",
@@ -204,12 +242,6 @@
      "sub": "The app shows each stage: Received, In review, then an outcome with a case number, or reasons if declined."
     },
     {
-     "id": "s6e",
-     "voice": "narrator",
-     "tts": "Notifications keep him updated.",
-     "sub": "Notifications keep him updated."
-    },
-    {
      "id": "s6f",
      "voice": "narrator",
      "tts": "Each new HearHere post Jason visits also earns a badge: a small reward for taking part.",
@@ -218,52 +250,15 @@
    ]
   },
   {
-   "id": 11,
-   "name": "How it works",
-   "tail": 0.4,
-   "lines": [
-    {
-     "id": "h1",
-     "voice": "narrator",
-     "tts": "How does it all fit together? Here's the post from every side.",
-     "sub": "How does it all fit together? Here's the post from every side."
-    },
-    {
-     "id": "h2",
-     "voice": "narrator",
-     "tts": "Spud's official social media account shares only verified council posts, reaching residents where they already scroll.",
-     "sub": "Spud's official social media account shares only verified council posts, reaching residents where they already scroll."
-    },
-    {
-     "id": "h3",
-     "voice": "narrator",
-     "tts": "An AI agent answers questions, and the HearHere app tracks each issue.",
-     "sub": "An AI agent answers questions, and the HearHere app tracks each issue."
-    }
-   ]
-  },
-  {
    "id": 7,
-   "name": "Q&A & share",
-   "tail": null,
+   "name": "Share",
+   "tail": 0.6,
    "lines": [
-    {
-     "id": "s7a",
-     "voice": "narrator",
-     "tts": "Not sure who to ask?",
-     "sub": "Not sure who to ask?"
-    },
-    {
-     "id": "s7b",
-     "voice": "narrator",
-     "tts": "Spud's AI agent cites official sources, and hands over to a named contact when it's unsure.",
-     "sub": "Spud's AI agent cites official sources, and hands over to a named contact when it's unsure."
-    },
     {
      "id": "s7c",
      "voice": "narrator",
-     "tts": "And one tap shares a card on Instagram, so Jason's neighbours can join in.",
-     "sub": "And one tap shares a card on Instagram, so Jason's neighbours can join in."
+     "tts": "Jason can also share the issue as a card on Instagram, so his neighbours can join in.",
+     "sub": "Jason can also share the issue as a card on Instagram, so his neighbours can join in."
     }
    ]
   },
@@ -275,8 +270,8 @@
     {
      "id": "s8a",
      "voice": "narrator",
-     "tts": "For Jason, that means relevant issues on his route, in his own language, a clear department to hear him, and visible progress.",
-     "sub": "For Jason, that means relevant issues on his route, in his own language, a clear department to hear him, and visible progress."
+     "tts": "For Jason, that means relevant issues on his route, in his own language, a clear department, and visible progress.",
+     "sub": "For Jason, that means relevant issues on his route, in his own language, a clear department, and visible progress."
     },
     {
      "id": "s8b",
@@ -314,7 +309,7 @@
   {
    "id": 10,
    "name": "Tagline",
-   "tail": 2.6,
+   "tail": 1.8,
    "lines": [
     {
      "id": "s10a",
@@ -338,18 +333,13 @@
    0.05
   ],
   [
-   "chirp",
-   "s1a",
-   0.1
+   "whoosh",
+   "@2",
+   0.0
   ],
   [
    "pop",
-   "s1b",
-   1.2
-  ],
-  [
-   "whoosh",
-   "@2",
+   "s2b",
    0.0
   ],
   [
@@ -368,7 +358,7 @@
    0.0
   ],
   [
-   "whoosh",
+   "pop",
    "s2f",
    0.0
   ],
@@ -381,6 +371,26 @@
    "pop",
    "s3c",
    0.6
+  ],
+  [
+   "whoosh",
+   "@12",
+   0.0
+  ],
+  [
+   "pop",
+   "i1",
+   1.0
+  ],
+  [
+   "chirp",
+   "i2",
+   0.1
+  ],
+  [
+   "whoosh",
+   "@11",
+   0.0
   ],
   [
    "whoosh",
@@ -458,9 +468,9 @@
    4.4
   ],
   [
-   "chime",
-   "s6e",
-   0.15
+   "pop",
+   "s6f",
+   0.5
   ],
   [
    "whoosh",
@@ -468,29 +478,14 @@
    0.0
   ],
   [
-   "pop",
-   "s7b",
-   1.5
-  ],
-  [
-   "chirp",
-   "s7b",
-   0.4
-  ],
-  [
    "tap",
    "s7c",
-   1.1
+   0.6
   ],
   [
    "chime",
    "s7c",
-   1.2
-  ],
-  [
-   "whoosh",
-   "s7c",
-   3.4
+   0.7
   ],
   [
    "whoosh",
@@ -505,17 +500,17 @@
   [
    "pop",
    "s8a",
-   3.3
+   2.2
+  ],
+  [
+   "pop",
+   "s8a",
+   4.2
   ],
   [
    "pop",
    "s8a",
    6.0
-  ],
-  [
-   "pop",
-   "s8a",
-   8.6
   ],
   [
    "whoosh",
@@ -530,7 +525,7 @@
   [
    "chirp",
    "s10b",
-   0.3
+   0.1
   ]
  ],
  "gap": 0.22,

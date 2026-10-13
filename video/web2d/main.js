@@ -42,7 +42,7 @@ const fn = document.createElement('div');
 fn.style.cssText = 'position:absolute;right:40px;bottom:30px;z-index:41;background:rgba(255,255,255,.94);border-radius:999px;padding:8px 20px;font:800 20px Nunito;color:#C0453A;box-shadow:0 6px 18px rgba(0,0,0,.15)';
 fn.textContent = 'Scenario and park rule are fictional examples';
 document.getElementById('stage').appendChild(fn);
-const FN_SCENES = new Set([3, 4, 5, 6, 7]);
+const FN_SCENES = new Set([3, 4, 5, 6, 7]);   // scenario scenes
 // ?clean=1 hides the feature label and footnote (used to export stills for the slide deck)
 const CLEAN = new URLSearchParams(location.search).has('clean');
 if (CLEAN) document.getElementById('lt').style.visibility = 'hidden';
@@ -95,5 +95,26 @@ function renderAt(t) {
   } else subs.style.display = 'none';
 }
 window.renderAt = renderAt;
+// layout QA: every visible top-level box (cards, chips, bubbles, phones, labels) and the actors
+window.layoutBoxes = () => {
+  const SEL = '.card, .chip, .bubble, .thought, .phone, .scr, #lt';
+  const stage = document.getElementById('stage');
+  const effOpacity = (e) => { let o = 1; for (let n = e; n && n !== stage; n = n.parentElement) { const cs = getComputedStyle(n); if (cs.display === 'none' || cs.visibility === 'hidden') return 0; o *= +cs.opacity; } return o; };
+  const all = Array.from(stage.querySelectorAll(SEL)).filter(e => !e.parentElement.closest(SEL));
+  if (fn.style.display !== 'none') all.push(fn);
+  const out = [];
+  for (const e of all) {
+    if (effOpacity(e) < 0.6) continue;
+    const r = e.getBoundingClientRect(); if (r.width < 4 || r.height < 4 || r.right < 0 || r.left > 1920 || r.bottom < 0 || r.top > 1080) continue;
+    out.push({ kind: 'ui', label: (e.id ? '#' + e.id : e.className) + ' | ' + e.textContent.trim().replace(/\s+/g, ' ').slice(0, 40), x: r.left, y: r.top, w: r.width, h: r.height });
+  }
+  for (const a of stage.querySelectorAll('g.actor')) {
+    if (effOpacity(a) < 0.6 || +a.getAttribute('opacity') === 0) continue;
+    let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    for (const c of a.children) { if (c.tagName === 'clipPath' || c.tagName === 'ellipse' || c.hasAttribute('clip-path')) continue; const r = c.getBoundingClientRect(); if (!r.width) continue; x0 = Math.min(x0, r.left); y0 = Math.min(y0, r.top); x1 = Math.max(x1, r.right); y1 = Math.max(y1, r.bottom); }
+    if (x1 > x0 && x1 > 0 && x0 < 1920) out.push({ kind: 'actor', label: 'actor', x: x0, y: y0, w: x1 - x0, h: y1 - y0 });
+  }
+  return out;
+};
 renderAt(0);
 window.READY = true;
