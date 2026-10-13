@@ -76,7 +76,7 @@
   },
   {
    "id": 3,
-   "name": "Persona",
+   "name": "Persona & before",
    "tail": null,
    "lines": [
     {
@@ -94,8 +94,26 @@
     {
      "id": "s3c",
      "voice": "narrator",
-     "tts": "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use.",
-     "sub": "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use."
+     "tts": "One day, a council letter announces a new park rule for dogs.",
+     "sub": "One day, a council letter announces a new park rule for dogs."
+    },
+    {
+     "id": "s3d",
+     "voice": "narrator",
+     "tts": "Jason is unhappy, but the letter is full of terms he doesn't understand.",
+     "sub": "Jason is unhappy, but the letter is full of terms he doesn't understand."
+    },
+    {
+     "id": "s3e",
+     "voice": "narrator",
+     "tts": "He visits the council office, then sends an email, but never learns if anyone listened.",
+     "sub": "He visits the council office, then sends an email, but never learns if anyone listened."
+    },
+    {
+     "id": "s3f",
+     "voice": "narrator",
+     "tts": "In the end, he just gives up.",
+     "sub": "In the end, he just gives up."
     }
    ]
   },
@@ -342,7 +360,22 @@
   [
    "pop",
    "s3c",
-   0.6
+   0.3
+  ],
+  [
+   "pop",
+   "s3d",
+   1.2
+  ],
+  [
+   "tap",
+   "s3e",
+   0.2
+  ],
+  [
+   "chime",
+   "s3e",
+   2.4
   ],
   [
    "whoosh",

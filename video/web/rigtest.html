@@ -1,0 +1,36 @@
+<!doctype html><html><body style="margin:0;background:#cfe8f5">
+<canvas id="c" width="1920" height="1080"></canvas>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from '/node_modules/three/examples/jsm/environments/RoomEnvironment.js';
+import { loadGLB, makeRig, addRot, ccdIK } from './rigs.js';
+const r = new THREE.WebGLRenderer({canvas: c, antialias: true, preserveDrawingBuffer: true});
+r.outputColorSpace = THREE.SRGBColorSpace; r.toneMapping = THREE.ACESFilmicToneMapping; r.shadowMap.enabled = true;
+const s = new THREE.Scene(); s.background = new THREE.Color('#cfe8f5');
+s.environment = new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(r), 0.04).texture;
+s.add(new THREE.HemisphereLight('#fff', '#b9a88f', 1.0)); const d = new THREE.DirectionalLight('#fff', 2.2); d.position.set(3, 6, 4); s.add(d);
+const q = new URLSearchParams(location.search);
+const g = await loadGLB(q.get('m') || 'men/Casual_Hoodie');
+const shots = JSON.parse(q.get('shots'));   // [[clip,t,ry, ik?],...]
+let x = -(shots.length - 1) * 0.5;
+const rigs = [];
+for (const [clip, t, ry, ik] of shots) {
+  const rig = makeRig(g, { scale: +(q.get('sc') || 0.94), recolor: JSON.parse(q.get('rc') || '{}'), hide: ['Gun', 'Pistol'] });
+  rig.root.position.x = x; rig.root.rotation.y = ry || 0; x += 1.0; s.add(rig.root);
+  rig.pose([{ clip, t }]);
+  if (q.get('head')) { const [hx, hy, hz] = JSON.parse(q.get('head')); addRot(rig.bones.Head, hx, hy, hz); }
+  if (ik) {
+    const tgt = new THREE.Vector3(...ik).add(rig.root.position);
+    const m = new THREE.Mesh(new THREE.SphereGeometry(0.03), new THREE.MeshBasicMaterial({color: 'red'})); m.position.copy(tgt); s.add(m);
+    const B = rig.bones; ccdIK(B.WristR, [B.LowerArmR, B.UpperArmR], tgt, 10);
+  }
+  rigs.push(rig);
+}
+const cam = new THREE.PerspectiveCamera(+(q.get('fov') || 30), 16/9, 0.1, 100);
+const cp = JSON.parse(q.get('cam') || '[0,1.1,5]'); const cl = JSON.parse(q.get('look') || '[0,0.9,0]');
+cam.position.set(...cp); cam.lookAt(...cl);
+r.render(s, cam);
+window.INFO = Object.keys(rigs[0].mats).map(k => k + ':' + rigs[0].mats[k].color.getHexString());
+window.READY = true;
+</script></body></html>

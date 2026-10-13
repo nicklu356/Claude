@@ -8,6 +8,26 @@ mkdir -p "$OUT"
 ffmpeg -loglevel error -y -i "$VID" -i build/mix.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -ar 48000 \
   -movflags +faststart -shortest "$OUT/potato_video.mp4"
 cp build/potato_video.srt "$OUT/potato_video.srt"
+# same picture without the AI narration (music + SFX only), for re-recording the voice-over
+if [ -f build/mix_novoice.wav ]; then
+  ffmpeg -loglevel error -y -i "$VID" -i build/mix_novoice.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -ar 48000 \
+    -movflags +faststart -shortest "$OUT/potato_video_no_narration.mp4"
+fi
+# narration script with start times, to read along when recording
+python3 - "$OUT/narration_script.txt" <<'PY'
+import json, sys
+tl = json.load(open('web/timeline.json'))
+out = ["POTATO narration script: each line starts at the time shown (mm:ss.s), duration in brackets.", ""]
+for s in tl["scenes"]:
+    out.append(f"== Scene {s['id']}: {s['name']} ==")
+    for l in s["lines"]:
+        m, sec = divmod(l["start"], 60)
+        who = "JASON (Mandarin)" if l["voice"] == "jason" else "NARRATOR"
+        txt = l["tts"] if l["voice"] == "jason" else l["sub"]
+        out.append(f"{int(m):02d}:{sec:04.1f}  [{l['dur']:.1f}s]  {who}: {txt}")
+    out.append("")
+open(sys.argv[1], "w", encoding="utf-8").write("\n".join(out))
+PY
 cp web/timeline.json "$OUT/timeline.json"
 # contact sheet: 3 frames per scene (20 %, 55 %, 88 % through each scene)
 rm -rf build/cs && mkdir -p build/cs

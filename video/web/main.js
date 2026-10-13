@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from '/node_modules/three/examples/jsm/environments/RoomEnvironment.js';
 import * as WD from './world.js';
+import { loadCharacterAssets, buildJason, buildDog, buildCrowd } from './characters.js';
+import { loadEnvAssets, buildHouse, buildTram, dressStreet } from './env.js';
 import { buildScenes, ZH_STRINGS } from './scenes.js';
 import { clamp, easeOut } from './fx.js';
 
@@ -54,18 +56,50 @@ sun.castShadow = true;
 const SHQ = +(new URLSearchParams(location.search).get('shadow') || 2048);
 sun.shadow.mapSize.set(SHQ, SHQ);
 if (SHQ < 2048) renderer.shadowMap.type = THREE.PCFShadowMap;
-sun.shadow.camera.left = -4; sun.shadow.camera.right = 4; sun.shadow.camera.top = 4; sun.shadow.camera.bottom = -4;
+sun.shadow.camera.left = -5; sun.shadow.camera.right = 5; sun.shadow.camera.top = 5; sun.shadow.camera.bottom = -5;
 sun.shadow.camera.near = 0.5; sun.shadow.camera.far = 30;
 sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.02; sun.shadow.radius = 4;
 const fill = new THREE.DirectionalLight('#DCC9FF', 0.5);
 scene.add(hemi, sun, sun.target, fill);
 
+const [CA, EA] = await Promise.all([loadCharacterAssets(), loadEnvAssets()]);
 const post = WD.buildPost();
-const jason = WD.buildJason();
-const dog = WD.buildDog();
+const jason = buildJason(CA);
+const dog = buildDog(CA);
 const street = WD.buildStreet();
+dressStreet(EA, street);
 const soil = WD.buildSoil();
-scene.add(post.group, jason.root, dog.root, street.group, soil.group);
+scene.add(post.group, jason.root, jason.phone, jason.letter, dog.root, dog.collar, street.group, soil.group);
+
+// Jason's street: a row of Victorian terraces with its own footpath (well away from the shops)
+const home = new THREE.Group(); home.position.set(-48, 0, -3.2);
+const house = buildHouse(); home.add(house.group);
+[[-6.2, '#D9C7E4'], [6.2, '#CFE0D2']].forEach(([x, c]) => {
+  const h = buildHouse(); h.group.position.x = x; h.group.traverse((m) => { if (m.isMesh && m.material.color && m.material.color.getHexString() === 'e8d9c0') { m.material = m.material.clone(); m.material.color.set(c); } });
+  h.letterbox.visible = false; home.add(h.group);
+});
+{
+  const fp = new THREE.Mesh(new THREE.PlaneGeometry(30, 3.2), new THREE.MeshStandardMaterial({ color: '#D9D2C7', roughness: 0.95 }));
+  fp.rotation.x = -Math.PI / 2; fp.position.set(0, 0.005, 3.6); fp.receiveShadow = true; home.add(fp);
+  const rd = new THREE.Mesh(new THREE.PlaneGeometry(30, 8), new THREE.MeshStandardMaterial({ color: '#4A4E57', roughness: 0.95 }));
+  rd.rotation.x = -Math.PI / 2; rd.position.set(0, -0.02, 9.2); rd.receiveShadow = true; home.add(rd);
+  const gr = new THREE.Mesh(new THREE.PlaneGeometry(40, 30), new THREE.MeshStandardMaterial({ color: '#8FC27A', roughness: 1 }));
+  gr.rotation.x = -Math.PI / 2; gr.position.set(0, -0.03, -12); home.add(gr);
+}
+scene.add(home);
+
+// tram on the near track
+const tram = buildTram(); tram.group.position.set(0, 0.02, 6.1); scene.add(tram.group);
+
+// background pedestrians on the shopfront footpath (behind the post)
+const crowd = buildCrowd(CA, [
+  { model: 'women/Casual', x0: -16, x1: 14, z: -2.55, speed: 1.05, phase: 3, dir: 1 },
+  { model: 'women/Suit', x0: -16, x1: 14, z: -2.95, speed: 1.2, phase: 17, dir: -1 },
+  { model: 'women/Formal', x0: -16, x1: 14, z: -2.75, speed: 0.95, phase: 24, dir: -1 },
+  { model: 'men/Worker', x0: -16, x1: 14, z: -2.4, speed: 1.1, phase: 9, dir: 1, recolor: { Orange: '#F28C28' } },
+  { model: 'men/Casual_2', x0: -16, x1: 14, z: -2.85, speed: 1.0, phase: 1, dir: 1 },
+]);
+scene.add(crowd.group);
 // title stage platform
 const stage = new THREE.Group();
 const plat = new THREE.Mesh(new THREE.CylinderGeometry(2.2, 2.3, 0.2, 96), new THREE.MeshStandardMaterial({ color: '#FFE7C7', roughness: 0.8 }));
@@ -85,32 +119,14 @@ const _a = new THREE.Vector3(), _b = new THREE.Vector3();
 function updateLeash() {
   if (!jason.root.visible || !dog.root.visible) { leash.visible = false; return; }
   leash.visible = true;
-  jason.arms[1].hand.getWorldPosition(_a);
-  dog.root.updateMatrixWorld(true);
-  _b.set(0, 0.36, 0.17).applyMatrix4(dog.root.matrixWorld);
-  const mid = _a.clone().lerp(_b, 0.5); mid.y -= 0.18;
+  jason.hand('L', _a); _a.y -= 0.06;
+  dog.neck(_b);
+  const mid = _a.clone().lerp(_b, 0.5); mid.y -= 0.12;
   const curve = new THREE.QuadraticBezierCurve3(_a.clone(), mid, _b.clone());
   leash.geometry.dispose();
   leash.geometry = new THREE.TubeGeometry(curve, 24, 0.006, 6, false);
 }
 
-// phone in hand (for NFC tap)
-const handPhone = new THREE.Group();
-{
-  const skinM = new THREE.MeshStandardMaterial({ color: '#E9B990', roughness: 0.7 });
-  const jacketM = new THREE.MeshStandardMaterial({ color: '#3E6FB0', roughness: 0.75 });
-  const ph = new THREE.Group();
-  const body = new THREE.Mesh(new THREE.BoxGeometry(0.075, 0.155, 0.009), new THREE.MeshStandardMaterial({ color: '#222634', roughness: 0.3, metalness: 0.3 }));
-  const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.066, 0.14), new THREE.MeshStandardMaterial({ map: jason.phoneTex, emissive: 0xffffff, emissiveMap: jason.phoneTex, emissiveIntensity: 0.8 }));
-  scr.position.z = 0.0051; ph.add(body, scr);
-  const palm = new THREE.Mesh(new THREE.SphereGeometry(0.045, 20, 14), skinM); palm.scale.set(1, 1.3, 0.55); palm.position.set(0, -0.03, -0.03);
-  const thumb = new THREE.Mesh(new THREE.CapsuleGeometry(0.012, 0.04, 6, 10), skinM); thumb.position.set(0.04, -0.01, 0.0); thumb.rotation.z = 0.5;
-  const fingers = new THREE.Mesh(new THREE.CapsuleGeometry(0.014, 0.05, 6, 10), skinM); fingers.position.set(-0.042, -0.0, -0.012); fingers.rotation.z = -0.2;
-  const arm = new THREE.Mesh(new THREE.CapsuleGeometry(0.045, 0.32, 8, 14), jacketM); arm.position.set(0.02, -0.25, -0.06); arm.rotation.x = 0.25;
-  handPhone.add(ph, palm, thumb, fingers, arm);
-  handPhone.traverse((m) => { if (m.isMesh) m.castShadow = true; });
-}
-scene.add(handPhone);
 // NFC ripples
 const ripples = [];
 for (let i = 0; i < 3; i++) {
@@ -141,17 +157,19 @@ for (const mode of ['idle', 'happy', 'listen', 'think']) {
 snapSpud.setFace({ mode: 'idle', blink: 1, perk: 0.3 });
 IMG.spud.blink = snap(snapSpud.group, new THREE.Vector3(0, 0.06, 0.95), new THREE.Vector3(0, 0.035, 0));
 snapScene.remove(snapSpud.group);
-const snapJason = WD.buildJason(); snapScene.add(snapJason.root);
-for (const [k, ex] of [['confused', -1], ['happy', 1]]) {
-  snapJason.pose(0, 0, { expr: ex, look: ex < 0 ? 0.25 : -0.1, nod: ex < 0 ? 0.08 : -0.05 });
-  IMG.jason[k] = snap(snapJason.root, new THREE.Vector3(0.12, 1.62, 0.85), new THREE.Vector3(0, 1.55, 0));
+const snapJason = buildJason(CA); snapScene.add(snapJason.root);
+snapCam.fov = 26; snapCam.updateProjectionMatrix();
+for (const [k, o] of [['confused', { slump: 1, look: [0.25, 0.2], tilt: 0.18 }], ['happy', { look: [-0.1, -0.05] }]]) {
+  snapJason.pose(0.4, o);
+  IMG.jason[k] = snap(snapJason.root, new THREE.Vector3(0.1, 1.58, 1.05), new THREE.Vector3(0, 1.5, 0));
 }
+snapCam.fov = 30; snapCam.updateProjectionMatrix();
 snapScene.remove(snapJason.root);
 
 // ------------------------------------------------------------------ world API for scenes
 const tmpV = new THREE.Vector3();
 const W = {
-  THREE, scene, camera, renderer, post, jason, dog, street, soil, stage, hemi, sun, fill, handPhone, ripples, IMG, WD,
+  THREE, scene, camera, renderer, post, jason, dog, street, soil, stage, hemi, sun, fill, ripples, IMG, WD, home, house, tram, crowd,
   setSky(mode) {
     scene.background = SKY[mode];
     const envK = mode === 'dusk' ? 0.3 : 1.0;
@@ -200,6 +218,7 @@ const W = {
     post.spud.group.localToWorld(v); return v;
   },
   updateLeash,
+  canvasFilter(f) { if (canvas.style.filter !== f) canvas.style.filter = f; },
   ui: document.getElementById('ui'),
 };
 
@@ -274,4 +293,5 @@ window.renderAt = (t) => {
   } else subs.style.display = 'none';
   return true;
 };
+window.W = W;
 window.READY = true;

@@ -1,4 +1,4 @@
-"""Kokoro-82M (v1.0, q8 ONNX) TTS: one clip per script line, measured with ffprobe.
+"""Kokoro-82M (v1.0, int8 ONNX from the kokoro-onnx GitHub release) TTS: one clip per script line, measured with ffprobe.
 
 Run with a Python that has onnxruntime, kokoro-onnx (espeak-ng G2P for English)
 and misaki[zh] (Mandarin G2P):   <venv>/bin/python tts_kokoro.py
@@ -14,12 +14,13 @@ from kokoro_onnx.config import DEFAULT_VOCAB
 from misaki import zh
 
 ROOT = pathlib.Path(__file__).parent
-MODEL = ROOT / "models" / "kokoro-v1.0-q8.onnx"
+MODEL = ROOT / "models" / "kokoro-v1.0.int8.onnx"
 VOICES = {"narrator": ("af_heart", "en-us"), "jason": ("zm_yunxi", "zh")}
 SPEED = {"narrator": 1.0, "jason": 1.0}
 OUT = ROOT / "audio"
 
 sess = ort.InferenceSession(str(MODEL))
+IN_NAMES = {i.name for i in sess.get_inputs()}
 tok = Tokenizer()
 zhg2p = zh.ZHG2P()
 
@@ -36,7 +37,8 @@ def synth(text, role):
     ids = [DEFAULT_VOCAB[c] for c in ps if c in DEFAULT_VOCAB]
     pack = np.fromfile(ROOT / "models" / "voices" / f"{voice}.bin", dtype=np.float32).reshape(-1, 1, 256)
     style = pack[len(ids)]
-    wav = sess.run(None, {"input_ids": np.array([[0, *ids, 0]], dtype=np.int64), "style": style,
+    ids_key = "tokens" if "tokens" in IN_NAMES else "input_ids"  # input name differs between ONNX exports
+    wav = sess.run(None, {ids_key: np.array([[0, *ids, 0]], dtype=np.int64), "style": style,
                           "speed": np.array([SPEED[role]], dtype=np.float32)})[0]
     return np.squeeze(wav), ps
 

@@ -129,7 +129,13 @@ function drawPhoneTex(W, mode) {
   const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#9567AE'); gr.addColorStop(1, '#7B4B94');
   g.fillStyle = gr; g.fillRect(0, 0, w, h);
   g.fillStyle = '#FFF4E0'; g.textAlign = 'center'; g.font = '800 46px "Baloo 2"'; g.fillText('POTATO', w / 2, 150);
-  if (mode === 'done') {
+  if (mode === 'mail') {
+    g.fillStyle = '#FFF4E0'; g.fillRect(14, 190, w - 28, h - 230);
+    g.fillStyle = '#1F2A44'; g.textAlign = 'left'; g.font = '800 22px Nunito'; g.fillText('To: enquiries@council', 28, 228);
+    g.fillStyle = '#C9C3B8'; for (let i = 0; i < 6; i++) g.fillRect(28, 252 + i * 28, 170 + ((i * 37) % 30), 10);
+    g.fillStyle = '#F28C28'; roundRect(g, 28, 440, 120, 40, 20); g.fill(); g.fillStyle = '#fff'; g.font = '800 22px Nunito'; g.fillText('Send', 56, 467);
+    g.textAlign = 'center';
+  } else if (mode === 'done') {
     g.fillStyle = '#4CAF50'; g.beginPath(); g.arc(w / 2, 280, 60, 0, Math.PI * 2); g.fill();
     g.strokeStyle = '#fff'; g.lineWidth = 14; g.lineCap = 'round'; g.beginPath(); g.moveTo(w / 2 - 28, 282); g.lineTo(w / 2 - 6, 304); g.lineTo(w / 2 + 30, 258); g.stroke();
     g.fillStyle = '#FFF4E0'; g.font = '800 30px Nunito'; g.fillText('Issue saved', w / 2, 390);
@@ -258,10 +264,16 @@ export function buildScenes(W) {
   };
   const setWorld = (o) => {
     street.group.visible = !!o.street; stage.visible = !!o.stage; soil.group.visible = !!o.soil;
-    jason.root.visible = !!o.jason; dog.root.visible = !!o.dog; W.handPhone.visible = !!o.hand;
-    W.ripples.forEach((r) => (r.visible = !!o.hand));
+    post.group.visible = !o.home;
+    W.home.visible = !!o.home; W.tram.group.visible = !!o.tram; W.crowd.update(0, !!o.crowd);
+    jason.root.visible = !!o.jason; dog.root.visible = !!o.dog; dog.collar.visible = !!o.dog;
+    jason.phone.visible = false; jason.letter.visible = false;
+    W.ripples.forEach((r) => (r.visible = false));
+    W.canvasFilter('');
     W.setSky(o.sky || 'day');
   };
+  // yaw that makes a model (facing +z) look from `from` towards `to`
+  const faceAngle = (from, to) => Math.atan2(to.x - from.x, to.z - from.z);
   const POSTPOS = new THREE.Vector3(0, 0, -0.4);
   const bubbleAt = (b, off, dx = 0, dy = 0) => {
     const p = W.project(W.spudWorld(off));
@@ -344,7 +356,7 @@ export function buildScenes(W) {
       </div>
     </div>
     <div class="abs s2b" style="left:0;right:0;top:290px;display:flex;gap:22px;justify-content:center;align-items:center">
-      ${[['8', 'interviews'], ['3', 'observation sites'], ['5', 'themes']].map(([n, l], k) => `<div class="chip st${k}" style="background:var(--navy);color:#fff;font-size:28px;padding:10px 26px"><b style="font:900 38px Nunito;color:#FFC07A">${n}</b>${l}</div>`).join('')}
+      ${[['8', 'interviews'], ['4', 'observations'], ['5', 'themes']].map(([n, l], k) => `<div class="chip st${k}" style="background:var(--navy);color:#fff;font-size:28px;padding:10px 26px"><b style="font:900 38px Nunito;color:#FFC07A">${n}</b>${l}</div>`).join('')}
       <div class="chip st3" style="background:var(--orange-l);color:#B85C00;font-size:28px;padding:10px 26px">Not a lack of interest</div>
     </div>
     <div class="cards">
@@ -411,7 +423,11 @@ export function buildScenes(W) {
     return { gl: false };
   });
 
-  // ------------------------------------------------------------ 3 PERSONA
+  // ------------------------------------------------------------ 3 PERSONA + BEFORE (at Jason's home)
+  const HOME = W.home.position;
+  const LB = new THREE.Vector3(HOME.x - 0.85, 1.18, HOME.z + 2.27);      // letterbox slot (world)
+  const JH = new THREE.Vector3(HOME.x - 0.45, 0, HOME.z + 2.85);          // Jason's spot on the footpath
+  const jargon = (w) => `<span class="jg" style="position:relative;background:#FFF0B3;border-bottom:3px solid #E0544B;border-radius:6px;padding:0 4px">${w}<b class="qb" style="position:absolute;right:-14px;top:-22px;width:30px;height:30px;border-radius:50%;background:#E0544B;color:#fff;font:900 22px/30px Nunito;text-align:center;opacity:0">?</b></span>`;
   add(`
     <div class="card pc" style="position:absolute;left:1040px;top:90px;width:800px;padding:36px 40px">
       <div style="display:flex;gap:22px;align-items:center">
@@ -424,37 +440,111 @@ export function buildScenes(W) {
         <div class="fx">${ic('house', '#7B4B94', 32, 4)} Lives outside the CBD</div>
         <div class="fx">${ic('translate', '#7B4B94', 32, 4)} English isn’t his first language</div>
         <div class="fx">${ic('dog', '#7B4B94', 32, 4)} Walks his dog, shops locally</div>
-        <div class="fx">${ic('people', '#7B4B94', 32, 4)} Cares about pets · not political</div>
+        <div class="fx">${ic('mail', '#7B4B94', 32, 4)} Gets council news by mail</div>
       </div>
       <div class="q" style="margin-top:24px;padding:18px 24px;border-radius:20px;background:var(--purple-l);font:800 italic 29px/1.35 Nunito;color:var(--purple-d)">“I know they want to help, but I don’t always know who to ask, or how to say it right.”</div>
-      <div class="pains" style="display:flex;gap:12px;margin-top:22px;flex-wrap:wrap">
-        <span class="chip p0" style="background:#FDE4E1;color:#C2372F">${ic('user', '#C2372F', 28, 4)}Unsure who to ask</span>
-        <span class="chip p1" style="background:#FDE4E1;color:#C2372F">${ic('chat', '#C2372F', 28, 4)}Unsure which words</span>
-        <span class="chip p2" style="background:#FDE4E1;color:#C2372F">${ic('bell', '#C2372F', 28, 4)}Never hears back</span>
+    </div>
+    <div class="card letter" style="position:absolute;left:1010px;top:96px;width:800px;padding:0;overflow:hidden">
+      <div style="background:#2E7D32;color:#fff;padding:18px 34px;display:flex;align-items:center;gap:14px">${ic('building', '#fff', 36, 3.6)}<div style="font:900 28px Nunito;letter-spacing:2px">CITY COUNCIL</div><div style="margin-left:auto;font:700 20px Nunito;opacity:.9">Ref. LL3/2026/114</div></div>
+      <div style="padding:26px 34px 30px">
+        <div style="font:900 34px/1.2 Nunito">Notice of proposed amendment: Riverside Park</div>
+        <div style="font:600 27px/1.75 Nunito;margin-top:14px;color:#33405A">Pursuant to ${jargon('Local Law 3 (Amenity)')}, the ${jargon('off-leash designation')} will be ${jargon('rescinded')} during ${jargon('prescribed hours')}. Submissions may be lodged within the ${jargon('statutory consultation period')}.</div>
+        <div style="margin-top:16px;height:12px;width:80%;border-radius:6px;background:#E4DED3"></div>
+        <div style="margin-top:12px;height:12px;width:64%;border-radius:6px;background:#E4DED3"></div>
       </div>
     </div>
-    <div class="bubble think" style="font-size:30px;padding:12px 22px;color:var(--navy);display:flex;gap:10px;align-items:center">${ic('dog', '#E0544B', 40, 3.6)}<span>New park rule?!</span></div>`,
+    <div class="montage abs" style="left:1000px;top:90px;width:830px">
+      <div class="card mA" style="padding:26px 30px;display:flex;gap:22px;align-items:flex-start">
+        <div style="width:84px;height:84px;border-radius:24px;background:var(--purple);display:grid;place-items:center;flex:none">${ic('building', '#fff', 50)}</div>
+        <div style="flex:1"><div style="font:800 20px Nunito;color:var(--orange);letter-spacing:2px">VISIT · COUNCIL OFFICE</div>
+          <div style="font:900 34px/1.2 Nunito;margin-top:4px">“That’s a different department…”</div>
+          <div class="hops" style="display:flex;gap:10px;margin-top:14px;font:800 21px Nunito">
+            ${['Customer service', 'Local laws', 'Parks?'].map((d, i) => `<span class="chip hop h${i}" style="background:${i === 2 ? '#FDE4E1' : '#EEF0F4'};color:${i === 2 ? '#C2372F' : 'var(--navy-2)'};font-size:21px;padding:6px 16px">${d}</span>${i < 2 ? '<span class="ar" style="font:900 26px Nunito;color:var(--navy-2)">→</span>' : ''}`).join('')}
+          </div></div>
+      </div>
+      <div class="card mB" style="margin-top:22px;padding:26px 30px;display:flex;gap:22px;align-items:flex-start">
+        <div style="width:84px;height:84px;border-radius:24px;background:var(--orange);display:grid;place-items:center;flex:none">${ic('mail', '#fff', 50)}</div>
+        <div style="flex:1"><div style="font:800 20px Nunito;color:var(--orange);letter-spacing:2px">EMAIL · GENERAL ENQUIRIES</div>
+          <div style="font:900 30px/1.25 Nunito;margin-top:4px">Subject: Concern about the new park rule</div>
+          <div style="display:flex;gap:14px;margin-top:14px;align-items:center">
+            <span class="chip sent" style="background:var(--green-l);color:var(--green-d);font-size:22px">${ic('check', '#2E7D32', 24, 4.5)}Sent</span>
+            ${['Day 3', 'Day 10', 'Day 21'].map((d, i) => `<span class="chip day d${i}" style="background:#EEF0F4;color:var(--navy-2);font-size:21px;padding:6px 16px;white-space:nowrap">${d} · <b style="color:#C2372F">no reply</b></span>`).join('')}
+          </div></div>
+      </div>
+    </div>
+    <div class="pains abs" style="left:64px;top:64px;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+      <span class="chip p0" style="background:#FDE4E1;color:#C2372F;box-shadow:0 8px 20px rgba(31,42,68,.12)">${ic('chat', '#C2372F', 28, 4)}Unsure which words</span>
+      <span class="chip p1" style="background:#FDE4E1;color:#C2372F;box-shadow:0 8px 20px rgba(31,42,68,.12)">${ic('user', '#C2372F', 28, 4)}Unsure who to ask</span>
+      <span class="chip p2" style="background:#FDE4E1;color:#C2372F;box-shadow:0 8px 20px rgba(31,42,68,.12)">${ic('bell', '#C2372F', 28, 4)}Never hears back</span>
+    </div>
+    <div class="bubble qm" style="font:900 54px Nunito;color:#E0544B;padding:6px 26px">?</div>
+    <div class="bubble qm2" style="font:900 40px Nunito;color:#E0544B;padding:4px 20px">?</div>`,
   (root, t, S) => {
-    setWorld({ street: true, jason: true, dog: true });
-    post.group.position.copy(POSTPOS); spudIdle(t);
-    drawDisplay(W, t);
-    const conf = t > S.at('s3c', 'unhappy') ? -1 : 0.4;
-    jason.root.position.set(7.3, 0, 0.7); jason.root.rotation.y = 0.35;
-    jason.pose(t, 0, { expr: conf, look: conf < 0 ? 0.3 * Math.sin(t * 1.3) : 0.15, nod: conf < 0 ? 0.08 : 0, blink: blink(t, 3.5, 1) });
-    dog.root.position.set(7.9, 0, 1.25); dog.root.rotation.y = -0.6; dog.pose(t, 0);
-    const a = 0.25 + t * 0.012;
-    const c = new THREE.Vector3(7.5, 0.95, 0.8);
-    W.cam([c.x + Math.sin(a) * 4.0, 1.35, c.z + Math.cos(a) * 4.0], [c.x + 0.15, 0.92, c.z], 32, -430);
-    W.sunAt(c, [3, 6, 4]);
-    show($(root, '.pc'), t, S.cue('s3a'), { kind: 'right', dist: 50 });
-    $$(root, '.fx').forEach((f, i) => show(f, t, S.cue('s3a') + 0.4 + i * 0.25, { kind: 'up', dist: 15 }));
+    setWorld({ home: true, jason: true, dog: true });
+    W.sunAt(new THREE.Vector3(JH.x, 0, JH.z), [3, 6, 4]);
+    const tc = S.cue('s3c'), td = S.cue('s3d'), te = S.cue('s3e'), tf = S.cue('s3f');
+    // --- Jason
+    const turn = smooth(t, tc + 0.1, 0.8);
+    jason.root.position.copy(JH);
+    jason.root.rotation.y = lerp(lerp(0.45, faceAngle(JH, LB) + 0.15, turn), 0.55, smooth(t, te - 0.1, 0.9)) + (t > tf ? smooth(t, tf + 0.3, 1.2) * 0.4 : 0);
+    const reachBox = clamp(1 - Math.abs(t - (tc + 1.0)) / 0.55) * (t < tc + 1.4 ? 1 : 0);
+    const reading = t > tc + 1.25 && t < te - 0.1;
+    const onPhone = t > te + 0.15 && t < tf + 0.1;
+    const slump = Math.max(smooth(t, te + 0.5, 1.5) * 0.35, smooth(t, tf - 0.1, 0.8));
+    const o = { slump, look: [0, 0] };
+    if (t < tc) o.look = [0.15 * Math.sin(t * 0.7), -0.05];
+    if (reachBox > 0) { o.reachR = LB.clone().add(new THREE.Vector3(0.05, 0.02, 0.05)); o.reachW = ease(reachBox); o.look = [0, 0.25]; }
+    if (reading) {
+      o.letter = true; o.reachR = jason.local(-0.1, 1.12, 0.3, new THREE.Vector3()); o.reachL = jason.local(0.12, 1.12, 0.3, new THREE.Vector3());
+      o.look = [t > td ? 0.12 * Math.sin((t - td) * 2.2) : 0, 0.42]; o.tilt = t > td ? 0.16 * smooth(t, td, 0.5) : 0;
+    }
+    if (onPhone) { o.phone = true; o.reachR = jason.local(-0.05, 1.18, 0.32, new THREE.Vector3()); o.look = [0, 0.5]; }
+    if (t > tf) o.look = [0.25, 0.35];
+    jason.pose(t, o);
+    if (onPhone) drawPhoneTex(W, 'mail');
+    dog.root.position.set(JH.x + 0.45, 0, JH.z + 0.5); dog.root.rotation.y = t < tc ? 0.6 : -1.9;
+    dog.pose(t, 0, t > tf ? 'look' : t > te ? 'sniff' : 'idle');
+    // --- camera
+    const C0 = new THREE.Vector3(JH.x + 0.1, 0.95, JH.z);
+    const a = 0.3 + t * 0.012;
+    const pA = [C0.x + Math.sin(a) * 3.6, 1.3, C0.z + Math.cos(a) * 3.6], lA = [C0.x + 0.1, 0.95, C0.z];
+    const pB = [JH.x + 1.55, 1.5, JH.z + 1.9], lB = [JH.x - 0.25, 1.15, JH.z - 0.35];
+    const pC = [JH.x + 0.35, 1.55, JH.z + 1.55], lC = [JH.x + 0.05, 1.3, JH.z];
+    const pD = [JH.x + 2.4, 2.3, JH.z + 4.4], lD = [JH.x - 0.2, 0.85, JH.z - 0.5];
+    const mix = (A, B, k) => A.map((v, i) => lerp(v, B[i], k));
+    const k1 = smooth(t, tc - 0.2, 1.2), k2 = smooth(t, te - 0.2, 1.0), k3 = smooth(t, tf - 0.2, 1.6);
+    const cp = mix(mix(mix(pA, pB, k1), pC, k2), pD, k3), cl = mix(mix(mix(lA, lB, k1), lC, k2), lD, k3);
+    W.cam(cp, cl, 32, lerp(-430, -390, k1) * (1 - k3));
+    W.canvasFilter(`saturate(${1 - 0.65 * smooth(t, tf, 1.2)}) brightness(${1 - 0.08 * smooth(t, tf, 1.2)})`);
+    // --- 2D
+    show($(root, '.pc'), t, S.cue('s3a'), { kind: 'right', dist: 50, out: tc - 0.2 });
+    $$(root, '.fx').forEach((f, i) => show(f, t, S.cue('s3a') + 0.4 + i * 0.3, { kind: 'up', dist: 15 }));
     show($(root, '.q'), t, S.cue('s3b'), { kind: 'up' });
-    show($(root, '.p0'), t, S.at('s3c', 'who to tell'), { kind: 'pop' });
-    show($(root, '.p1'), t, S.at('s3c', 'which words'), { kind: 'pop' });
-    show($(root, '.p2'), t, S.at('s3c', 'which words') + 0.8, { kind: 'pop' });
-    const th = $(root, '.think');
-    show(th, t, S.at('s3c', 'new park'), { kind: 'pop' });
-    const p = W.project(new THREE.Vector3(7.3, 1.85, 0.7)); th.style.left = `${p.x - 40}px`; th.style.top = `${p.y - 70}px`;
+    const L = $(root, '.letter');
+    show(L, t, tc + 1.0, { kind: 'up', dist: 60, out: te - 0.2 });
+    L.style.transform += ` rotate(${lerp(-3, -1, smooth(t, tc + 1, 1))}deg)`;
+    $$(L, '.qb').forEach((q, i) => show(q, t, td + 0.45 + i * 0.42, { kind: 'pop', d: 0.35 }));
+    $$(L, '.jg').forEach((j, i) => (j.style.background = t > td + 0.45 + i * 0.42 ? '#FFD7D2' : '#FFF0B3'));
+    const M = $(root, '.montage');
+    show(M, t, te - 0.1, { kind: 'fade', d: 0.3, out: tf + 0.2 });
+    show($(M, '.mA'), t, te, { kind: 'right', dist: 40 });
+    $$(M, '.hop').forEach((h, i) => show(h, t, te + 0.5 + i * 0.45, { kind: 'pop' }));
+    $$(M, '.ar').forEach((h, i) => show(h, t, te + 0.7 + i * 0.45, { kind: 'fade' }));
+    show($(M, '.mB'), t, S.at('s3e', 'then sends'), { kind: 'right', dist: 40 });
+    show($(M, '.sent'), t, S.at('s3e', 'email') + 0.2, { kind: 'pop' });
+    $$(M, '.day').forEach((d, i) => show(d, t, S.at('s3e', 'never learns') + i * 0.45, { kind: 'pop' }));
+    show($(root, '.p0'), t, td + 1.2, { kind: 'left', dist: 30 });
+    show($(root, '.p1'), t, te + 1.2, { kind: 'left', dist: 30 });
+    show($(root, '.p2'), t, S.at('s3e', 'never learns') + 0.6, { kind: 'left', dist: 30 });
+    const hp = W.project(jason.headPos(new THREE.Vector3()).add(new THREE.Vector3(0, 0.22, 0)));
+    const qm = $(root, '.qm'), qm2 = $(root, '.qm2');
+    show(qm, t, td + 0.3, { kind: 'pop', out: te - 0.2 }); show(qm2, t, td + 0.9, { kind: 'pop', out: te - 0.2 });
+    qm.style.left = `${hp.x - 40}px`; qm.style.top = `${hp.y - 90 + Math.sin(t * 3) * 6}px`;
+    qm2.style.left = `${hp.x + 40}px`; qm2.style.top = `${hp.y - 140 + Math.sin(t * 3 + 1) * 6}px`;
+    W.lowerThird(t, [
+      { a: tc + 0.3, b: te - 0.1, k: 'Before POTATO', text: 'Council letter, unfamiliar terms', icon: ic('mail', '#fff', 30, 3.6) },
+      { a: te, b: S.dur, k: 'Before POTATO', text: 'No clear contact, no reply', icon: ic('warn', '#fff', 30, 3.6) },
+    ]);
     return { gl: true };
   });
 
@@ -463,34 +553,53 @@ export function buildScenes(W) {
     <div class="vwrap abs" style="left:0;top:0;width:1000px;height:700px;transform-origin:0 0">${visorHTML(W)}</div>
     <div class="callout chip" style="position:absolute;background:#fff;box-shadow:0 8px 24px rgba(31,42,68,.2);font-size:26px;color:var(--green-d)">${ic('check', '#2E9E4F', 30, 4.5)}Verified council &amp; community notices</div>`,
   (root, t, S) => {
-    setWorld({ street: true, jason: true, dog: true });
+    setWorld({ street: true, jason: true, dog: true, tram: true, crowd: true });
     post.group.position.copy(POSTPOS); post.group.rotation.y = 0;
     drawDisplay(W, t, { period: 2.0 });
     const tb = S.cue('s4b'), tc = S.cue('s4c');
-    // Jason walks in from the left and stops in front of the post
-    const arrive = tb + 0.6;
-    const wk = clamp((arrive - t) / 0.5);
-    const x = lerp(-5.2, -0.62, ease(prog(t, 0, arrive)) * 0.25 + prog(t, 0, arrive) * 0.75);
-    const turn = smooth(t, arrive - 0.2, 0.9);
-    jason.root.position.set(x, 0, lerp(0.95, 0.62, turn)); jason.root.rotation.y = lerp(Math.PI / 2, Math.PI - 0.45, turn);
-    jason.pose(t, t < arrive ? 1 : wk, { expr: 0, look: lerp(0, -0.3, prog(t, tb - 1.2, 0.8)) * (1 - turn), blink: blink(t, 3.6, 0.7) });
-    dog.root.position.set(x + lerp(0.9, 0.85, turn), 0, lerp(1.25, 1.05, turn)); dog.root.rotation.y = lerp(Math.PI / 2, 0.4, turn); dog.pose(t, t < arrive ? 1 : 0);
+    // Jason walks along the footpath and stops in front of the post
+    const arrive = tb + 1.6;
+    const STOP = new THREE.Vector3(-0.42, 0, 0.36);
+    const WAIT = new THREE.Vector3(-0.85, 0, 0.55);
+    const pw = prog(t, 0, arrive);
+    const x = lerp(-7.0, STOP.x, pw);
+    const walk = 1 - smooth(t, arrive - 0.35, 0.45);
+    const turn = smooth(t, arrive - 0.3, 0.8);
+    jason.root.position.set(x, 0, lerp(0.75, STOP.z, smooth(t, arrive - 1.2, 1.2)));
+    jason.root.rotation.y = lerp(Math.PI / 2, faceAngle(jason.root.position, POSTPOS), turn);
+    const waving = t > tc + 0.5 && t < tc + 2.3;
+    jason.pose(t, {
+      walk, walkT: pw * (arrive / 1.0) * 0.82,
+      look: [lerp(0, -0.55, smooth(t, tb - 1.0, 0.6)) * (1 - turn), turn > 0.5 ? -0.12 : 0],
+      wave: waving ? (t - tc - 0.5) * 1.1 : null,
+    });
+    dog.root.position.set(x + lerp(0.75, 0.75, turn), 0, lerp(1.2, 0.95, turn)); dog.root.rotation.y = lerp(Math.PI / 2, -0.3, turn);
+    dog.pose(t, walk, 'look');
+    // tram crosses the foreground during the establishing shot
+    W.tram.group.position.x = lerp(-34, 30, prog(t, -0.6, 5.2));
+    W.crowd.update(t + 20);
     // Spud wakes at s4c
     const wake = t > tc;
     post.spud.setFace({ mode: wake && t < tc + 2.2 ? 'happy' : 'idle', blink: wake ? blink(t, 3) : 0.75, perk: wake ? 1 : 0, wave: wake ? (t - tc) * 8 * (t < tc + 2 ? 1 : 0) : 0 });
-    // camera: tracking walk -> post display -> over-shoulder -> push in to visor
-    const pTrack = [x - 0.4, 1.4, 4.4], lTrack = [x + 1.2, 0.95, 0.2];
-    const pDisp = [0.18, 0.72, 1.25], lDisp = [0.0, 0.6, -0.4];
-    const pOs = [0.55, 1.3, 1.3], lOs = [-0.1, 1.05, -0.4];
-    const pIn = [0.08, 1.12, 0.32], lIn = [0, 1.1, -0.4];
-    const k1 = smooth(t, tb - 0.6, 1.4), k2 = smooth(t, tc - 0.3, 1.2), k3 = smooth(t, tc + 2.2, 1.0);
+    // camera: establishing across the road -> post display -> over-shoulder -> push in to visor
     const mix = (A, B, k) => A.map((v, i) => lerp(v, B[i], k));
-    let cp = mix(mix(mix(pTrack, pDisp, k1), pOs, k2), pIn, k3), cl = mix(mix(mix(lTrack, lDisp, k1), lOs, k2), lIn, k3);
-    cp = cp.map((v, i) => v + (i === 0 ? Math.sin(t * 0.5) * 0.04 : 0));
-    W.cam(cp, cl, 35);
-    W.sunAt(new THREE.Vector3(0, 0, 0), [3, 6, 4]);
+    const pEst = [-2.6 + t * 0.15, 7.2, 15.5], lEst = [-3.0 + t * 0.3, 0.6, -0.8];
+    const pDisp = [2.3, 1.0, 2.0], lDisp = [-0.05, 0.72, -0.4];
+    const pOs = [0.5, 1.6, 1.75], lOs = [-0.15, 1.02, -0.4];
+    const pIn = [0.06, 1.12, 0.42], lIn = [0, 1.1, -0.4];
+    const cut = t < tb - 0.15;
+    const k2 = smooth(t, tc - 0.3, 1.2), k3 = smooth(t, tc + 2.3, 1.0);
+    let cp, cl;
+    if (cut) { cp = pEst; cl = lEst; W.cam(cp, cl, 30); }
+    else {
+      const k1 = smooth(t, tb - 0.15, 3.0);
+      const pD = mix([2.6, 1.1, 3.2], pDisp, k1), lD = mix([-0.6, 0.85, -0.3], lDisp, k1);
+      cp = mix(mix(pD, pOs, k2), pIn, k3); cl = mix(mix(lD, lOs, k2), lIn, k3);
+      W.cam(cp, cl, 34);
+    }
+    W.sunAt(new THREE.Vector3(cut ? -2 : 0, 0, 0), [3, 6, 4]);
     const b = $(root, '.b4'); show(b, t, tc + 0.1, { kind: 'pop', out: tc + 2.3 }); bubbleAt(b, [0.13, 0.17, 0], 0, -90);
-    const co = $(root, '.callout'); show(co, t, tb + 0.6, { kind: 'pop', out: tc - 0.2 });
+    const co = $(root, '.callout'); show(co, t, tb + 0.8, { kind: 'pop', out: tc - 0.2 });
     const dp = W.project(new THREE.Vector3(0.23, 0.62, -0.4)); co.style.left = `${dp.x + 40}px`; co.style.top = `${dp.y - 40}px`;
     // visor panel zooms out of the head
     const vw = $(root, '.vwrap');
@@ -504,7 +613,8 @@ export function buildScenes(W) {
     $(vw, '.f1').style.background = t > S.at('s4c', 'ranked') ? 'var(--green-l)' : '#fff';
     $(vw, '.sp').setAttribute('src', spudImg(W, t, 'happy'));
     W.lowerThird(t, [
-      { a: tb + 0.3, b: tc - 0.1, text: 'Verified notices display', icon: ic('check', '#fff', 30, 4) },
+      { a: 0.4, b: tb - 0.3, k: 'Scenario', text: 'A grocery walk past a POTATO post', icon: ic('pin', '#fff', 30, 3.6) },
+      { a: tb + 0.5, b: tc - 0.1, text: 'Verified notices display', icon: ic('check', '#fff', 30, 4) },
       { a: tc + 2.5, b: S.dur, text: 'Local issues panel', icon: ic('pin', '#fff', 30, 3.6) },
     ]);
     return { gl: true };
@@ -515,52 +625,64 @@ export function buildScenes(W) {
     <div class="vwrap abs" style="left:870px;top:70px;width:1000px;height:700px;transform-origin:0 0" data-base="scale(.98)">${visorHTML(W)}</div>
     <div class="jb bubble" style="font:700 30px 'Noto Sans TC';color:var(--navy);padding:14px 24px;white-space:normal;width:420px"><span class="zh">${ZH.jasonLine}</span></div>`,
   (root, t, S) => {
-    setWorld({ street: true, jason: true, dog: true });
+    setWorld({ street: true, jason: true, dog: true, crowd: true });
     post.group.position.copy(POSTPOS);
     drawDisplay(W, t + 20);
+    W.crowd.update(t + 40);
     const ta = S.cue('s5a'), tb = S.cue('s5b'), tcue = S.cue('s5c'), tj = S.cue('s5j'), tje = S.end('s5j'), td = S.cue('s5d'), te = S.cue('s5e');
     const listening = t > tcue + 0.5 && t < td;
     const thinking = t > tje && t < td + 0.5;
     post.spud.setFace({ mode: thinking ? 'think' : listening ? 'listen' : 'panel', blink: blink(t, 3.2), pulse: (t * 1.5) % 1, perk: listening ? 1 : 0.35 });
-    jason.root.position.set(-0.62, 0, 0.62); jason.root.rotation.y = Math.PI - 0.45;
-    const tapping = clamp(1 - Math.abs(t - ta - 0.5) / 0.6) + clamp(1 - Math.abs(t - te - 0.2) / 0.5);
-    jason.pose(t, 0, { reach: clamp(tapping * 1.4), talk: t > tj && t < tje, expr: t > td ? 1 : 0, blink: blink(t, 3.6) });
-    dog.root.position.set(0.6, 0, 1.05); dog.root.rotation.y = 0.4 + Math.sin(t * 0.3) * 0.2; dog.pose(t, 0);
-    const a = 0.42 + t * 0.005;
-    W.cam([-0.3 + Math.sin(a) * 3.0, 1.35, 0.1 + Math.cos(a) * 3.0], [-0.3, 0.95, 0.1], 34, -500);
+    const JP = new THREE.Vector3(-0.42, 0, 0.36);
+    jason.root.position.copy(JP); jason.root.rotation.y = faceAngle(JP, POSTPOS);
+    // three taps on the visor: pick the issue, start talking, confirm
+    const screen = W.spudWorld([0, -0.01, 0.17]);
+    const taps = [ta + 0.15, tcue - 0.05, te - 0.1];
+    let reachW = 0;
+    for (const a of taps) reachW = Math.max(reachW, clamp(1 - Math.abs(t - a - 0.45) / 0.55));
+    jason.pose(t, {
+      reachR: screen, reachW: ease(Math.min(1, reachW * 1.6)),
+      talk: t > tj && t < tje, look: [0.05, t > tj && t < tje ? -0.12 : -0.05],
+    });
+    dog.root.position.set(0.55, 0, 0.85); dog.root.rotation.y = -0.5 + Math.sin(t * 0.3) * 0.2; dog.pose(t, 0, t > td ? 'sniff' : 'idle');
+    const a = 0.62 + t * 0.004;
+    W.cam([-0.25 + Math.sin(a) * 3.3, 1.3, 0.05 + Math.cos(a) * 3.3], [-0.2, 0.92, 0.0], 34, -500);
     W.sunAt(new THREE.Vector3(0, 0, 0), [3, 6, 4]);
     const vw = $(root, '.vwrap'); vw.dataset.base = 'scale(.98)'; show(vw, t, 0.0, { kind: 'fade', d: 0.3 });
     const pl = $(vw, '.p-list'), pd = $(vw, '.p-detail'), pli = $(vw, '.p-listen'), pc = $(vw, '.p-comment');
     $$(vw, '.issue').forEach((c) => { c.style.opacity = 1; c.style.transform = ''; c.style.visibility = 'visible'; });
     $(vw, '.f1').style.background = 'var(--green-l)';
     const td0 = ta + 0.9;
-    const tap = $(vw, '.tapdot'); const tp = prog(t, ta + 0.35, 0.5);
+    const tap = $(vw, '.tapdot'); const tp = prog(t, ta + 0.5, 0.5);
     tap.style.opacity = tp > 0 && tp < 1 ? 1 - tp : 0; tap.style.transform = `scale(${0.5 + tp})`;
-    $(vw, '.i0').style.transform = t > ta + 0.4 && t < ta + 0.8 ? 'scale(.97)' : '';
+    $(vw, '.i0').style.transform = t > ta + 0.5 && t < ta + 0.9 ? 'scale(.97)' : '';
     show(pl, t, -1, { kind: 'fade', out: td0, od: 0.3 });
     show(pd, t, td0, { kind: 'right', d: 0.4, dist: 30, out: tcue + 0.4, od: 0.3 });
     show($(vw, '.tip'), t, S.at('s5b', 'difficult terms') - 0.1, { kind: 'pop' });
     const term = $(vw, '.term'); term.style.background = t > S.at('s5b', 'difficult') - 0.2 ? '#FFD54F' : '#FFF0B3';
     show($(vw, '.langchip'), t, td0 + 0.2, { kind: 'pop' });
-    const tap2 = $(vw, '.tapdot2'); const tp2 = prog(t, tcue + 0.05, 0.45);
+    const tap2 = $(vw, '.tapdot2'); const tp2 = prog(t, tcue + 0.3, 0.45);
     tap2.style.opacity = tp2 > 0 && tp2 < 1 ? 1 - tp2 : 0; tap2.style.transform = `scale(${0.5 + tp2})`;
-    show(pli, t, tcue + 0.4, { kind: 'fade', d: 0.3, out: td, od: 0.3 });
+    show(pli, t, tcue + 0.5, { kind: 'fade', d: 0.3, out: td, od: 0.3 });
     const lAmp = t > tj && t < tje ? 1 : 0.25;
     if (t > tcue && t < td + 0.4) waveSVG($(vw, '.wave'), t, lAmp);
     setSrc($(vw, '.p-listen .sp'), thinking ? W.IMG.spud.think : W.IMG.spud.listen);
     $(vw, '.p-listen .sp').style.transform = `translateY(${-6 * Math.abs(Math.sin(t * 3))}px)`;
     typeText($(vw, '.transcript'), ZH.jasonLine, t, tj + 0.15, Math.max(0.5, tje - tj - 0.2));
     show(pc, t, td, { kind: 'up', d: 0.4, dist: 30 });
-    $$(vw, '.p-comment .card').forEach((c, i) => show(c, t, [td + 0.1, S.at('s5d', 'plus English'), S.at('s5d', 'names the')][i], { kind: 'up', dist: 20 }));
-    show($(vw, '.btns'), t, S.at('s5d', 'review and edit'), { kind: 'up', dist: 20 });
-    const be = $(vw, '.bedit'); be.style.boxShadow = t > S.at('s5d', 'edit') && t < S.at('s5d', 'edit') + 0.9 ? '0 0 0 6px rgba(123,75,148,.3)' : 'none';
+    // all three result rows land within the first second so the panel never sits half-empty
+    $$(vw, '.p-comment .card').forEach((c, i) => show(c, t, td + 0.15 + i * 0.35, { kind: 'up', dist: 20 }));
+    $$(vw, '.p-comment .card').forEach((c, i) => (c.style.boxShadow = t > [td + 0.2, S.at('s5d', 'plus English'), S.at('s5d', 'names the')][i] && t < [td + 0.2, S.at('s5d', 'plus English'), S.at('s5d', 'names the')][i] + 1.4 ? '0 0 0 4px rgba(242,140,40,.55)' : ''));
+    show($(vw, '.btns'), t, td + 1.2, { kind: 'up', dist: 20 });
+    const be = $(vw, '.bedit'); be.style.boxShadow = t > S.at('s5d', 'review and edit') && t < S.at('s5d', 'review and edit') + 1.2 ? '0 0 0 6px rgba(123,75,148,.3)' : 'none';
     show($(vw, '.noaudio'), t, te, { kind: 'pop' });
-    const ok = $(vw, '.bok'); ok.style.transform = t > te + 0.2 && t < te + 0.45 ? 'scale(.92)' : '';
+    const ok = $(vw, '.bok'); ok.style.transform = t > te + 0.3 && t < te + 0.55 ? 'scale(.92)' : '';
     const jb = $(root, '.jb'); show(jb, t, tj, { kind: 'pop', out: tje + 0.3 });
-    jb.style.left = '70px'; jb.style.top = '90px';
+    const hp = W.project(jason.headPos(new THREE.Vector3()));
+    jb.style.left = `${Math.max(40, hp.x - 260)}px`; jb.style.top = `${Math.max(40, hp.y - 250)}px`;
     W.lowerThird(t, [
       { a: tb, b: tcue - 0.1, text: 'Plain-language summary', icon: ic('translate', '#fff', 30, 3.4) },
-      { a: tcue, b: td - 0.1, text: 'Speak-to-mascot', icon: ic('mic', '#fff', 30, 3.4) },
+      { a: tcue, b: td - 0.1, text: 'Speak to Spud, any language', icon: ic('mic', '#fff', 30, 3.4) },
       { a: td, b: S.dur, text: 'Structured comment', icon: ic('doc', '#fff', 30, 3.4) },
     ]);
     return { gl: true };
@@ -606,32 +728,37 @@ export function buildScenes(W) {
     const tap = ta + 1.25;
     const in3D = t < tc + 0.15;
     if (in3D) {
-      setWorld({ street: true, jason: false, dog: true, hand: true });
+      setWorld({ street: true, jason: true, dog: true, crowd: true });
+      W.crowd.update(t + 70);
       post.group.position.copy(POSTPOS);
       const wipeK = t > tb ? prog(t, tb + 0.2, 0.7) : 0;
       drawDisplay(W, t + 40, t > tb ? { mode: 'stored', wipe: wipeK } : {});
       post.spud.setFace({ mode: t > tap && t < tap + 1.6 ? 'happy' : 'panel', blink: blink(t, 3), perk: 0.5 });
-      dog.root.position.set(0.75, 0, 0.9); dog.root.rotation.y = -0.2; dog.pose(t, 0);
-      // phone in hand moves onto the tilted pad
+      const JP = new THREE.Vector3(-0.3, 0, 0.12);
+      jason.root.position.copy(JP); jason.root.rotation.y = faceAngle(JP, POSTPOS) + 0.1;
+      // phone comes out, touches the tilted NFC pad, then returns to a reading position
       const pad = new THREE.Vector3(0, 0.865, -0.285);
-      const k = ease(prog(t, ta + 0.1, 1.15)), back = ease(prog(t, tap + 0.6, 0.8));
-      const start = new THREE.Vector3(0.75, 1.05, 0.25), touch = pad.clone().add(new THREE.Vector3(0, 0.035, 0.012));
-      const pos = start.clone().lerp(touch, k).lerp(new THREE.Vector3(0.75, 1.1, 0.2), back);
-      W.handPhone.position.copy(pos);
-      W.handPhone.visible = t < tap + 1.3;
-      W.handPhone.rotation.set(-Math.PI / 2 + 0.42 + (1 - k) * 0.6, 0.3 * (1 - k), 0.2 * (1 - k));
+      const padN = new THREE.Vector3(0, Math.cos(0.42), Math.sin(0.42));
+      const k = ease(prog(t, ta + 0.1, 1.1)), back = ease(prog(t, tap + 0.5, 0.8));
+      const rest = jason.local(-0.06, 1.15, 0.3, new THREE.Vector3());
+      // wrist hovers just above/behind the pad so the phone (held past the knuckles) lies on it
+      const touch = pad.clone().addScaledVector(padN, 0.045).add(new THREE.Vector3(-0.03, 0, 0.07));
+      const hand = rest.clone().lerp(touch, k * (1 - back));
+      jason.pose(t, { reachR: hand, reachW: 1, phone: true, phoneFace: k * (1 - back) > 0.5 ? padN : null, look: [0, 0.35] });
       drawPhoneTex(W, t > tap + 0.3 ? 'done' : 'nfc');
       W.ripples.forEach((r, i) => {
+        r.visible = true;
         const p = prog(t, tap + i * 0.22, 1.0);
-        r.position.copy(pad).add(new THREE.Vector3(0, 0.03, 0.01)); r.rotation.set(-Math.PI / 2 + 0.42, 0, 0);
+        r.position.copy(pad).addScaledVector(padN, 0.03); r.rotation.set(-Math.PI / 2 + 0.42, 0, 0);
         r.scale.setScalar(1 + p * 5); r.material.opacity = p > 0 && p < 1 ? (1 - p) * 0.9 : 0;
       });
+      dog.root.position.set(0.6, 0, 0.75); dog.root.rotation.y = -0.6; dog.pose(t, 0, 'look');
       const kc = smooth(t, tb - 0.2, 1.3);
-      const cp = [lerp(-0.62, 0.2, kc) + Math.sin(t * 0.6) * 0.02, lerp(1.2, 0.8, kc), lerp(0.42, 1.55, kc)];
-      const cl = [lerp(0.06, 0.0, kc), lerp(0.86, 0.52, kc), lerp(-0.29, -0.4, kc)];
-      W.cam(cp, cl, lerp(32, 34, kc));
+      const cp = [lerp(1.2, 0.75, kc) + Math.sin(t * 0.6) * 0.02, lerp(1.7, 0.95, kc), lerp(1.25, 2.3, kc)];
+      const cl = [lerp(-0.2, 0.0, kc), lerp(1.02, 0.62, kc), lerp(-0.15, -0.4, kc)];
+      W.cam(cp, cl, lerp(36, 34, kc));
       W.sunAt(new THREE.Vector3(0, 0, 0), [3, 6, 4]);
-    }
+    } else W.ripples.forEach((r) => (r.visible = false));
     const nl = $(root, '.nfcLbl');
     show(nl, t, tb + 1.0, { kind: 'pop', out: tc - 0.1 });
     if (in3D) { const p = W.project(new THREE.Vector3(0.25, 0.75, -0.17)); nl.style.left = `${p.x + 40}px`; nl.style.top = `${p.y - 30}px`; }
@@ -829,14 +956,19 @@ export function buildScenes(W) {
     </div>
     <div class="bubble b10">See you, Melb!</div>`,
   (root, t, S) => {
-    setWorld({ street: true, sky: 'dusk' });
+    setWorld({ street: true, sky: 'dusk', jason: true, dog: true });
     post.group.position.copy(POSTPOS);
     drawDisplay(W, t + 60);
     post.dispMat.emissiveIntensity = 1.0;
     post.spud.setFace({ mode: 'happy', blink: 0, perk: 1, wave: t * 7 });
     post.spud.group.rotation.z = Math.sin(t * 3.5) * 0.07;
-    const a = 0.62 - t * 0.03;
-    W.cam([Math.sin(a) * 2.7, 0.62, -0.4 + Math.cos(a) * 2.7], [0, 0.95, -0.4], 38, -480);
+    // Jason and his dog wave goodbye beside the post
+    const JP = new THREE.Vector3(-0.95, 0, 0.05);
+    jason.root.position.copy(JP); jason.root.rotation.y = 0.35;
+    jason.pose(t, { wave: t * 1.05 + 0.2, look: [-0.1, -0.05] });
+    dog.root.position.set(-0.35, 0, 0.45); dog.root.rotation.y = 0.2; dog.pose(t, 0, 'look');
+    const a = 0.5 - t * 0.025;
+    W.cam([-0.45 + Math.sin(a) * 3.6, 0.95, -0.2 + Math.cos(a) * 3.6], [-0.45, 0.9, -0.2], 36, -470);
     W.sunAt(new THREE.Vector3(0, 0, 0), [-4, 3, 3]);
     show($(root, '.wm'), t, 0.3, { kind: 'pop' });
     show($(root, '.acr'), t, S.at('s10a', 'Public'), { kind: 'up', dist: 20 });

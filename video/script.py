@@ -27,10 +27,13 @@ SCENES = [
         ("s2f", NARR, "Meanwhile, council news arrives by mail and flyers, but newer residents live on Instagram.", None),
     ]},
     # 3 Persona
-    {"id": 3, "name": "Persona", "lines": [
+    {"id": 3, "name": "Persona & before", "lines": [
         ("s3a", NARR, "Meet Jason.", None),
         ("s3b", NARR, "He's lived in Melbourne for years, but English isn't his first language.", None),
-        ("s3c", NARR, "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use.", None),
+        ("s3c", NARR, "One day, a council letter announces a new park rule for dogs.", None),
+        ("s3d", NARR, "Jason is unhappy, but the letter is full of terms he doesn't understand.", None),
+        ("s3e", NARR, "He visits the council office, then sends an email, but never learns if anyone listened.", None),
+        ("s3f", NARR, "In the end, he just gives up.", None),
     ]},
     # 4 Discover
     {"id": 4, "name": "Discover", "lines": [
@@ -88,7 +91,7 @@ SCENES = [
 SFX = [
     ("whoosh", "@1", 0.05), ("chirp", "s1a", 0.10), ("pop", "s1b", 1.2),
     ("whoosh", "@2", 0.0), ("pop", "s2c", 0.0), ("pop", "s2d", 0.0), ("pop", "s2e", 0.0), ("whoosh", "s2f", 0.0),
-    ("whoosh", "@3", 0.0), ("pop", "s3c", 0.6),
+    ("whoosh", "@3", 0.0), ("pop", "s3c", 0.3), ("pop", "s3d", 1.2), ("tap", "s3e", 0.2), ("chime", "s3e", 2.4),
     ("whoosh", "@4", 0.0), ("chirp", "s4c", 0.15), ("pop", "s4c", 2.4),
     ("tap", "s5a", 0.55), ("pop", "s5b", 1.6), ("chirp", "s5c", 0.6), ("pop", "s5d", 0.1), ("tap", "s5e", 0.2),
     ("tap", "s6a", 1.25), ("chime", "s6a", 1.3), ("whoosh", "s6c", 0.0), ("tap", "s6c", 0.9), ("pop", "s6d", 0.9),
