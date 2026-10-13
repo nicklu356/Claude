@@ -1,4 +1,4 @@
-"""Kokoro-82M (v1.0, q8 ONNX) TTS: one clip per script line, measured with ffprobe.
+"""Kokoro-82M (v1.0, int8 ONNX from the kokoro-onnx GitHub release) TTS: one clip per script line, measured with ffprobe.
 
 Run with a Python that has onnxruntime, kokoro-onnx (espeak-ng G2P for English)
 and misaki[zh] (Mandarin G2P):   <venv>/bin/python tts_kokoro.py
@@ -8,18 +8,20 @@ Each clip: silence trimmed, normalised to -16 LUFS, 48 kHz mono WAV, speed 1.0.
 Writes audio/manifest.json.
 """
 import json, pathlib, subprocess
-import numpy as np, onnxruntime as ort, soundfile as sf
+import sys
+import numpy as np, soundfile as sf
+from kokoro_onnx import Kokoro
 from kokoro_onnx.tokenizer import Tokenizer
-from kokoro_onnx.config import DEFAULT_VOCAB
 from misaki import zh
 
 ROOT = pathlib.Path(__file__).parent
-MODEL = ROOT / "models" / "kokoro-v1.0-q8.onnx"
+MODEL = ROOT / "models" / "kokoro-v1.0.int8.onnx"
+VOICEPACK = ROOT / "models" / "voices-v1.0.bin"
 VOICES = {"narrator": ("af_heart", "en-us"), "jason": ("zm_yunxi", "zh")}
 SPEED = {"narrator": 1.0, "jason": 1.0}
 OUT = ROOT / "audio"
 
-sess = ort.InferenceSession(str(MODEL))
+kok = Kokoro(str(MODEL), str(VOICEPACK))
 tok = Tokenizer()
 zhg2p = zh.ZHG2P()
 
@@ -30,24 +32,25 @@ def phonemes(text, lang):
     return tok.phonemize(text, lang)
 
 
-def synth(text, role):
+def synth(text, role, ps=None):
     voice, lang = VOICES[role]
-    ps = phonemes(text, lang)
-    ids = [DEFAULT_VOCAB[c] for c in ps if c in DEFAULT_VOCAB]
-    pack = np.fromfile(ROOT / "models" / "voices" / f"{voice}.bin", dtype=np.float32).reshape(-1, 1, 256)
-    style = pack[len(ids)]
-    wav = sess.run(None, {"input_ids": np.array([[0, *ids, 0]], dtype=np.int64), "style": style,
-                          "speed": np.array([SPEED[role]], dtype=np.float32)})[0]
+    ps = ps or phonemes(text, lang)
+    wav, _sr = kok.create(ps, voice=voice, speed=SPEED[role], is_phonemes=True)
     return np.squeeze(wav), ps
 
 
 def main():
     script = json.loads((ROOT / "script.json").read_text())
     OUT.mkdir(exist_ok=True)
-    manifest = {}
+    only = set(sys.argv[1:])  # optional: regenerate just these line ids
+    mpath = OUT / "manifest.json"
+    manifest = json.loads(mpath.read_text()) if only and mpath.exists() else {}
     for sc in script["scenes"]:
         for ln in sc["lines"]:
-            wav, ps = synth(ln["tts"], ln["voice"])
+            if only and ln["id"] not in only:
+                continue
+            # a line may pin its phonemes (newer misaki releases mangle Traditional Chinese)
+            wav, ps = synth(ln["tts"], ln["voice"], ln.get("phonemes"))
             raw = OUT / f"{ln['id']}_raw.wav"
             sf.write(raw, wav, 24000)
             out = OUT / f"{ln['id']}.wav"

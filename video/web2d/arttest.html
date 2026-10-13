@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="/node_modules/@fontsource/nunito/800.css"><link rel="stylesheet" href="/node_modules/@fontsource/nunito/900.css">
+<link rel="stylesheet" href="/node_modules/@fontsource/baloo-2/800.css">
+<style>body{margin:0;width:1920px;height:1080px;overflow:hidden}</style></head><body>
+<svg id="s" width="1920" height="1080" viewBox="0 0 1920 1080"></svg>
+<script type="module">
+import * as A from './art.js';
+const s=document.getElementById('s');
+s.appendChild(A.defs());
+s.insertAdjacentHTML('beforeend','<rect width="1920" height="1080" fill="url(#gSky)"/>');
+const sk=A.skyline(2200); sk.setAttribute('transform','translate(0 760)'); s.appendChild(sk);
+const sh=A.shops(2200); sh.setAttribute('transform','translate(0 800)'); s.appendChild(sh);
+s.insertAdjacentHTML('beforeend', `<g transform="translate(0 800)">${A.ground(1920,0)}${A.tree(1700,1)}${A.fence(1300,1600)}</g>`);
+const j=A.jason(); j.setAttribute('transform','translate(560 900) scale(1)'); s.appendChild(j); A.poseJason(j,{mouth:'smile',walk:0.15});
+const d=A.dog(); d.setAttribute('transform','translate(800 900) scale(0.9)'); s.appendChild(d); A.poseDog(d,{walk:0.2});
+const p=A.post(); p.setAttribute('transform','translate(1100 900)'); s.appendChild(p); A.posePost(p,{screen:'list'});
+const p2=A.post(); p2.setAttribute('transform','translate(1500 1250) scale(2.2)'); s.appendChild(p2); A.posePost(p2,{screen:'idle',mood:'happy'});
+window.DONE=1;
+</script></body></html>

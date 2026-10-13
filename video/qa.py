@@ -38,7 +38,7 @@ bad = [s["id"] for s in tl["scenes"] if not all(s["start"] < l["start"] and l["e
 say(f"[{ok(not bad and not tl['estimated'])}] every scene contains its narration (timeline from measured audio: {not tl['estimated']})")
 
 # 5. Chinese: Traditional only + glyph coverage
-src = (ROOT / "web" / "scenes.js").read_text() + json.dumps(tl, ensure_ascii=False) + (ROOT / "script.json").read_text()
+src = (ROOT / "web2d" / "scenes.js").read_text() + json.dumps(tl, ensure_ascii=False) + (ROOT / "script.json").read_text()
 han = sorted(set(re.findall(r"[㐀-鿿豈-﫿]", src)))
 cc = OpenCC("s2t")
 simp = [c for c in han if cc.convert(c) != c]
@@ -54,7 +54,7 @@ say(f"[{ok(not missing)}] Noto Sans TC covers all CJK glyphs (missing: {missing 
 # 6. spelling
 vis = re.sub(r"tts\":\s*\"[^\"]*\"", "", src)
 names = ["Jia-Ying Lee", "1790130", "Xintong FU", "1840227", "Yu-Hao LU", "1781474", "Yen-Chu OU YANG", "1801365",
-         "Public Opinion Translation And Tracking Outpost", "Spud", "Team Sweet Potatoes", "Group 14"]
+         "Public Opinion Translation And Tracking Outpost", "Melb", "Hi Melb", "Team Sweet Potatoes", "Group 14"]
 miss = [n for n in names if n not in src]
 say(f"[{ok(not miss)}] names / IDs / acronym present (missing: {miss or 'none'})")
 subs = " ".join(" ".join(c["lines"]) for c in tl["cues"])

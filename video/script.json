@@ -3,7 +3,7 @@
   {
    "id": 1,
    "name": "Title",
-   "tail": null,
+   "tail": 0.6,
    "lines": [
     {
      "id": "s1a",
@@ -113,21 +113,21 @@
     {
      "id": "s4b",
      "voice": "narrator",
-     "tts": "Its screen shows verified council and community notices, so he finds things he'd never see in the mail.",
-     "sub": "Its screen shows verified council and community notices, so he finds things he'd never see in the mail."
+     "tts": "Its side panel shows verified council and community notices, so he finds things he'd never see in the mail.",
+     "sub": "Its side panel shows verified council and community notices, so he finds things he'd never see in the mail."
     },
     {
      "id": "s4c",
      "voice": "narrator",
-     "tts": "Then Spud, our mascot, greets him and lists the issues closest to this spot, ranked by distance and closing date.",
-     "sub": "Then Spud, our mascot, greets him and lists the issues closest to this spot, ranked by distance and closing date."
+     "tts": "Then Melb, our mascot, says hi, and the screen lists the issues closest to this spot, ranked by distance and closing date.",
+     "sub": "Then Melb, our mascot, says hi, and the screen lists the issues closest to this spot, ranked by distance and closing date."
     }
    ]
   },
   {
    "id": 5,
    "name": "Understand & speak",
-   "tail": null,
+   "tail": 0.5,
    "lines": [
     {
      "id": "s5a",
@@ -144,20 +144,21 @@
     {
      "id": "s5c",
      "voice": "narrator",
-     "tts": "Now he simply talks to Spud, in his own language.",
-     "sub": "Now he simply talks to Spud, in his own language."
+     "tts": "Now he simply talks to Melb, in his own language.",
+     "sub": "Now he simply talks to Melb, in his own language."
     },
     {
      "id": "s5j",
      "voice": "jason",
      "tts": "新的公園規定讓遛狗變得很不方便，我希望可以重新考慮。",
-     "sub": "The new park rule makes walking my dog really inconvenient. I hope it can be reconsidered."
+     "sub": "The new park rule makes walking my dog really inconvenient. I hope it can be reconsidered.",
+     "phonemes": "ɕi→n tɤ kʊ→ŋɥɛ↗n kwei→ti↘ŋ ɻa↘ŋ ljou↗kou↓ pjɛ↘ntɤ↗ xə↓n pu↘ fa→ŋpjɛ↘n, wo↓ ɕi→wa↘ŋ kʰɤ↓i↓ ꭧʰʊ↗ŋɕi→n kʰau↓ly↘."
     },
     {
      "id": "s5d",
      "voice": "narrator",
-     "tts": "Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.",
-     "sub": "Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending."
+     "tts": "Melb turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.",
+     "sub": "Melb turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending."
     },
     {
      "id": "s5e",
@@ -181,8 +182,8 @@
     {
      "id": "s6b",
      "voice": "narrator",
-     "tts": "The issue and his comment move to the Potato app, and the post keeps nothing.",
-     "sub": "The issue and his comment move to the POTATO app, and the post keeps nothing."
+     "tts": "The issue and his comment move to the Hi Melb app, and the post keeps nothing.",
+     "sub": "The issue and his comment move to the Hi Melb app, and the post keeps nothing."
     },
     {
      "id": "s6c",
@@ -276,7 +277,7 @@
   {
    "id": 10,
    "name": "Tagline",
-   "tail": 2.8,
+   "tail": 2.6,
    "lines": [
     {
      "id": "s10a",
