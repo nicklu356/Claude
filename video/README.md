@@ -24,3 +24,19 @@ To swap the AI voice for real recordings later, replace `audio/<line id>.wav`, u
 - The **touchscreen** is the rectangle on the pillar, directly above the NFC pad. The lower body is the
   wrap-around verified-notices display.
 - Persona: Jason only.
+
+## PowerPoint version of the video (`output/HearHere_video_slides.pptx`)
+One slide per narration line (42 slides, 2:53). Each slide has the painted street as its **background
+picture** (right-click → Format Background → Picture to swap in a real photo), the characters and UI as a
+transparent foreground image, the line's narration as auto-playing audio, and auto-advance timing, so the
+slideshow plays like the video and PowerPoint can export it as a video (File → Export → Create a Video →
+"Use Recorded Timings and Narrations").
+
+Rebuild:
+```
+python3 build_deck_frames.py   # (inline in history) or regenerate deck/video/slides.json from web/timeline.json
+node render.js --page web2d/index.html --stills $(cat deck/video/frames.txt) --outdir deck/video/fg --alpha 1
+node render.js --page web2d/index.html --stills $(cat deck/video/frames.txt) --outdir deck/video/bg --bgonly 1
+for f in audio/*.wav; do ffmpeg -i $f -ac 1 -b:a 96k deck/video/audio/$(basename $f .wav).mp3; done
+cd deck && NODE_PATH=$PWD/node_modules PPTX_SKILL=<pptx skill dir> node build_video_deck.js
+```

@@ -47,6 +47,12 @@ const FN_SCENES = new Set([3, 4, 5, 6, 7]);
 const CLEAN = new URLSearchParams(location.search).has('clean');
 if (CLEAN) document.getElementById('lt').style.visibility = 'hidden';
 if (new URLSearchParams(location.search).has('alpha')) { document.documentElement.style.background = document.body.style.background = 'transparent'; }
+if (A.BGONLY) {   // background layer only: street stays, everything in front of it is hidden
+  const st = document.createElement('style');
+  st.textContent = '.actor{display:none!important} #lt,#wipe,#subs{visibility:hidden!important} .scene-ui > *:not(.frost){visibility:hidden!important}';
+  document.head.appendChild(st);
+  fn.style.visibility = 'hidden';
+}
 let current = null;
 function renderAt(t) {
   const S = TL.scenes.find((s) => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1];

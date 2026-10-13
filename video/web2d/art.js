@@ -4,7 +4,10 @@
 // Green-screen mode: no painted backgrounds or contact shadows, so the team can
 // composite real Melbourne photos behind the characters.
 // ?alpha=1 renders on a transparent background (stills for the slide deck)
-export const GREEN = typeof location !== 'undefined' && new URLSearchParams(location.search).has('alpha') ? 'none' : '#00B140';
+// ?bgonly=1 renders only the painted Melbourne street (the background layer of the PPT version)
+const Q = typeof location !== 'undefined' ? new URLSearchParams(location.search) : new URLSearchParams();
+export const BGONLY = Q.has('bgonly');
+export const GREEN = BGONLY ? '' : Q.has('alpha') ? 'none' : '#00B140';
 export const clock = { t: 0 };   // set every frame by main.js (idle breathing)
 export const C = {
   purple: '#7B4B94', purpleD: '#5A3370', purpleL: '#EDE3F3', purpleM: '#9C6DB8',
@@ -121,7 +124,7 @@ function armSVG(back) {
   return { root, upper, fore, phone };
 }
 export function jason() {
-  const root = g();
+  const root = g('', { class: 'actor' });
   const LB = legSVG(true), LF = legSVG(false), AB = armSVG(true), AF = armSVG(false);
   // profile torso: back on the left, chest on the right; hood bunched behind the neck
   const torso = g(`
@@ -220,7 +223,7 @@ export function jasonBust() {
 
 // ------------------------------------------------------------------ dog (corgi, faces right; origin = ground)
 export function dog() {
-  const root = g(`${GREEN ? '' : '<ellipse cx="0" cy="2" rx="86" ry="10" fill="#141826" opacity=".25" filter="url(#fBlur4)"/>'}`);
+  const root = g(`${GREEN ? '' : '<ellipse cx="0" cy="2" rx="86" ry="10" fill="#141826" opacity=".25" filter="url(#fBlur4)"/>'}`, { class: 'actor' });
   const leg = (far) => g(`<path d="M-10 0 C -11 18, -10 32, -9 40 L 9 40 C 10 32, 11 18, 10 0 Z" fill="${far ? '#B86E2C' : 'url(#gFur)'}"/>
     <path d="M-11 34 C -12 44, 14 46, 14 38 L 10 32 L -9 32 Z" fill="${far ? '#E6E1DA' : '#fff'}"/>`);
   const legs = [leg(1), leg(0), leg(1), leg(0)];
@@ -265,7 +268,7 @@ export const DOG_COLLAR = { x: 50, y: -110 };
 // chrome neck -> Spud's head.  ~560 units tall; scenes place it at 0.85.
 export const POST = { screen: { x: -64, y: -386, w: 128, h: 64 }, nfc: { x: 0, y: -295 }, head: { x: 0, y: -470 } };
 export function post() {
-  const root = g();
+  const root = g('', { class: 'actor' });
   const glow = svgEl('ellipse', { cx: 0, cy: -300, rx: 280, ry: 320, fill: 'url(#gGlow)', opacity: 0 });
   const shadow = g(`${GREEN ? '' : '<ellipse cx="14" cy="4" rx="150" ry="20" fill="#141826" opacity=".32" filter="url(#fBlur4)"/>'}`);
   const body = g(`
@@ -480,7 +483,7 @@ export function fence(x0, x1, y = 0) {
 // ------------------------------------------------------------------ the street (building line at bl; people stand ~bl+120)
 let worldId = 0;
 export function streetWorld(opt = {}) {
-  const w = opt.width || 4200, bl = opt.bl ?? 760, dusk = !!opt.dusk;
+  const w = opt.width || 4200, bl = opt.bl ?? 850, dusk = !!opt.dusk;   // pavement under the feet (y = 960)
   const id = ++worldId;
   const root = g();
   if (GREEN) {

@@ -5,3 +5,7 @@ video/models/
 video/.venv-tts/
 video/audio/*_raw.wav
 video/deck/node_modules/
+video/deck/video/fg/
+video/deck/video/bg/
+video/deck/video/bgjpg/
+video/deck/video/audio/

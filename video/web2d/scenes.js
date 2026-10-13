@@ -230,8 +230,8 @@ export function buildScenes(ctx) {
       <text x="0" y="-222" font-family="Nunito" font-weight="800" font-size="22" fill="#46506A" text-anchor="middle">Sat–Sun · 7–10 am</text>
       <rect x="-96" y="-182" width="192" height="28" rx="14" fill="#E0544B"/>
       <text x="0" y="-162" font-family="Nunito" font-weight="900" font-size="16" fill="#fff" text-anchor="middle" letter-spacing="1.5">FICTIONAL EXAMPLE</text>`);
-    place(sign, 1150, FEET - 30); world.appendChild(sign);
-    const leash = svgEl('path', { stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
+    sign.setAttribute('class', 'actor'); place(sign, 1150, FEET - 30); world.appendChild(sign);
+    const leash = svgEl('path', { class: 'actor', stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
     const dog = A.dog(), jas = A.jason();
     world.append(leash, dog, jas);
     const card = el(`<div class="abs card" style="left:1230px;top:120px;width:640px;padding:0;overflow:hidden;transform-origin:0 0">
@@ -285,7 +285,7 @@ export function buildScenes(ctx) {
   function streetWithPost() {
     const world = A.streetWorld({ width: 4200, seed: 5, trees: [700, 1500, 3300, 3900], lamps: [1100, 2000, 3050, 3650], benches: [1750], bins: [2950] });
     const post = A.post(); place(post, POSTX, POSTY, PS);
-    const leash = svgEl('path', { stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
+    const leash = svgEl('path', { class: 'actor', stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
     const dog = A.dog(), jas = A.jason();
     world.append(post, leash, dog, jas);
     return { world, post, leash, dog, jas };
@@ -737,7 +737,7 @@ export function buildScenes(ctx) {
     const world = A.streetWorld({ width: 2400, dusk: true, seed: 11, trees: [300, 2000], lamps: [760, 1720], bins: [560] });
     svg.appendChild(world);
     const post = A.post(); place(post, 1450, POSTY, PS * 1.05);
-    const leash = svgEl('path', { stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
+    const leash = svgEl('path', { class: 'actor', stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
     const dog = A.dog(), jas = A.jason();
     world.append(post, leash, dog, jas);
 
