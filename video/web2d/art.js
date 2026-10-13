@@ -3,7 +3,8 @@
 // scenes can pose them per frame with plain transform attributes.
 // Green-screen mode: no painted backgrounds or contact shadows, so the team can
 // composite real Melbourne photos behind the characters.
-export const GREEN = '#00B140';
+// ?alpha=1 renders on a transparent background (stills for the slide deck)
+export const GREEN = typeof location !== 'undefined' && new URLSearchParams(location.search).has('alpha') ? 'none' : '#00B140';
 export const clock = { t: 0 };   // set every frame by main.js (idle breathing)
 export const C = {
   purple: '#7B4B94', purpleD: '#5A3370', purpleL: '#EDE3F3', purpleM: '#9C6DB8',

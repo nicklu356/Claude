@@ -43,6 +43,10 @@ fn.style.cssText = 'position:absolute;right:40px;bottom:30px;z-index:41;backgrou
 fn.textContent = 'Scenario and park rule are fictional examples';
 document.getElementById('stage').appendChild(fn);
 const FN_SCENES = new Set([3, 4, 5, 6, 7]);
+// ?clean=1 hides the feature label and footnote (used to export stills for the slide deck)
+const CLEAN = new URLSearchParams(location.search).has('clean');
+if (CLEAN) document.getElementById('lt').style.visibility = 'hidden';
+if (new URLSearchParams(location.search).has('alpha')) { document.documentElement.style.background = document.body.style.background = 'transparent'; }
 let current = null;
 function renderAt(t) {
   const S = TL.scenes.find((s) => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1];
@@ -53,7 +57,7 @@ function renderAt(t) {
     current = S.id;
   }
   A.clock.t = t;
-  fn.style.display = FN_SCENES.has(S.id) ? 'block' : 'none';
+  fn.style.display = FN_SCENES.has(S.id) && !CLEAN ? 'block' : 'none';
   sc.update(t - S.start, t);
   // slow drift on the UI layer so card-only shots never sit perfectly still
   sc.ui.style.transform = `translate(${(Math.sin(t * 0.7) * 4).toFixed(2)}px, ${(Math.cos(t * 0.55) * 3).toFixed(2)}px)`;
