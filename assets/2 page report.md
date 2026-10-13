@@ -76,6 +76,11 @@ The tracker communicates the status of the issue, rather than implying that an i
 - Allows users to share relevant civic information through social media and messaging platforms.
 - Helps residents stay informed without needing to repeatedly visit council websites.
 
+**Badge collection**
+- Each HearHere post a resident visits adds a badge to their collection in the app (e.g. a library, park or campus post).
+- Badges give residents a light incentive to discover posts in different neighbourhoods and come back over time.
+- Badges are stored only on the user's phone and are never ranked publicly.
+
 ### 2.3 Privacy-by-Design Trade-off
 
 A key design decision concerns the tension between **R5 (trackable feedback)** and **R6 (clearing records after use)**.
@@ -102,6 +107,7 @@ HearHere is grounded in the findings from our fieldwork with international stude
 | Mobile app, notifications, and sharing | **Themes 2 and 5 — Time and information channels:** Residents need convenient ways to participate and may rely on existing social media and messaging platforms to discover information. |
 | Issue progress tracker | **Theme 4 — Interaction:** Residents may be uncertain whether their feedback has been received or taken seriously. Clear status information can make the process more transparent. |
 | RAG-based question-and-answer assistant | **Themes 1 and 4 — Language and interaction:** Unclear council websites and unfamiliar service pathways can make it difficult to understand policies or find the appropriate contact. |
+| Badge collection across posts | **Themes 2 and 3 — Time and personal relevance:** Participation was low when it felt like extra effort with little personal return. A light, private reward gives residents a reason to notice and revisit posts along routes they already walk. |
 | Verified council and community content | **R7 — Trustworthiness:** Using verified sources helps residents distinguish reliable civic information from commercial or misleading content. |
 
 Overall, HearHere combines a physical discovery point with a digital follow-up channel. This design responds to the barriers identified in our fieldwork while recognising that participation must be understandable, relevant, and transparent to be meaningful.
@@ -141,6 +147,8 @@ Organised groups may submit repeated comments, while malicious individuals could
 - Publish through a single verified official account that posts only verified content, so fake accounts using the Spud mascot are easy to spot and report.
 - Inspect the physical posts regularly.
 - Distinguish repeated submissions from evidence of broader community consensus.
+- Award a badge only once per post, and only after the user opens an issue, so badges cannot be farmed by repeated tapping.
+- Keep the badge history on the device so it does not become a record of where someone has been.
 
 ### 4.4 Representation and Expectations
 
@@ -211,9 +219,10 @@ Our original fieldwork did not include council staff, so consultation with counc
 
 **Sustained engagement**
 - Does interest decline after the initial novelty wears off?
-- Would optional rewards for discovering posts across different council areas encourage meaningful participation, or merely encourage repeated tapping?
+- Does the badge collection encourage meaningful participation, or only repeated tapping?
+- Does it motivate both international students and longer-term immigrant residents?
 
-Rewards would remain a secondary idea until evaluation demonstrates that they support meaningful engagement rather than superficial activity.
+If evaluation shows that badges drive superficial activity, they would be reduced to a simple record of visited posts.
 
 ## 6. Conclusion
 

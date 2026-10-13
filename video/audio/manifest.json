@@ -181,9 +181,9 @@
  },
  "s8a": {
   "file": "audio/s8a.wav",
-  "duration": 10.148,
+  "duration": 7.393,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "fɔːɹ dʒˈeɪsən, ðæt mˈiːnz fˈaɪndɪŋ ɹˈɛlᵻvənt ˈɪʃuːz ˌɔn hɪz ˈɛvɹɪdˌeɪ ɹˈaʊt, ˌʌndɚstˈændɪŋ ðˌɛm ɪn hɪz ˈoʊn lˈæŋɡwɪdʒ, nˈoʊɪŋ wˌɪtʃ dᵻpˈɑːɹtmənt hˈɪɹz hˌɪm, ænd sˈiːɪŋ wʌt hˈæpənz nˈɛkst."
+  "phonemes": "fɔːɹ dʒˈeɪsən, ðæt mˈiːnz ɹˈɛlᵻvənt ˈɪʃuːz ˌɔn hɪz ɹˈaʊt, ɪn hɪz ˈoʊn lˈæŋɡwɪdʒ, ɐ klˈɪɹ dᵻpˈɑːɹtmənt tə hˈɪɹ hˌɪm, ænd vˈɪzᵻbəl pɹˈɑːɡɹɛs."
  },
  "s8b": {
   "file": "audio/s8b.wav",
@@ -244,5 +244,11 @@
   "duration": 4.313,
   "voice": "Kokoro-82M af_heart",
   "phonemes": "ɐn ˌeɪˈaɪ ˈeɪdʒənt ˈænsɚz kwˈɛstʃənz, ænd ðə hˈɪɹ hˈɪɹ ˈæp tɹˈæks ˈiːtʃ ˈɪʃuː."
+ },
+ "s6f": {
+  "file": "audio/s6f.wav",
+  "duration": 5.503,
+  "voice": "Kokoro-82M af_heart",
+  "phonemes": "ˈiːtʃ nˈuː hˈɪɹ hˈɪɹ pˈoʊst dʒˈeɪsən vˈɪzɪts ˈɔːlsoʊ ˈɜːnz ɐ bˈædʒ: ɐ smˈɔːl ɹᵻwˈɔːɹd fɔːɹ tˈeɪkɪŋ pˈɑːɹt."
  }
 }

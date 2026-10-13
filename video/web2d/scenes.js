@@ -121,9 +121,6 @@ export function buildScenes(ctx) {
       <div class="acr card" style="margin-top:18px;padding:16px 24px;display:flex;align-items:center;gap:18px">
         <span style="flex:none">${melbIcon(74, 'happy')}</span>
         <div><div class="k">Meet the mascot</div><div style="font:900 36px Nunito;line-height:1.15">${['Street', 'Post for', 'Understanding', 'Decisions'].map(w => `<span style="margin-right:10px"><b style="color:var(--orange)">${w[0]}</b>${w.slice(1)}</span>`).join('')}</div></div></div>
-      <div class="pot chip" style="margin-top:14px;background:#B5487A;color:#fff;font-size:28px;padding:10px 24px">
-        <svg width="46" height="30" viewBox="-130 -70 270 140"><path d="M-120 0 C -110 -60, 90 -70, 130 -10 C 150 30, 40 70, -40 60 C -100 52, -130 30, -120 0z" fill="#E7A0C4"/><path d="M-80 -20 q30 -14 60 -6 M10 10 q30 -10 60 4" stroke="#8E3560" stroke-width="10" fill="none" stroke-linecap="round"/></svg>
-        …and yes, “spud” is slang for potato</div>
       <div class="tagl chip" style="margin-top:20px;background:var(--orange);color:#fff;font-size:38px;padding:12px 30px">${ic('mic', '#fff', 38, 3.6)}Your street, your say.</div></div>`);
     ui.append(bubble, title);
     const letters = $$(title, '.word span');
@@ -141,7 +138,6 @@ export function buildScenes(ctx) {
         letters.forEach((s, i) => { const p = backOut(prog(t, b + 0.5 + i * 0.07, 0.45)); s.style.transform = `translateY(${(1 - p) * 120}px) scale(${0.6 + 0.4 * p})`; s.style.opacity = clamp(p * 2); });
         show($(title, '.sub'), t, b + 2.2, { kind: 'up' });
         show($(title, '.acr'), t, c + 0.2, { kind: 'up' });
-        show($(title, '.pot'), t, c + 1.9, { kind: 'pop' });
         show($(title, '.tagl'), t, d, { kind: 'pop' });
       },
     };
@@ -160,10 +156,10 @@ export function buildScenes(ctx) {
       <rect x="180" y="210" width="60" height="82" rx="8" fill="#7B4B94"/><circle cx="210" cy="96" r="18" fill="#FFF4E0"/>
       <rect x="20" y="292" width="380" height="20" rx="6" fill="#D9CBB8"/><rect x="0" y="312" width="420" height="16" rx="6" fill="#C9B9A4"/></svg>`;
     const hall = el(`<div class="abs" style="left:750px;top:250px;width:420px;text-align:center">${townHall}
-      <div style="font:800 26px Nunito;color:var(--navy-2);margin-top:6px">Local council</div></div>`);
-    const h = el(`<div class="abs h1" style="left:0;right:0;top:110px;text-align:center">Council decisions shape daily life</div>`);
+      <div style="margin-top:6px"><span class="card" style="display:inline-block;padding:4px 18px;font:800 24px Nunito;color:var(--navy-2)">Local council</span></div></div>`);
+    const h = el(`<div class="abs" style="left:0;right:0;top:100px;text-align:center"><span class="card h1" style="display:inline-block;padding:10px 34px;font-size:56px">Council decisions shape daily life</span></div>`);
     const topics = [['tree', 'Parks', C.green, C.greenL, 470, 380], ['house', 'Housing', C.orange, C.orangeL, 1260, 330], ['tram', 'Transport', C.purple, C.purpleL, 1220, 560]]
-      .map(([i, n, c, bg, x, y]) => el(`<div class="abs chip card" style="left:${x}px;top:${y}px;font-size:32px;padding:14px 28px;border-radius:999px">
+      .map(([i, n, c, bg, x, y]) => el(`<div class="abs chip card" style="left:${x}px;top:${y}px;width:250px;font-size:32px;padding:14px 22px;border-radius:999px">
         <span style="width:62px;height:62px;border-radius:50%;background:${bg};display:grid;place-items:center">${ic(i, c, 40, 3.6)}</span>${n}</div>`));
     const stats = el(`<div class="abs" style="left:0;right:0;top:660px;display:flex;justify-content:center;gap:22px">
       ${[['people', '8 interviews'], ['camera', '4 observation sites'], ['dashboard', '5 themes']].map(([i, s]) => `<div class="chip card st" style="font-size:28px;padding:12px 26px">${ic(i, '#7B4B94', 34, 3.6)}${s}</div>`).join('')}</div>`);
@@ -240,7 +236,7 @@ export function buildScenes(ctx) {
     world.append(leash, dog, jas);
     const card = el(`<div class="abs card" style="left:1230px;top:120px;width:640px;padding:0;overflow:hidden;transform-origin:0 0">
       <div style="display:flex;gap:22px;align-items:center;padding:26px 30px;background:linear-gradient(135deg,#7B4B94,#9C6DB8);color:#fff">
-        <svg class="av" width="132" height="132" viewBox="-110 -640 220 220" style="border-radius:50%;background:#FFE6CC;flex:none;border:5px solid #fff"></svg>
+        <svg class="av" width="132" height="132" viewBox="-110 -112 220 220" style="border-radius:50%;background:#FFE6CC;flex:none;border:5px solid #fff">${A.jasonBust()}</svg>
         <div><div style="font:800 17px Nunito;letter-spacing:2px;opacity:.85">PERSONA</div><div style="font:800 48px/1.05 'Baloo 2'">Jason Lee</div>
         <div style="font:800 24px Nunito;margin-top:4px">34 · immigrant · 8 years in Melbourne</div></div></div>
       <div style="padding:22px 30px 26px">
@@ -253,7 +249,7 @@ export function buildScenes(ctx) {
           <span class="chip" style="background:var(--purple);color:#fff;font-size:21px;padding:6px 16px">${ic('mic', '#fff', 24, 3.6)}Speak to Spud</span>
           <span class="chip" style="background:#16707F;color:#fff;font-size:21px;padding:6px 16px">${ic('steps', '#fff', 24, 3.6)}Issue tracker</span></div></div></div>`);
     { // avatar: Jason's own illustration, cropped to the head and shoulders
-      const av = $(card, '.av'); const aj = A.jason(); av.appendChild(aj); A.poseJason(aj, { mouth: 'smile' });
+      // (bust drawn inline above; gradients come from the page-level <defs>)
     }
     const th = el(`<div class="thought" style="left:300px;top:170px;text-align:center">
       <div class="zh" style="font:900 34px 'Noto Sans TC'">${ZH.who}<span style="font:800 26px Nunito;color:var(--navy-2)"> Who do I tell?</span></div>
@@ -263,7 +259,7 @@ export function buildScenes(ctx) {
     out[3] = {
       svg, ui, update(t) {
         const c = { x: 960, y: 540, z: 1 }; cam(world, c.x, c.y, c.z); A.worldFx(world, c, t, 0);
-        const wk = clamp((t - 2.3) / 2.4), jx = lerp(-520, 560, easeOut(wk)), walking = wk > 0 && wk < 1;
+        const wk = clamp((t - 2.9) / 2.4), jx = lerp(-520, 560, easeOut(wk)), walking = wk > 0 && wk < 1;
         const ph = t * 1.6;
         const look = t > L(3, 's3c') + 0.4 ? -4 : 0;
         const hands = A.poseJason(jas, { walk: walking ? ph : null, mouth: t > L(3, 's3c') ? 'worried' : 'neutral', blink: blink(t, 3.4), armF: walking ? null : 16, elbowF: walking ? null : 30, look });
@@ -273,7 +269,7 @@ export function buildScenes(ctx) {
         place(dog, dx, FEET, 0.75);
         leashTo(leash, toW(hands.F, jx, 0.9), dx, 0.75);
         // persona card: centred and large for the first ~2.5 s, then docks top-right
-        const k = ease(prog(t, 2.4, 0.8)), op = Math.min(easeOut(prog(t, 0.1, 0.4)), 1 - clamp((t - L(3, 's3c') - 0.2) / 0.35));
+        const k = ease(prog(t, 2.9, 0.8)), op = Math.min(easeOut(prog(t, 0.1, 0.4)), 1 - clamp((t - L(3, 's3c') - 0.2) / 0.35));
         card.style.opacity = op; card.style.visibility = op > 0 ? 'visible' : 'hidden';
         card.style.transform = `translate(${lerp(-648, 0, k)}px, ${lerp(10, 0, k)}px) scale(${lerp(1.18, 0.86, k)})`;
         show(dots, t, L(3, 's3c') + 1.6, { kind: 'pop' });
@@ -466,8 +462,8 @@ export function buildScenes(ctx) {
   {
     const { svg, ui } = mk(6);
     const W = streetWithPost(); svg.appendChild(W.world);
-    const NCAM = { x: POSTX + 60, y: POSTY - 300 * PS, z: 2.6 };
-    const back = el(frost(0));
+    // post on the left third (Jason just off-frame); the phone works in the space to its right
+    const C6 = { x: POSTX + 420, y: POSTY - 307, z: 1.5 };
     const phone = el(`<div class="phone" style="left:0;top:0">
       <div class="ps"><div class="notch"></div>
         <div class="app-h"><span style="width:60px;height:60px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(50, 'happy')}</span><div><div class="n">HearHere</div><div class="s">My issues</div></div></div>
@@ -487,38 +483,49 @@ export function buildScenes(ctx) {
         <div class="notif abs" style="left:14px;right:14px;top:14px;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.97);box-shadow:0 10px 30px rgba(31,42,68,.25);display:flex;gap:12px;align-items:center;z-index:6;opacity:0">
           <span style="width:46px;height:46px;border-radius:12px;background:var(--purple);display:grid;place-items:center">${ic('bell', '#fff', 28, 3.6)}</span>
           <div><div style="font:900 18px Nunito">HearHere · now</div><div class="zh" style="font:700 17px 'Noto Sans TC'">${ZH.notify}</div></div></div></div></div>`);
-    const outs = el(`<div class="abs" style="left:1000px;top:170px;width:780px">
-      <div class="k">Outcome · fictional examples</div>
-      <div class="card o0" style="margin-top:12px;padding:20px 26px;border-left:12px solid var(--green)"><div style="font:900 30px Nunito">${ic('check', '#16707F', 30, 4)} Decision: leash hours shortened to 7–8 am</div>
+    const outs = el(`<div class="abs" style="left:1250px;top:190px;width:620px">
+      <div class="k" style="display:inline-block;background:#fff;border-radius:999px;padding:4px 14px">Outcome · fictional examples</div>
+      <div class="card o0" style="margin-top:12px;padding:20px 26px;height:150px;border-left:12px solid var(--green)"><div style="font:900 28px Nunito">${ic('check', '#16707F', 30, 4)} Decision: leash hours shortened to 7–8 am</div>
         <div style="margin-top:8px"><span class="tag" style="background:var(--navy);color:#fff">Case no. CASE-2026-0417</span> <span class="tag" style="background:var(--purple-l);color:var(--purple)">Parks &amp; Open Space</span></div></div>
-      <div class="card o1" style="margin-top:16px;padding:20px 26px;border-left:12px solid var(--red)"><div style="font:900 30px Nunito"><span class="zh" style="color:var(--red)">${ZH.declined}</span> Declined: reasons are shown</div>
+      <div class="card o1" style="margin-top:16px;padding:20px 26px;height:150px;border-left:12px solid var(--red)"><div style="font:900 28px Nunito"><span class="zh" style="color:var(--red)">${ZH.declined}</span> Declined: reasons are shown</div>
         <div style="font:700 24px Nunito;color:var(--navy-2);margin-top:6px">“Wildlife protection zone; a new off-leash area is proposed nearby.”</div></div>
-      <div class="ft" style="margin-top:18px;font:800 22px Nunito;color:var(--navy-2)">${ic('steps', '#46506A', 28, 3.6)} Shows the issue's status, not a promise that a comment is accepted.</div></div>`);
-    const nfcTxt = el(`<div class="abs card" style="left:120px;top:150px;padding:14px 24px;font:900 30px Nunito;display:flex;gap:12px;align-items:center">${ic('lock', '#16707F', 36, 3.6)}The post keeps nothing</div>`);
-    ui.append(back, phone, outs, nfcTxt);
+      <div class="ft card" style="margin-top:16px;padding:12px 18px;font:800 21px Nunito;color:var(--navy-2)">${ic('steps', '#46506A', 28, 3.6)} Shows the issue's status, not a promise that a comment is accepted.</div></div>`);
+    const nfcTxt = el(`<div class="abs card" style="left:56px;top:140px;padding:12px 22px;font:900 26px Nunito;display:flex;gap:12px;align-items:center">${ic('lock', '#16707F', 32, 3.6)}The post keeps nothing</div>`);
+    // badge collection: one badge per HearHere post visited
+    const BADGES = [['Riverside Park', '#1E9BB0', 'tree', 1], ['State Library', '#7B4B94', 'doc', 1], ['Campus Gate', '#F28C28', 'people', 1], ['Town Hall', '#3A63D1', 'building', 0],
+      ['Market Lane', '#E0544B', 'house', 0], ['Tram Stop 12', '#16707F', 'tram', 0], ['Fitzroy Gardens', '#9C6DB8', 'sprout', 0], ['Docklands', '#C96A10', 'pin', 0]];
+    const badges = el(`<div class="abs card" style="left:1250px;top:190px;width:620px;padding:26px 30px">
+      <div class="k">HearHere badges</div><div class="h2" style="font-size:38px">Collect a badge at every post</div>
+      <div class="bnew" style="display:flex;align-items:center;gap:16px;margin-top:16px;padding:14px 18px;border-radius:20px;background:var(--orange-l)">
+        <span style="width:74px;height:74px;border-radius:50%;background:#1E9BB0;display:grid;place-items:center;box-shadow:0 0 0 6px #fff,0 0 0 9px #F28C28">${ic('tree', '#fff', 40, 3.6)}</span>
+        <div><div style="font:900 26px Nunito">Badge unlocked!</div><div style="font:800 21px Nunito;color:var(--navy-2)">Riverside Park post · 3 of 24 collected</div></div></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px">
+        ${BADGES.map(([n, c, i, got], k) => `<div class="bd bd${k}" style="text-align:center"><div style="width:84px;height:84px;margin:0 auto;border-radius:50%;display:grid;place-items:center;background:${got ? c : '#E6E8EE'};${got ? '' : 'border:3px dashed #C9CCD6'}">${ic(i, got ? '#fff' : '#B9BDC9', 40, 3.6)}</div>
+          <div style="font:800 15px Nunito;color:${got ? 'var(--navy)' : '#9AA0B4'};margin-top:6px">${n}</div></div>`).join('')}</div>
+      <div style="margin-top:14px;font:800 19px Nunito;color:var(--navy-2)">${ic('lock', '#46506A', 22, 4)} Badges stay on Jason's phone</div></div>`);
+    ui.append(phone, outs, badges, nfcTxt);
     const Q = s => $(phone, s);
     out[6] = {
       svg, ui, update(t) {
-        const a = L(6, 's6a'), b = L(6, 's6b'), c = L(6, 's6c'), d = L(6, 's6d'), e = L(6, 's6e');
-        const cm = lerpCam(SIDE, NCAM, ease(prog(t, 0, 1.0)));
-        cam(W.world, cm.x, cm.y, cm.z); A.worldFx(W.world, cm, t, Math.max(0, (cm.z - 1.2) * 3.2));
+        const a = L(6, 's6a'), b = L(6, 's6b'), c = L(6, 's6c'), d = L(6, 's6d'), e = L(6, 's6e'), f = L(6, 's6f');
+        const cm = lerpCam(SIDE, C6, ease(prog(t, 0, 0.9)));
+        cam(W.world, cm.x, cm.y, cm.z); A.worldFx(W.world, cm, t, 0);
         poseWalkers(W, t, 2300, false, { mouth: 'smile', look: -3 });
         const tapT = a + 1.25;
-        A.posePost(W.post, { mood: t > tapT && t < b + 2 ? 'happy' : 'idle', blink: blink(t, 3.1), screen: t > b + 0.5 ? 'ok' : 'list', glow: t > tapT ? 0.6 * (1 - prog(t, tapT, 1.2)) : 0 });
-        // phone: flies to the NFC pad, taps, then moves to the left for the tracker
+        A.posePost(W.post, { mood: t > tapT && t < b + 2 ? 'happy' : 'idle', t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 3, screen: t > b + 0.5 ? 'ok' : 'list', glow: 0, look: { x: 8, y: 2 } });
+        // phone: comes in from the right, taps the NFC pad, then moves to the middle-right for the tracker
         const nfc = toScr(POSTX + A.POST.nfc.x * PS, POSTY + A.POST.nfc.y * PS, cm);
-        const k1 = ease(prog(t, a + 0.2, 1.0)), bump = Math.sin(clamp((t - tapT + 0.15) / 0.3) * Math.PI) * 18;
-        const nearX = nfc.x + 60, nearY = nfc.y - 70;
+        const k1 = ease(prog(t, a + 0.2, 1.0)), bump = Math.sin(clamp((t - tapT + 0.15) / 0.3) * Math.PI) * 16;
+        const nearX = nfc.x + 8, nearY = nfc.y - 26;
         const k2 = ease(prog(t, c - 0.2, 0.9));
-        const px = lerp(lerp(2000, nearX, k1), 300, k2), py = lerp(lerp(500, nearY, k1) + bump, 110, k2);
-        const sc = lerp(0.62, 1, k2), rot = lerp(lerp(18, -8, k1), 0, k2);
-        const fl = Math.sin(t * 1.4) * 6 * k2;
+        const px = lerp(lerp(2000, nearX, k1) - bump, 760, k2), py = lerp(lerp(nearY - 40, nearY, k1), 100, k2);
+        const sc = lerp(0.5, 1, k2), rot = lerp(lerp(14, -8, k1), 0, k2);
+        const fl = Math.sin(t * 1.4) * 5 * k2;
         phone.style.transform = `translate(${px}px, ${py + fl}px) rotate(${rot}deg) scale(${sc})`;
         phone.style.transformOrigin = '0 0';
         Q('.v0').style.opacity = 1 - prog(t, tapT, 0.3);
         Q('.v1').style.opacity = prog(t, tapT, 0.3);
-        back.style.opacity = ease(prog(t, c - 0.2, 0.8));
-        show(nfcTxt, t, b + 0.6, { kind: 'pop', out: c - 0.3 });
+        show(nfcTxt, t, b + 0.6, { kind: 'pop' });
         const on = prog(t, c + 0.9, 0.25);
         Q('.tg').style.background = on > 0.5 ? 'var(--green)' : '#CFD3DC'; Q('.kn').style.left = `${4 + 34 * on}px`;
         [0, 1, 2].forEach(i => {
@@ -528,11 +535,15 @@ export function buildScenes(ctx) {
           dt.innerHTML = lit && i === 0 ? '✓' : String(i + 1);
           st.style.opacity = t > c + 0.9 ? 1 : 0.45;
         });
-        show($(outs, '.o0'), t, d + 4.6, { kind: 'right' });
-        show($(outs, '.o1'), t, d + 5.4, { kind: 'right' });
-        $(outs, '.k').style.opacity = clamp((t - d - 4.5) * 3); $(outs, '.ft').style.opacity = clamp((t - d - 6.0) * 3);
-        const n = Q('.notif'); const np = easeOut(prog(t, e + 0.15, 0.4));
+        show($(outs, '.o0'), t, d + 4.6, { kind: 'right', out: f - 0.3 });
+        show($(outs, '.o1'), t, d + 5.4, { kind: 'right', out: f - 0.3 });
+        const ko = Math.min(clamp((t - d - 4.5) * 3), 1 - clamp((t - f + 0.3) * 3));
+        $(outs, '.k').style.opacity = ko; $(outs, '.ft').style.opacity = Math.min(clamp((t - d - 6.0) * 3), 1 - clamp((t - f + 0.3) * 3));
+        const n = Q('.notif'); const np = Math.min(easeOut(prog(t, e + 0.15, 0.4)), 1 - clamp((t - f) / 0.4));
         n.style.opacity = np; n.style.transform = `translateY(${(1 - np) * -80}px)`;
+        show(badges, t, f, { kind: 'right' });
+        show($(badges, '.bnew'), t, f + 0.5, { kind: 'pop' });
+        $$(badges, '.bd').forEach((e2, k) => show(e2, t, f + 0.8 + k * 0.12, { kind: 'pop' }));
       },
     };
   }
@@ -555,16 +566,21 @@ export function buildScenes(ctx) {
       ['Down', head(`<circle r="82" fill="#7B4B94"/><circle r="30" fill="#2B2350"/><circle r="16" fill="#9AA2C4"/>
         <circle cx="-58" cy="0" r="18" fill="#3E2552"/><circle cx="58" cy="0" r="18" fill="#3E2552"/>${[-6, 0, 6].map(x => `<rect x="${-58 + x - 1}" y="-10" width="2" height="20" fill="#B79CCB"/><rect x="${58 + x - 1}" y="-10" width="2" height="20" fill="#B79CCB"/>`).join('')}`)],
     ];
-    const prod = el(`<div class="abs card" style="left:90px;top:120px;width:1060px;padding:28px 34px">
-      <div class="k">Product views</div><div class="h2">Spud from every side</div>
-      <div style="display:flex;justify-content:space-between;margin-top:14px">${views.map(([n, v]) => `<div style="text-align:center"><div style="width:190px;height:190px;border-radius:24px;background:var(--cream);display:grid;place-items:center">${v}</div>
-        <div style="font:900 24px Nunito;margin-top:8px">${n}</div></div>`).join('')}</div>
-      <div style="display:flex;align-items:center;gap:18px;margin-top:18px;padding-top:16px;border-top:2px dashed #E9DCC4">
-        <img src="img/sk_views.png" style="height:110px;border-radius:12px;background:#fff">
-        <div style="font:800 22px/1.35 Nunito;color:var(--navy-2)">Redrawn from our<br>concept sketch</div></div></div>`);
-    const sideSk = el(`<div class="abs card" style="left:1190px;top:120px;padding:14px;display:flex;gap:10px;align-items:flex-end">
-      <img src="img/sk_side.png" style="height:300px"><img src="img/sk_front.png" style="height:300px"></div>`);
-    const card3 = (cls, title, sub, body, c) => `<div class="abs card ${cls}" style="width:470px;padding:0;overflow:hidden">
+    const prod = el(`<div class="abs card" style="left:1000px;top:150px;width:860px;padding:26px 32px">
+      <div class="k">Product views</div><div class="h2" style="font-size:40px">Spud from every side</div>
+      <div style="display:flex;justify-content:space-between;margin-top:12px">${views.map(([n, v]) => `<div style="text-align:center"><div style="width:180px;height:180px;border-radius:24px;background:var(--cream);display:grid;place-items:center">${v.replace(/width="170" height="170"/, 'width="160" height="160"')}</div>
+        <div style="font:900 22px Nunito;margin-top:6px">${n}</div></div>`).join('')}</div>
+      <div style="display:flex;align-items:flex-end;gap:14px;margin-top:16px;padding-top:14px;border-top:2px dashed #E9DCC4">
+        <img src="img/sk_side.png" style="height:200px"><img src="img/sk_front.png" style="height:200px">
+        <div><img src="img/sk_views.png" style="height:92px;display:block"><div style="font:800 20px/1.3 Nunito;color:var(--navy-2);margin-top:10px">Redrawn from our concept sketch</div></div></div></div>`);
+    // callouts on the hero post (positions in screen px; post at x=430, ground y=1000, scale 1.0625)
+    const HS = PS * 1.25, HX = 430, HY = 1000;
+    const parts = [['Spud: talk in any language', -470, '#7B4B94', 'mic'], ['Touchscreen: local issues', -354, '#3A63D1', 'pin'], ['NFC pad: save to your phone', -295, '#F28C28', 'lock'], ['Pillar: verified notices', -160, '#16707F', 'doc']];
+    const callY = [430, 560, 690, 820];
+    const calls = el(`<div class="abs" style="inset:0">
+      <svg class="abs" width="1920" height="1080" style="left:0;top:0">${parts.map(([, py, c], i) => `<path class="cl cl${i}" d="M${HX + 70} ${HY + py * HS} L ${HX + 150} ${HY + py * HS} L 690 ${callY[i] + 30}" stroke="${c}" stroke-width="3.5" fill="none"/><circle class="cl cl${i}" cx="${HX + 70}" cy="${HY + py * HS}" r="7" fill="${c}"/>`).join('')}</svg>
+      ${parts.map(([n, , c, i], k) => `<div class="abs card co co${k}" style="left:690px;top:${callY[k]}px;width:280px;height:60px;padding:0 16px;display:flex;align-items:center;gap:10px;font:900 19px/1.15 Nunito;border-left:8px solid ${c}">${ic(i, c, 28, 3.6)}${n}</div>`).join('')}</div>`);
+    const card3 = (cls, title, sub, body, c) => `<div class="abs card ${cls}" style="width:470px;height:430px;padding:0;overflow:hidden">
       <div style="padding:18px 24px;background:${c};color:#fff"><div style="font:900 30px Nunito">${title}</div><div style="font:800 19px Nunito;opacity:.9">${sub}</div></div>
       <div style="padding:20px 24px">${body}</div></div>`;
     const sys = el(`<div class="abs" style="inset:0">
@@ -585,17 +601,17 @@ export function buildScenes(ctx) {
         <div style="margin-top:8px;font:800 19px Nunito;color:var(--navy-2)">${ic('bell', '#46506A', 22, 4)} Notifies when the status changes</div>`, 'linear-gradient(135deg,#16707F,#1E9BB0)')}</div>
       <div class="th5 abs card" style="left:110px;top:770px;padding:14px 24px;display:flex;align-items:center;gap:14px;font:800 24px Nunito">${ic('globe', '#C96A10', 32, 3.6)}<span><b style="color:var(--orange-d)">Theme 5:</b> reach residents on the channels they already use</span></div>
       <div class="sk abs card" style="left:1340px;top:740px;padding:10px 14px;display:flex;align-items:center;gap:12px"><img src="img/sk_three.png" style="height:96px"><span style="font:800 18px/1.3 Nunito;color:var(--navy-2)">From our<br>concept sketch</span></div></div>`);
-    ui.append(prod, sideSk, sys);
+    ui.append(prod, calls, sys);
     out[11] = {
       svg, ui, update(t) {
         const a = L(11, 'h1'), b = L(11, 'h2'), c = L(11, 'h3');
         cam(BG, 960, 540, 1);
         const pin = easeOut(prog(t, a, 0.6)), pout = 1 - clamp((t - b) / 0.4);
-        place(post, 1560, POSTY + 30, PS * 1.0);
+        place(post, 430 + (960 - 960), 950 + 50, PS * 1.25);
         post.setAttribute('opacity', Math.min(pin, pout));
         A.posePost(post, { mood: 'happy', t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 3, screen: 'idle', tilt: Math.sin(t * 0.9) * 4 });
         show(prod, t, a, { kind: 'left', out: b - 0.1 });
-        show(sideSk, t, a + 0.8, { kind: 'pop', out: b - 0.1 });
+        [0, 1, 2, 3].forEach(i => { const o = show($(calls, '.co' + i), t, a + 0.5 + i * 0.35, { kind: 'left', out: b - 0.1 }); $$(calls, '.cl' + i).forEach(e => e.style.opacity = o); });
         // keep the sketch thumbnails clear of the rendered post
         show($(sys, '.hd'), t, b, { kind: 'down' });
         show($(sys, '.c0'), t, b + 0.3, { kind: 'up' });
@@ -626,7 +642,7 @@ export function buildScenes(ctx) {
             <div><div style="font:900 19px Nunito">Not sure? Talk to a person</div><div style="font:700 16px Nunito;color:var(--navy-2)">Sam Chen · Parks &amp; Open Space</div></div></div>
           <div class="typing m3" style="margin-top:8px;font:900 30px Nunito;color:#9AA0B4">• • •</div></div></div></div>`);
     const feats = el(`<div class="abs" style="left:880px;top:200px;width:880px">
-      <div class="k">HearHere app</div><div class="h1">Answers you can check</div>
+      <div class="card hd7" style="padding:18px 26px"><div class="k">HearHere app</div><div class="h1" style="font-size:54px">Answers you can check</div></div>
       ${[['doc', 'Answers from official documents', C.green], ['check', 'Cites its sources', C.orange], ['user', 'Hands over to a named contact', C.purple]].map(([i, s, c], n) => `
       <div class="f${n} card" style="margin-top:20px;padding:18px 24px;display:flex;align-items:center;gap:18px;font:900 32px Nunito"><span style="width:60px;height:60px;border-radius:18px;background:${c};display:grid;place-items:center">${ic(i, '#fff', 34, 3.6)}</span>${s}</div>`).join('')}</div>`);
     const share = el(`<div class="abs" style="left:880px;top:150px;width:900px;height:700px">
@@ -649,7 +665,7 @@ export function buildScenes(ctx) {
         const ty = $(phone, '.m3'); ty.style.opacity = t > a + 0.8 && t < b + 0.6 ? 0.4 + 0.6 * Math.abs(Math.sin(t * 6)) : 0;
         show($(phone, '.m1'), t, b + 0.6, { kind: 'up' });
         show($(phone, '.m2'), t, b + 5.0, { kind: 'up' });
-        show($(feats, '.k'), t, b + 0.2, { kind: 'fade', out: c - 0.2 }); show($(feats, '.h1'), t, b + 0.2, { kind: 'up', out: c - 0.2 });
+        show($(feats, '.hd7'), t, b + 0.2, { kind: 'up', out: c - 0.2 });
         [0, 1, 2].forEach(i => show($(feats, '.f' + i), t, b + [1.2, 3.0, 4.8][i], { kind: 'right', out: c - 0.2 }));
         show($(share, '.story'), t, c + 0.3, { kind: 'pop' });
         [0, 1, 2, 3, 4].forEach(i => show($(share, '.nb' + i), t, c + 1.5 + i * 0.3, { kind: 'pop' }));
@@ -662,24 +678,24 @@ export function buildScenes(ctx) {
     const { svg, ui } = mk(8);
     const BG = backdrop(svg, 33); A.worldFx(BG, { x: 960, y: 540, z: 1 }, 0, 0);
     ui.insertAdjacentHTML('beforeend', frost());
-    const h = el(`<div class="abs h1" style="left:0;right:0;top:90px;text-align:center">What HearHere means for Jason</div>`);
+    const h = el(`<div class="abs" style="left:0;right:0;top:90px;text-align:center"><span class="card h1" style="display:inline-block;padding:10px 34px;font-size:56px">What HearHere means for Jason</span></div>`);
     const cards = [['pin', 'Finds relevant issues on his everyday route', C.green, ['R2 Relevance', 'R3 Visibility']], ['translate', 'Understands them in his own language', C.orange, ['R1 Multilingual']],
       ['building', 'Knows which department hears him', C.purple, ['R4 Q&A support']], ['steps', 'Sees what happens next', '#3A63D1', ['R5 Trackable']]]
-      .map(([i, s, c, r], n) => el(`<div class="feat card" style="left:${110 + n * 430}px;top:220px"><div class="ic" style="background:${c}">${ic(i, '#fff', 54, 3.6)}</div>
+      .map(([i, s, c, r], n) => el(`<div class="feat card" style="left:${110 + n * 430}px;top:240px;height:330px"><div class="ic" style="background:${c}">${ic(i, '#fff', 54, 3.6)}</div>
         <div class="t">${s}</div><div>${r.map(x => `<span class="req">${x}</span>`).join('')}</div></div>`));
     const strip = el(`<div class="abs" style="left:0;right:0;top:640px;display:flex;justify-content:center;align-items:center;gap:40px">
       <div class="card bf" style="display:flex;align-items:center;gap:18px;padding:16px 30px 16px 16px"><span style="width:84px;height:84px;border-radius:50%;background:#FFE1DE;display:grid;place-items:center;font:900 44px 'Baloo 2';color:var(--red)">?</span><div><div class="k" style="color:var(--red)">Before</div><div style="font:900 32px Nunito">Confused, unheard</div></div></div>
       <div class="ar" style="font:900 60px Nunito;color:var(--purple)">→</div>
       <div class="card af" style="display:flex;align-items:center;gap:18px;padding:16px 30px 16px 16px"><span style="width:84px;height:84px;border-radius:50%;background:var(--green-l);display:grid;place-items:center">${ic('check', '#16707F', 50, 4)}</span><div><div class="k" style="color:var(--green-d)">After</div><div style="font:900 32px Nunito">Confident, informed</div></div></div>
       <div class="card nm" style="display:flex;align-items:center;gap:14px;padding:18px 28px;background:var(--purple);color:#fff;font:900 30px Nunito">${ic('meeting', '#fff', 40, 3.6)}No meeting needed</div></div>`);
-    const foot = el(`<div class="abs" style="left:0;right:0;top:800px;text-align:center;font:800 22px Nunito;color:var(--navy-2)">Also designed for R6 Privacy · R7 Trustworthy sources · R8 Simple to use</div>`);
+    const foot = el(`<div class="abs" style="left:0;right:0;top:800px;text-align:center"><span class="card" style="display:inline-block;padding:10px 26px;font:800 22px Nunito;color:var(--navy-2)">Also designed for R6 Privacy · R7 Trustworthy sources · R8 Simple to use</span></div>`);
     ui.append(h, ...cards, strip, foot);
     out[8] = {
       svg, ui, update(t) {
         A.worldFx(BG, { x: 960, y: 540, z: 1 }, t, 0);
         const a = L(8, 's8a'), b = L(8, 's8b');
         show(h, t, a - 0.2, { kind: 'down' });
-        [0.3, 3.3, 6.0, 8.6].forEach((o, i) => show(cards[i], t, a + o, { kind: 'pop' }));
+        [0.3, 2.2, 4.2, 6.0].forEach((o, i) => show(cards[i], t, a + o, { kind: 'pop' }));
         show($(strip, '.bf'), t, b - 0.6, { kind: 'left' }); show($(strip, '.ar'), t, b - 0.3, { kind: 'fade' });
         show($(strip, '.af'), t, b, { kind: 'right' }); show($(strip, '.nm'), t, b + 0.4, { kind: 'pop' });
         show(foot, t, b + 0.8, { kind: 'up' });
@@ -692,12 +708,12 @@ export function buildScenes(ctx) {
     const { svg, ui } = mk(9);
     const BG = backdrop(svg, 41); A.worldFx(BG, { x: 960, y: 540, z: 1 }, 0, 0);
     ui.insertAdjacentHTML('beforeend', frost());
-    const lim = el(`<div class="abs card" style="left:120px;top:110px;width:800px;padding:34px 38px">
+    const lim = el(`<div class="abs card" style="left:120px;top:250px;width:800px;height:500px;padding:34px 38px">
       <div class="k" style="color:var(--red)">Honest limitations</div><div class="h2">HearHere has limits</div>
       ${[['mic', 'Speaking in public may feel exposing', 'Typed input as an alternative'], ['translate', 'AI can mistranslate', 'Review & edit before sending'], ['people', 'No council staff in our fieldwork', 'Consult council before launch']].map(([i, s, m], n) => `
       <div class="l${n}" style="display:flex;gap:18px;align-items:flex-start;margin-top:24px"><span style="width:60px;height:60px;border-radius:18px;background:#FFE1DE;display:grid;place-items:center;flex:none">${ic(i, '#E0544B', 34, 3.6)}</span>
       <div><div style="font:900 30px Nunito">${s}</div><div style="font:800 23px Nunito;color:var(--green-d);margin-top:4px">→ ${m}</div></div></div>`).join('')}</div>`);
-    const nx = el(`<div class="abs card" style="left:1000px;top:110px;width:800px;padding:34px 38px">
+    const nx = el(`<div class="abs card" style="left:1000px;top:250px;width:800px;height:500px;padding:34px 38px">
       <div class="k" style="color:var(--green-d)">Future work</div><div class="h2">Next steps</div>
       ${[['box', 'Low-fidelity prototype', 'Figma app + cardboard post'], ['globe', 'Test across languages', 'Do residents trust and correct the AI output?'], ['pin', '2–3 pilot sites', 'Library entrance, street near campus']].map(([i, s, m], n) => `
       <div class="n${n}" style="display:flex;gap:18px;align-items:flex-start;margin-top:24px"><span style="width:60px;height:60px;border-radius:18px;background:var(--green-l);display:grid;place-items:center;flex:none">${ic(i, '#16707F', 34, 3.6)}</span>
@@ -731,9 +747,9 @@ export function buildScenes(ctx) {
       <div class="tag2 chip" style="margin-top:22px;background:var(--orange);color:#fff;font-size:44px;padding:14px 32px">${ic('mic', '#fff', 44, 3.6)}Speak here. Be heard.</div></div>`);
     const bub = el(`<div class="bubble" style="left:1290px;top:330px">Speak here. Be heard!</div>`);
     const team = el(`<div class="abs" style="left:0;right:0;top:130px;display:none"></div>`);
-    const foot = el(`<div class="abs" style="left:110px;right:110px;bottom:140px;display:flex;justify-content:space-between;background:rgba(255,255,255,.92);border-radius:22px;padding:16px 30px;font:800 24px Nunito">
+    const foot = el(`<div class="abs" style="left:110px;top:560px;width:820px;display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;background:rgba(255,255,255,.95);border-radius:22px;padding:18px 28px;font:800 24px Nunito">
       <span>Jia-Ying Lee <b style="color:var(--purple)">1790130</b></span><span>Xintong FU <b style="color:var(--purple)">1840227</b></span><span>Yu-Hao LU <b style="color:var(--purple)">1781474</b></span><span>Yen-Chu OU YANG <b style="color:var(--purple)">1801365</b></span></div>`);
-    const credit = el(`<div class="abs" style="left:0;right:0;bottom:96px;text-align:center"><span style="background:rgba(255,255,255,.92);border-radius:12px;padding:6px 16px;font:700 18px Nunito;color:var(--navy-2)">Team Sweet Potatoes · Group 14 · INFO90006 Fieldwork for Design · Concept prototype; narration is AI-generated (Kokoro TTS)</span></div>`);
+    const credit = el(`<div class="abs" style="left:110px;top:690px;width:820px"><span style="display:block;background:rgba(255,255,255,.95);border-radius:14px;padding:8px 18px;font:700 18px/1.4 Nunito;color:var(--navy-2)">Team Sweet Potatoes · Group 14 · INFO90006 Fieldwork for Design<br>Concept prototype; narration is AI-generated (Kokoro TTS)</span></div>`);
     ui.append(title, bub, team, foot, credit);
     out[10] = {
       svg, ui, update(t) {

@@ -97,8 +97,7 @@
      "tts": "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use.",
      "sub": "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use."
     }
-   ],
-   "lead_in": 2.6
+   ]
   },
   {
    "id": 4,
@@ -178,7 +177,7 @@
   {
    "id": 6,
    "name": "NFC & tracking",
-   "tail": null,
+   "tail": 0.5,
    "lines": [
     {
      "id": "s6a",
@@ -209,6 +208,12 @@
      "voice": "narrator",
      "tts": "Notifications keep him updated.",
      "sub": "Notifications keep him updated."
+    },
+    {
+     "id": "s6f",
+     "voice": "narrator",
+     "tts": "Each new HearHere post Jason visits also earns a badge: a small reward for taking part.",
+     "sub": "Each new HearHere post Jason visits also earns a badge: a small reward for taking part."
     }
    ]
   },
@@ -270,8 +275,8 @@
     {
      "id": "s8a",
      "voice": "narrator",
-     "tts": "For Jason, that means finding relevant issues on his everyday route, understanding them in his own language, knowing which department hears him, and seeing what happens next.",
-     "sub": "For Jason, that means finding relevant issues on his everyday route, understanding them in his own language, knowing which department hears him, and seeing what happens next."
+     "tts": "For Jason, that means relevant issues on his route, in his own language, a clear department to hear him, and visible progress.",
+     "sub": "For Jason, that means relevant issues on his route, in his own language, a clear department to hear him, and visible progress."
     },
     {
      "id": "s8b",

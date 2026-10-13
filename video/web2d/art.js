@@ -78,87 +78,87 @@ export function defs() {
 }
 
 // ------------------------------------------------------------------ Jason
-// Origin = between the feet on the ground; ~600 units tall; faces right.
-const HIP_Y = -310, SH_Y = -470, THIGH = 150, UARM = 124, FARM = 128;
+// True side profile facing right (he always faces the post).  Origin = ground
+// under the hips; ~600 units tall (165 cm), head ~1/7.5 of height, visible neck.
+const HIP_Y = -300, SH_Y = -474, SH_X = -2, THIGH = 146, SHIN = 140, UARM = 118, FARM = 110;
 function legSVG(back) {
   const J = back ? 'url(#gJeansB)' : 'url(#gJeans)';
   const shin = g(`
-    <path d="M-21 0 C -21 50, -18 100, -16 128 L 16 128 C 18 100, 21 50, 21 0 Z" fill="${J}"/>
-    <path d="M6 10 C 8 50, 8 90, 6 120" stroke="#fff" stroke-opacity=".12" stroke-width="3" fill="none"/>
-    <path d="M-17 112 L 17 112 L 17 130 L -17 130 Z" fill="${back ? '#1D2640' : '#2A3654'}"/>
-    <g transform="translate(0 132)">
-      <path d="M-22 -8 C -22 -18, -2 -20, 12 -12 C 32 -8, 54 -2, 58 12 L 58 18 L -24 18 Z" fill="${back ? '#D5D8E0' : 'url(#gShoe)'}"/>
-      <path d="M10 -10 C 18 -6, 26 -2, 32 4" stroke="#B9BDC9" stroke-width="2.5" fill="none"/>
-      <path d="M14 -9 l-3 7 M20 -6 l-3 7 M26 -3 l-3 7" stroke="#9AA0B0" stroke-width="2"/>
-      <path d="M-24 12 L 58 12 L 58 20 Q 58 25 53 25 L -20 25 Q -26 25 -24 18 Z" fill="${back ? '#B9BDC9' : '#E9EBF0'}"/>
-      <path d="M-24 18 L 58 18" stroke="${C.purple}" stroke-width="3"/>
+    <path d="M-18 -4 C -19 40, -16 100, -14 ${SHIN} L 14 ${SHIN} C 15 100, 18 50, 19 -4 Z" fill="${J}"/>
+    <path d="M7 10 C 9 50, 8 100, 6 ${SHIN - 10}" stroke="#fff" stroke-opacity=".12" stroke-width="3" fill="none"/>
+    <path d="M-15 ${SHIN - 18} L 15 ${SHIN - 18} L 15 ${SHIN} L -15 ${SHIN} Z" fill="${back ? '#1D2640' : '#2A3654'}"/>
+    <g transform="translate(0 ${SHIN})">
+      <path d="M-20 -6 C -20 -14, -4 -16, 10 -10 C 30 -6, 52 -2, 58 8 L 58 14 L -22 14 Z" fill="${back ? '#D5D8E0' : 'url(#gShoe)'}"/>
+      <path d="M10 -8 C 18 -4, 26 0, 32 4" stroke="#B9BDC9" stroke-width="2.5" fill="none"/>
+      <path d="M-22 9 L 58 9 L 58 15 Q 58 20 53 20 L -18 20 Q -24 20 -22 14 Z" fill="${back ? '#B9BDC9' : '#E9EBF0'}"/>
+      <path d="M-22 14 L 58 14" stroke="${C.purple}" stroke-width="2.5"/>
     </g>`);
   const thigh = g(`
-    <path d="M-26 0 C -28 50, -25 110, -21 152 L 21 152 C 24 110, 28 50, 26 0 Z" fill="${J}"/>
-    <path d="M8 6 C 10 60, 10 110, 8 148" stroke="#fff" stroke-opacity=".1" stroke-width="3" fill="none"/>
-    <path d="M-20 120 q 18 8 38 0" stroke="#000" stroke-opacity=".15" stroke-width="3" fill="none"/>`);
+    <path d="M-25 -8 C -27 40, -24 100, -19 ${THIGH + 4} L 20 ${THIGH + 4} C 25 100, 28 40, 26 -8 Z" fill="${J}"/>
+    <path d="M10 6 C 12 60, 11 110, 9 ${THIGH}" stroke="#fff" stroke-opacity=".1" stroke-width="3" fill="none"/>
+    <path d="M-18 ${THIGH - 24} q 18 7 36 0" stroke="#000" stroke-opacity=".14" stroke-width="2.5" fill="none"/>`);
   const root = g(); root.append(thigh, shin);
   return { root, thigh, shin };
 }
 function armSVG(back) {
   const S = back ? 'url(#gSleeveB)' : 'url(#gSleeve)';
   const fore = g(`
-    <path d="M-18 0 C -18 40, -16 76, -15 94 L 15 94 C 16 76, 18 40, 18 0 Z" fill="${S}"/>
-    <path d="M-12 30 q 12 6 24 0 M-12 58 q 12 5 22 0" stroke="#000" stroke-opacity=".14" stroke-width="2.5" fill="none"/>
-    <rect x="-16" y="88" width="32" height="18" rx="7" fill="${back ? '#22408F' : '#3051B8'}"/>
-    <path d="M-12 92 v10 M-6 92 v10 M0 92 v10 M6 92 v10 M12 92 v10" stroke="#000" stroke-opacity=".15" stroke-width="1.5"/>
-    <g transform="translate(0 108)">
-      <path d="M-13 0 C -15 14, -12 30, 0 32 C 12 32, 15 16, 13 0 Z" fill="${back ? '#D8A07C' : 'url(#gSkinL)'}"/>
-      <path d="M9 4 C 19 8, 19 18, 12 23" stroke="${back ? '#C58C6A' : '#D9A07A'}" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M-15 -2 C -15 40, -14 76, -13 ${FARM - 12} L 13 ${FARM - 12} C 14 76, 15 40, 15 -2 Z" fill="${S}"/>
+    <path d="M-10 34 q 10 5 20 0" stroke="#000" stroke-opacity=".14" stroke-width="2.5" fill="none"/>
+    <rect x="-14" y="${FARM - 16}" width="28" height="16" rx="6" fill="${back ? '#22408F' : '#3051B8'}"/>
+    <g transform="translate(0 ${FARM})">
+      <path d="M-11 -2 C -13 12, -10 26, 1 28 C 11 27, 13 14, 11 -2 Z" fill="${back ? '#D8A07C' : 'url(#gSkinL)'}"/>
+      <path d="M8 4 C 17 8, 17 17, 11 21" stroke="${back ? '#C58C6A' : '#D9A07A'}" stroke-width="6" fill="none" stroke-linecap="round"/>
     </g>`);
-  const phone = g(`<rect x="-14" y="-30" width="30" height="56" rx="7" fill="#1C2133"/><rect x="-10" y="-25" width="22" height="44" rx="4" fill="#9C6DB8"/><rect x="-10" y="-25" width="8" height="44" rx="3" fill="#fff" opacity=".25"/>`, { opacity: 0, transform: 'translate(4 124)' });
+  const phone = g(`<rect x="-14" y="-30" width="30" height="56" rx="7" fill="#1C2133"/><rect x="-10" y="-25" width="22" height="44" rx="4" fill="#9C6DB8"/>`, { opacity: 0, transform: `translate(4 ${FARM + 14})` });
   fore.appendChild(phone);
   const upper = g(`
-    <path d="M-22 -10 C -25 40, -23 90, -19 128 L 19 128 C 23 90, 25 40, 22 -10 Q 0 -22 -22 -10 Z" fill="${S}"/>
-    <path d="M-14 60 q 14 7 28 0" stroke="#000" stroke-opacity=".14" stroke-width="2.5" fill="none"/>
-    <path d="M10 -6 C 14 30, 14 80, 12 120" stroke="#fff" stroke-opacity=".14" stroke-width="4" fill="none"/>`);
+    <path d="M-20 -14 C -22 40, -20 86, -16 ${UARM + 4} L 16 ${UARM + 4} C 20 86, 22 40, 20 -14 Q 0 -26 -20 -14 Z" fill="${S}"/>
+    <path d="M-12 62 q 12 6 24 0" stroke="#000" stroke-opacity=".14" stroke-width="2.5" fill="none"/>
+    <path d="M8 -6 C 12 30, 12 80, 10 ${UARM - 6}" stroke="#fff" stroke-opacity=".14" stroke-width="4" fill="none"/>`);
   const root = g(); root.append(upper, fore);
   return { root, upper, fore, phone };
 }
 export function jason() {
-  const root = g(`${GREEN ? '' : '<ellipse cx="8" cy="2" rx="86" ry="13" fill="#141826" opacity=".28" filter="url(#fBlur4)"/>'}`);
+  const root = g();
   const LB = legSVG(true), LF = legSVG(false), AB = armSVG(true), AF = armSVG(false);
+  // profile torso: back on the left, chest on the right; hood bunched behind the neck
   const torso = g(`
-    <path d="M-44 -490 C -54 -520, 34 -528, 44 -492 C 22 -502, -20 -502, -44 -490 Z" fill="#2E4FB0"/>
-    <path d="M-52 -492 C -72 -482, -76 -440, -74 -400 C -72 -360, -68 -320, -64 -296 L 68 -296 C 72 -330, 74 -380, 72 -420 C 70 -460, 64 -484, 50 -492 Q 0 -502 -52 -492 Z" fill="url(#gHood)"/>
-    <path d="M-52 -492 C -72 -482, -76 -440, -74 -400 C -72 -360, -68 -320, -64 -296 L -36 -296 C -46 -340, -50 -420, -40 -488 Z" fill="#1F3A8F" opacity=".35"/>
-    <path d="M30 -470 C 50 -440, 58 -380, 56 -320" stroke="#fff" stroke-opacity=".16" stroke-width="10" fill="none" stroke-linecap="round"/>
-    <path d="M-40 -362 L 42 -362 L 48 -322 L -46 -322 Z" fill="#3A60CF"/>
-    <path d="M-40 -362 L 42 -362" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
-    <path d="M-30 -420 q 20 10 40 4 M-48 -380 q 10 20 6 40 M30 -400 q 10 10 24 8" stroke="#1F3A8F" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <rect x="-66" y="-314" width="134" height="20" rx="8" fill="#2E4FB0"/>
-    <path d="M-60 -309 h122 M-60 -302 h122" stroke="#000" stroke-opacity=".12" stroke-width="1.5"/>
-    <path d="M-8 -488 C -10 -470, -12 -456, -12 -440 M16 -488 C 18 -470, 20 -456, 20 -436" stroke="#F2F2F6" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <rect x="-15" y="-442" width="6" height="12" rx="2" fill="#C9CCD6"/><rect x="17" y="-438" width="6" height="12" rx="2" fill="#C9CCD6"/>`);
-  const eyes = g(`
-    <path d="M20 -54 q10 -9 20 0 q-10 8 -20 0z" fill="#fff"/><circle cx="31" cy="-53" r="5.6" fill="#3B2618"/><circle cx="31.5" cy="-53" r="2.6" fill="#120B07"/><circle cx="33" cy="-55" r="1.7" fill="#fff"/>
-    <path d="M-6 -53 q8 -8 16 0 q-8 7 -16 0z" fill="#fff"/><circle cx="3" cy="-52.5" r="4.8" fill="#3B2618"/><circle cx="3.4" cy="-52.5" r="2.2" fill="#120B07"/><circle cx="4.6" cy="-54.2" r="1.4" fill="#fff"/>
-    <path d="M19 -55 q11 -11 22 0" stroke="#2A1C14" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-    <path d="M-7 -54 q9 -10 18 0" stroke="#2A1C14" stroke-width="2.4" fill="none" stroke-linecap="round"/>`);
-  const brows = g(`<path d="M18 -68 q12 -7 26 -1" stroke="#1E1A22" stroke-width="5" fill="none" stroke-linecap="round"/>
-    <path d="M-8 -67 q9 -6 19 -1" stroke="#1E1A22" stroke-width="4.5" fill="none" stroke-linecap="round"/>`);
-  const mouth = svgEl('path', { d: '', stroke: '#8A4636', 'stroke-width': 3.5, fill: 'none', 'stroke-linecap': 'round' });
+    <path d="M-42 -486 C -56 -470, -54 -420, -48 -380 C -44 -350, -42 -320, -40 -296 L 44 -296 C 46 -320, 52 -350, 52 -390 C 54 -430, 50 -470, 30 -488 Q -6 -500 -42 -486 Z" fill="url(#gHood)"/>
+    <path d="M-42 -486 C -56 -470, -54 -420, -48 -380 C -44 -350, -42 -320, -40 -296 L -22 -296 C -30 -350, -34 -420, -26 -484 Z" fill="#1F3A8F" opacity=".35"/>
+    <path d="M38 -470 C 50 -440, 54 -400, 50 -340" stroke="#fff" stroke-opacity=".16" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M6 -384 L 50 -384 C 52 -360, 50 -344, 48 -330 L 6 -330 Z" fill="#3A60CF"/>
+    <path d="M6 -384 L 50 -384" stroke="#fff" stroke-opacity=".22" stroke-width="2"/>
+    <path d="M-42 -312 L 44 -312 L 46 -294 L -42 -294 Z" fill="#2E4FB0"/>
+    <path d="M-38 -306 h80 M-38 -300 h80" stroke="#000" stroke-opacity=".12" stroke-width="1.5"/>
+    <path d="M24 -484 C 30 -470, 32 -452, 30 -436" stroke="#F2F2F6" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <rect x="27" y="-438" width="6" height="12" rx="2" fill="#C9CCD6"/>
+    <path d="M-52 -500 C -62 -486, -58 -462, -40 -456 C -30 -470, -22 -486, -18 -500 Z" fill="#2E4FB0"/>
+    <path d="M-50 -494 C -52 -480, -48 -468, -40 -462" stroke="#1F3A8F" stroke-width="3" fill="none" opacity=".6"/>`);
+  // neck (skin) rising out of the hoodie collar
+  const neck = g(`<path d="M-12 -532 C -12 -514, -14 -500, -16 -486 L 22 -486 C 20 -500, 18 -514, 20 -530 Z" fill="url(#gSkin)"/>
+    <path d="M-14 -506 C -6 -500, 6 -500, 16 -508" stroke="#B97F5D" stroke-width="3" fill="none" opacity=".5"/>
+    <path d="M-22 -488 C -6 -480, 12 -480, 28 -488 L 28 -480 C 12 -472, -6 -472, -22 -480 Z" fill="#2E4FB0"/>`);
+  // profile head: skull, forehead, nose, lips, chin; ear and eye placed on the canon grid
+  const eyes = g(`<path d="M18 -566 q 8 -6 15 -1 q -7 6 -15 1 z" fill="#fff"/><circle cx="28" cy="-566" r="3.8" fill="#3B2618"/><circle cx="28.8" cy="-566" r="1.8" fill="#120B07"/><circle cx="29.6" cy="-567.4" r="1" fill="#fff"/>
+    <path d="M17 -567 q 9 -8 17 -1" stroke="#2A1C14" stroke-width="2.4" fill="none" stroke-linecap="round"/>`);
+  const brows = g(`<path d="M14 -578 q 11 -6 22 -1" stroke="#1E1A22" stroke-width="4.2" fill="none" stroke-linecap="round"/>`);
+  const mouth = svgEl('path', { d: '', stroke: '#8A4636', 'stroke-width': 2.8, fill: 'none', 'stroke-linecap': 'round' });
   const head = g(`
-    <path d="M-16 -14 L 18 -14 L 16 14 L -14 14 Z" fill="#D9A07A"/>
-    <path d="M-16 -2 Q 2 10 18 -4 L 18 6 Q 2 16 -16 8 Z" fill="#B97F5D" opacity=".6"/>
-    <path d="M-40 -60 C -42 -95, -10 -110, 18 -104 C 44 -98, 52 -72, 50 -48 C 50 -38, 54 -32, 57 -25 C 58 -20, 53 -18, 50 -17 C 50 -6, 46 4, 36 10 C 26 16, 8 18, -6 14 C -26 8, -40 -14, -40 -40 Z" fill="url(#gSkin)"/>
-    <path d="M-40 -40 C -40 -14, -26 8, -6 14 C -20 4, -30 -14, -32 -40 Z" fill="#C88A64" opacity=".35"/>
-    <ellipse cx="-30" cy="-44" rx="9" ry="14" fill="#E3AC86"/><path d="M-32 -50 q5 6 0 12" stroke="#C48460" stroke-width="2.5" fill="none"/>
-    <path d="M50 -38 C 54 -32, 57 -25, 50 -20" stroke="#C88A64" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <ellipse cx="38" cy="-26" rx="9" ry="5" fill="#F0907C" opacity=".35"/>
-    <path d="M-46 -50 C -54 -96, -16 -124, 22 -118 C 52 -112, 66 -86, 58 -60 C 52 -72, 40 -82, 28 -84 C 32 -76, 26 -68, 16 -64 C 18 -74, 8 -82, -4 -82 C -14 -74, -24 -64, -28 -48 C -32 -40, -38 -34, -46 -50 Z" fill="url(#gHair)"/>
-    <path d="M-30 -96 C -14 -110, 14 -112, 34 -100" stroke="#6A6274" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
-    <path d="M-20 -86 C -6 -96, 12 -98, 26 -92" stroke="#5A5264" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/>
-    <path d="M-34 -52 C -36 -40, -36 -34, -34 -28" stroke="#1C1820" stroke-width="5" fill="none" stroke-linecap="round"/>`);
+    <path d="M-34 -566 C -38 -600, -6 -622, 20 -614 C 36 -608, 42 -594, 42 -580 C 42 -572, 44 -566, 46 -560 C 50 -552, 54 -546, 52 -542 C 50 -540, 46 -540, 44 -539 C 46 -534, 45 -531, 42 -530 C 44 -527, 43 -523, 40 -521 C 41 -514, 36 -510, 28 -509 C 20 -508, 10 -512, 4 -518 C -6 -524, -14 -530, -20 -534 C -30 -540, -34 -552, -34 -566 Z" fill="url(#gSkin)"/>
+    <path d="M-20 -534 C -8 -526, 2 -518, 10 -514 C 0 -520, -10 -530, -14 -540 Z" fill="#C88A64" opacity=".35"/>
+    <path d="M46 -560 C 50 -552, 54 -546, 52 -542 C 49 -541, 46 -542, 44 -544" stroke="#C88A64" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M40 -546 q 3 3 6 2" stroke="#B97F5D" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="30" cy="-546" rx="8" ry="4.5" fill="#F0907C" opacity=".3"/>
+    <path d="M-6 -572 C -14 -572, -18 -562, -16 -552 C -14 -544, -6 -542, -2 -546 C 2 -552, 0 -566, -6 -572 Z" fill="#E3AC86"/>
+    <path d="M-8 -566 C -12 -562, -12 -554, -8 -550" stroke="#C48460" stroke-width="2.4" fill="none"/>
+    <path d="M-38 -572 C -46 -606, -14 -632, 18 -626 C 40 -622, 52 -606, 48 -588 C 44 -594, 36 -598, 30 -598 C 34 -590, 28 -584, 20 -584 C 22 -592, 12 -598, 2 -594 C -6 -588, -10 -580, -12 -568 C -16 -560, -20 -548, -26 -540 C -34 -546, -38 -558, -38 -572 Z" fill="url(#gHair)"/>
+    <path d="M-28 -606 C -12 -620, 12 -622, 32 -612" stroke="#6A6274" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M-20 -596 C -6 -606, 10 -608, 24 -602" stroke="#5A5264" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".6"/>`);
   head.append(eyes, brows, mouth);
   const headG = g(); headG.appendChild(head);
   const body = g();
-  body.append(AB.root, LB.root, LF.root, torso, headG, AF.root);
+  body.append(AB.root, LB.root, LF.root, torso, neck, headG, AF.root);
   root.appendChild(body);
   root.parts = { body, LB, LF, AB, AF, torso, headG, eyes, brows, mouth };
   return root;
@@ -167,34 +167,54 @@ export function jason() {
 // returns hand grip points (front F, back B) in Jason-local coordinates
 export function poseJason(j, p = {}) {
   const P = j.parts, w = p.walk;
-  let tF = 0, tB = 0, kF = 4, kB = 4, aF = 6, aB = -6, eF = 14, eB = 10, bob = 0, lean = 0;
+  let tF = 0, tB = 0, kF = 3, kB = 3, aF = 4, aB = -3, eF = 10, eB = 8, bob = 0, lean = 0;
   if (w != null) {
     const ph = w * Math.PI * 2, s = Math.sin(ph);
     tF = 24 * s; tB = -24 * s;
-    kF = 6 + 34 * Math.max(0, Math.sin(ph - 1.4)); kB = 6 + 34 * Math.max(0, Math.sin(ph + Math.PI - 1.4));
-    aF = -20 * s; aB = 20 * s; eF = 18 + 8 * Math.max(0, -s); eB = 18 + 8 * Math.max(0, s);
-    bob = -Math.abs(Math.cos(ph)) * 8; lean = 2;
+    kF = 4 + 36 * Math.max(0, Math.sin(ph - 1.4)); kB = 4 + 36 * Math.max(0, Math.sin(ph + Math.PI - 1.4));
+    aF = -22 * s; aB = 22 * s; eF = 16 + 10 * Math.max(0, -s); eB = 16 + 10 * Math.max(0, s);
+    bob = -Math.abs(Math.cos(ph)) * 7; lean = 2.5;
   } else {
-    const bt = clock.t * 2.1; bob = Math.sin(bt) * 2.2; aF += Math.sin(bt + 0.6) * 1.5; aB -= Math.sin(bt + 0.6) * 1.5;
+    const bt = clock.t * 2.1; bob = Math.sin(bt) * 1.8; aF += Math.sin(bt + 0.6) * 1.2; aB -= Math.sin(bt + 0.6) * 1.2;
   }
   if (p.armF != null) aF = p.armF; if (p.elbowF != null) eF = p.elbowF;
   if (p.armB != null) aB = p.armB; if (p.elbowB != null) eB = p.elbowB;
   tf(P.body, `translate(0 ${bob}) rotate(${lean} 0 ${HIP_Y})`);
   const leg = (L, x, t, k) => { tf(L.root, `translate(${x} ${HIP_Y})`); tf(L.thigh, `rotate(${-t})`); tf(L.shin, `rotate(${-t}) translate(0 ${THIGH}) rotate(${k})`); };
-  leg(P.LF, 8, tF, kF); leg(P.LB, -10, tB, kB);
+  leg(P.LF, 4, tF, kF); leg(P.LB, -4, tB, kB);
+  // knees bend backwards in profile: rotate shin the other way (positive = heel back)
   const arm = (A, x, a, e) => { tf(A.root, `translate(${x} ${SH_Y})`); tf(A.upper, `rotate(${-a})`); tf(A.fore, `rotate(${-a}) translate(0 ${UARM}) rotate(${-e})`); };
-  arm(P.AF, 46, aF, eF); arm(P.AB, -48, aB, eB);
-  tf(P.headG, `translate(6 -500) rotate(${p.look || 0})`);
-  tf(P.eyes, `translate(0 ${-52 * (p.blink || 0)}) scale(1 ${1 - 0.9 * (p.blink || 0)})`);
+  arm(P.AF, SH_X + 4, aF, eF); arm(P.AB, SH_X - 4, aB, eB);
+  tf(P.headG, `rotate(${p.look || 0} 4 -520)`);
+  tf(P.eyes, `translate(0 ${-566 * (p.blink || 0)}) scale(1 ${1 - 0.9 * (p.blink || 0)})`);
   const m = p.mouth || 'neutral', k = p.talk || 0;
-  const d = m === 'smile' ? 'M20 -8 q12 10 24 -1' : m === 'worried' ? 'M22 -3 q10 -6 20 0'
-    : m === 'talk' ? `M20 -7 q12 ${4 + 14 * k} 24 -1 q-12 -3 -24 1z` : 'M22 -6 q10 4 20 -1';
+  const d = m === 'smile' ? 'M33 -531 q 5 4 10 -1' : m === 'worried' ? 'M34 -529 q 4 -3 8 0'
+    : m === 'talk' ? `M33 -531 q 5 ${2 + 7 * k} 10 -1 q -5 -2 -10 1z` : 'M34 -530 q 4 1.5 9 0';
   if (P.mouth.getAttribute('d') !== d) P.mouth.setAttribute('d', d);
   P.mouth.setAttribute('fill', m === 'talk' ? '#7A3B2E' : 'none');
-  tf(P.brows, m === 'worried' ? 'translate(0 -3) rotate(-7 18 -68)' : '');
+  tf(P.brows, m === 'worried' ? 'rotate(-8 25 -578) translate(0 -2)' : '');
   P.AF.phone.setAttribute('opacity', p.phone || 0);
-  const hand = (x, a, e) => { const u = rot(UARM, -a), f = rot(FARM, -a - e); return { x: x + u.x + f.x, y: SH_Y + bob + u.y + f.y }; };
-  return { F: hand(46, aF, eF), B: hand(-48, aB, eB) };
+  const hand = (x, a, e) => { const u = rot(UARM, -a), f = rot(FARM + 16, -a - e); return { x: x + u.x + f.x, y: SH_Y + bob + u.y + f.y }; };
+  return { F: hand(SH_X + 4, aF, eF), B: hand(SH_X - 4, aB, eB) };
+}
+// front-facing head-and-shoulders portrait (persona card avatar); viewBox centred on 0,0
+export function jasonBust() {
+  return `<g>
+    <path d="M-100 110 C -96 60, -60 40, -22 34 L 22 34 C 60 40, 96 60, 100 110 Z" fill="url(#gHood)"/>
+    <path d="M-30 36 C -20 56, 20 56, 30 36 Z" fill="#2E4FB0"/>
+    <path d="M-10 46 v34 M10 46 v34" stroke="#F2F2F6" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-17 4 L 17 4 L 19 40 C 8 48, -8 48, -19 40 Z" fill="url(#gSkin)"/>
+    <path d="M-17 24 C -6 32, 6 32, 17 24 L 18 32 C 6 40, -6 40, -18 32 Z" fill="#B97F5D" opacity=".5"/>
+    <ellipse cx="-44" cy="-30" rx="9" ry="14" fill="#E3AC86"/><ellipse cx="44" cy="-30" rx="9" ry="14" fill="#E3AC86"/>
+    <path d="M-42 -40 C -44 -80, -24 -96, 0 -96 C 24 -96, 44 -80, 42 -40 C 42 -10, 30 14, 0 18 C -30 14, -42 -10, -42 -40 Z" fill="url(#gSkin)"/>
+    <path d="M-46 -40 C -52 -90, -20 -112, 4 -110 C 34 -108, 54 -88, 46 -40 C 42 -60, 34 -70, 22 -74 C 12 -66, -8 -66, -20 -72 C -32 -66, -40 -56, -46 -40 Z" fill="url(#gHair)"/>
+    <path d="M-20 -46 q 9 -6 18 -1 M4 -47 q 9 -5 18 1" stroke="#1E1A22" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+    <path d="M-21 -34 q 8 -6 15 0 q -7 5 -15 0z M6 -34 q 8 -6 15 0 q -7 5 -15 0z" fill="#fff"/>
+    <circle cx="-13" cy="-34" r="3.8" fill="#3B2618"/><circle cx="14" cy="-34" r="3.8" fill="#3B2618"/>
+    <circle cx="-12" cy="-35.5" r="1.1" fill="#fff"/><circle cx="15" cy="-35.5" r="1.1" fill="#fff"/>
+    <path d="M0 -30 C -2 -20, -5 -14, -2 -11 C 1 -10, 4 -11, 5 -13" stroke="#C48460" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <path d="M-10 0 q 10 7 20 0" stroke="#8A4636" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="-24" cy="-14" rx="7" ry="4" fill="#F0907C" opacity=".3"/><ellipse cx="24" cy="-14" rx="7" ry="4" fill="#F0907C" opacity=".3"/></g>`;
 }
 
 // ------------------------------------------------------------------ dog (corgi, faces right; origin = ground)
