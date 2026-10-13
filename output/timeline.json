@@ -2,7 +2,7 @@
  "fps": 30,
  "width": 1920,
  "height": 1080,
- "duration": 171.005,
+ "duration": 170.988,
  "estimated": false,
  "scenes": [
   {
@@ -215,8 +215,8 @@
    "id": 5,
    "name": "Understand & speak",
    "start": 73.923,
-   "end": 100.671,
-   "dur": 26.748,
+   "end": 100.654,
+   "dur": 26.731,
    "lines": [
     {
      "id": "s5a",
@@ -242,18 +242,18 @@
      "id": "s5c",
      "voice": "narrator",
      "start": 81.135,
-     "dur": 2.792,
-     "end": 83.927,
-     "sub": "Now he simply talks to Melb, in his own language.",
-     "tts": "Now he simply talks to Melb, in his own language.",
+     "dur": 2.836,
+     "end": 83.971,
+     "sub": "Now he simply talks to Spud, in his own language.",
+     "tts": "Now he simply talks to Spud, in his own language.",
      "file": "audio/s5c.wav"
     },
     {
      "id": "s5j",
      "voice": "jason",
-     "start": 84.147,
+     "start": 84.191,
      "dur": 4.328,
-     "end": 88.475,
+     "end": 88.519,
      "sub": "The new park rule makes walking my dog really inconvenient. I hope it can be reconsidered.",
      "tts": "新的公園規定讓遛狗變得很不方便，我希望可以重新考慮。",
      "file": "audio/s5j.wav"
@@ -261,19 +261,19 @@
     {
      "id": "s5d",
      "voice": "narrator",
-     "start": 88.695,
-     "dur": 9.92,
-     "end": 98.615,
-     "sub": "Melb turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.",
-     "tts": "Melb turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.",
+     "start": 88.739,
+     "dur": 9.859,
+     "end": 98.598,
+     "sub": "Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.",
+     "tts": "Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.",
      "file": "audio/s5d.wav"
     },
     {
      "id": "s5e",
      "voice": "narrator",
-     "start": 98.835,
+     "start": 98.818,
      "dur": 1.336,
-     "end": 100.171,
+     "end": 100.154,
      "sub": "No audio is stored.",
      "tts": "No audio is stored.",
      "file": "audio/s5e.wav"
@@ -283,16 +283,16 @@
   {
    "id": 6,
    "name": "NFC & tracking",
-   "start": 100.671,
-   "end": 119.637,
+   "start": 100.654,
+   "end": 119.62,
    "dur": 18.966,
    "lines": [
     {
      "id": "s6a",
      "voice": "narrator",
-     "start": 101.071,
+     "start": 101.054,
      "dur": 2.39,
-     "end": 103.461,
+     "end": 103.444,
      "sub": "Jason taps his phone on the NFC pad.",
      "tts": "Jason taps his phone on the N F C pad.",
      "file": "audio/s6a.wav"
@@ -300,9 +300,9 @@
     {
      "id": "s6b",
      "voice": "narrator",
-     "start": 103.681,
+     "start": 103.664,
      "dur": 4.146,
-     "end": 107.827,
+     "end": 107.81,
      "sub": "The issue and his comment move to the HearHere app, and the post keeps nothing.",
      "tts": "The issue and his comment move to the HearHere app, and the post keeps nothing.",
      "file": "audio/s6b.wav"
@@ -310,9 +310,9 @@
     {
      "id": "s6c",
      "voice": "narrator",
-     "start": 108.047,
+     "start": 108.03,
      "dur": 2.553,
-     "end": 110.6,
+     "end": 110.583,
      "sub": "Tracking begins only because Jason chose it.",
      "tts": "Tracking begins only because Jason chose it.",
      "file": "audio/s6c.wav"
@@ -320,9 +320,9 @@
     {
      "id": "s6d",
      "voice": "narrator",
-     "start": 110.82,
+     "start": 110.803,
      "dur": 6.261,
-     "end": 117.081,
+     "end": 117.064,
      "sub": "The app shows each stage: Received, In review, then an outcome with a case number, or reasons if declined.",
      "tts": "The app shows each stage: Received, In review, then an outcome with a case number, or reasons if declined.",
      "file": "audio/s6d.wav"
@@ -330,9 +330,9 @@
     {
      "id": "s6e",
      "voice": "narrator",
-     "start": 117.301,
+     "start": 117.284,
      "dur": 2.036,
-     "end": 119.337,
+     "end": 119.32,
      "sub": "Notifications keep him updated.",
      "tts": "Notifications keep him updated.",
      "file": "audio/s6e.wav"
@@ -342,16 +342,16 @@
   {
    "id": 7,
    "name": "Q&A & share",
-   "start": 119.637,
-   "end": 133.779,
+   "start": 119.62,
+   "end": 133.762,
    "dur": 14.142,
    "lines": [
     {
      "id": "s7a",
      "voice": "narrator",
-     "start": 120.037,
+     "start": 120.02,
      "dur": 1.146,
-     "end": 121.183,
+     "end": 121.166,
      "sub": "Not sure who to ask?",
      "tts": "Not sure who to ask?",
      "file": "audio/s7a.wav"
@@ -359,9 +359,9 @@
     {
      "id": "s7b",
      "voice": "narrator",
-     "start": 121.403,
+     "start": 121.386,
      "dur": 7.566,
-     "end": 128.969,
+     "end": 128.952,
      "sub": "The Q&A assistant answers from official documents, cites its sources, and hands over to a named contact when it's unsure.",
      "tts": "The Q and A assistant answers from official documents, cites its sources, and hands over to a named contact when it's unsure.",
      "file": "audio/s7b.wav"
@@ -369,9 +369,9 @@
     {
      "id": "s7c",
      "voice": "narrator",
-     "start": 129.189,
+     "start": 129.172,
      "dur": 4.29,
-     "end": 133.479,
+     "end": 133.462,
      "sub": "And one tap shares a card on Instagram, so Jason's neighbours can join in.",
      "tts": "And one tap shares a card on Instagram, so Jason's neighbours can join in.",
      "file": "audio/s7c.wav"
@@ -381,16 +381,16 @@
   {
    "id": 8,
    "name": "Benefits",
-   "start": 133.779,
-   "end": 146.314,
+   "start": 133.762,
+   "end": 146.297,
    "dur": 12.535,
    "lines": [
     {
      "id": "s8a",
      "voice": "narrator",
-     "start": 134.179,
+     "start": 134.162,
      "dur": 10.148,
-     "end": 144.327,
+     "end": 144.31,
      "sub": "For Jason, that means finding relevant issues on his everyday route, understanding them in his own language, knowing which department hears him, and seeing what happens next.",
      "tts": "For Jason, that means finding relevant issues on his everyday route, understanding them in his own language, knowing which department hears him, and seeing what happens next.",
      "file": "audio/s8a.wav"
@@ -398,9 +398,9 @@
     {
      "id": "s8b",
      "voice": "narrator",
-     "start": 144.547,
+     "start": 144.53,
      "dur": 1.467,
-     "end": 146.014,
+     "end": 145.997,
      "sub": "All without attending a meeting.",
      "tts": "All without attending a meeting.",
      "file": "audio/s8b.wav"
@@ -410,16 +410,16 @@
   {
    "id": 9,
    "name": "Limits & next steps",
-   "start": 146.314,
-   "end": 163.08,
+   "start": 146.297,
+   "end": 163.063,
    "dur": 16.766,
    "lines": [
     {
      "id": "s9a",
      "voice": "narrator",
-     "start": 146.714,
+     "start": 146.697,
      "dur": 1.183,
-     "end": 147.897,
+     "end": 147.88,
      "sub": "HearHere has limits.",
      "tts": "HearHere has limits.",
      "file": "audio/s9a.wav"
@@ -427,9 +427,9 @@
     {
      "id": "s9b",
      "voice": "narrator",
-     "start": 148.117,
+     "start": 148.1,
      "dur": 6.725,
-     "end": 154.842,
+     "end": 154.825,
      "sub": "Speaking in public may feel exposing, AI can mistranslate, and our fieldwork didn't include council staff.",
      "tts": "Speaking in public may feel exposing, AI can mistranslate, and our fieldwork didn't include council staff.",
      "file": "audio/s9b.wav"
@@ -437,9 +437,9 @@
     {
      "id": "s9c",
      "voice": "narrator",
-     "start": 155.062,
+     "start": 155.045,
      "dur": 7.718,
-     "end": 162.78,
+     "end": 162.763,
      "sub": "Next, we'll test a low-fidelity prototype with residents across languages, and check whether they trust and correct the AI's output.",
      "tts": "Next, we'll test a low-fidelity prototype with residents across languages, and check whether they trust and correct the AI's output.",
      "file": "audio/s9c.wav"
@@ -449,16 +449,16 @@
   {
    "id": 10,
    "name": "Tagline",
-   "start": 163.08,
-   "end": 171.005,
+   "start": 163.063,
+   "end": 170.988,
    "dur": 7.925,
    "lines": [
     {
      "id": "s10a",
      "voice": "narrator",
-     "start": 163.48,
+     "start": 163.463,
      "dur": 3.613,
-     "end": 167.093,
+     "end": 167.076,
      "sub": "HearHere, with Spud: the Street Post for Understanding Decisions.",
      "tts": "HearHere, with Spud: the Street Post for Understanding Decisions.",
      "file": "audio/s10a.wav"
@@ -466,9 +466,9 @@
     {
      "id": "s10b",
      "voice": "spud",
-     "start": 167.313,
+     "start": 167.296,
      "dur": 1.092,
-     "end": 168.405,
+     "end": 168.388,
      "sub": "Speak here. Be heard!",
      "tts": "Speak here. Be heard!",
      "file": "audio/s10b.wav"
@@ -718,16 +718,16 @@
   },
   {
    "start": 81.135,
-   "end": 84.147,
+   "end": 84.191,
    "lines": [
     "Now he simply talks to",
-    "Melb, in his own language."
+    "Spud, in his own language."
    ],
    "line": "s5c"
   },
   {
-   "start": 84.147,
-   "end": 87.843,
+   "start": 84.191,
+   "end": 87.887,
    "lines": [
     "The new park rule makes walking my dog",
     "really inconvenient. I hope it can be"
@@ -735,25 +735,25 @@
    "line": "s5j"
   },
   {
-   "start": 87.843,
-   "end": 88.695,
+   "start": 87.887,
+   "end": 88.739,
    "lines": [
     "reconsidered."
    ],
    "line": "s5j"
   },
   {
-   "start": 88.695,
-   "end": 93.428,
+   "start": 88.739,
+   "end": 93.443,
    "lines": [
-    "Melb turns that into a structured",
+    "Spud turns that into a structured",
     "comment, original Chinese plus English,"
    ],
    "line": "s5d"
   },
   {
-   "start": 93.428,
-   "end": 98.835,
+   "start": 93.443,
+   "end": 98.818,
    "lines": [
     "names the responsible department, and",
     "lets Jason review and edit before sending."
@@ -761,24 +761,24 @@
    "line": "s5d"
   },
   {
-   "start": 98.835,
-   "end": 100.171,
+   "start": 98.818,
+   "end": 100.154,
    "lines": [
     "No audio is stored."
    ],
    "line": "s5e"
   },
   {
-   "start": 101.071,
-   "end": 103.681,
+   "start": 101.054,
+   "end": 103.664,
    "lines": [
     "Jason taps his phone on the NFC pad."
    ],
    "line": "s6a"
   },
   {
-   "start": 103.681,
-   "end": 108.047,
+   "start": 103.664,
+   "end": 108.03,
    "lines": [
     "The issue and his comment move to the",
     "HearHere app, and the post keeps nothing."
@@ -786,8 +786,8 @@
    "line": "s6b"
   },
   {
-   "start": 108.047,
-   "end": 110.82,
+   "start": 108.03,
+   "end": 110.803,
    "lines": [
     "Tracking begins only",
     "because Jason chose it."
@@ -795,8 +795,8 @@
    "line": "s6c"
   },
   {
-   "start": 110.82,
-   "end": 113.563,
+   "start": 110.803,
+   "end": 113.546,
    "lines": [
     "The app shows each stage:",
     "Received, In review,"
@@ -804,8 +804,8 @@
    "line": "s6d"
   },
   {
-   "start": 113.563,
-   "end": 117.301,
+   "start": 113.546,
+   "end": 117.284,
    "lines": [
     "then an outcome with a case",
     "number, or reasons if declined."
@@ -813,24 +813,24 @@
    "line": "s6d"
   },
   {
-   "start": 117.301,
-   "end": 119.337,
+   "start": 117.284,
+   "end": 119.32,
    "lines": [
     "Notifications keep him updated."
    ],
    "line": "s6e"
   },
   {
-   "start": 120.037,
-   "end": 121.403,
+   "start": 120.02,
+   "end": 121.386,
    "lines": [
     "Not sure who to ask?"
    ],
    "line": "s7a"
   },
   {
-   "start": 121.403,
-   "end": 125.753,
+   "start": 121.386,
+   "end": 125.736,
    "lines": [
     "The Q&A assistant answers from",
     "official documents, cites its sources,"
@@ -838,8 +838,8 @@
    "line": "s7b"
   },
   {
-   "start": 125.753,
-   "end": 129.189,
+   "start": 125.736,
+   "end": 129.172,
    "lines": [
     "and hands over to a named",
     "contact when it's unsure."
@@ -847,8 +847,8 @@
    "line": "s7b"
   },
   {
-   "start": 129.189,
-   "end": 133.479,
+   "start": 129.172,
+   "end": 133.462,
    "lines": [
     "And one tap shares a card on Instagram,",
     "so Jason's neighbours can join in."
@@ -856,8 +856,8 @@
    "line": "s7c"
   },
   {
-   "start": 134.179,
-   "end": 138.191,
+   "start": 134.162,
+   "end": 138.174,
    "lines": [
     "For Jason, that means finding",
     "relevant issues on his everyday route,"
@@ -865,8 +865,8 @@
    "line": "s8a"
   },
   {
-   "start": 138.191,
-   "end": 142.616,
+   "start": 138.174,
+   "end": 142.599,
    "lines": [
     "understanding them in his own language,",
     "knowing which department hears him,"
@@ -874,32 +874,32 @@
    "line": "s8a"
   },
   {
-   "start": 142.616,
-   "end": 144.547,
+   "start": 142.599,
+   "end": 144.53,
    "lines": [
     "and seeing what happens next."
    ],
    "line": "s8a"
   },
   {
-   "start": 144.547,
-   "end": 146.014,
+   "start": 144.53,
+   "end": 145.997,
    "lines": [
     "All without attending a meeting."
    ],
    "line": "s8b"
   },
   {
-   "start": 146.714,
-   "end": 148.117,
+   "start": 146.697,
+   "end": 148.1,
    "lines": [
     "HearHere has limits."
    ],
    "line": "s9a"
   },
   {
-   "start": 148.117,
-   "end": 151.832,
+   "start": 148.1,
+   "end": 151.815,
    "lines": [
     "Speaking in public may feel",
     "exposing, AI can mistranslate,"
@@ -907,8 +907,8 @@
    "line": "s9b"
   },
   {
-   "start": 151.832,
-   "end": 155.062,
+   "start": 151.815,
+   "end": 155.045,
    "lines": [
     "and our fieldwork didn't",
     "include council staff."
@@ -916,8 +916,8 @@
    "line": "s9b"
   },
   {
-   "start": 155.062,
-   "end": 159.422,
+   "start": 155.045,
+   "end": 159.405,
    "lines": [
     "Next, we'll test a low-fidelity prototype",
     "with residents across languages,"
@@ -925,8 +925,8 @@
    "line": "s9c"
   },
   {
-   "start": 159.422,
-   "end": 162.78,
+   "start": 159.405,
+   "end": 162.763,
    "lines": [
     "and check whether they trust",
     "and correct the AI's output."
@@ -934,8 +934,8 @@
    "line": "s9c"
   },
   {
-   "start": 163.48,
-   "end": 167.313,
+   "start": 163.463,
+   "end": 167.296,
    "lines": [
     "HearHere, with Spud: the Street",
     "Post for Understanding Decisions."
@@ -943,8 +943,8 @@
    "line": "s10a"
   },
   {
-   "start": 167.313,
-   "end": 168.405,
+   "start": 167.296,
+   "end": 168.388,
    "lines": [
     "Speak here. Be heard!"
    ],
@@ -1018,99 +1018,99 @@
   },
   {
    "name": "pop",
-   "t": 88.795
+   "t": 88.839
   },
   {
    "name": "tap",
-   "t": 99.035
+   "t": 99.018
   },
   {
    "name": "tap",
-   "t": 102.321
+   "t": 102.304
   },
   {
    "name": "chime",
-   "t": 102.371
+   "t": 102.354
   },
   {
    "name": "whoosh",
-   "t": 108.047
+   "t": 108.03
   },
   {
    "name": "tap",
-   "t": 108.947
+   "t": 108.93
   },
   {
    "name": "pop",
-   "t": 111.72
+   "t": 111.703
   },
   {
    "name": "pop",
-   "t": 113.42
+   "t": 113.403
   },
   {
    "name": "pop",
-   "t": 115.22
+   "t": 115.203
   },
   {
    "name": "chime",
-   "t": 117.451
+   "t": 117.434
   },
   {
    "name": "whoosh",
-   "t": 119.637
+   "t": 119.62
   },
   {
    "name": "pop",
-   "t": 122.903
+   "t": 122.886
   },
   {
    "name": "chirp",
-   "t": 121.803
+   "t": 121.786
   },
   {
    "name": "tap",
-   "t": 130.289
+   "t": 130.272
   },
   {
    "name": "chime",
-   "t": 130.389
+   "t": 130.372
   },
   {
    "name": "whoosh",
-   "t": 132.589
+   "t": 132.572
   },
   {
    "name": "whoosh",
-   "t": 133.779
+   "t": 133.762
   },
   {
    "name": "pop",
-   "t": 134.479
+   "t": 134.462
   },
   {
    "name": "pop",
-   "t": 137.479
+   "t": 137.462
   },
   {
    "name": "pop",
-   "t": 140.179
+   "t": 140.162
   },
   {
    "name": "pop",
-   "t": 142.779
+   "t": 142.762
   },
   {
    "name": "whoosh",
-   "t": 146.314
+   "t": 146.297
   },
   {
    "name": "whoosh",
-   "t": 163.08
+   "t": 163.063
   },
   {
    "name": "chirp",
-   "t": 167.613
+   "t": 167.596
   }
  ]
 }
