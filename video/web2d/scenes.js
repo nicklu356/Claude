@@ -81,36 +81,19 @@ const tapAt = (e, t, a) => { // tap ripple
   e.style.transform = `scale(${0.6 + 0.9 * p})`;
 };
 
-// ---------------------------------------------------------------- reusable street world
-function streetWorld(opt = {}) {
-  const w = opt.width || 4200, gy = opt.groundY || 880, dusk = !!opt.dusk;
-  const root = g();
-  root.appendChild(svgEl('rect', { x: -2000, y: -1500, width: w + 4000, height: 4000, fill: dusk ? 'url(#gDusk)' : 'url(#gSky)' }));
-  const far = A.skyline(w + 1200, 3, dusk ? '#6E4A7E' : '#BBD6E8');
-  const farG = g(); place(far, -600, gy - 60); farG.appendChild(far);
-  const sun = g(dusk ? `<circle cx="1500" cy="${gy - 300}" r="120" fill="#FFC36B" opacity=".9"/>` :
-    `<circle cx="1650" cy="160" r="70" fill="#FFF6C9"/><g fill="#fff" opacity=".9"><ellipse cx="420" cy="170" rx="110" ry="34"/><ellipse cx="480" cy="148" rx="70" ry="40"/><ellipse cx="2300" cy="230" rx="130" ry="36"/><ellipse cx="2240" cy="205" rx="70" ry="40"/><ellipse cx="3300" cy="140" rx="110" ry="30"/></g>`);
-  const mid = g();
-  const sh = A.shops(opt.shopsTo || w, opt.seed || 5); place(sh, 0, gy); mid.appendChild(sh);
-  if (opt.park) {
-    const [p0, p1] = opt.park;
-    mid.insertAdjacentHTML('beforeend', `<rect x="${p0}" y="${gy - 500}" width="${p1 - p0}" height="500" fill="${dusk ? '#5C7A5E' : '#A8D8A0'}"/>
-      <g transform="translate(0 ${gy})">${A.tree(p0 + 140, 1.15, '#5DB55F')}${A.tree(p0 + 520, 1.35, '#4FA453')}${A.tree(p0 + 900, 1.1, '#62B866')}${A.tree(p0 + 1250, 1.3, '#4FA453')}</g>`);
-  }
-  const near = g(`<g>${A.ground(w, gy, dusk)}</g>`);
-  if (opt.park) near.insertAdjacentHTML('beforeend', `<g>${A.fence(opt.park[0], opt.park[1], gy)}</g>`);
-  (opt.trees || []).forEach(x => near.insertAdjacentHTML('beforeend', `<g transform="translate(0 ${gy})">${A.tree(x, 0.95, dusk ? '#4E7A52' : '#5DB55F')}</g>`));
-  root.append(sun, farG, mid, near);
-  root.parts = { farG, mid, near, gy };
-  return root;
+// ---------------------------------------------------------------- layout constants
+const BL = 760, FEET = 880, POSTY = 870, PS = 0.85;
+const leashTo = (leash, h, dx, ds) => {
+  const cx = dx + A.DOG_COLLAR.x * ds, cy = FEET + A.DOG_COLLAR.y * ds;
+  leash.setAttribute('d', `M${h.x} ${h.y} Q${(h.x + cx) / 2} ${Math.max(h.y, cy) + 50} ${cx} ${cy}`);
+};
+const toW = (hand, x, s) => ({ x: x + hand.x * s, y: FEET + hand.y * s });
+// frosted street backdrop for the infographic scenes
+function backdrop(svg, seed) {
+  const w = A.streetWorld({ width: 2400, seed, lamps: [520, 1500], trees: [980, 1900] });
+  svg.appendChild(w); return w;
 }
-function parallax(world, c) { tf(world.parts.farG, `translate(${(c.x - 960) * 0.7} ${(c.y - 540) * 0.5})`); }
-// leash between Jason's hand and the dog collar (both world coords)
-function handPos(jx, jy, js, armDeg, shoulderX, flip = 1) {
-  const a = -armDeg * Math.PI / 180;
-  const sx = jx + flip * shoulderX * js, sy = jy - 402 * js;
-  return { x: sx + flip * (-Math.sin(a) * 162 * js), y: sy + Math.cos(a) * 162 * js };
-}
+const frost = (op = 1) => `<div class="abs frost" style="inset:0;opacity:${op}"></div>`;
 
 // ================================================================= SCENES
 export function buildScenes(ctx) {
@@ -164,7 +147,7 @@ export function buildScenes(ctx) {
     out[1] = {
       svg, ui, update(t) {
         const r = easeOut(prog(t, 0.0, 1.3));
-        place(post, 560, gy + 40 + (1 - r) * 560, 1.2);
+        place(post, 560, gy + 40 + (1 - r) * 640, 1.05);
         const hop = Math.max(0, Math.sin(t * 3)) * 0;
         A.posePost(post, { mood: t > L(1, 's1a') - 0.1 && t < L(1, 's1b') + 1.5 ? 'happy' : 'idle', blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 4 + hop, screen: 'idle', look: { x: 6, y: 0 }, tilt: Math.sin(t * 1.3) * 3 });
         show(bubble, t, L(1, 's1a'), { kind: 'pop', out: L(1, 's1b') + 2.2 });
@@ -183,7 +166,8 @@ export function buildScenes(ctx) {
   // ------------------------------------------------------------ 2 Problem
   {
     const { svg, ui } = mk(2);
-    ui.insertAdjacentHTML('beforeend', bgBlobs());
+    const BG = backdrop(svg, 21); A.worldFx(BG, { x: 960, y: 540, z: 1 }, 0, 0);
+    ui.insertAdjacentHTML('beforeend', frost());
     const townHall = `<svg width="420" height="330" viewBox="0 0 420 330">
       <rect x="196" y="6" width="5" height="60" fill="#46506A"/><path d="M201 8 h46 l-10 12 l10 12 h-46z" fill="#F28C28"/>
       <path d="M30 120 L210 50 L390 120z" fill="#7B4B94"/><rect x="40" y="120" width="340" height="22" fill="#5A3370"/>
@@ -238,7 +222,7 @@ export function buildScenes(ctx) {
     ui.append(h, hall, ...topics, stats, stamp, ...prob, split);
     out[2] = {
       svg, ui, update(t) {
-        animBlobs(ui, t);
+        A.worldFx(BG, { x: 960, y: 540, z: 1 }, t, 0);
         const a = L(2, 's2a'), b = L(2, 's2b'), c = L(2, 's2c'), f = L(2, 's2f');
         show(h, t, a, { kind: 'down', out: c - 0.3 });
         show(hall, t, a + 0.1, { kind: 'pop', out: c - 0.3 });
@@ -257,14 +241,14 @@ export function buildScenes(ctx) {
   // ------------------------------------------------------------ 3 Persona
   {
     const { svg, ui } = mk(3);
-    const world = streetWorld({ width: 2400, shopsTo: 1000, park: [1000, 2400], seed: 9 });
+    const world = A.streetWorld({ width: 2400, shopsTo: 1000, park: [1000, 2400], seed: 9, lamps: [120, 860], bins: [300] });
     svg.appendChild(world);
     const sign = g(`<rect x="-6" y="-210" width="12" height="210" fill="#46506A"/>
       <rect x="-130" y="-330" width="260" height="140" rx="16" fill="#fff" stroke="#2E7D32" stroke-width="8"/>
       <text x="0" y="-292" font-family="Nunito" font-weight="900" font-size="22" fill="#E0544B" text-anchor="middle" letter-spacing="2">NEW PARK RULE</text>
       <text x="0" y="-255" font-family="'Baloo 2', Nunito" font-weight="800" font-size="30" fill="#1F2A44" text-anchor="middle">Dogs on leash</text>
       <text x="0" y="-222" font-family="Nunito" font-weight="800" font-size="22" fill="#46506A" text-anchor="middle">7 am – 7 pm weekdays</text>`);
-    place(sign, 1150, 880); world.appendChild(sign);
+    place(sign, 1150, BL + 4); world.appendChild(sign);
     const leash = svgEl('path', { stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
     const dog = A.dog(), jas = A.jason();
     world.append(leash, dog, jas);
@@ -278,22 +262,20 @@ export function buildScenes(ctx) {
     const th = el(`<div class="thought" style="left:300px;top:170px;text-align:center">
       <div class="zh" style="font:900 34px 'Noto Sans TC'">${ZH.who}<span style="font:800 26px Nunito;color:var(--navy-2)"> Who do I tell?</span></div>
       <div class="zh" style="font:900 34px 'Noto Sans TC';margin-top:6px">${ZH.words}<span style="font:800 26px Nunito;color:var(--navy-2)"> Which words?</span></div></div>`);
-    const dots = el(`<div class="abs" style="left:560px;top:330px"><div style="position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(31,42,68,.15)"></div><div style="position:absolute;left:30px;top:50px;width:20px;height:20px;border-radius:50%;background:#fff"></div></div>`);
+    const dots = el(`<div class="abs" style="left:440px;top:300px"><div style="position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(31,42,68,.15)"></div><div style="position:absolute;left:30px;top:50px;width:20px;height:20px;border-radius:50%;background:#fff"></div></div>`);
     ui.append(card, th, dots);
     out[3] = {
       svg, ui, update(t) {
-        const c = { x: 960, y: 540, z: 1 }; cam(world, c.x, c.y, c.z); parallax(world, c);
+        const c = { x: 960, y: 540, z: 1 }; cam(world, c.x, c.y, c.z); A.worldFx(world, c, t, 0);
         const wk = clamp(t / 2.2), jx = lerp(-200, 560, easeOut(wk)), walking = wk < 1;
         const ph = t * 1.6;
         const look = t > L(3, 's3c') + 0.4 ? -4 : 0;
-        A.poseJason(jas, { walk: walking ? ph : null, mouth: t > L(3, 's3c') ? 'worried' : 'neutral', blink: blink(t, 3.4), armF: walking ? null : 20, look });
-        place(jas, jx, 880, 0.9);
+        const hands = A.poseJason(jas, { walk: walking ? ph : null, mouth: t > L(3, 's3c') ? 'worried' : 'neutral', blink: blink(t, 3.4), armF: walking ? null : 16, elbowF: walking ? null : 30, look });
+        place(jas, jx, FEET, 0.9);
         const dx = jx + 250;
         A.poseDog(dog, { walk: walking ? ph * 1.3 : null, t, look: walking ? 0 : Math.sin(t * 2) * 4 });
-        place(dog, dx, 880, 0.75);
-        const hp = handPos(jx, 880, 0.9, walking ? -22 * Math.sin(ph * Math.PI * 2) : 20, 62);
-        const cx = dx + A.DOG_COLLAR.x * 0.75, cy = 880 + A.DOG_COLLAR.y * 0.75;
-        leash.setAttribute('d', `M${hp.x} ${hp.y} Q${(hp.x + cx) / 2} ${Math.max(hp.y, cy) + 50} ${cx} ${cy}`);
+        place(dog, dx, FEET, 0.75);
+        leashTo(leash, toW(hands.F, jx, 0.9), dx, 0.75);
         show(card, t, L(3, 's3a') + 0.2, { kind: 'right', out: L(3, 's3c') + 0.2 });
         show($(card, '.b0'), t, L(3, 's3b') + 1.6, { kind: 'left' });
         show($(card, '.b1'), t, L(3, 's3b') + 2.4, { kind: 'left' });
@@ -307,11 +289,11 @@ export function buildScenes(ctx) {
   }
 
   // ------------------------------------------------------------ shared street with the post (scenes 4, 5)
-  const POSTX = 2600, GY = 880;
-  const SIDE = { x: 2964, y: 480, z: 1.1 };       // composition: Jason + post on the left, screen panel on the right
+  const POSTX = 2600;
+  const SIDE = { x: 2950, y: 500, z: 1.15 };       // composition: Jason + post on the left, screen panel on the right
   function streetWithPost() {
-    const world = streetWorld({ width: 4200, seed: 5, trees: [700, 1500, 3200, 3800] });
-    const post = A.post(); place(post, POSTX, GY, 1);
+    const world = A.streetWorld({ width: 4200, seed: 5, trees: [700, 1500, 3300, 3900], lamps: [1100, 2000, 3050, 3650], benches: [1750], bins: [2950] });
+    const post = A.post(); place(post, POSTX, POSTY, PS);
     const leash = svgEl('path', { stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
     const dog = A.dog(), jas = A.jason();
     world.append(post, leash, dog, jas);
@@ -319,14 +301,12 @@ export function buildScenes(ctx) {
   }
   function poseWalkers(W, t, jx, walking, opt = {}) {
     const ph = t * 1.6;
-    A.poseJason(W.jas, { walk: walking ? ph : null, blink: blink(t, 3.4), armF: opt.armF ?? (walking ? null : 6), armB: walking ? null : -6, mouth: opt.mouth, talk: opt.talk, look: opt.look || 0, phone: opt.phone || 0 });
-    place(W.jas, jx, GY, 1);
-    const dx = jx - 260;
+    const hands = A.poseJason(W.jas, { walk: walking ? ph : null, blink: blink(t, 3.4), armF: opt.armF ?? null, elbowF: opt.elbowF ?? null, mouth: opt.mouth, talk: opt.talk, look: opt.look || 0, phone: opt.phone || 0 });
+    place(W.jas, jx, FEET, 1);
+    const dx = jx - 270;
     A.poseDog(W.dog, { walk: walking ? ph * 1.3 : null, t, look: walking ? 0 : Math.sin(t * 2) * 4 });
-    place(W.dog, dx, GY, 0.8);
-    const hp = handPos(jx, GY, 1, walking ? 22 * Math.sin(ph * Math.PI * 2) : -6, -58);
-    const cx = dx + A.DOG_COLLAR.x * 0.8, cy = GY + A.DOG_COLLAR.y * 0.8;
-    W.leash.setAttribute('d', `M${hp.x} ${hp.y} Q${(hp.x + cx) / 2} ${Math.max(hp.y, cy) + 60} ${cx} ${cy}`);
+    place(W.dog, dx, FEET, 0.8);
+    leashTo(W.leash, toW(hands.B, jx, 1), dx, 0.8);
   }
   // enlarged touchscreen with leader lines from the real screen on the pillar
   const SCR = { x: 820, y: 130, w: 1040, h: 600 };
@@ -354,8 +334,8 @@ export function buildScenes(ctx) {
   }
   const POST = {
     screenRect(c) {
-      const a = toScr(POSTX + A.POST.screen.x, GY + A.POST.screen.y, c);
-      return { x: a.x, y: a.y, w: A.POST.screen.w * c.z, h: A.POST.screen.h * c.z };
+      const a = toScr(POSTX + A.POST.screen.x * PS, POSTY + A.POST.screen.y * PS, c);
+      return { x: a.x, y: a.y, w: A.POST.screen.w * PS * c.z, h: A.POST.screen.h * PS * c.z };
     },
   };
   const issueList = `<div class="pane pl">
@@ -395,18 +375,18 @@ export function buildScenes(ctx) {
         const b = L(4, 's4b'), c = L(4, 's4c');
         const wk = clamp(t / 3.8), jx = lerp(1050, 2300, ease(wk)), walking = wk < 1;
         const walkCam = { x: Math.min(jx + 380, 2700), y: 540, z: 1 };
-        const wrapCam = { x: POSTX + 300, y: GY - 120, z: 2.3 };
-        const headCam = { x: POSTX + 330, y: GY - 400, z: 2.0 };
+        const wrapCam = { x: POSTX + 280, y: POSTY - 150 * PS, z: 2.4 };
+        const headCam = { x: POSTX + 300, y: POSTY - 440 * PS, z: 2.0 };
         let cm = walkCam;
         if (t > b - 0.2) cm = lerpCam(walkCam, wrapCam, ease(prog(t, b - 0.2, 1.1)));
         if (t > c - 0.3) cm = lerpCam(wrapCam, headCam, ease(prog(t, c - 0.3, 1.0)));
         if (t > c + 2.0) cm = lerpCam(headCam, SIDE, ease(prog(t, c + 2.0, 1.0)));
-        cam(W.world, cm.x, cm.y, cm.z); parallax(W.world, cm);
+        cam(W.world, cm.x, cm.y, cm.z); A.worldFx(W.world, cm, t, Math.max(0, (cm.z - 1.2) * 3.2));
         poseWalkers(W, t, jx, walking, { look: t > c ? -3 : 0, mouth: t > c + 0.3 ? 'smile' : 'neutral' });
         const scroll = t > b ? -((t - b) * 45) % 212 : 0;
         A.posePost(W.post, { mood: t > c + 0.1 && t < c + 2.6 ? 'happy' : 'idle', blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 3, screen: t > c + 2.2 ? 'list' : 'idle', look: { x: -8, y: 2 }, posters: scroll });
         show(badge, t, b + 1.2, { kind: 'right', out: c - 0.3 });
-        const hp = toScr(POSTX + 60, GY - 500, cm);
+        const hp = toScr(POSTX + 60 * PS, POSTY - 520 * PS, cm);
         bub.style.left = `${hp.x + 20}px`; bub.style.top = `${hp.y - 90}px`;
         show(bub, t, c + 0.15, { kind: 'pop', out: c + 2.2 });
         panel.set(t, c + 2.4, cm);
@@ -463,10 +443,10 @@ export function buildScenes(ctx) {
     out[5] = {
       svg, ui, update(t) {
         const a = L(5, 's5a'), b = L(5, 's5b'), c = L(5, 's5c'), j = L(5, 's5j'), je = LE(5, 's5j'), d = L(5, 's5d'), e = L(5, 's5e');
-        cam(W.world, SIDE.x, SIDE.y, SIDE.z); parallax(W.world, SIDE);
+        cam(W.world, SIDE.x, SIDE.y, SIDE.z); A.worldFx(W.world, SIDE, t, 0);
         const tapping = (t > a + 0.2 && t < a + 1.2) || (t > c + 0.2 && t < c + 1.1) || (t > d + 7.6 && t < d + 8.6);
         const talking = t > j && t < je;
-        poseWalkers(W, t, 2300, false, { armF: tapping ? 75 : 6, mouth: talking ? 'talk' : 'smile', talk: talking ? Math.abs(Math.sin(t * 13)) * (0.6 + 0.4 * Math.sin(t * 5)) : 0, look: -3 });
+        poseWalkers(W, t, 2300, false, { armF: tapping ? 62 : null, elbowF: tapping ? 8 : null, mouth: talking ? 'talk' : 'smile', talk: talking ? Math.abs(Math.sin(t * 13)) * (0.6 + 0.4 * Math.sin(t * 5)) : 0, look: -3 });
         A.posePost(W.post, { mood: t > c && t < je + 0.2 ? 'listen' : (t > d && t < d + 2 ? 'happy' : 'idle'), t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 3, screen: 'list', look: { x: -8, y: 2 } });
         panel.set(t, -1, SIDE);
         // panes
@@ -489,8 +469,8 @@ export function buildScenes(ctx) {
   {
     const { svg, ui } = mk(6);
     const W = streetWithPost(); svg.appendChild(W.world);
-    const NCAM = { x: POSTX + 60, y: GY - 200, z: 2.5 };
-    const back = el(`<div class="abs" style="inset:0;opacity:0">${bgBlobs()}</div>`);
+    const NCAM = { x: POSTX + 60, y: POSTY - 300 * PS, z: 2.6 };
+    const back = el(frost(0));
     const phone = el(`<div class="phone" style="left:0;top:0">
       <div class="ps"><div class="notch"></div>
         <div class="app-h"><span style="width:60px;height:60px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(50, 'happy')}</span><div><div class="n">Hi Melb</div><div class="s">My issues</div></div></div>
@@ -524,14 +504,14 @@ export function buildScenes(ctx) {
       svg, ui, update(t) {
         const a = L(6, 's6a'), b = L(6, 's6b'), c = L(6, 's6c'), d = L(6, 's6d'), e = L(6, 's6e');
         const cm = lerpCam(SIDE, NCAM, ease(prog(t, 0, 1.0)));
-        cam(W.world, cm.x, cm.y, cm.z); parallax(W.world, cm);
+        cam(W.world, cm.x, cm.y, cm.z); A.worldFx(W.world, cm, t, Math.max(0, (cm.z - 1.2) * 3.2));
         poseWalkers(W, t, 2300, false, { mouth: 'smile', look: -3 });
         const tapT = a + 1.25;
         A.posePost(W.post, { mood: t > tapT && t < b + 2 ? 'happy' : 'idle', blink: blink(t, 3.1), screen: t > b + 0.5 ? 'ok' : 'list', glow: t > tapT ? 0.6 * (1 - prog(t, tapT, 1.2)) : 0 });
         // phone: flies to the NFC pad, taps, then moves to the left for the tracker
-        const nfc = toScr(POSTX + A.POST.nfc.x, GY + A.POST.nfc.y, cm);
+        const nfc = toScr(POSTX + A.POST.nfc.x * PS, POSTY + A.POST.nfc.y * PS, cm);
         const k1 = ease(prog(t, a + 0.2, 1.0)), bump = Math.sin(clamp((t - tapT + 0.15) / 0.3) * Math.PI) * 18;
-        const nearX = nfc.x + 70, nearY = nfc.y - 90;
+        const nearX = nfc.x + 60, nearY = nfc.y - 70;
         const k2 = ease(prog(t, c - 0.2, 0.9));
         const px = lerp(lerp(2000, nearX, k1), 300, k2), py = lerp(lerp(500, nearY, k1) + bump, 110, k2);
         const sc = lerp(0.62, 1, k2), rot = lerp(lerp(18, -8, k1), 0, k2);
@@ -540,7 +520,7 @@ export function buildScenes(ctx) {
         phone.style.transformOrigin = '0 0';
         Q('.v0').style.opacity = 1 - prog(t, tapT, 0.3);
         Q('.v1').style.opacity = prog(t, tapT, 0.3);
-        back.style.opacity = ease(prog(t, c - 0.2, 0.8)); animBlobs(back, t);
+        back.style.opacity = ease(prog(t, c - 0.2, 0.8));
         show(nfcTxt, t, b + 0.6, { kind: 'pop', out: c - 0.3 });
         const on = prog(t, c + 0.9, 0.25);
         Q('.tg').style.background = on > 0.5 ? 'var(--green)' : '#CFD3DC'; Q('.kn').style.left = `${4 + 34 * on}px`;
@@ -563,7 +543,8 @@ export function buildScenes(ctx) {
   // ------------------------------------------------------------ 7 Q&A & share
   {
     const { svg, ui } = mk(7);
-    ui.insertAdjacentHTML('beforeend', bgBlobs());
+    const BG = backdrop(svg, 27); A.worldFx(BG, { x: 960, y: 540, z: 1 }, 0, 0);
+    ui.insertAdjacentHTML('beforeend', frost());
     const phone = el(`<div class="phone" style="left:300px;top:110px">
       <div class="ps"><div class="notch"></div>
         <div class="app-h"><span style="width:60px;height:60px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(50)}</span><div><div class="n">Ask Melb</div><div class="s">Q&amp;A assistant · official sources</div></div></div>
@@ -592,7 +573,7 @@ export function buildScenes(ctx) {
     ui.append(phone, feats, share);
     out[7] = {
       svg, ui, update(t) {
-        animBlobs(ui, t);
+        A.worldFx(BG, { x: 960, y: 540, z: 1 }, t, 0);
         const a = L(7, 's7a'), b = L(7, 's7b'), c = L(7, 's7c');
         show(phone, t, a - 0.3, { kind: 'up' });
         show($(phone, '.m0'), t, a + 0.3, { kind: 'pop' });
@@ -610,7 +591,8 @@ export function buildScenes(ctx) {
   // ------------------------------------------------------------ 8 Benefits
   {
     const { svg, ui } = mk(8);
-    ui.insertAdjacentHTML('beforeend', bgBlobs());
+    const BG = backdrop(svg, 33); A.worldFx(BG, { x: 960, y: 540, z: 1 }, 0, 0);
+    ui.insertAdjacentHTML('beforeend', frost());
     const h = el(`<div class="abs h1" style="left:0;right:0;top:90px;text-align:center">What POTATO means for Jason</div>`);
     const cards = [['pin', 'Finds relevant issues on his everyday route', C.green, ['R2 Relevance', 'R3 Visibility']], ['translate', 'Understands them in his own language', C.orange, ['R1 Multilingual']],
       ['building', 'Knows which department hears him', C.purple, ['R4 Q&A support']], ['steps', 'Sees what happens next', '#3A63D1', ['R5 Trackable']]]
@@ -625,7 +607,7 @@ export function buildScenes(ctx) {
     ui.append(h, ...cards, strip, foot);
     out[8] = {
       svg, ui, update(t) {
-        animBlobs(ui, t);
+        A.worldFx(BG, { x: 960, y: 540, z: 1 }, t, 0);
         const a = L(8, 's8a'), b = L(8, 's8b');
         show(h, t, a - 0.2, { kind: 'down' });
         [0.3, 3.3, 6.0, 8.6].forEach((o, i) => show(cards[i], t, a + o, { kind: 'pop' }));
@@ -639,7 +621,8 @@ export function buildScenes(ctx) {
   // ------------------------------------------------------------ 9 Limits & next steps
   {
     const { svg, ui } = mk(9);
-    ui.insertAdjacentHTML('beforeend', bgBlobs());
+    const BG = backdrop(svg, 41); A.worldFx(BG, { x: 960, y: 540, z: 1 }, 0, 0);
+    ui.insertAdjacentHTML('beforeend', frost());
     const lim = el(`<div class="abs card" style="left:120px;top:110px;width:800px;padding:34px 38px">
       <div class="k" style="color:var(--red)">Honest limitations</div><div class="h2">POTATO has limits</div>
       ${[['mic', 'Speaking in public may feel exposing', 'Typed input as an alternative'], ['translate', 'AI can mistranslate', 'Review & edit before sending'], ['people', 'No council staff in our fieldwork', 'Consult council before launch']].map(([i, s, m], n) => `
@@ -653,7 +636,7 @@ export function buildScenes(ctx) {
     ui.append(lim, nx);
     out[9] = {
       svg, ui, update(t) {
-        animBlobs(ui, t);
+        A.worldFx(BG, { x: 960, y: 540, z: 1 }, t, 0);
         const a = L(9, 's9a'), b = L(9, 's9b'), c = L(9, 's9c');
         show(lim, t, a - 0.2, { kind: 'left' });
         [0.2, 2.3, 4.0].forEach((o, i) => show($(lim, '.l' + i), t, b + o, { kind: 'up', dist: 20 }));
@@ -666,13 +649,14 @@ export function buildScenes(ctx) {
   // ------------------------------------------------------------ 10 Tagline
   {
     const { svg, ui } = mk(10);
-    const world = streetWorld({ width: 2400, dusk: true, seed: 11, trees: [300, 1900] });
+    const world = A.streetWorld({ width: 2400, dusk: true, seed: 11, trees: [300, 2000], lamps: [760, 1720], bins: [560] });
     svg.appendChild(world);
-    const post = A.post(); place(post, 1450, 880, 1.15);
+    const post = A.post(); place(post, 1450, POSTY, PS * 1.05);
     const leash = svgEl('path', { stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
     const dog = A.dog(), jas = A.jason();
     world.append(post, leash, dog, jas);
     world.insertAdjacentHTML('beforeend', '<rect x="-200" y="-200" width="2400" height="1400" fill="#1F2A44" opacity=".18"/>');
+    ui.insertAdjacentHTML('beforeend', '<div class="abs" style="inset:0;background:linear-gradient(90deg, rgba(30,22,58,.78) 0%, rgba(30,22,58,.55) 38%, rgba(30,22,58,0) 62%)"></div>');
     const title = el(`<div class="abs" style="left:110px;top:150px;width:900px">
       <div class="word" style="font:800 180px/1 'Baloo 2';color:#fff;letter-spacing:4px;text-shadow:0 8px 0 rgba(0,0,0,.18)">POTATO</div>
       <div class="full" style="font:800 34px Nunito;color:#FFE6CC;margin-top:8px">Public Opinion Translation And Tracking Outpost</div>
@@ -686,15 +670,14 @@ export function buildScenes(ctx) {
     out[10] = {
       svg, ui, update(t) {
         const a = L(10, 's10a'), b = L(10, 's10b');
-        const c = { x: 960 + t * 8, y: 540, z: 1 }; cam(world, c.x, c.y, c.z); parallax(world, c);
+        const c = { x: 960 + t * 8, y: 540, z: 1 }; cam(world, c.x, c.y, c.z); A.worldFx(world, c, t, 0);
         A.posePost(post, { mood: t > b ? 'happy' : 'idle', blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 4, screen: 'idle', glow: 0.9, look: { x: -6, y: 0 } });
         const jx = 1130;
-        A.poseJason(jas, { mouth: 'smile', blink: blink(t, 3.4), armF: t > b ? 150 + 18 * Math.sin(t * 9) : 6 });
-        place(jas, jx, 880, 0.9);
+        const hands = A.poseJason(jas, { mouth: 'smile', blink: blink(t, 3.4), armF: t > b ? 150 : null, elbowF: t > b ? 25 + 22 * Math.sin(t * 9) : null });
+        place(jas, jx, FEET, 0.9);
         A.poseDog(dog, { t, look: Math.sin(t * 2) * 4 });
-        place(dog, jx - 230, 880, 0.75);
-        const hp = handPos(jx, 880, 0.9, -6, -58), cx = jx - 230 + A.DOG_COLLAR.x * 0.75, cy = 880 + A.DOG_COLLAR.y * 0.75;
-        leash.setAttribute('d', `M${hp.x} ${hp.y} Q${(hp.x + cx) / 2} ${Math.max(hp.y, cy) + 50} ${cx} ${cy}`);
+        place(dog, jx - 240, FEET, 0.75);
+        leashTo(leash, toW(hands.B, jx, 0.9), jx - 240, 0.75);
         show($(title, '.word'), t, a - 0.2, { kind: 'pop' });
         show($(title, '.full'), t, a + 0.6, { kind: 'up' });
         show($(title, '.tag2'), t, b, { kind: 'pop' });

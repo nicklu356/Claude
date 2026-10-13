@@ -26,6 +26,16 @@ const lt = document.getElementById('lt');
 const subs = document.querySelector('#subs .bar');
 const wipe = document.getElementById('wipe');
 
+// film grain: one noise tile, jittered per frame
+const grain = document.getElementById('grain');
+{
+  const cv = document.createElement('canvas'); cv.width = cv.height = 256;
+  const gx = cv.getContext('2d'), im = gx.createImageData(256, 256);
+  let sd = 12345; const rnd = () => (sd = (sd * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < im.data.length; i += 4) { const v = 128 + (rnd() - 0.5) * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; }
+  gx.putImageData(im, 0, 0);
+  grain.style.backgroundImage = `url(${cv.toDataURL()})`;
+}
 let current = null;
 function renderAt(t) {
   const S = TL.scenes.find((s) => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1];
@@ -36,6 +46,7 @@ function renderAt(t) {
     current = S.id;
   }
   sc.update(t - S.start, t);
+  const f = Math.round(t * 30); grain.style.transform = `translate(${(f * 37) % 64}px, ${(f * 53) % 64}px)`;
 
   // feature label
   const it = LT.find((x) => t >= x.a && t < x.b);
