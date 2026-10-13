@@ -9,18 +9,23 @@
 
 | Time | Scene | What's on screen | Photo to put behind it | Camera |
 |---|---|---|---|---|
-| 0:00 – 0:20 | 1 Title | HearHere post + Spud on the left, title on the right | A Melbourne footpath, e.g. outside a library or a street near campus | Static |
-| 0:20 – 0:44 | 2 Problem | Cards only (no characters) | Any city shot, **blurred** so the cards stay readable | Static |
-| 0:44 – 0:56 | 3 Persona | Jason + dog walk in from the left; park sign on the right | A footpath beside a park fence | Static |
-| 0:56 – 1:00 | 4 Discover (walk) | Jason walks right; the post enters from the right | A wide shopping-street footpath (a panorama is best) | **Pans right with Jason** (~1,250 px over 3.8 s). Slide the photo left at the same speed, or use a still panorama. |
-| 1:00 – 1:06 | 4 Pillar close-up | Pillar's notice display, 2.4× zoom | Same street, zoomed in or blurred | Quick zoom in (~1 s) |
-| 1:06 – 1:08 | 4 Spud says hi | Spud's head, 2× zoom | Same street, blurred | Moves up to the head |
-| 1:08 – 1:41 | 4 end → 5 | Jason + post on the left, big screen UI on the right | Same street, normal framing | Pulls back (1:08–1:09), then **static** |
-| 1:41 – 1:48 | 6 NFC | Close-up of the console and NFC pad, phone tapping | Same street, blurred | Zooms in (1:41–1:42) |
-| 1:48 – 2:00 | 6 Tracker | Phone app + outcome cards | Blurred city | Static |
-| 2:00 – 2:14 | 7 Q&A + share | Phone chat + share card | Blurred city | Static |
-| 2:14 – 2:43 | 8–9 | Benefits, limits, next steps cards | Blurred city | Static |
-| 2:43 – 2:51 | 10 Ending | Title on the left; Jason waves, Spud speaks | Footpath at dusk / golden hour | Static |
+| 0:00 – 0:11 | 1 Title | HearHere post + Spud on the left, title on the right | A Melbourne footpath, e.g. outside a library or a street near campus | Static |
+| 0:11 – 0:35 | 2 Problem | Cards only (no characters) | Any city shot, **blurred** so the cards stay readable | Static |
+| 0:35 – 0:37 | 3 Persona card | Large persona card, centred (holds ~2.5 s) | Blurred footpath beside a park | Static |
+| 0:37 – 0:50 | 3 Persona | Card docks top-right; Jason + dog walk in; fictional park sign | A footpath beside a park fence | Static |
+| 0:50 – 0:54 | 4 Discover (walk) | "Saturday · 8:00 am"; Jason walks right; the post enters | A wide shopping-street footpath, morning light (a panorama is best) | **Pans right with Jason** (~1,250 px over 3.8 s). Slide the photo left at the same speed, or use a still panorama. |
+| 0:54 – 0:58 | 4 Pillar close-up | Pillar's notice display, 2.4× zoom | Same street, zoomed in or blurred | Quick zoom in (~1 s) |
+| 0:58 – 1:00 | 4 Spud says hi | Spud's head, 2× zoom, "I'm all ears!" | Same street, blurred | Moves up to the head |
+| 1:00 – 1:30 | 4 end → 5 | Jason + post on the left, big screen UI on the right | Same street, normal framing | Pulls back (1:00–1:01), then **static** |
+| 1:30 – 1:38 | 6 NFC | Close-up of the console and NFC pad, phone tapping | Same street, blurred | Zooms in (1:30–1:31) |
+| 1:38 – 1:49 | 6 Tracker | Phone app + outcome cards | Blurred city | Static |
+| 1:49 – 1:53 | 11 How it works: product views | Spud from four sides + concept sketches + post | Blurred city | Static |
+| 1:53 – 2:05 | 11 How it works: three channels | Social media + AI agent + app cards (Theme 5) | Blurred city | Static |
+| 2:05 – 2:17 | 7 Q&A + share | Phone chat + share card | Blurred city | Static |
+| 2:17 – 2:44 | 8–9 | Benefits, limits, next steps cards | Blurred city | Static |
+| 2:44 – 2:52 | 10 Ending | Title on the left; Jason waves, Spud speaks | Footpath at dusk / golden hour | Static |
+
+A small "Scenario and park rule are fictional examples" note sits bottom-right through the scenario (scenes 3–7).
 
 ## Names and catchphrases used
 - **HearHere**: the street post (the concept)
