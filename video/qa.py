@@ -54,12 +54,12 @@ say(f"[{ok(not missing)}] Noto Sans TC covers all CJK glyphs (missing: {missing 
 # 6. spelling
 vis = re.sub(r"tts\":\s*\"[^\"]*\"", "", src)
 names = ["Jia-Ying Lee", "1790130", "Xintong FU", "1840227", "Yu-Hao LU", "1781474", "Yen-Chu OU YANG", "1801365",
-         "Public Opinion Translation And Tracking Outpost", "Melb", "Hi Melb", "Team Sweet Potatoes", "Group 14"]
+         "HearHere", "Spud", "Street Post for Understanding Decisions", "Team Sweet Potatoes", "Group 14"]
 miss = [n for n in names if n not in src]
 say(f"[{ok(not miss)}] names / IDs / acronym present (missing: {miss or 'none'})")
 subs = " ".join(" ".join(c["lines"]) for c in tl["cues"])
-wrong = re.findall(r"\b(?:Potato|potato app|Potato post)\b", subs)
-say(f"[{ok(not wrong)}] product name always 'POTATO' in subtitles (lowercase 'sweet potato' is the vegetable)")
+wrong = re.findall(r"\b(?:POTATO|Potato post|Melb)\b", subs)
+say(f"[{ok(not wrong)}] old names (POTATO / Melb) absent from the narration text")
 over = [c for c in tl["cues"] if len(c["lines"]) > 2 or any(len(x) > 42 for x in c["lines"])]
 say(f"[{ok(not over)}] subtitles <= 2 lines x 42 chars ({len(tl['cues'])} cues)")
 

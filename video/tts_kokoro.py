@@ -4,6 +4,7 @@ Run with a Python that has onnxruntime, kokoro-onnx (espeak-ng G2P for English)
 and misaki[zh] (Mandarin G2P):   <venv>/bin/python tts_kokoro.py
   narrator -> af_heart   (Kokoro's highest-rated English voice)
   jason    -> zm_yunxi   (male Mandarin)
+  spud     -> am_puck    (playful voice for the mascot)
 Each clip: silence trimmed, normalised to -16 LUFS, 48 kHz mono WAV, speed 1.0.
 Writes audio/manifest.json.
 """
@@ -17,8 +18,8 @@ from misaki import zh
 ROOT = pathlib.Path(__file__).parent
 MODEL = ROOT / "models" / "kokoro-v1.0.int8.onnx"
 VOICEPACK = ROOT / "models" / "voices-v1.0.bin"
-VOICES = {"narrator": ("af_heart", "en-us"), "jason": ("zm_yunxi", "zh")}
-SPEED = {"narrator": 1.0, "jason": 1.0}
+VOICES = {"narrator": ("af_heart", "en-us"), "jason": ("zm_yunxi", "zh"), "spud": ("am_puck", "en-us")}
+SPEED = {"narrator": 1.0, "jason": 1.0, "spud": 1.08}
 OUT = ROOT / "audio"
 
 kok = Kokoro(str(MODEL), str(VOICEPACK))

@@ -1,10 +1,13 @@
-// Illustrated (semi-realistic, shaded vector) art for the POTATO concept video.
+// Illustrated (semi-realistic, shaded vector) art for the HearHere concept video.
 // Every builder returns an SVG <g>; moving parts are exposed on .parts so the
 // scenes can pose them per frame with plain transform attributes.
+// Green-screen mode: no painted backgrounds or contact shadows, so the team can
+// composite real Melbourne photos behind the characters.
+export const GREEN = '#00B140';
 export const C = {
   purple: '#7B4B94', purpleD: '#5A3370', purpleL: '#EDE3F3', purpleM: '#9C6DB8',
   orange: '#F28C28', orangeD: '#C96A10', orangeL: '#FFE6CC',
-  green: '#4CAF50', greenD: '#2E7D32', greenL: '#E3F2E1',
+  green: '#1E9BB0', greenD: '#16707F', greenL: '#DDF1F5',
   cream: '#FFF4E0', navy: '#1F2A44', navy2: '#46506A', red: '#E0544B',
 };
 
@@ -117,7 +120,7 @@ function armSVG(back) {
   return { root, upper, fore, phone };
 }
 export function jason() {
-  const root = g(`<ellipse cx="8" cy="2" rx="86" ry="13" fill="#141826" opacity=".28" filter="url(#fBlur4)"/>`);
+  const root = g(`${GREEN ? '' : '<ellipse cx="8" cy="2" rx="86" ry="13" fill="#141826" opacity=".28" filter="url(#fBlur4)"/>'}`);
   const LB = legSVG(true), LF = legSVG(false), AB = armSVG(true), AF = armSVG(false);
   const torso = g(`
     <path d="M-44 -490 C -54 -520, 34 -528, 44 -492 C 22 -502, -20 -502, -44 -490 Z" fill="#2E4FB0"/>
@@ -193,7 +196,7 @@ export function poseJason(j, p = {}) {
 
 // ------------------------------------------------------------------ dog (corgi, faces right; origin = ground)
 export function dog() {
-  const root = g(`<ellipse cx="0" cy="2" rx="86" ry="10" fill="#141826" opacity=".25" filter="url(#fBlur4)"/>`);
+  const root = g(`${GREEN ? '' : '<ellipse cx="0" cy="2" rx="86" ry="10" fill="#141826" opacity=".25" filter="url(#fBlur4)"/>'}`);
   const leg = (far) => g(`<path d="M-10 0 C -11 18, -10 32, -9 40 L 9 40 C 10 32, 11 18, 10 0 Z" fill="${far ? '#B86E2C' : 'url(#gFur)'}"/>
     <path d="M-11 34 C -12 44, 14 46, 14 38 L 10 32 L -9 32 Z" fill="${far ? '#E6E1DA' : '#fff'}"/>`);
   const legs = [leg(1), leg(0), leg(1), leg(0)];
@@ -232,15 +235,15 @@ export function poseDog(d, p = {}) {
 }
 export const DOG_COLLAR = { x: 50, y: -110 };
 
-// ------------------------------------------------------------------ POTATO post + mascot "Melb"
+// ------------------------------------------------------------------ HearHere post + mascot "Spud"
 // Origin = ground at the post centre.  Pillar (enamel, wrap-around notices
 // display) -> trapezoid console holding the touchscreen and the NFC pad ->
-// chrome neck -> Melb's head.  ~560 units tall; scenes place it at 0.85.
+// chrome neck -> Spud's head.  ~560 units tall; scenes place it at 0.85.
 export const POST = { screen: { x: -64, y: -386, w: 128, h: 64 }, nfc: { x: 0, y: -295 }, head: { x: 0, y: -470 } };
 export function post() {
   const root = g();
   const glow = svgEl('ellipse', { cx: 0, cy: -300, rx: 280, ry: 320, fill: 'url(#gGlow)', opacity: 0 });
-  const shadow = g(`<ellipse cx="14" cy="4" rx="150" ry="20" fill="#141826" opacity=".32" filter="url(#fBlur4)"/>`);
+  const shadow = g(`${GREEN ? '' : '<ellipse cx="14" cy="4" rx="150" ry="20" fill="#141826" opacity=".32" filter="url(#fBlur4)"/>'}`);
   const body = g(`
     <path d="M-124 -20 v14 a124 22 0 0 0 248 0 v-14z" fill="url(#gGraphite)"/>
     <ellipse cx="0" cy="-20" rx="124" ry="22" fill="#3A4058"/>
@@ -265,14 +268,14 @@ export function post() {
   const screen = g('', { 'clip-path': 'url(#clipScr)' });
   const S = POST.screen, sx = S.x + 6, sy = S.y;
   screen.appendChild(svgEl('rect', { x: S.x, y: S.y, width: S.w, height: S.h, fill: 'url(#gScreen)' }));
-  const scrIdle = g(`<text x="0" y="${sy + 30}" font-family="'Baloo 2', Nunito" font-weight="800" font-size="20" fill="${C.purple}" text-anchor="middle">Hi Melb!</text>
+  const scrIdle = g(`<text x="0" y="${sy + 30}" font-family="'Baloo 2', Nunito" font-weight="800" font-size="20" fill="${C.purple}" text-anchor="middle">HearHere</text>
     <text x="0" y="${sy + 48}" font-family="Nunito" font-weight="800" font-size="9.5" fill="${C.navy2}" text-anchor="middle">Tap to see issues near you</text>`);
-  const scrList = g(`<text x="${sx}" y="${sy + 13}" font-family="'Baloo 2', Nunito" font-weight="800" font-size="11" fill="${C.purple}">Hi Melb!</text>
+  const scrList = g(`<text x="${sx}" y="${sy + 13}" font-family="'Baloo 2', Nunito" font-weight="800" font-size="11" fill="${C.purple}">HearHere</text>
     ${[0, 1, 2].map(i => `<rect x="${sx}" y="${sy + 18 + i * 14}" width="${S.w - 12}" height="11" rx="3" fill="#fff"/>
       <circle cx="${sx + 7}" cy="${sy + 23.5 + i * 14}" r="3.5" fill="${[C.green, C.orange, C.purple][i]}"/>
       <rect x="${sx + 15}" y="${sy + 22 + i * 14}" width="${[74, 60, 52][i]}" height="3.5" rx="1.7" fill="#9AA0B4"/>`).join('')}`);
-  const scrOk = g(`<rect x="${S.x}" y="${S.y}" width="${S.w}" height="${S.h}" fill="#E3F2E1"/>
-    <circle cx="${S.x + 20}" cy="${sy + 32}" r="12" fill="#2E9E4F"/><path d="M${S.x + 15} ${sy + 32} l4 4 l8 -9" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  const scrOk = g(`<rect x="${S.x}" y="${S.y}" width="${S.w}" height="${S.h}" fill="#DDF1F5"/>
+    <circle cx="${S.x + 20}" cy="${sy + 32}" r="12" fill="#1E9BB0"/><path d="M${S.x + 15} ${sy + 32} l4 4 l8 -9" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="${S.x + 38}" y="${sy + 30}" font-family="Nunito" font-weight="900" font-size="11" fill="${C.navy}">Nothing stored</text>
     <text x="${S.x + 38}" y="${sy + 43}" font-family="Nunito" font-weight="800" font-size="9" fill="${C.greenD}">session cleared</text>`, { opacity: 0 });
   screen.append(scrIdle, scrList, scrOk);
@@ -285,7 +288,7 @@ export function post() {
     <text x="${x + 45}" y="-108" font-family="Nunito" font-weight="800" font-size="9" fill="${C.navy2}" text-anchor="middle">${foot}</text></g>`;
   const set = (o) => poster(o - 148, '#FFE6CC', 'LIBRARY', C.orangeD, 'Book club', `<rect x="${o - 130}" y="-176" width="54" height="40" rx="6" fill="#FFC27A"/><rect x="${o - 122}" y="-168" width="10" height="26" fill="#C96A10"/><rect x="${o - 108}" y="-170" width="10" height="28" fill="${C.purple}"/>`, 'Saturday 2 pm')
     + poster(o - 45, '#fff', 'COUNCIL', C.purple, 'Have your say', `<path d="M${o - 20} -132 q20 -34 40 0z" fill="${C.green}"/><rect x="${o - 2}" y="-134" width="4" height="18" fill="#8A5A3B"/>`, 'Park rules · 5 days')
-    + poster(o + 58, '#E3F2E1', 'COMMUNITY', C.greenD, 'Street fest', `<circle cx="${o + 92}" cy="-152" r="14" fill="#FFB0C8"/><circle cx="${o + 116}" cy="-146" r="10" fill="#FFD36E"/><circle cx="${o + 104}" cy="-132" r="8" fill="#9FD3F2"/>`, 'Sunday · free');
+    + poster(o + 58, '#DDF1F5', 'COMMUNITY', C.greenD, 'Street fest', `<circle cx="${o + 92}" cy="-152" r="14" fill="#FFB0C8"/><circle cx="${o + 116}" cy="-146" r="10" fill="#FFD36E"/><circle cx="${o + 104}" cy="-132" r="8" fill="#9FD3F2"/>`, 'Sunday · free');
   const posters = g(set(0) + set(309));
   wrap.appendChild(posters);
   const wrapRefl = svgEl('path', { d: 'M-70 -236 L -40 -236 L -78 -80 L -98 -84 L -98 -150z', fill: '#fff', opacity: .12 });
@@ -308,12 +311,14 @@ export function post() {
   const happyR = happyL.cloneNode();
   const grille = g(`<circle cx="0" cy="0" r="20" fill="#2E1A3D"/><circle cx="0" cy="0" r="20" fill="none" stroke="#C9B3DD" stroke-width="2.5"/>${[-10, -3, 4, 11].map(x => `<rect x="${x - 1.5}" y="-12" width="3" height="24" rx="1.5" fill="#B79CCB"/>`).join('')}`);
   const cheek = g(`<ellipse cx="-46" cy="46" rx="11" ry="6" fill="#F4B6D2" opacity=".7"/><ellipse cx="46" cy="46" rx="11" ry="6" fill="#F4B6D2" opacity=".7"/>`);
-  const eyesG = g(); eyesG.append(eyeL, eyeR, happyL, happyR);
+  // LED mouth in the visor, only lit while Spud speaks
+  const mouth = svgEl('path', { d: 'M-12 20 q12 4 24 0', stroke: '#8FF0FF', 'stroke-width': 4, fill: '#8FF0FF', 'fill-opacity': .35, 'stroke-linecap': 'round', opacity: 0, filter: 'url(#fGlow)' });
+  const eyesG = g(); eyesG.append(eyeL, eyeR, happyL, happyR, mouth);
   const headG = g(); headG.append(ears, shell, cheek, visor, eyesG);
   const grilleG = g(); grilleG.appendChild(grille); headG.appendChild(grilleG);
 
   root.append(scrClip, wrapClip, glow, shadow, body, wrap, wrapRefl, pillarShine, screen, headG);
-  root.parts = { glow, headG, eyeL, eyeR, happyL, happyR, grilleG, scrIdle, scrList, scrOk, posters };
+  root.parts = { glow, headG, eyeL, eyeR, happyL, happyR, mouth, grilleG, scrIdle, scrList, scrOk, posters };
   return root;
 }
 export function posePost(p, o = {}) {
@@ -326,7 +331,10 @@ export function posePost(p, o = {}) {
   P.eyeL.setAttribute('opacity', 1 - happy); P.eyeR.setAttribute('opacity', 1 - happy);
   P.happyL.setAttribute('opacity', happy); P.happyR.setAttribute('opacity', happy);
   tf(P.happyL, `translate(${-24 + lx} ${ly})`); tf(P.happyR, `translate(${24 + lx} ${ly})`);
-  const ls = o.mood === 'listen' ? 1 + 0.1 * Math.sin((o.t || 0) * 18) : 1;
+  const k = o.talk || 0;
+  P.mouth.setAttribute('opacity', k > 0 ? 1 : 0);
+  if (k > 0) P.mouth.setAttribute('d', `M${-12 + lx} 19 q12 ${3 + 12 * k} 24 0 q-12 ${-2 - 3 * k} -24 0z`);
+  const ls = o.mood === 'listen' || k > 0 ? 1 + 0.1 * Math.sin((o.t || 0) * 18) : 1;
   tf(P.grilleG, `translate(72 30) scale(${0.8 * ls})`);
   P.glow.setAttribute('opacity', o.glow || 0);
   const s = o.screen || 'idle';
@@ -358,7 +366,7 @@ const FACADES = [
   { wall: '#C9D6C3', trim: '#F4F1E6', acc: '#B5872A', name: 'BAKERY' },
   { wall: '#D8C2B2', trim: '#FBF2E6', acc: '#3A63D1', name: 'PHARMACY' },
   { wall: '#E5CFA8', trim: '#FFF5DF', acc: '#C0453A', name: 'NOODLES' },
-  { wall: '#BFCAD6', trim: '#F2F4F7', acc: '#2E7D32', name: 'GROCER' },
+  { wall: '#BFCAD6', trim: '#F2F4F7', acc: '#16707F', name: 'GROCER' },
 ];
 // Victorian-era two-storey shopfronts, typical of Melbourne high streets
 export function terraces(w, seed, dusk) {
@@ -394,7 +402,7 @@ export function terraces(w, seed, dusk) {
       <rect x="22" y="-142" width="${bw * 0.56}" height="142" fill="${glass}"/>
       <g opacity="${dusk ? 0.9 : 0.75}">
         <rect x="34" y="-60" width="${bw * 0.56 - 24}" height="8" fill="#6E5A4A"/>
-        ${Array.from({ length: 5 }, (_, k) => `<rect x="${40 + k * (bw * 0.1)}" y="${-60 - 18 - (k % 3) * 8}" width="${bw * 0.07}" height="${18 + (k % 3) * 8}" rx="3" fill="${['#F28C28', '#4CAF50', '#E0544B', '#7B4B94', '#F2C14E'][k]}"/>`).join('')}
+        ${Array.from({ length: 5 }, (_, k) => `<rect x="${40 + k * (bw * 0.1)}" y="${-60 - 18 - (k % 3) * 8}" width="${bw * 0.07}" height="${18 + (k % 3) * 8}" rx="3" fill="${['#F28C28', '#1E9BB0', '#E0544B', '#7B4B94', '#F2C14E'][k]}"/>`).join('')}
         <rect x="34" y="-110" width="${bw * 0.56 - 24}" height="6" fill="#6E5A4A"/>
       </g>
       <path d="M30 -10 L ${30 + bw * 0.22} -142 L ${30 + bw * 0.3} -142 L ${30 + bw * 0.08} -10z" fill="#fff" opacity="${dusk ? 0.06 : 0.22}"/>
@@ -451,6 +459,12 @@ export function streetWorld(opt = {}) {
   const w = opt.width || 4200, bl = opt.bl ?? 760, dusk = !!opt.dusk;
   const id = ++worldId;
   const root = g();
+  if (GREEN) {
+    root.appendChild(svgEl('rect', { x: -4000, y: -4000, width: w + 8000, height: 9000, fill: GREEN }));
+    const dof = svgEl('feGaussianBlur', { stdDeviation: 0 });
+    root.parts = { farG: g(), clouds: g(), near: g(), bl, dof };
+    return root;
+  }
   root.appendChild(svgEl('rect', { x: -2400, y: -1600, width: w + 4800, height: 4200, fill: dusk ? 'url(#gDusk)' : 'url(#gSky)' }));
   const sun = g(dusk ? `<circle cx="1500" cy="${bl - 260}" r="300" fill="url(#gSun)" opacity=".8"/><circle cx="1500" cy="${bl - 260}" r="90" fill="#FFD27A"/>`
     : `<circle cx="1720" cy="120" r="380" fill="url(#gSun)"/>`);

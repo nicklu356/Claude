@@ -1,27 +1,27 @@
 {
  "s1a": {
   "file": "audio/s1a.wav",
-  "duration": 0.87,
-  "voice": "Kokoro-82M af_heart",
-  "phonemes": "hˈaɪ, mˈɛlbɚn!"
+  "duration": 1.023,
+  "voice": "Kokoro-82M am_puck",
+  "phonemes": "hˈaɪ ðˈɛɹ! aɪm spˈʌd."
  },
  "s1b": {
   "file": "audio/s1b.wav",
-  "duration": 7.097,
+  "duration": 9.885,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "wɪɹ ɡɹˈuːp fˈɔːɹtiːn, tˈiːm swˈiːt pətˈeɪɾoʊz, ænd ðɪs ɪz pətˈeɪɾoʊ, ðə pˈʌblɪk əpˈɪniən tɹænslˈeɪʃən ænd tɹˈækɪŋ ˈaʊtpoʊst."
+  "phonemes": "wɪɹ ɡɹˈuːp fˈɔːɹtiːn, tˈiːm swˈiːt pətˈeɪɾoʊz, ænd ðɪs ɪz hˈɪɹ hˈɪɹ: ɐ stɹˈiːt pˈoʊst ðæt hˈɛlps ˌɪntɚnˈæʃənəl ɹˈɛzᵻdənts ˌʌndɚstˈænd ænd ˈænsɚ lˈoʊkəl kˈaʊnsəl dᵻsˈɪʒənz."
  },
  "s1c": {
   "file": "audio/s1c.wav",
-  "duration": 0.82,
-  "voice": "Kokoro-82M af_heart",
-  "phonemes": "wˌaɪ pətˈeɪɾoʊ?"
+  "duration": 5.996,
+  "voice": "Kokoro-82M am_puck",
+  "phonemes": "spˈʌd stˈændz fɔːɹ stɹˈiːt pˈoʊst fɔːɹ ˌʌndɚstˈændɪŋ dᵻsˈɪʒənz. ænd jˈɛs, ɪts ˈɔːlsoʊ slˈæŋ fɔːɹ pətˈeɪɾoʊ!"
  },
  "s1d": {
   "file": "audio/s1d.wav",
-  "duration": 3.741,
+  "duration": 1.61,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "bɪkˈʌz, lˈaɪk ɐ swˈiːt pətˈeɪɾoʊ, ɡˈʊd aɪdˈiəz ɡɹˈoʊ fɹʌmðə ɡɹˈaʊnd ˈʌp."
+  "phonemes": "hˈɪɹ hˈɪɹ. jʊɹ stɹˈiːt, jʊɹ sˈeɪ."
  },
  "s2a": {
   "file": "audio/s2a.wav",
@@ -79,21 +79,21 @@
  },
  "s4a": {
   "file": "audio/s4a.wav",
-  "duration": 3.273,
+  "duration": 3.195,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "ˌɔn hɪz ɡɹˈoʊsɚɹi wˈɔːk, dʒˈeɪsən pˈæsᵻz ɐ pətˈeɪɾoʊ pˈoʊst."
+  "phonemes": "ˌɔn hɪz ɡɹˈoʊsɚɹi wˈɔːk, dʒˈeɪsən pˈæsᵻz ɐ hˈɪɹ hˈɪɹ pˈoʊst."
  },
  "s4b": {
   "file": "audio/s4b.wav",
-  "duration": 6.478,
+  "duration": 6.245,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "ɪts sˈaɪd pˈænəl ʃˈoʊz vˈɛɹᵻfˌaɪd kˈaʊnsəl ænd kəmjˈuːnᵻɾi nˈoʊɾɪsᵻz, sˌoʊ hiː fˈaɪndz θˈɪŋz hiːd nˈɛvɚ sˈiː ɪnðə mˈeɪl."
+  "phonemes": "ɪts pˈɪlɚ ʃˈoʊz vˈɛɹᵻfˌaɪd kˈaʊnsəl ænd kəmjˈuːnᵻɾi nˈoʊɾɪsᵻz, sˌoʊ hiː fˈaɪndz θˈɪŋz hiːd nˈɛvɚ sˈiː ɪnðə mˈeɪl."
  },
  "s4c": {
   "file": "audio/s4c.wav",
-  "duration": 7.429,
+  "duration": 5.672,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "ðˈɛn mˈɛlb, ˌaʊɚ mˈæskɑːt, sˈɛz hˈaɪ, ænd ðə skɹˈiːn lˈɪsts ðɪ ˈɪʃuːz klˈoʊsɪst tə ðɪs spˈɑːt, ɹˈæŋkt baɪ dˈɪstəns ænd klˈoʊzɪŋ dˈeɪt."
+  "phonemes": "ðə skɹˈiːn ˌʌndɚ spˈʌd lˈɪsts ðɪ ˈɪʃuːz klˈoʊsɪst tə ðɪs spˈɑːt, ɹˈæŋkt baɪ dˈɪstəns ænd klˈoʊzɪŋ dˈeɪt."
  },
  "s5a": {
   "file": "audio/s5a.wav",
@@ -139,9 +139,9 @@
  },
  "s6b": {
   "file": "audio/s6b.wav",
-  "duration": 4.269,
+  "duration": 4.146,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "ðɪ ˈɪʃuː ænd hɪz kˈɑːmɛnt mˈuːv tə ðə hˈaɪ mˈɛlb ˈæp, ænd ðə pˈoʊst kˈiːps nˈʌθɪŋ."
+  "phonemes": "ðɪ ˈɪʃuː ænd hɪz kˈɑːmɛnt mˈuːv tə ðə hˈɪɹ hˈɪɹ ˈæp, ænd ðə pˈoʊst kˈiːps nˈʌθɪŋ."
  },
  "s6c": {
   "file": "audio/s6c.wav",
@@ -193,9 +193,9 @@
  },
  "s9a": {
   "file": "audio/s9a.wav",
-  "duration": 1.235,
+  "duration": 1.183,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "pətˈeɪɾoʊ hɐz lˈɪmɪts."
+  "phonemes": "hˈɪɹ hˈɪɹ hɐz lˈɪmɪts."
  },
  "s9b": {
   "file": "audio/s9b.wav",
@@ -211,14 +211,20 @@
  },
  "s10a": {
   "file": "audio/s10a.wav",
-  "duration": 3.631,
+  "duration": 3.613,
   "voice": "Kokoro-82M af_heart",
-  "phonemes": "pətˈeɪɾoʊ: pˈʌblɪk əpˈɪniən tɹænslˈeɪʃən ænd tɹˈækɪŋ ˈaʊtpoʊst."
+  "phonemes": "hˈɪɹ hˈɪɹ, wɪð spˈʌd: ðə stɹˈiːt pˈoʊst fɔːɹ ˌʌndɚstˈændɪŋ dᵻsˈɪʒənz."
  },
  "s10b": {
   "file": "audio/s10b.wav",
-  "duration": 1.377,
-  "voice": "Kokoro-82M af_heart",
-  "phonemes": "vˈɔɪsᵻz fɹʌmðə ɡɹˈaʊnd ˈʌp."
+  "duration": 1.092,
+  "voice": "Kokoro-82M am_puck",
+  "phonemes": "spˈiːk hˈɪɹ. biː hˈɜːd!"
+ },
+ "s4s": {
+  "file": "audio/s4s.wav",
+  "duration": 1.708,
+  "voice": "Kokoro-82M am_puck",
+  "phonemes": "hˈaɪ! ɡɑːt sˈʌmθɪŋ tə sˈeɪ? aɪm ˈɔːl ˈɪɹz."
  }
 }
