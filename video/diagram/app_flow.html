@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HearHere app flow</title>
+<link rel="stylesheet" href="/node_modules/@fontsource/nunito/700.css">
+<link rel="stylesheet" href="/node_modules/@fontsource/nunito/800.css">
+<link rel="stylesheet" href="/node_modules/@fontsource/nunito/900.css">
+<link rel="stylesheet" href="/node_modules/@fontsource/baloo-2/800.css">
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-sans-tc/700.css">
+<link rel="stylesheet" href="/node_modules/@fontsource/noto-sans-tc/900.css">
+<style>
+:root { --purple:#7B4B94; --purple-l:#EDE3F3; --orange:#F28C28; --orange-l:#FFE6CC; --teal:#16707F; --teal-l:#DDF1F5; --navy:#1F2A44; --navy-2:#46506A; --red:#E0544B; --cream:#FFF4E0; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 2400px; height: 1620px; background: #F7F3FA; font-family: Nunito, "Noto Sans TC", sans-serif; color: var(--navy); }
+.abs { position: absolute; }
+.zh { font-family: "Noto Sans TC", Nunito, sans-serif; }
+h1 { font: 800 72px/1 "Baloo 2"; color: var(--purple); }
+.sub { font: 800 28px Nunito; color: var(--navy-2); margin-top: 8px; }
+.k { font: 800 17px Nunito; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); }
+.card { background: #fff; border-radius: 26px; box-shadow: 0 14px 40px rgba(31,42,68,.12); }
+/* lanes */
+.lane { position: absolute; border-radius: 34px; border: 3px dashed #D9CBE6; }
+.lane .lt { position: absolute; left: 28px; top: -22px; background: #F7F3FA; padding: 0 14px; font: 900 24px Nunito; color: var(--purple); }
+/* entry points */
+.entry { width: 300px; height: 150px; padding: 20px 22px; display: flex; gap: 16px; align-items: center; }
+.entry .ic { width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; flex: none; }
+.entry .t { font: 900 24px/1.15 Nunito; }
+.entry .d { font: 700 18px Nunito; color: var(--navy-2); margin-top: 4px; }
+/* phones */
+.ph { width: 300px; height: 600px; border-radius: 44px; background: #1C2133; padding: 12px; box-shadow: 0 20px 50px rgba(31,42,68,.25); }
+.ph .sc { width: 100%; height: 100%; border-radius: 34px; background: #FFFAF2; overflow: hidden; position: relative; }
+.ph .notch { position: absolute; top: 9px; left: 50%; width: 80px; height: 20px; margin-left: -40px; border-radius: 12px; background: #1C2133; z-index: 3; }
+.ah { height: 104px; padding: 40px 18px 0; color: #fff; display: flex; align-items: center; gap: 10px; }
+.ah .n { font: 800 22px/1 "Baloo 2"; } .ah .s { font: 700 13px Nunito; opacity: .9; }
+.bd { padding: 14px 14px; }
+.mini { background: #fff; border-radius: 16px; padding: 12px 14px; box-shadow: 0 4px 12px rgba(31,42,68,.08); margin-bottom: 10px; }
+.tag { display: inline-block; font: 800 12px Nunito; padding: 3px 9px; border-radius: 999px; }
+.step { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+.dot { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 900 15px Nunito; color: #fff; flex: none; }
+.msg { padding: 9px 12px; border-radius: 16px; font: 700 14px/1.35 Nunito, "Noto Sans TC"; margin: 7px 0; max-width: 220px; }
+.me { margin-left: auto; background: var(--purple); color: #fff; border-bottom-right-radius: 4px; }
+.bot { background: #fff; box-shadow: 0 3px 10px rgba(31,42,68,.08); border-bottom-left-radius: 4px; }
+.src { display: inline-block; background: var(--teal-l); color: var(--teal); font: 800 11px Nunito; padding: 3px 8px; border-radius: 999px; margin: 4px 4px 0 0; }
+.cap { width: 300px; text-align: center; margin-top: 16px; }
+.cap .num { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: #fff; font: 900 22px Nunito; margin-right: 8px; vertical-align: middle; }
+.cap .t { display: inline; font: 900 26px Nunito; vertical-align: middle; }
+.cap .d { font: 700 19px/1.35 Nunito; color: var(--navy-2); margin-top: 6px; }
+svg.arrows { position: absolute; left: 0; top: 0; }
+.foot { left: 90px; right: 90px; bottom: 50px; height: 86px; display: flex; align-items: center; justify-content: space-around; padding: 0 30px; }
+.foot div { display: flex; align-items: center; gap: 12px; font: 800 22px Nunito; }
+</style>
+</head>
+<body>
+<div class="abs" style="left:90px;top:56px">
+  <h1>HearHere app: how it flows</h1>
+  <div class="sub">From one tap at a street post to a tracked issue, answers, badges and sharing</div>
+</div>
+<div id="root"></div>
+<script type="module">
+import { ic } from '../web2d/icons.js';
+import { melbIcon } from '../web2d/scenes.js';
+const R = document.getElementById('root');
+const add = (h) => R.insertAdjacentHTML('beforeend', h);
+const header = (bg, title, sub, mood = 'happy') => `<div class="ah" style="background:${bg}"><span style="width:44px;height:44px;border-radius:50%;background:var(--cream);display:grid;place-items:center;flex:none">${melbIcon(38, mood)}</span><div><div class="n">${title}</div><div class="s">${sub}</div></div></div>`;
+const phone = (x, y, inner) => add(`<div class="abs ph" style="left:${x}px;top:${y}px"><div class="sc"><div class="notch"></div>${inner}</div></div>`);
+const caption = (x, y, n, color, t, d) => add(`<div class="abs cap" style="left:${x}px;top:${y}px"><span class="num" style="background:${color}">${n}</span><span class="t">${t}</span><div class="d">${d}</div></div>`);
+const PURPLE = 'linear-gradient(135deg,#7B4B94,#9C6DB8)';
+const issue = `<div class="mini"><div class="zh" style="font:900 17px 'Noto Sans TC'">公園狗狗新規定</div><div style="font:800 12px Nunito;color:var(--navy-2)">Park rule changes · Parks &amp; Open Space</div><span class="tag" style="background:#FFE1DE;color:#C0453A;margin-top:6px">Fictional example</span></div>`;
+
+// ---- lanes
+add(`<div class="lane" style="left:70px;top:220px;width:400px;height:820px"><div class="lt">Get into the app</div></div>`);
+add(`<div class="lane" style="left:520px;top:220px;width:1810px;height:820px"><div class="lt">Main flow: follow an issue</div></div>`);
+add(`<div class="lane" style="left:520px;top:1100px;width:1810px;height:340px"><div class="lt">Anytime from the home screen</div></div>`);
+
+// ---- entry points
+[['nfc', 'Tap NFC at a post', 'Saves the issue you viewed on the street', '#F28C28', 'lock'],
+ ['qr', 'Scan the QR code', 'For phones without NFC', '#3A63D1', 'camera'],
+ ['so', 'Open from Spud\'s post', 'Official, verified social account', '#E1306C', 'share']].forEach(([id, t, d, c, i], k) =>
+  add(`<div class="abs card entry" style="left:120px;top:${290 + k * 220}px"><span class="ic" style="background:${c}">${ic(i, '#fff', 36, 3.6)}</span><div><div class="t">${t}</div><div class="d">${d}</div></div></div>`));
+
+// ---- main flow phones
+const Y = 270, XS = [600, 1030, 1460, 1890];
+phone(XS[0], Y, header(PURPLE, 'HearHere', 'My issues') + `<div class="bd">
+  <div class="mini" style="background:var(--teal-l);color:var(--teal);font:900 15px Nunito">${ic('check', '#16707F', 18, 4)} <span class="zh">已存到 HearHere</span> · Saved</div>
+  ${issue}
+  <div class="mini" style="font:800 14px/1.4 Nunito;color:var(--navy-2)">Your comment (中文 + English) was sent to <b style="color:var(--purple)">Parks &amp; Open Space</b>.</div>
+  <div class="mini" style="display:flex;align-items:center;justify-content:space-between;font:900 15px Nunito">Track this issue
+    <span style="width:52px;height:30px;border-radius:15px;background:#1E9BB0;position:relative;display:inline-block"><span style="position:absolute;right:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff"></span></span></div>
+  <div style="font:700 12px Nunito;color:var(--navy-2);text-align:center;margin-top:6px">${ic('lock', '#46506A', 14, 4)} Tracking is opt-in. The post keeps nothing.</div></div>`);
+phone(XS[1], Y, header(PURPLE, 'Tracker', 'Park rule changes') + `<div class="bd">
+  <div class="mini">
+    <div class="step"><span class="dot" style="background:#1E9BB0">✓</span><div><div style="font:900 15px Nunito">Received <span class="zh" style="color:var(--navy-2);font-weight:700">已收到</span></div><div style="font:700 11px Nunito;color:var(--navy-2)">Ref #CASE-2026-0417</div></div></div>
+    <div class="step"><span class="dot" style="background:#7B4B94">2</span><div><div style="font:900 15px Nunito">In review <span class="zh" style="color:var(--navy-2);font-weight:700">審核中</span></div><div style="font:700 11px Nunito;color:var(--navy-2)">Parks &amp; Open Space team</div></div></div>
+    <div class="step"><span class="dot" style="background:#CFD3DC">3</span><div><div style="font:900 15px Nunito;color:#9AA0B4">Outcome <span class="zh">結果</span></div><div style="font:700 11px Nunito;color:var(--navy-2)">Decision + reasons</div></div></div></div>
+  <div class="mini" style="display:flex;gap:10px;align-items:center"><span style="width:36px;height:36px;border-radius:10px;background:var(--purple);display:grid;place-items:center;flex:none">${ic('bell', '#fff', 22, 3.6)}</span>
+    <div><div style="font:900 13px Nunito">HearHere · now</div><div class="zh" style="font:700 13px 'Noto Sans TC'">公園狗狗新規定：已進入審核</div></div></div>
+  <div style="font:700 12px Nunito;color:var(--navy-2);text-align:center">Shows the issue's status, not a promise the comment is accepted</div></div>`);
+phone(XS[2], Y, header(PURPLE, 'Outcome', 'Park rule changes') + `<div class="bd">
+  <div class="mini" style="border-left:6px solid #1E9BB0"><div style="font:900 15px/1.3 Nunito">${ic('check', '#16707F', 16, 4)} Decision: leash hours shortened to 7–8 am</div><span class="tag" style="background:var(--navy);color:#fff;margin-top:6px">Case CASE-2026-0417</span></div>
+  <div style="font:800 12px Nunito;color:var(--navy-2);text-align:center;margin:4px 0 8px">or, if declined</div>
+  <div class="mini" style="border-left:6px solid var(--red)"><div style="font:900 15px Nunito"><span class="zh" style="color:var(--red)">未採納</span> Declined</div><div style="font:700 13px/1.35 Nunito;color:var(--navy-2);margin-top:4px">"Wildlife protection zone; a new off-leash area is proposed nearby."</div></div>
+  <div style="font:700 12px Nunito;color:var(--navy-2);text-align:center;margin-top:6px">Fictional examples</div></div>`);
+phone(XS[3], Y, header(PURPLE, 'Nearby', 'Issues near you') + `<div class="bd">
+  <div style="display:flex;gap:6px;margin-bottom:10px"><span class="tag" style="background:var(--navy);color:#fff">All</span><span class="tag" style="background:#fff">Parks</span><span class="tag" style="background:#fff">Housing</span><span class="tag" style="background:#fff">Student life</span></div>
+  ${[['Park rule changes', '120 m · 5 days', '#1E9BB0', 'tree'], ['Rental housing standards', '450 m · 9 days', '#F28C28', 'house'], ['Library study hours', '800 m · 21 days', '#7B4B94', 'people']].map(([t, m, c, i], n) => `
+  <div class="mini" style="display:flex;gap:10px;align-items:center"><span style="width:34px;height:34px;border-radius:10px;background:${c};display:grid;place-items:center;flex:none">${ic(i, '#fff', 20, 3.6)}</span><div><div style="font:900 14px Nunito">${t}</div><div style="font:700 12px Nunito;color:var(--navy-2)">${m}</div></div></div>`).join('')}
+  <div style="font:700 12px Nunito;color:var(--navy-2);text-align:center;margin-top:6px">Follow more issues the same way</div></div>`);
+caption(XS[0], Y + 615, 1, '#7B4B94', 'Issue saved', 'Your issue and comment arrive on your phone; you choose to track it');
+caption(XS[1], Y + 615, 2, '#3A63D1', 'Track progress', 'Received → In review → Outcome, with notifications');
+caption(XS[2], Y + 615, 3, '#16707F', 'See the outcome', 'The decision and case number, or the reasons if declined');
+caption(XS[3], Y + 615, 4, '#F28C28', 'Stay in the loop', 'Browse other issues nearby by topic, distance and deadline');
+
+// ---- anytime branches (compact cards)
+const BY = 1150;
+const branch = (x, color, i, title, body) => add(`<div class="abs card" style="left:${x}px;top:${BY}px;width:540px;height:250px;padding:22px 26px">
+  <div style="display:flex;align-items:center;gap:14px"><span style="width:56px;height:56px;border-radius:18px;background:${color};display:grid;place-items:center">${ic(i, '#fff', 32, 3.6)}</span><div style="font:900 30px Nunito">${title}</div></div>${body}</div>`);
+branch(600, 'var(--purple)', 'chat', 'Ask Spud (AI helper)', `
+  <div class="msg me" style="max-width:300px"><span class="zh">我該找哪個部門？</span> Which department?</div>
+  <div class="msg bot" style="max-width:420px">Parks &amp; Open Space. See the draft rule, p. 4.<br><span class="src">Source cited</span><span class="src">Hands over to a person if unsure</span></div>`);
+branch(1170, '#F28C28', 'pin', 'Badge collection', `
+  <div style="display:flex;gap:12px;margin-top:18px">${[['#1E9BB0', 'tree'], ['#7B4B94', 'doc'], ['#F28C28', 'people'], ['', 'building'], ['', 'tram'], ['', 'house']].map(([c, i]) => `<span style="width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:${c || '#E6E8EE'};${c ? '' : 'border:3px dashed #C9CCD6'}">${ic(i, c ? '#fff' : '#B9BDC9', 32, 3.6)}</span>`).join('')}</div>
+  <div style="font:800 19px/1.35 Nunito;color:var(--navy-2);margin-top:14px">One badge per HearHere post visited. 3 of 24 collected. Stored only on your phone.</div>`);
+branch(1740, '#E1306C', 'share', 'Share to social', `
+  <div style="display:flex;gap:16px;align-items:center;margin-top:16px"><div style="width:110px;height:150px;border-radius:14px;background:linear-gradient(160deg,#7B4B94,#F28C28);color:#fff;padding:10px;font:800 15px/1.1 'Baloo 2'">Have your say!<div class="zh" style="font:900 12px 'Noto Sans TC';margin-top:6px">公園狗狗新規定</div></div>
+  <div style="font:800 19px/1.4 Nunito;color:var(--navy-2)">Post the issue as a story card, so neighbours can open it in HearHere and join in.</div></div>`);
+
+// ---- arrows
+const A = (d, c = '#9C6DB8', dash = '') => `<path d="${d}" stroke="${c}" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" ${dash ? `stroke-dasharray="${dash}"` : ''} marker-end="url(#ah)"/>`;
+add(`<svg class="arrows" width="2400" height="1620"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="26" markerHeight="26" refX="18" refY="13" orient="auto"><path d="M0 0 L26 13 L0 26z" fill="#9C6DB8"/></marker></defs>
+  ${A('M420 365 C 500 365, 520 480, 586 520')}${A('M420 585 L 586 585')}${A('M420 805 C 500 805, 520 690, 586 650')}
+  ${A('M908 570 L 1016 570')}${A('M1338 570 L 1446 570')}${A('M1768 570 L 1876 570')}
+  </svg>`);
+
+// ---- privacy strip
+add(`<div class="abs card foot">
+  <div>${ic('lock', '#16707F', 30, 3.6)}Nothing is stored on the post</div>
+  <div>${ic('check', '#16707F', 30, 3.6)}Tracking is opt-in</div>
+  <div>${ic('globe', '#16707F', 30, 3.6)}Every screen in your language</div>
+  <div>${ic('doc', '#16707F', 30, 3.6)}Answers cite official sources</div></div>`);
+await document.fonts.ready;
+window.DONE = 1;
+</script>
+</body>
+</html>
