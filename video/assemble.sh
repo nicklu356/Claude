@@ -22,5 +22,5 @@ for s in tl['scenes']:
             '-vf', f"scale=640:360,drawtext=text='{label}':x=10:y=10:fontsize=20:fontcolor=white:box=1:boxcolor=0x1F2A44@0.8:boxborderw=6",
             f"build/cs/s{s['id']:02d}_{j}.png"])
 EOF
-ffmpeg -loglevel error -y -pattern_type glob -i 'build/cs/*.png' -vf "tile=3x10:padding=6:color=0xFFF4E0" -frames:v 1 "$OUT/contact_sheet.png"
+ffmpeg -loglevel error -y -pattern_type glob -i 'build/cs/*.png' -vf "tile=3x$(ls build/cs | wc -l | awk "{print int(\$1/3)}"):padding=6:color=0xFFF4E0" -frames:v 1 "$OUT/contact_sheet.png"
 ls -la "$OUT"

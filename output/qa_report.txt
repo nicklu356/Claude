@@ -1,11 +1,11 @@
-[PASS] duration 171.00s (limit 180, target <=175)
+[PASS] duration 171.60s (limit 180, target <=175)
 [PASS] resolution 1920x1080
 [PASS] fps 30/1  codec h264 High
 [PASS] audio aac 48000 Hz
-[PASS] loudness -16.06 LUFS, true peak -4.44 dBTP
+[PASS] loudness -16.07 LUFS, true peak -4.35 dBTP
 [PASS] no static frame > 2.5 s
 [PASS] every scene contains its narration (timeline from measured audio: True)
-[PASS] 125 distinct Han characters, Simplified found: none
+[PASS] 124 distinct Han characters, Simplified found: none
 [PASS] Noto Sans TC covers all CJK glyphs (missing: none)
 [PASS] names / IDs / acronym present (missing: none)
 [PASS] old names (POTATO / Melb) absent from the narration text
