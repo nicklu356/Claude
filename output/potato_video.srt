@@ -1,257 +1,251 @@
 1
-00:00:00,400 --> 00:00:01,643
-Hi there! I'm Spud.
+00:00:00,400 --> 00:00:03,400
+Hi! We're Group 14, Team Sweet Potatoes.
 
 2
-00:00:01,643 --> 00:00:05,279
-We're Group 14, Team Sweet
-Potatoes, and this is HearHere.
+00:00:03,400 --> 00:00:08,308
+We studied how international residents in
+Melbourne take part in council decisions.
 
 3
-00:00:05,279 --> 00:00:08,585
-Spud stands for Street Post
-for Understanding Decisions.
+00:00:09,008 --> 00:00:11,465
+Our investigation found five problems.
 
 4
-00:00:08,585 --> 00:00:10,195
-HearHere. Your street, your say.
+00:00:11,465 --> 00:00:15,978
+One: even when it's translated,
+council language is hard to understand.
 
 5
-00:00:11,195 --> 00:00:15,388
-Melbourne's councils make decisions
-about parks, housing and transport.
+00:00:15,978 --> 00:00:19,483
+Two: time, distance and fees
+keep people from attending.
 
 6
-00:00:15,388 --> 00:00:19,644
-Our fieldwork with eight international
-residents found the barrier isn't a lack
+00:00:19,483 --> 00:00:23,607
+Three: people only take part when
+an issue feels personally relevant.
 
 7
-00:00:19,644 --> 00:00:20,511
-of interest.
+00:00:23,607 --> 00:00:27,617
+Four: they don't know which department
+to contact, or whether they were heard.
 
 8
-00:00:20,511 --> 00:00:22,955
-People can't find relevant information.
+00:00:27,617 --> 00:00:30,617
+Five: council news arrives
+by mail and flyers,
 
 9
-00:00:22,955 --> 00:00:26,535
-Translated policies still use
-terms they don't understand.
-
-10
-00:00:26,535 --> 00:00:28,614
-And they don't know where
-their feedback goes.
-
-11
-00:00:28,614 --> 00:00:31,821
-Meanwhile, council news
-arrives by mail and flyers,
-
-12
-00:00:31,821 --> 00:00:34,211
+00:00:30,617 --> 00:00:33,095
 but newer residents live on Instagram.
 
-13
-00:00:34,911 --> 00:00:36,015
-Meet Jason.
+10
+00:00:33,995 --> 00:00:35,330
+Let's meet Jason.
 
-14
-00:00:36,015 --> 00:00:38,910
+11
+00:00:35,330 --> 00:00:38,225
 He's 34, has lived in
 Melbourne for eight years,
 
-15
-00:00:38,910 --> 00:00:41,361
+12
+00:00:38,225 --> 00:00:40,676
 and English isn't his first language.
 
+13
+00:00:40,676 --> 00:00:45,184
+One Saturday morning, a new park rule
+limits when his dog can be off the leash.
+
+14
+00:00:45,184 --> 00:00:48,716
+He disagrees, but doesn't know who
+to tell, or which words to use.
+
+15
+00:00:49,416 --> 00:00:51,018
+So we introduce HearHere:
+
 16
-00:00:41,361 --> 00:00:45,874
-He's unhappy about a new park rule for
-dogs, yet he doesn't know who to tell,
+00:00:51,018 --> 00:00:56,273
+a digital device that combines a physical
+information pillar with an AI customised
 
 17
-00:00:45,874 --> 00:00:47,164
-or which words to use.
+00:00:56,273 --> 00:00:56,942
+helper.
 
 18
-00:00:47,864 --> 00:00:52,622
-Saturday, 8 a.m. Jason walks
-his dog past a HearHere post.
+00:00:56,942 --> 00:01:00,496
+Hi there! I'm Spud, the Street
+Post for Understanding Decisions.
 
 19
-00:00:52,622 --> 00:00:56,385
-Its pillar shows verified
-council and community notices.
-
-20
-00:00:56,385 --> 00:00:58,313
-Hi! Got something to say? I'm all ears.
-
-21
-00:00:58,313 --> 00:01:01,605
-The screen under Spud lists
-nearby issues by distance,
-
-22
-00:01:01,605 --> 00:01:04,288
-including a new rule
-for the park next door.
-
-23
-00:01:04,988 --> 00:01:06,775
-Jason taps the park issue.
-
-24
-00:01:06,775 --> 00:01:09,807
-A plain-language summary
-appears in his own language,
-
-25
-00:01:09,807 --> 00:01:11,800
-with difficult terms explained.
-
-26
-00:01:11,800 --> 00:01:14,856
-Now he simply talks to
-Spud, in his own language.
-
-27
-00:01:14,856 --> 00:01:18,552
-The new park rule makes walking my dog
-really inconvenient. I hope it can be
-
-28
-00:01:18,552 --> 00:01:19,404
-reconsidered.
-
-29
-00:01:19,404 --> 00:01:24,105
-Spud turns it into a clear English
-comment, names the responsible department,
-
-30
-00:01:24,105 --> 00:01:26,462
-and lets Jason edit before sending.
-
-31
-00:01:26,462 --> 00:01:27,798
-No audio is stored.
-
-32
-00:01:28,698 --> 00:01:31,308
-Jason taps his phone on the NFC pad.
-
-33
-00:01:31,308 --> 00:01:35,674
-The issue and his comment move to the
-HearHere app, and the post keeps nothing.
-
-34
-00:01:35,674 --> 00:01:38,447
-Tracking begins only
-because Jason chose it.
-
-35
-00:01:38,447 --> 00:01:41,190
-The app shows each stage:
-Received, In review,
-
-36
-00:01:41,190 --> 00:01:44,928
-then an outcome with a case
-number, or reasons if declined.
-
-37
-00:01:44,928 --> 00:01:47,184
-Notifications keep him updated.
-
-38
-00:01:47,184 --> 00:01:50,703
-Each new HearHere post Jason
-visits also earns a badge:
-
-39
-00:01:50,703 --> 00:01:52,687
-a small reward for taking part.
-
-40
-00:01:53,587 --> 00:01:56,943
-How does it all fit together?
+00:01:00,496 --> 00:01:02,098
 Here's the post from every side.
 
-41
-00:01:56,943 --> 00:02:01,286
-Spud's official social media account
-shares only verified council posts,
+20
+00:01:04,698 --> 00:01:09,081
+It connects three channels. Spud's
+official account shares only verified
 
-42
-00:02:01,286 --> 00:02:04,221
-reaching residents where
-they already scroll.
+21
+00:01:09,081 --> 00:01:09,933
+council posts,
 
-43
-00:02:04,221 --> 00:02:08,534
+22
+00:01:09,933 --> 00:01:12,040
+where residents already scroll.
+
+23
+00:01:12,040 --> 00:01:16,353
 An AI agent answers questions, and
 the HearHere app tracks each issue.
 
+24
+00:01:17,153 --> 00:01:22,421
+Back to Saturday, 8 a.m. Jason
+walks his dog past a HearHere post.
+
+25
+00:01:22,421 --> 00:01:26,184
+Its pillar shows verified
+council and community notices.
+
+26
+00:01:26,184 --> 00:01:28,112
+Hi! Got something to say? I'm all ears.
+
+27
+00:01:28,112 --> 00:01:31,404
+The screen under Spud lists
+nearby issues by distance,
+
+28
+00:01:31,404 --> 00:01:34,087
+including a new rule
+for the park next door.
+
+29
+00:01:34,787 --> 00:01:36,574
+Jason taps the park issue.
+
+30
+00:01:36,574 --> 00:01:39,606
+A plain-language summary
+appears in his own language,
+
+31
+00:01:39,606 --> 00:01:41,599
+with difficult terms explained.
+
+32
+00:01:41,599 --> 00:01:44,655
+Now he simply talks to
+Spud, in his own language.
+
+33
+00:01:44,655 --> 00:01:48,351
+The new park rule makes walking my dog
+really inconvenient. I hope it can be
+
+34
+00:01:48,351 --> 00:01:49,203
+reconsidered.
+
+35
+00:01:49,203 --> 00:01:53,904
+Spud turns it into a clear English
+comment, names the responsible department,
+
+36
+00:01:53,904 --> 00:01:56,261
+and lets Jason edit before sending.
+
+37
+00:01:56,261 --> 00:01:57,597
+No audio is stored.
+
+38
+00:01:58,497 --> 00:02:01,107
+Jason taps his phone on the NFC pad.
+
+39
+00:02:01,107 --> 00:02:05,473
+The issue and his comment move to the
+HearHere app, and the post keeps nothing.
+
+40
+00:02:05,473 --> 00:02:08,246
+Tracking begins only
+because Jason chose it.
+
+41
+00:02:08,246 --> 00:02:10,989
+The app shows each stage:
+Received, In review,
+
+42
+00:02:10,989 --> 00:02:14,727
+then an outcome with a case
+number, or reasons if declined.
+
+43
+00:02:14,727 --> 00:02:18,246
+Each new HearHere post Jason
+visits also earns a badge:
+
 44
-00:02:09,334 --> 00:02:10,700
-Not sure who to ask?
+00:02:18,246 --> 00:02:20,230
+a small reward for taking part.
 
 45
-00:02:10,700 --> 00:02:13,149
-Spud's AI agent cites official sources,
+00:02:21,130 --> 00:02:24,434
+Jason can also share the
+issue as a card on Instagram,
 
 46
-00:02:13,149 --> 00:02:16,572
-and hands over to a named
-contact when it's unsure.
+00:02:24,434 --> 00:02:26,269
+so his neighbours can join in.
 
 47
-00:02:16,572 --> 00:02:20,862
-And one tap shares a card on Instagram,
-so Jason's neighbours can join in.
-
-48
-00:02:21,562 --> 00:02:25,820
+00:02:27,269 --> 00:02:31,564
 For Jason, that means relevant issues
 on his route, in his own language,
 
-49
-00:02:25,820 --> 00:02:29,175
-a clear department to hear
-him, and visible progress.
+48
+00:02:31,564 --> 00:02:34,229
+a clear department, and visible progress.
 
-50
-00:02:29,175 --> 00:02:30,642
+49
+00:02:34,229 --> 00:02:35,696
 All without attending a meeting.
 
-51
-00:02:31,342 --> 00:02:32,745
+50
+00:02:36,396 --> 00:02:37,799
 HearHere has limits.
 
-52
-00:02:32,745 --> 00:02:36,460
+51
+00:02:37,799 --> 00:02:41,514
 Speaking in public may feel
 exposing, AI can mistranslate,
 
-53
-00:02:36,460 --> 00:02:39,690
+52
+00:02:41,514 --> 00:02:44,744
 and our fieldwork didn't
 include council staff.
 
-54
-00:02:39,690 --> 00:02:44,342
+53
+00:02:44,744 --> 00:02:49,396
 Next, we'll test a low-fidelity prototype
 with residents across languages.
 
-55
-00:02:45,042 --> 00:02:48,875
+54
+00:02:50,096 --> 00:02:53,929
 HearHere, with Spud: the Street
 Post for Understanding Decisions.
 
-56
-00:02:48,875 --> 00:02:49,967
+55
+00:02:53,929 --> 00:02:55,021
 Speak here. Be heard!
