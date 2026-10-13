@@ -18,11 +18,13 @@ To swap the AI voice for real recordings later, replace `audio/<line id>.wav`, u
 `audio/manifest.json`, then re-run steps 2–5. The animation timing follows the audio automatically.
 
 ## Art and naming
-- **POTATO**: Public Opinion Translation And Tracking Outpost (the concept name).
-- **Melb**: the cat-ear robot mascot on top of the post, from `assets/concept_sketch.png`.
-- **Hi Melb**: the greeting and the name of the companion app.
-- The **touchscreen** is the rectangle on the pillar, directly above the NFC pad. The lower body is the
-  wrap-around verified-notices display.
+- **HearHere**: the street post and its companion app (the concept name).
+- **Spud**: the cat-ear robot mascot on top of the post (Street Post for Understanding Decisions), from
+  `assets/concept_sketch.png`.
+- A trapezoid console between the pillar and Spud holds the touchscreen and, below it, the NFC pad. The
+  pillar is the wrap-around verified-notices display.
+- The renderer outputs a green-screen video (`#00B140`); `?alpha=1` gives transparent stills and `?bgonly=1`
+  the painted street on its own.
 - Persona: Jason only.
 
 ## PowerPoint version of the video (`output/HearHere_video_slides.pptx`)
@@ -34,7 +36,7 @@ slideshow plays like the video and PowerPoint can export it as a video (File →
 
 Rebuild:
 ```
-python3 build_deck_frames.py   # (inline in history) or regenerate deck/video/slides.json from web/timeline.json
+python3 deck/plan_slides.py
 node render.js --page web2d/index.html --stills $(cat deck/video/frames.txt) --outdir deck/video/fg --alpha 1
 node render.js --page web2d/index.html --stills $(cat deck/video/frames.txt) --outdir deck/video/bg --bgonly 1
 for f in audio/*.wav; do ffmpeg -i $f -ac 1 -b:a 96k deck/video/audio/$(basename $f .wav).mp3; done
