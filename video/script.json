@@ -14,14 +14,14 @@
     {
      "id": "s1b",
      "voice": "narrator",
-     "tts": "We're Group 14, Team Sweet Potatoes, and this is HearHere: a street post that helps international residents understand and answer local council decisions.",
-     "sub": "We're Group 14, Team Sweet Potatoes, and this is HearHere: a street post that helps international residents understand and answer local council decisions."
+     "tts": "We're Group 14, Team Sweet Potatoes, and this is HearHere.",
+     "sub": "We're Group 14, Team Sweet Potatoes, and this is HearHere."
     },
     {
      "id": "s1c",
      "voice": "spud",
-     "tts": "Spud stands for Street Post for Understanding Decisions. And yes, it's also slang for potato!",
-     "sub": "Spud stands for Street Post for Understanding Decisions. And yes, it's also slang for potato!"
+     "tts": "Spud stands for Street Post for Understanding Decisions.",
+     "sub": "Spud stands for Street Post for Understanding Decisions."
     },
     {
      "id": "s1d",
@@ -88,8 +88,8 @@
     {
      "id": "s3b",
      "voice": "narrator",
-     "tts": "He's lived in Melbourne for years, but English isn't his first language.",
-     "sub": "He's lived in Melbourne for years, but English isn't his first language."
+     "tts": "He's 34, has lived in Melbourne for eight years, and English isn't his first language.",
+     "sub": "He's 34, has lived in Melbourne for eight years, and English isn't his first language."
     },
     {
      "id": "s3c",
@@ -97,7 +97,8 @@
      "tts": "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use.",
      "sub": "He's unhappy about a new park rule for dogs, yet he doesn't know who to tell, or which words to use."
     }
-   ]
+   ],
+   "lead_in": 2.6
   },
   {
    "id": 4,
@@ -107,14 +108,14 @@
     {
      "id": "s4a",
      "voice": "narrator",
-     "tts": "On his grocery walk, Jason passes a HearHere post.",
-     "sub": "On his grocery walk, Jason passes a HearHere post."
+     "tts": "Saturday, 8 a.m. Jason walks his dog past a HearHere post.",
+     "sub": "Saturday, 8 a.m. Jason walks his dog past a HearHere post."
     },
     {
      "id": "s4b",
      "voice": "narrator",
-     "tts": "Its pillar shows verified council and community notices, so he finds things he'd never see in the mail.",
-     "sub": "Its pillar shows verified council and community notices, so he finds things he'd never see in the mail."
+     "tts": "Its pillar shows verified council and community notices.",
+     "sub": "Its pillar shows verified council and community notices."
     },
     {
      "id": "s4s",
@@ -125,8 +126,8 @@
     {
      "id": "s4c",
      "voice": "narrator",
-     "tts": "The screen under Spud lists the issues closest to this spot, ranked by distance and closing date.",
-     "sub": "The screen under Spud lists the issues closest to this spot, ranked by distance and closing date."
+     "tts": "The screen under Spud lists nearby issues by distance, including a new rule for the park next door.",
+     "sub": "The screen under Spud lists nearby issues by distance, including a new rule for the park next door."
     }
    ]
   },
@@ -163,8 +164,8 @@
     {
      "id": "s5d",
      "voice": "narrator",
-     "tts": "Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.",
-     "sub": "Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending."
+     "tts": "Spud turns it into a clear English comment, names the responsible department, and lets Jason edit before sending.",
+     "sub": "Spud turns it into a clear English comment, names the responsible department, and lets Jason edit before sending."
     },
     {
      "id": "s5e",
@@ -212,6 +213,31 @@
    ]
   },
   {
+   "id": 11,
+   "name": "How it works",
+   "tail": 0.4,
+   "lines": [
+    {
+     "id": "h1",
+     "voice": "narrator",
+     "tts": "How does it all fit together? Here's the post from every side.",
+     "sub": "How does it all fit together? Here's the post from every side."
+    },
+    {
+     "id": "h2",
+     "voice": "narrator",
+     "tts": "Spud's official social media account shares only verified council posts, reaching residents where they already scroll.",
+     "sub": "Spud's official social media account shares only verified council posts, reaching residents where they already scroll."
+    },
+    {
+     "id": "h3",
+     "voice": "narrator",
+     "tts": "An AI agent answers questions, and the HearHere app tracks each issue.",
+     "sub": "An AI agent answers questions, and the HearHere app tracks each issue."
+    }
+   ]
+  },
+  {
    "id": 7,
    "name": "Q&A & share",
    "tail": null,
@@ -225,8 +251,8 @@
     {
      "id": "s7b",
      "voice": "narrator",
-     "tts": "The Q and A assistant answers from official documents, cites its sources, and hands over to a named contact when it's unsure.",
-     "sub": "The Q&A assistant answers from official documents, cites its sources, and hands over to a named contact when it's unsure."
+     "tts": "Spud's AI agent cites official sources, and hands over to a named contact when it's unsure.",
+     "sub": "Spud's AI agent cites official sources, and hands over to a named contact when it's unsure."
     },
     {
      "id": "s7c",
@@ -275,8 +301,8 @@
     {
      "id": "s9c",
      "voice": "narrator",
-     "tts": "Next, we'll test a low-fidelity prototype with residents across languages, and check whether they trust and correct the AI's output.",
-     "sub": "Next, we'll test a low-fidelity prototype with residents across languages, and check whether they trust and correct the AI's output."
+     "tts": "Next, we'll test a low-fidelity prototype with residents across languages.",
+     "sub": "Next, we'll test a low-fidelity prototype with residents across languages."
     }
    ]
   },

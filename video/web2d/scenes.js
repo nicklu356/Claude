@@ -12,7 +12,7 @@ export const ZH = {
   plain: '白話摘要',
   summary1: '市議會打算縮小公園裡的',
   term: '無牽繩區',
-  summary2: '。平日早上 7 點到晚上 7 點，狗狗都必須繫上牽繩。',
+  summary2: '。週末早上 7 點到 10 點，狗狗都必須繫上牽繩。',
   termExp: '可以讓狗狗不繫牽繩、自由活動的指定區域。',
   closes: '5 天後截止',
   talk: '跟 Spud 說說你的想法',
@@ -138,10 +138,10 @@ export function buildScenes(ctx) {
         A.posePost(post, { mood: talking || t > d ? 'happy' : 'idle', talk: talking ? Math.abs(Math.sin(t * 12)) : 0, t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 4, screen: 'idle', look: { x: 8, y: 0 }, tilt: Math.sin(t * 1.3) * 3 });
         show(bubble, t, a, { kind: 'pop', out: b + 1.0 });
         show($(title, '.c0'), t, b + 0.1, { kind: 'left' });
-        letters.forEach((s, i) => { const p = backOut(prog(t, b + 0.9 + i * 0.08, 0.45)); s.style.transform = `translateY(${(1 - p) * 120}px) scale(${0.6 + 0.4 * p})`; s.style.opacity = clamp(p * 2); });
-        show($(title, '.sub'), t, b + 3.4, { kind: 'up' });
+        letters.forEach((s, i) => { const p = backOut(prog(t, b + 0.5 + i * 0.07, 0.45)); s.style.transform = `translateY(${(1 - p) * 120}px) scale(${0.6 + 0.4 * p})`; s.style.opacity = clamp(p * 2); });
+        show($(title, '.sub'), t, b + 2.2, { kind: 'up' });
         show($(title, '.acr'), t, c + 0.2, { kind: 'up' });
-        show($(title, '.pot'), t, c + 3.6, { kind: 'pop' });
+        show($(title, '.pot'), t, c + 1.9, { kind: 'pop' });
         show($(title, '.tagl'), t, d, { kind: 'pop' });
       },
     };
@@ -231,18 +231,30 @@ export function buildScenes(ctx) {
       <rect x="-130" y="-330" width="260" height="140" rx="16" fill="#fff" stroke="#16707F" stroke-width="8"/>
       <text x="0" y="-292" font-family="Nunito" font-weight="900" font-size="22" fill="#E0544B" text-anchor="middle" letter-spacing="2">NEW PARK RULE</text>
       <text x="0" y="-255" font-family="'Baloo 2', Nunito" font-weight="800" font-size="30" fill="#1F2A44" text-anchor="middle">Dogs on leash</text>
-      <text x="0" y="-222" font-family="Nunito" font-weight="800" font-size="22" fill="#46506A" text-anchor="middle">7 am – 7 pm weekdays</text>`);
-    place(sign, 1150, BL + 4); world.appendChild(sign);
+      <text x="0" y="-222" font-family="Nunito" font-weight="800" font-size="22" fill="#46506A" text-anchor="middle">Sat–Sun · 7–10 am</text>
+      <rect x="-96" y="-182" width="192" height="28" rx="14" fill="#E0544B"/>
+      <text x="0" y="-162" font-family="Nunito" font-weight="900" font-size="16" fill="#fff" text-anchor="middle" letter-spacing="1.5">FICTIONAL EXAMPLE</text>`);
+    place(sign, 1150, FEET - 30); world.appendChild(sign);
     const leash = svgEl('path', { stroke: C.purple, 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round' });
     const dog = A.dog(), jas = A.jason();
     world.append(leash, dog, jas);
-    const card = el(`<div class="abs card" style="left:1250px;top:150px;width:600px;padding:30px 34px">
-      <div style="display:flex;align-items:center;gap:18px"><div style="width:96px;height:96px;border-radius:50%;background:#DDE8FF;display:grid;place-items:center;overflow:hidden">${ic('user', '#3A63D1', 64, 3.4)}</div>
-      <div><div class="k">Persona</div><div class="h2">Jason Lee</div><div style="font:700 24px Nunito;color:var(--navy-2)">Early 30s · immigrant · 5–10 years in Melbourne</div></div></div>
-      <div class="b0" style="display:flex;gap:14px;align-items:center;margin-top:22px;font:800 26px Nunito">${ic('translate', '#F28C28', 36, 3.6)}English isn't his first language</div>
-      <div class="b1" style="display:flex;gap:14px;align-items:center;margin-top:14px;font:800 26px Nunito">${ic('dog', '#1E9BB0', 36, 3.6)}Walks his dog, shops locally</div>
-      <div class="b2" style="display:flex;gap:14px;align-items:center;margin-top:14px;font:800 26px Nunito">${ic('building', '#7B4B94', 36, 3.6)}Unsure which department to ask</div>
-      <div class="q" style="margin-top:22px;padding:16px 20px;border-radius:18px;background:var(--purple-l);font:800 italic 25px/1.35 Nunito;color:var(--purple-d)">“I know they want to help, but I don't always know who to ask, or how to say it right.”</div></div>`);
+    const card = el(`<div class="abs card" style="left:1230px;top:120px;width:640px;padding:0;overflow:hidden;transform-origin:0 0">
+      <div style="display:flex;gap:22px;align-items:center;padding:26px 30px;background:linear-gradient(135deg,#7B4B94,#9C6DB8);color:#fff">
+        <svg class="av" width="132" height="132" viewBox="-110 -640 220 220" style="border-radius:50%;background:#FFE6CC;flex:none;border:5px solid #fff"></svg>
+        <div><div style="font:800 17px Nunito;letter-spacing:2px;opacity:.85">PERSONA</div><div style="font:800 48px/1.05 'Baloo 2'">Jason Lee</div>
+        <div style="font:800 24px Nunito;margin-top:4px">34 · immigrant · 8 years in Melbourne</div></div></div>
+      <div style="padding:22px 30px 26px">
+        <div style="padding:14px 18px;border-radius:16px;background:var(--purple-l);font:800 italic 24px/1.35 Nunito;color:var(--purple-d)">“I know they want to help, but I don't always know who to ask, or how to say it right.”</div>
+        <div style="display:flex;gap:14px;align-items:flex-start;margin-top:18px"><span style="width:48px;height:48px;border-radius:14px;background:#FFE1DE;display:grid;place-items:center;flex:none">${ic('warn', '#E0544B', 30, 3.6)}</span>
+          <div><div class="k" style="color:#E0544B">Pain point</div><div style="font:800 24px/1.3 Nunito">Doesn't know which department to contact, or the right English words to use</div></div></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;margin-top:14px"><span style="width:48px;height:48px;border-radius:14px;background:var(--orange-l);display:grid;place-items:center;flex:none">${ic('mic', '#C96A10', 30, 3.6)}</span>
+          <div><div class="k">Goal</div><div style="font:800 24px Nunito">To be heard and taken seriously</div></div></div>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap"><span class="k" style="color:var(--navy-2)">Mainly uses</span>
+          <span class="chip" style="background:var(--purple);color:#fff;font-size:21px;padding:6px 16px">${ic('mic', '#fff', 24, 3.6)}Speak to Spud</span>
+          <span class="chip" style="background:#16707F;color:#fff;font-size:21px;padding:6px 16px">${ic('steps', '#fff', 24, 3.6)}Issue tracker</span></div></div></div>`);
+    { // avatar: Jason's own illustration, cropped to the head and shoulders
+      const av = $(card, '.av'); const aj = A.jason(); av.appendChild(aj); A.poseJason(aj, { mouth: 'smile' });
+    }
     const th = el(`<div class="thought" style="left:300px;top:170px;text-align:center">
       <div class="zh" style="font:900 34px 'Noto Sans TC'">${ZH.who}<span style="font:800 26px Nunito;color:var(--navy-2)"> Who do I tell?</span></div>
       <div class="zh" style="font:900 34px 'Noto Sans TC';margin-top:6px">${ZH.words}<span style="font:800 26px Nunito;color:var(--navy-2)"> Which words?</span></div></div>`);
@@ -251,7 +263,7 @@ export function buildScenes(ctx) {
     out[3] = {
       svg, ui, update(t) {
         const c = { x: 960, y: 540, z: 1 }; cam(world, c.x, c.y, c.z); A.worldFx(world, c, t, 0);
-        const wk = clamp(t / 2.2), jx = lerp(-200, 560, easeOut(wk)), walking = wk < 1;
+        const wk = clamp((t - 2.3) / 2.4), jx = lerp(-520, 560, easeOut(wk)), walking = wk > 0 && wk < 1;
         const ph = t * 1.6;
         const look = t > L(3, 's3c') + 0.4 ? -4 : 0;
         const hands = A.poseJason(jas, { walk: walking ? ph : null, mouth: t > L(3, 's3c') ? 'worried' : 'neutral', blink: blink(t, 3.4), armF: walking ? null : 16, elbowF: walking ? null : 30, look });
@@ -260,11 +272,10 @@ export function buildScenes(ctx) {
         A.poseDog(dog, { walk: walking ? ph * 1.3 : null, t, look: walking ? 0 : Math.sin(t * 2) * 4 });
         place(dog, dx, FEET, 0.75);
         leashTo(leash, toW(hands.F, jx, 0.9), dx, 0.75);
-        show(card, t, L(3, 's3a') + 0.2, { kind: 'right', out: L(3, 's3c') + 0.2 });
-        show($(card, '.b0'), t, L(3, 's3b') + 1.6, { kind: 'left' });
-        show($(card, '.b1'), t, L(3, 's3b') + 2.4, { kind: 'left' });
-        show($(card, '.b2'), t, L(3, 's3b') + 3.2, { kind: 'left' });
-        show($(card, '.q'), t, L(3, 's3b') + 3.8, { kind: 'up' });
+        // persona card: centred and large for the first ~2.5 s, then docks top-right
+        const k = ease(prog(t, 2.4, 0.8)), op = Math.min(easeOut(prog(t, 0.1, 0.4)), 1 - clamp((t - L(3, 's3c') - 0.2) / 0.35));
+        card.style.opacity = op; card.style.visibility = op > 0 ? 'visible' : 'hidden';
+        card.style.transform = `translate(${lerp(-648, 0, k)}px, ${lerp(10, 0, k)}px) scale(${lerp(1.18, 0.86, k)})`;
         show(dots, t, L(3, 's3c') + 1.6, { kind: 'pop' });
         show(th, t, L(3, 's3c') + 2.0, { kind: 'pop' });
         sv(sign, t, L(3, 's3c') + 0.4, { kind: 'pop' });
@@ -333,7 +344,7 @@ export function buildScenes(ctx) {
         <span class="chip" style="background:#fff;font-size:20px;padding:6px 16px">${ic('people', '#7B4B94', 22, 4)}Student life</span></div>
       <div style="font:800 18px Nunito;color:var(--orange);margin:6px 0 10px;letter-spacing:.5px">RANKED BY DISTANCE + CLOSING DATE</div>
       <div class="issue i0" style="border-color:var(--orange)"><div class="rank">1</div><div class="ico" style="background:var(--green-l)">${ic('tree', '#16707F', 38)}</div>
-        <div><div class="t">Park rule changes</div><div class="m">120 m · closes in 5 days · Parks</div></div><span class="tag" style="margin-left:auto;background:var(--orange-l);color:#B85C00">Dogs</span></div>
+        <div><div class="t">Park rule changes</div><div class="m">120 m · closes in 5 days · Parks</div></div><span class="tag" style="margin-left:auto;background:#FFE1DE;color:#C0453A">Fictional</span><span class="tag" style="background:var(--orange-l);color:#B85C00">Dogs</span></div>
       <div class="issue i1"><div class="rank" style="background:#9C82AE">2</div><div class="ico" style="background:var(--orange-l)">${ic('house', '#F28C28', 38)}</div>
         <div><div class="t">Rental housing standards</div><div class="m">450 m · closes in 9 days · Housing</div></div></div>
       <div class="issue i2"><div class="rank" style="background:#B9A7C7">3</div><div class="ico" style="background:var(--purple-l)">${ic('people', '#7B4B94', 38)}</div>
@@ -351,9 +362,10 @@ export function buildScenes(ctx) {
         <div class="chip" style="background:var(--orange-l);color:var(--orange-d)">${ic('doc', '#C96A10', 28, 3.6)}Library events</div>
         <div class="chip" style="background:var(--green-l);color:var(--green-d)">${ic('people', '#16707F', 28, 3.6)}Community groups</div></div>
       <div style="margin-top:16px;font:800 22px Nunito;color:var(--green-d)">${ic('check', '#16707F', 26, 4)} No commercial ads</div></div>`);
+    const when = el(`<div class="abs card" style="left:56px;top:120px;padding:12px 24px;display:flex;align-items:center;gap:12px;font:900 30px Nunito">${ic('calendar', '#7B4B94', 34, 3.6)}Saturday · 8:00 am</div>`);
     const bub = el(`<div class="bubble" style="left:0;top:0;font-size:36px">Hi! <span class="zh">${ZH.hello}</span> I'm all ears!</div>`);
     const panel = screenPanel(ui, issueList, 'POST TOUCHSCREEN');
-    ui.append(badge, bub);
+    ui.append(badge, bub, when);
     out[4] = {
       svg, ui, update(t) {
         const b = L(4, 's4b'), sp = L(4, 's4s'), c = L(4, 's4c');
@@ -369,7 +381,8 @@ export function buildScenes(ctx) {
         poseWalkers(W, t, jx, walking, { look: t > sp ? -3 : 0, mouth: t > sp + 0.3 ? 'smile' : 'neutral' });
         const scroll = t > b ? -((t - b) * 45) % 212 : 0;
         A.posePost(W.post, { mood: t > sp && t < c + 0.4 ? 'happy' : 'idle', talk: t > sp && t < c - 0.1 ? Math.abs(Math.sin(t * 12)) : 0, t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 3, screen: t > c ? 'list' : 'idle', look: { x: -8, y: 2 }, posters: scroll });
-        show(badge, t, b + 1.2, { kind: 'right', out: sp - 0.4 });
+        show(badge, t, b + 0.6, { kind: 'right', out: sp - 0.4 });
+        show(when, t, 0.3, { kind: 'left', out: b - 0.2 });
         const hp = toScr(POSTX + 60 * PS, POSTY - 520 * PS, cm);
         bub.style.left = `${hp.x + 20}px`; bub.style.top = `${hp.y - 90}px`;
         show(bub, t, sp + 0.05, { kind: 'pop', out: c - 0.1 });
@@ -386,7 +399,7 @@ export function buildScenes(ctx) {
     const W = streetWithPost(); svg.appendChild(W.world);
     const detail = `<div class="pane pd" style="opacity:0">
         <div class="hdr"><div style="width:58px;height:58px;border-radius:16px;background:var(--green-l);display:grid;place-items:center">${ic('tree', '#16707F', 38)}</div>
-          <div><div class="zh" style="font:900 34px 'Noto Sans TC';line-height:1.1">${ZH.issueTitle}</div><div style="font:800 19px Nunito;color:var(--navy-2)">Park rule changes · 120 m</div></div>
+          <div><div class="zh" style="font:900 34px 'Noto Sans TC';line-height:1.1">${ZH.issueTitle}</div><div style="font:800 19px Nunito;color:var(--navy-2)">Park rule changes · 120 m · <span style="color:#C0453A">fictional example</span></div></div>
           <span class="chip" style="margin-left:auto;background:var(--purple);color:#fff;font-size:21px">${ic('globe', '#fff', 24, 3.6)}<span class="zh">${ZH.lang}</span></span></div>
         <div style="margin-top:16px"><span class="tag" style="background:var(--green);color:#fff;font-size:19px"><span class="zh">${ZH.plain}</span> · Plain-language summary</span></div>
         <div class="zh" style="font:500 31px/1.6 'Noto Sans TC';margin-top:10px">${ZH.summary1}<span style="background:#FFE08A;border-radius:10px;padding:0 8px;font-weight:900;border-bottom:4px solid var(--orange)">${ZH.term}</span>${ZH.summary2}</div>
@@ -475,8 +488,8 @@ export function buildScenes(ctx) {
           <span style="width:46px;height:46px;border-radius:12px;background:var(--purple);display:grid;place-items:center">${ic('bell', '#fff', 28, 3.6)}</span>
           <div><div style="font:900 18px Nunito">HearHere · now</div><div class="zh" style="font:700 17px 'Noto Sans TC'">${ZH.notify}</div></div></div></div></div>`);
     const outs = el(`<div class="abs" style="left:1000px;top:170px;width:780px">
-      <div class="k">Outcome · examples</div>
-      <div class="card o0" style="margin-top:12px;padding:20px 26px;border-left:12px solid var(--green)"><div style="font:900 30px Nunito">${ic('check', '#16707F', 30, 4)} Decision: off-leash hours extended to 6–9 am</div>
+      <div class="k">Outcome · fictional examples</div>
+      <div class="card o0" style="margin-top:12px;padding:20px 26px;border-left:12px solid var(--green)"><div style="font:900 30px Nunito">${ic('check', '#16707F', 30, 4)} Decision: leash hours shortened to 7–8 am</div>
         <div style="margin-top:8px"><span class="tag" style="background:var(--navy);color:#fff">Case no. CASE-2026-0417</span> <span class="tag" style="background:var(--purple-l);color:var(--purple)">Parks &amp; Open Space</span></div></div>
       <div class="card o1" style="margin-top:16px;padding:20px 26px;border-left:12px solid var(--red)"><div style="font:900 30px Nunito"><span class="zh" style="color:var(--red)">${ZH.declined}</span> Declined: reasons are shown</div>
         <div style="font:700 24px Nunito;color:var(--navy-2);margin-top:6px">“Wildlife protection zone; a new off-leash area is proposed nearby.”</div></div>
@@ -524,6 +537,78 @@ export function buildScenes(ctx) {
     };
   }
 
+  // ------------------------------------------------------------ 11 How it works (from the concept sketch)
+  {
+    const { svg, ui } = mk(11);
+    const BG = A.streetWorld({ width: 2400 }); svg.appendChild(BG);
+    const post = A.post(); svg.appendChild(post);
+    // Spud's head from four angles, redrawn from the sketch's side / front / top / down views
+    const head = (inner) => `<svg width="170" height="170" viewBox="-110 -130 220 220">${inner}</svg>`;
+    const ears = '<path d="M-62 -40 l-12 -80 l60 40z" fill="#8F5FAA"/><path d="M-56 -52 l-7 -50 l35 27z" fill="#F4B6D2"/><path d="M62 -40 l12 -80 l-60 40z" fill="#8F5FAA"/><path d="M56 -52 l7 -50 l-35 27z" fill="#F4B6D2"/>';
+    const views = [
+      ['Side', head(`<path d="M10 -40 l-6 -82 l52 46z" fill="#8F5FAA"/><path d="M14 -52 l-3 -52 l30 28z" fill="#F4B6D2"/><circle r="82" fill="#7B4B94"/><circle cx="-26" cy="-40" r="30" fill="#fff" opacity=".14"/>
+        <path d="M-84 -30 h52 a32 32 0 0 1 0 64 h-52z" fill="#1F2A44"/><ellipse cx="-50" cy="0" rx="8" ry="12" fill="#8FF0FF"/>
+        <circle cx="30" cy="30" r="26" fill="#3E2552"/>${[-12, -4, 4, 12].map(x => `<rect x="${30 + x - 1.5}" y="16" width="3" height="28" rx="1.5" fill="#B79CCB"/>`).join('')}`)],
+      ['Front', melbIcon(170)],
+      ['Top', head(`${ears}<circle r="82" fill="#7B4B94"/><circle cx="0" cy="0" r="58" fill="#8F5FAA"/><circle cx="0" cy="-8" r="5" fill="#2E1A3D"/>
+        <path d="M-52 52 a70 40 0 0 0 104 0" fill="#1F2A44"/><ellipse cx="-24" cy="62" rx="7" ry="5" fill="#8FF0FF"/><ellipse cx="24" cy="62" rx="7" ry="5" fill="#8FF0FF"/>`)],
+      ['Down', head(`<circle r="82" fill="#7B4B94"/><circle r="30" fill="#2B2350"/><circle r="16" fill="#9AA2C4"/>
+        <circle cx="-58" cy="0" r="18" fill="#3E2552"/><circle cx="58" cy="0" r="18" fill="#3E2552"/>${[-6, 0, 6].map(x => `<rect x="${-58 + x - 1}" y="-10" width="2" height="20" fill="#B79CCB"/><rect x="${58 + x - 1}" y="-10" width="2" height="20" fill="#B79CCB"/>`).join('')}`)],
+    ];
+    const prod = el(`<div class="abs card" style="left:90px;top:120px;width:1060px;padding:28px 34px">
+      <div class="k">Product views</div><div class="h2">Spud from every side</div>
+      <div style="display:flex;justify-content:space-between;margin-top:14px">${views.map(([n, v]) => `<div style="text-align:center"><div style="width:190px;height:190px;border-radius:24px;background:var(--cream);display:grid;place-items:center">${v}</div>
+        <div style="font:900 24px Nunito;margin-top:8px">${n}</div></div>`).join('')}</div>
+      <div style="display:flex;align-items:center;gap:18px;margin-top:18px;padding-top:16px;border-top:2px dashed #E9DCC4">
+        <img src="img/sk_views.png" style="height:110px;border-radius:12px;background:#fff">
+        <div style="font:800 22px/1.35 Nunito;color:var(--navy-2)">Redrawn from our<br>concept sketch</div></div></div>`);
+    const sideSk = el(`<div class="abs card" style="left:1190px;top:120px;padding:14px;display:flex;gap:10px;align-items:flex-end">
+      <img src="img/sk_side.png" style="height:300px"><img src="img/sk_front.png" style="height:300px"></div>`);
+    const card3 = (cls, title, sub, body, c) => `<div class="abs card ${cls}" style="width:470px;padding:0;overflow:hidden">
+      <div style="padding:18px 24px;background:${c};color:#fff"><div style="font:900 30px Nunito">${title}</div><div style="font:800 19px Nunito;opacity:.9">${sub}</div></div>
+      <div style="padding:20px 24px">${body}</div></div>`;
+    const sys = el(`<div class="abs" style="inset:0">
+      <div class="hd abs" style="left:0;right:0;top:112px;text-align:center"><span class="card" style="display:inline-block;padding:12px 30px;font:800 46px 'Baloo 2'">One post, three connected channels</span></div>
+      <div class="abs" style="left:110px;top:230px">${card3('c0', 'Official social media', '@hearhere.spud · official account', `
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:58px;height:58px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(48, 'happy')}</span>
+          <div><div style="font:900 22px Nunito">HearHere Spud <span style="background:#3A63D1;color:#fff;border-radius:50%;padding:0 7px;font-size:16px">✓</span></div><div style="font:700 17px Nunito;color:var(--navy-2)">Verified council posts only</div></div></div>
+        <div style="margin-top:14px;height:120px;border-radius:14px;background:linear-gradient(135deg,#FFE6CC,#EDE3F3);display:grid;place-items:center;font:800 22px Nunito;color:var(--purple)">Have your say: park rules</div>
+        <div style="margin-top:12px;font:800 19px Nunito;color:#16707F">${ic('lock', '#16707F', 22, 4)} Verified content only, so it can't be impersonated</div>`, 'linear-gradient(135deg,#E1306C,#F77737)')}</div>
+      <div class="plus abs p0" style="left:600px;top:420px;font:900 70px Nunito;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.3)">+</div>
+      <div class="abs" style="left:725px;top:230px">${card3('c1', 'AI agent', 'Answers from official documents', `
+        <div class="msg me" style="margin:0 0 10px auto;font-size:19px">Which department do I contact?</div>
+        <div class="msg bot" style="font-size:19px;margin:0">Parks &amp; Open Space. See the draft rule, p. 4.<div><span class="src">${ic('doc', '#16707F', 16, 4)}Source cited</span></div></div>
+        <div style="margin-top:12px;font:800 19px Nunito;color:var(--navy-2)">${ic('user', '#46506A', 22, 4)} Hands over to a person when unsure</div>`, 'linear-gradient(135deg,#7B4B94,#9C6DB8)')}</div>
+      <div class="plus abs p1" style="left:1215px;top:420px;font:900 70px Nunito;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.3)">+</div>
+      <div class="abs" style="left:1340px;top:230px">${card3('c2', 'HearHere app', 'Saved issues + tracker', `
+        ${[['Received', '#1E9BB0', '✓'], ['In review', '#7B4B94', '2'], ['Outcome', '#CFD3DC', '3']].map(([n, c, m]) => `<div class="step" style="padding:6px 0"><span class="dot" style="background:${c}">${m}</span><div style="font:900 22px Nunito">${n}</div></div>`).join('')}
+        <div style="margin-top:8px;font:800 19px Nunito;color:var(--navy-2)">${ic('bell', '#46506A', 22, 4)} Notifies when the status changes</div>`, 'linear-gradient(135deg,#16707F,#1E9BB0)')}</div>
+      <div class="th5 abs card" style="left:110px;top:770px;padding:14px 24px;display:flex;align-items:center;gap:14px;font:800 24px Nunito">${ic('globe', '#C96A10', 32, 3.6)}<span><b style="color:var(--orange-d)">Theme 5:</b> reach residents on the channels they already use</span></div>
+      <div class="sk abs card" style="left:1340px;top:740px;padding:10px 14px;display:flex;align-items:center;gap:12px"><img src="img/sk_three.png" style="height:96px"><span style="font:800 18px/1.3 Nunito;color:var(--navy-2)">From our<br>concept sketch</span></div></div>`);
+    ui.append(prod, sideSk, sys);
+    out[11] = {
+      svg, ui, update(t) {
+        const a = L(11, 'h1'), b = L(11, 'h2'), c = L(11, 'h3');
+        cam(BG, 960, 540, 1);
+        const pin = easeOut(prog(t, a, 0.6)), pout = 1 - clamp((t - b) / 0.4);
+        place(post, 1560, POSTY + 30, PS * 1.0);
+        post.setAttribute('opacity', Math.min(pin, pout));
+        A.posePost(post, { mood: 'happy', t, blink: blink(t, 3.1), bob: Math.sin(t * 2.2) * 3, screen: 'idle', tilt: Math.sin(t * 0.9) * 4 });
+        show(prod, t, a, { kind: 'left', out: b - 0.1 });
+        show(sideSk, t, a + 0.8, { kind: 'pop', out: b - 0.1 });
+        // keep the sketch thumbnails clear of the rendered post
+        show($(sys, '.hd'), t, b, { kind: 'down' });
+        show($(sys, '.c0'), t, b + 0.3, { kind: 'up' });
+        show($(sys, '.p0'), t, c - 0.2, { kind: 'pop' });
+        show($(sys, '.c1'), t, c, { kind: 'up' });
+        show($(sys, '.p1'), t, c + 1.6, { kind: 'pop' });
+        show($(sys, '.c2'), t, c + 1.8, { kind: 'up' });
+        show($(sys, '.th5'), t, b + 2.0, { kind: 'left' });
+        show($(sys, '.sk'), t, c + 2.6, { kind: 'pop' });
+      },
+    };
+  }
+
   // ------------------------------------------------------------ 7 Q&A & share
   {
     const { svg, ui } = mk(7);
@@ -549,7 +634,7 @@ export function buildScenes(ctx) {
         <div style="padding:30px;color:#fff"><div style="display:flex;align-items:center;gap:10px;font:800 20px Nunito"><span style="width:44px;height:44px;border-radius:50%;background:var(--cream);display:grid;place-items:center">${melbIcon(38, 'happy')}</span>@hearhere.melb</div>
           <div style="font:800 54px/1.05 'Baloo 2';margin-top:70px">Have your say!</div>
           <div class="zh" style="font:900 34px 'Noto Sans TC';margin-top:14px">${ZH.issueTitle}</div>
-          <div style="font:800 24px Nunito;margin-top:8px;opacity:.95">Park rule changes · closes in 5 days</div>
+          <div style="font:800 24px Nunito;margin-top:8px;opacity:.95">Park rule changes · closes in 5 days<br><span style="font-size:18px;opacity:.85">(fictional example)</span></div>
           <div style="margin-top:60px;background:#fff;color:var(--purple);border-radius:999px;padding:14px 20px;text-align:center;font:900 24px Nunito">Open in HearHere</div></div></div>
       ${[[40, 90, '#FFD9AE'], [640, 60, '#CFE7F0'], [60, 470, '#E7D4F1'], [660, 430, '#BFD9F2'], [700, 250, '#FFC7C2']].map(([x, y, c], i) => `
         <div class="nb nb${i}" style="position:absolute;left:${x}px;top:${y}px;text-align:center"><div style="width:110px;height:110px;border-radius:50%;background:${c};display:grid;place-items:center;box-shadow:0 8px 20px rgba(31,42,68,.15)">${ic('user', '#46506A', 60, 3.4)}</div>
@@ -680,7 +765,7 @@ export function lowerThirds(TL) {
   const end = (sid) => S[sid].end - 0.3;
   return [
     { a: at('s3a'), b: end(3), k: 'Persona', text: 'Jason Lee', icon: 'user' },
-    { a: at('s4a') + 0.3, b: at('s4b'), k: 'Scenario', text: 'A walk to the grocer', icon: 'pin' },
+    { a: at('s4a') + 0.3, b: at('s4b'), k: 'Scenario', text: 'Saturday morning dog walk', icon: 'pin' },
     { a: at('s4b') + 0.3, b: at('s4s'), k: 'Feature', text: 'Verified notices on the pillar', icon: 'doc' },
     { a: at('s4s'), b: at('s4c'), k: 'Mascot', text: 'Spud · Street Post for Understanding Decisions', icon: 'chat' },
     { a: at('s4c') + 0.6, b: end(4), k: 'Feature', text: 'Local issues, ranked', icon: 'pin' },
@@ -689,6 +774,8 @@ export function lowerThirds(TL) {
     { a: at('s5d'), b: end(5), k: 'Feature', text: 'Structured comment', icon: 'chat' },
     { a: at('s6a'), b: at('s6c'), k: 'Feature', text: 'NFC hand-off', icon: 'lock' },
     { a: at('s6c'), b: end(6), k: 'Feature', text: 'Progress tracker', icon: 'steps' },
+    { a: at('h1'), b: at('h2'), k: 'How it works', text: 'Product views', icon: 'box' },
+    { a: at('h2'), b: end(11), k: 'How it works', text: 'Social + AI agent + app', icon: 'share' },
     { a: at('s7a'), b: at('s7c'), k: 'Feature', text: 'Q&A assistant', icon: 'chat' },
     { a: at('s7c'), b: end(7), k: 'Feature', text: 'Share to social', icon: 'share' },
   ];

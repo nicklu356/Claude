@@ -37,6 +37,12 @@ const grain = document.getElementById('grain');
   gx.putImageData(im, 0, 0);
   grain.style.backgroundImage = `url(${cv.toDataURL()})`;
 }
+// footnote while the (fictional) park-rule scenario is on screen
+const fn = document.createElement('div');
+fn.style.cssText = 'position:absolute;right:40px;bottom:30px;z-index:41;background:rgba(255,255,255,.94);border-radius:999px;padding:8px 20px;font:800 20px Nunito;color:#C0453A;box-shadow:0 6px 18px rgba(0,0,0,.15)';
+fn.textContent = 'Scenario and park rule are fictional examples';
+document.getElementById('stage').appendChild(fn);
+const FN_SCENES = new Set([3, 4, 5, 6, 7]);
 let current = null;
 function renderAt(t) {
   const S = TL.scenes.find((s) => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1];
@@ -47,6 +53,7 @@ function renderAt(t) {
     current = S.id;
   }
   A.clock.t = t;
+  fn.style.display = FN_SCENES.has(S.id) ? 'block' : 'none';
   sc.update(t - S.start, t);
   // slow drift on the UI layer so card-only shots never sit perfectly still
   sc.ui.style.transform = `translate(${(Math.sin(t * 0.7) * 4).toFixed(2)}px, ${(Math.cos(t * 0.55) * 3).toFixed(2)}px)`;

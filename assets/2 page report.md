@@ -1,5 +1,5 @@
 # INFO90006 Fieldwork for Design
-## Design Concept — VoicePost
+## Design Concept — HearHere
 
 **Team Sweet Potatoes — Group 14**
 
@@ -16,11 +16,11 @@
 
 ## 1. Concept Overview
 
-**VoicePost** is a street-side civic information post paired with a mobile app. It helps international residents discover, understand, and respond to local government decisions in their own languages.
+**HearHere** is a street-side civic information post paired with a mobile app. Its mascot, **Spud** (Street Post for Understanding Decisions), is the voice residents talk to. It helps international residents discover, understand, and respond to local government decisions in their own languages.
 
 Our fieldwork found that the main barriers to civic participation are not necessarily a lack of interest, but difficulties finding relevant information, understanding government terminology, and knowing what happens after feedback is submitted (Themes 1–5).
 
-VoicePost addresses these barriers through two connected components:
+HearHere addresses these barriers through two connected components:
 
 - **Physical information post:** Helps residents discover relevant local issues, understand public information, and provide quick feedback along their everyday walking routes.
 - **Mobile app:** Allows residents to save issues, receive notifications, access support, and track the progress of issues they care about.
@@ -42,7 +42,7 @@ The digital post is designed for everyday public spaces, such as library entranc
 - Displays nearby public issues ranked by relevance, prioritising proximity and approaching consultation deadlines.
 - Allows users to filter issues by topic, such as parks, housing, and student life.
 - Provides plain-language summaries and explanations of key government terms in the user's preferred language.
-- Lets users speak to a friendly mascot to express their opinions in their own language.
+- Lets users speak to Spud, a friendly mascot, to express their opinions in their own language.
 - Uses AI to translate and summarise feedback into a structured comment.
 - Allows users to review and edit the original comment and its English version before submission.
 
@@ -50,6 +50,7 @@ The digital post is designed for everyday public spaces, such as library entranc
 - Allows users to transfer a selected issue and their feedback to the mobile app using NFC or a QR code.
 - Enables users to save issues and begin tracking them on their own devices.
 - Supports optional notifications and shareable content for platforms such as Instagram and messaging apps.
+- Spud's official social media account publishes only verified council and community content, so residents can tell genuine posts from impersonators.
 
 ### 2.2 Mobile App
 
@@ -90,7 +91,7 @@ This approach separates temporary interaction with the physical post from the us
 
 ## 3. Design Justification
 
-VoicePost is grounded in the findings from our fieldwork with international students and immigrant residents in Melbourne.
+HearHere is grounded in the findings from our fieldwork with international students and immigrant residents in Melbourne.
 
 | Design decision | Fieldwork justification |
 |---|---|
@@ -103,7 +104,7 @@ VoicePost is grounded in the findings from our fieldwork with international stud
 | RAG-based question-and-answer assistant | **Themes 1 and 4 — Language and interaction:** Unclear council websites and unfamiliar service pathways can make it difficult to understand policies or find the appropriate contact. |
 | Verified council and community content | **R7 — Trustworthiness:** Using verified sources helps residents distinguish reliable civic information from commercial or misleading content. |
 
-Overall, VoicePost combines a physical discovery point with a digital follow-up channel. This design responds to the barriers identified in our fieldwork while recognising that participation must be understandable, relevant, and transparent to be meaningful.
+Overall, HearHere combines a physical discovery point with a digital follow-up channel. This design responds to the barriers identified in our fieldwork while recognising that participation must be understandable, relevant, and transparent to be meaningful.
 
 ## 4. Ethical and Social Considerations
 
@@ -137,6 +138,7 @@ Organised groups may submit repeated comments, while malicious individuals could
 **Mitigation:**
 - Apply reasonable submission rate limits.
 - Display an official web address for verification.
+- Publish through a single verified official account that posts only verified content, so fake accounts using the Spud mascot are easy to spot and report.
 - Inspect the physical posts regularly.
 - Distinguish repeated submissions from evidence of broader community consensus.
 
@@ -215,7 +217,7 @@ Rewards would remain a secondary idea until evaluation demonstrates that they su
 
 ## 6. Conclusion
 
-VoicePost aims to bridge the gap between discovering local government information and participating in civic decision-making. By combining a physical information post, multilingual AI assistance, optional mobile tracking, and transparent issue updates, the concept responds to barriers identified in our fieldwork.
+HearHere aims to bridge the gap between discovering local government information and participating in civic decision-making. By combining a physical information post, multilingual AI assistance, optional mobile tracking, and transparent issue updates, the concept responds to barriers identified in our fieldwork.
 
 Its success would depend not only on usability, but also on privacy, trustworthy information, accessible interaction, and realistic integration with council processes.
 
