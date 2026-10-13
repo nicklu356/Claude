@@ -4,6 +4,7 @@
 // Green-screen mode: no painted backgrounds or contact shadows, so the team can
 // composite real Melbourne photos behind the characters.
 export const GREEN = '#00B140';
+export const clock = { t: 0 };   // set every frame by main.js (idle breathing)
 export const C = {
   purple: '#7B4B94', purpleD: '#5A3370', purpleL: '#EDE3F3', purpleM: '#9C6DB8',
   orange: '#F28C28', orangeD: '#C96A10', orangeL: '#FFE6CC',
@@ -173,6 +174,8 @@ export function poseJason(j, p = {}) {
     kF = 6 + 34 * Math.max(0, Math.sin(ph - 1.4)); kB = 6 + 34 * Math.max(0, Math.sin(ph + Math.PI - 1.4));
     aF = -20 * s; aB = 20 * s; eF = 18 + 8 * Math.max(0, -s); eB = 18 + 8 * Math.max(0, s);
     bob = -Math.abs(Math.cos(ph)) * 8; lean = 2;
+  } else {
+    const bt = clock.t * 2.1; bob = Math.sin(bt) * 2.2; aF += Math.sin(bt + 0.6) * 1.5; aB -= Math.sin(bt + 0.6) * 1.5;
   }
   if (p.armF != null) aF = p.armF; if (p.elbowF != null) eF = p.elbowF;
   if (p.armB != null) aB = p.armB; if (p.elbowB != null) eB = p.elbowB;

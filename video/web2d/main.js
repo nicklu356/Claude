@@ -2,6 +2,7 @@
 // frame for time t (seconds).  render.js steps t frame by frame.
 import { buildScenes, lowerThirds, ZH_STRINGS } from './scenes.js';
 import { defs } from './art.js';
+import * as A from './art.js';
 import { ic } from './icons.js';
 import { clamp, easeOut } from './fx.js';
 
@@ -45,7 +46,10 @@ function renderAt(t) {
     sc.svg.style.display = ''; sc.ui.style.display = 'block';
     current = S.id;
   }
+  A.clock.t = t;
   sc.update(t - S.start, t);
+  // slow drift on the UI layer so card-only shots never sit perfectly still
+  sc.ui.style.transform = `translate(${(Math.sin(t * 0.7) * 4).toFixed(2)}px, ${(Math.cos(t * 0.55) * 3).toFixed(2)}px)`;
   const f = Math.round(t * 30); grain.style.transform = `translate(${(f * 37) % 64}px, ${(f * 53) % 64}px)`;
 
   // feature label

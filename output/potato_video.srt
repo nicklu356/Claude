@@ -1,244 +1,252 @@
 1
-00:00:00,400 --> 00:00:01,490
-Hi, Melbourne!
+00:00:00,400 --> 00:00:01,643
+Hi there! I'm Spud.
 
 2
-00:00:01,490 --> 00:00:05,201
+00:00:01,643 --> 00:00:05,415
 We're Group 14, Team Sweet
-Potatoes, and this is POTATO —
+Potatoes, and this is HearHere:
 
 3
-00:00:05,201 --> 00:00:08,807
-the Public Opinion Translation
-And Tracking Outpost.
+00:00:05,415 --> 00:00:10,357
+a street post that helps international
+residents understand and answer local
 
 4
-00:00:08,807 --> 00:00:09,847
-Why POTATO?
+00:00:10,357 --> 00:00:11,748
+council decisions.
 
 5
-00:00:09,847 --> 00:00:13,588
-Because, like a sweet potato, good
-ideas grow from the ground up.
+00:00:11,748 --> 00:00:15,984
+Spud stands for Street Post for
+Understanding Decisions. And yes,
 
 6
-00:00:14,588 --> 00:00:18,781
+00:00:15,984 --> 00:00:17,964
+it's also slang for potato!
+
+7
+00:00:17,964 --> 00:00:19,574
+HearHere. Your street, your say.
+
+8
+00:00:20,574 --> 00:00:24,767
 Melbourne's councils make decisions
 about parks, housing and transport.
 
-7
-00:00:18,781 --> 00:00:23,037
+9
+00:00:24,767 --> 00:00:29,023
 Our fieldwork with eight international
 residents found the barrier isn't a lack
 
-8
-00:00:23,037 --> 00:00:23,904
+10
+00:00:29,023 --> 00:00:29,890
 of interest.
 
-9
-00:00:23,904 --> 00:00:26,348
+11
+00:00:29,890 --> 00:00:32,334
 People can't find relevant information.
 
-10
-00:00:26,348 --> 00:00:29,928
+12
+00:00:32,334 --> 00:00:35,914
 Translated policies still use
 terms they don't understand.
 
-11
-00:00:29,928 --> 00:00:32,007
+13
+00:00:35,914 --> 00:00:37,993
 And they don't know where
 their feedback goes.
 
-12
-00:00:32,007 --> 00:00:35,214
+14
+00:00:37,993 --> 00:00:41,200
 Meanwhile, council news
 arrives by mail and flyers,
 
-13
-00:00:35,214 --> 00:00:37,604
+15
+00:00:41,200 --> 00:00:43,590
 but newer residents live on Instagram.
 
-14
-00:00:38,304 --> 00:00:39,408
+16
+00:00:44,290 --> 00:00:45,394
 Meet Jason.
 
-15
-00:00:39,408 --> 00:00:43,654
+17
+00:00:45,394 --> 00:00:49,640
 He's lived in Melbourne for years,
 but English isn't his first language.
 
-16
-00:00:43,654 --> 00:00:48,167
+18
+00:00:49,640 --> 00:00:54,153
 He's unhappy about a new park rule for
 dogs, yet he doesn't know who to tell,
 
-17
-00:00:48,167 --> 00:00:49,457
+19
+00:00:54,153 --> 00:00:55,443
 or which words to use.
 
-18
-00:00:50,157 --> 00:00:53,650
+20
+00:00:56,143 --> 00:00:59,558
 On his grocery walk, Jason
-passes a POTATO post.
+passes a HearHere post.
 
-19
-00:00:53,650 --> 00:00:57,317
-Its side panel shows verified
+21
+00:00:59,558 --> 00:01:02,987
+Its pillar shows verified
 council and community notices,
 
-20
-00:00:57,317 --> 00:01:00,348
+22
+00:01:02,987 --> 00:01:06,023
 so he finds things he'd
 never see in the mail.
 
-21
-00:01:00,348 --> 00:01:02,267
-Then Melb, our mascot, says hi,
-
-22
-00:01:02,267 --> 00:01:05,548
-and the screen lists the
-issues closest to this spot,
-
 23
-00:01:05,548 --> 00:01:07,777
-ranked by distance and closing date.
+00:01:06,023 --> 00:01:07,951
+Hi! Got something to say? I'm all ears.
 
 24
-00:01:08,477 --> 00:01:10,264
-Jason taps the park issue.
+00:01:07,951 --> 00:01:11,496
+The screen under Spud lists the
+issues closest to this spot,
 
 25
-00:01:10,264 --> 00:01:13,296
+00:01:11,496 --> 00:01:13,623
+ranked by distance and closing date.
+
+26
+00:01:14,323 --> 00:01:16,110
+Jason taps the park issue.
+
+27
+00:01:16,110 --> 00:01:19,142
 A plain-language summary
 appears in his own language,
 
-26
-00:01:13,296 --> 00:01:15,289
+28
+00:01:19,142 --> 00:01:21,135
 with difficult terms explained.
 
-27
-00:01:15,289 --> 00:01:18,301
+29
+00:01:21,135 --> 00:01:24,147
 Now he simply talks to
 Melb, in his own language.
 
-28
-00:01:18,301 --> 00:01:21,997
+30
+00:01:24,147 --> 00:01:27,843
 The new park rule makes walking my dog
 really inconvenient. I hope it can be
 
-29
-00:01:21,997 --> 00:01:22,849
+31
+00:01:27,843 --> 00:01:28,695
 reconsidered.
 
-30
-00:01:22,849 --> 00:01:27,582
+32
+00:01:28,695 --> 00:01:33,428
 Melb turns that into a structured
 comment, original Chinese plus English,
 
-31
-00:01:27,582 --> 00:01:32,989
+33
+00:01:33,428 --> 00:01:38,835
 names the responsible department, and
 lets Jason review and edit before sending.
 
-32
-00:01:32,989 --> 00:01:34,325
+34
+00:01:38,835 --> 00:01:40,171
 No audio is stored.
 
-33
-00:01:35,225 --> 00:01:37,835
+35
+00:01:41,071 --> 00:01:43,681
 Jason taps his phone on the NFC pad.
 
-34
-00:01:37,835 --> 00:01:42,324
+36
+00:01:43,681 --> 00:01:48,047
 The issue and his comment move to the
-Hi Melb app, and the post keeps nothing.
+HearHere app, and the post keeps nothing.
 
-35
-00:01:42,324 --> 00:01:45,097
+37
+00:01:48,047 --> 00:01:50,820
 Tracking begins only
 because Jason chose it.
 
-36
-00:01:45,097 --> 00:01:47,840
+38
+00:01:50,820 --> 00:01:53,563
 The app shows each stage:
 Received, In review,
 
-37
-00:01:47,840 --> 00:01:51,578
+39
+00:01:53,563 --> 00:01:57,301
 then an outcome with a case
 number, or reasons if declined.
 
-38
-00:01:51,578 --> 00:01:53,614
+40
+00:01:57,301 --> 00:01:59,337
 Notifications keep him updated.
 
-39
-00:01:54,314 --> 00:01:55,680
+41
+00:02:00,037 --> 00:02:01,403
 Not sure who to ask?
 
-40
-00:01:55,680 --> 00:02:00,030
+42
+00:02:01,403 --> 00:02:05,753
 The Q&A assistant answers from
 official documents, cites its sources,
 
-41
-00:02:00,030 --> 00:02:03,466
+43
+00:02:05,753 --> 00:02:09,189
 and hands over to a named
 contact when it's unsure.
 
-42
-00:02:03,466 --> 00:02:07,756
+44
+00:02:09,189 --> 00:02:13,479
 And one tap shares a card on Instagram,
 so Jason's neighbours can join in.
 
-43
-00:02:08,456 --> 00:02:12,468
+45
+00:02:14,179 --> 00:02:18,191
 For Jason, that means finding
 relevant issues on his everyday route,
 
-44
-00:02:12,468 --> 00:02:16,893
+46
+00:02:18,191 --> 00:02:22,616
 understanding them in his own language,
 knowing which department hears him,
 
-45
-00:02:16,893 --> 00:02:18,824
+47
+00:02:22,616 --> 00:02:24,547
 and seeing what happens next.
 
-46
-00:02:18,824 --> 00:02:20,291
+48
+00:02:24,547 --> 00:02:26,014
 All without attending a meeting.
 
-47
-00:02:20,991 --> 00:02:22,446
-POTATO has limits.
+49
+00:02:26,714 --> 00:02:28,117
+HearHere has limits.
 
-48
-00:02:22,446 --> 00:02:26,161
+50
+00:02:28,117 --> 00:02:31,832
 Speaking in public may feel
 exposing, AI can mistranslate,
 
-49
-00:02:26,161 --> 00:02:29,391
+51
+00:02:31,832 --> 00:02:35,062
 and our fieldwork didn't
 include council staff.
 
-50
-00:02:29,391 --> 00:02:33,751
+52
+00:02:35,062 --> 00:02:39,422
 Next, we'll test a low-fidelity prototype
 with residents across languages,
 
-51
-00:02:33,751 --> 00:02:37,109
+53
+00:02:39,422 --> 00:02:42,780
 and check whether they trust
 and correct the AI's output.
 
-52
-00:02:37,809 --> 00:02:41,660
-POTATO: Public Opinion
-Translation And Tracking Outpost.
+54
+00:02:43,480 --> 00:02:47,313
+HearHere, with Spud: the Street
+Post for Understanding Decisions.
 
-53
-00:02:41,660 --> 00:02:43,037
-Voices from the ground up.
+55
+00:02:47,313 --> 00:02:48,405
+Speak here. Be heard!
