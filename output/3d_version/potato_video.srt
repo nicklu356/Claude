@@ -1,0 +1,240 @@
+1
+00:00:00,400 --> 00:00:01,500
+Hi, Melbourne!
+
+2
+00:00:01,500 --> 00:00:05,212
+We're Group 14, Team Sweet
+Potatoes, and this is POTATO —
+
+3
+00:00:05,212 --> 00:00:08,818
+the Public Opinion Translation
+And Tracking Outpost.
+
+4
+00:00:08,818 --> 00:00:09,922
+Why POTATO?
+
+5
+00:00:09,922 --> 00:00:13,667
+Because, like a sweet potato, good
+ideas grow from the ground up.
+
+6
+00:00:14,367 --> 00:00:18,561
+Melbourne's councils make decisions
+about parks, housing and transport.
+
+7
+00:00:18,561 --> 00:00:22,854
+Our fieldwork with eight international
+residents found the barrier isn't a lack
+
+8
+00:00:22,854 --> 00:00:23,726
+of interest.
+
+9
+00:00:23,726 --> 00:00:26,170
+People can't find relevant information.
+
+10
+00:00:26,170 --> 00:00:29,750
+Translated policies still use
+terms they don't understand.
+
+11
+00:00:29,750 --> 00:00:31,826
+And they don't know where
+their feedback goes.
+
+12
+00:00:31,826 --> 00:00:35,036
+Meanwhile, council news
+arrives by mail and flyers,
+
+13
+00:00:35,036 --> 00:00:37,428
+but newer residents live on Instagram.
+
+14
+00:00:38,128 --> 00:00:39,269
+Meet Jason.
+
+15
+00:00:39,269 --> 00:00:43,516
+He's lived in Melbourne for years,
+but English isn't his first language.
+
+16
+00:00:43,516 --> 00:00:48,030
+He's unhappy about a new park rule for
+dogs, yet he doesn't know who to tell,
+
+17
+00:00:48,030 --> 00:00:49,320
+or which words to use.
+
+18
+00:00:50,020 --> 00:00:53,514
+On his grocery walk, Jason
+passes a POTATO post.
+
+19
+00:00:53,514 --> 00:00:56,899
+Its screen shows verified
+council and community notices,
+
+20
+00:00:56,899 --> 00:00:59,900
+so he finds things he'd
+never see in the mail.
+
+21
+00:00:59,900 --> 00:01:04,565
+Then Spud, our mascot, greets him and
+lists the issues closest to this spot,
+
+22
+00:01:04,565 --> 00:01:06,775
+ranked by distance and closing date.
+
+23
+00:01:07,475 --> 00:01:09,260
+Jason taps the park issue.
+
+24
+00:01:09,260 --> 00:01:12,292
+A plain-language summary
+appears in his own language,
+
+25
+00:01:12,292 --> 00:01:14,285
+with difficult terms explained.
+
+26
+00:01:14,285 --> 00:01:17,366
+Now he simply talks to
+Spud, in his own language.
+
+27
+00:01:17,366 --> 00:01:21,085
+The new park rule makes walking my dog
+really inconvenient. I hope it can be
+
+28
+00:01:21,085 --> 00:01:21,941
+reconsidered.
+
+29
+00:01:21,941 --> 00:01:26,644
+Spud turns that into a structured
+comment, original Chinese plus English,
+
+30
+00:01:26,644 --> 00:01:32,019
+names the responsible department, and
+lets Jason review and edit before sending.
+
+31
+00:01:32,019 --> 00:01:33,356
+No audio is stored.
+
+32
+00:01:34,056 --> 00:01:36,666
+Jason taps his phone on the NFC pad.
+
+33
+00:01:36,666 --> 00:01:41,108
+The issue and his comment move to the
+POTATO app, and the post keeps nothing.
+
+34
+00:01:41,108 --> 00:01:43,882
+Tracking begins only
+because Jason chose it.
+
+35
+00:01:43,882 --> 00:01:46,625
+The app shows each stage:
+Received, In review,
+
+36
+00:01:46,625 --> 00:01:50,363
+then an outcome with a case
+number, or reasons if declined.
+
+37
+00:01:50,363 --> 00:01:52,426
+Notifications keep him updated.
+
+38
+00:01:53,126 --> 00:01:54,519
+Not sure who to ask?
+
+39
+00:01:54,519 --> 00:01:58,898
+The Q&A assistant answers from
+official documents, cites its sources,
+
+40
+00:01:58,898 --> 00:02:02,355
+and hands over to a named
+contact when it's unsure.
+
+41
+00:02:02,355 --> 00:02:06,645
+And one tap shares a card on Instagram,
+so Jason's neighbours can join in.
+
+42
+00:02:07,345 --> 00:02:11,357
+For Jason, that means finding
+relevant issues on his everyday route,
+
+43
+00:02:11,357 --> 00:02:15,781
+understanding them in his own language,
+knowing which department hears him,
+
+44
+00:02:15,781 --> 00:02:17,712
+and seeing what happens next.
+
+45
+00:02:17,712 --> 00:02:19,182
+All without attending a meeting.
+
+46
+00:02:19,882 --> 00:02:21,330
+POTATO has limits.
+
+47
+00:02:21,330 --> 00:02:25,045
+Speaking in public may feel
+exposing, AI can mistranslate,
+
+48
+00:02:25,045 --> 00:02:28,276
+and our fieldwork didn't
+include council staff.
+
+49
+00:02:28,276 --> 00:02:32,638
+Next, we'll test a low-fidelity prototype
+with residents across languages,
+
+50
+00:02:32,638 --> 00:02:35,998
+and check whether they trust
+and correct the AI's output.
+
+51
+00:02:36,698 --> 00:02:40,523
+POTATO: Public Opinion
+Translation And Tracking Outpost.
+
+52
+00:02:40,523 --> 00:02:41,926
+Voices from the ground up.

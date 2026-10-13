@@ -101,7 +101,7 @@ def main():
     scenes, lines_all, cues = [], [], []
     for sc in script["scenes"]:
         start = t
-        cursor = start + lead
+        cursor = start + (sc.get("lead_in") or lead)  # a scene may hold longer before its first line
         lines = []
         for i, ln in enumerate(sc["lines"]):
             if est:

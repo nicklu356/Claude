@@ -3,31 +3,31 @@
   {
    "id": 1,
    "name": "Title",
-   "tail": null,
+   "tail": 0.6,
    "lines": [
     {
      "id": "s1a",
-     "voice": "narrator",
-     "tts": "Hi, Melbourne!",
-     "sub": "Hi, Melbourne!"
+     "voice": "spud",
+     "tts": "Hi there! I'm Spud.",
+     "sub": "Hi there! I'm Spud."
     },
     {
      "id": "s1b",
      "voice": "narrator",
-     "tts": "We're Group 14, Team Sweet Potatoes, and this is Potato, the Public Opinion Translation And Tracking Outpost.",
-     "sub": "We're Group 14, Team Sweet Potatoes, and this is POTATO — the Public Opinion Translation And Tracking Outpost."
+     "tts": "We're Group 14, Team Sweet Potatoes, and this is HearHere.",
+     "sub": "We're Group 14, Team Sweet Potatoes, and this is HearHere."
     },
     {
      "id": "s1c",
-     "voice": "narrator",
-     "tts": "Why potato?",
-     "sub": "Why POTATO?"
+     "voice": "spud",
+     "tts": "Spud stands for Street Post for Understanding Decisions.",
+     "sub": "Spud stands for Street Post for Understanding Decisions."
     },
     {
      "id": "s1d",
      "voice": "narrator",
-     "tts": "Because, like a sweet potato, good ideas grow from the ground up.",
-     "sub": "Because, like a sweet potato, good ideas grow from the ground up."
+     "tts": "HearHere. Your street, your say.",
+     "sub": "HearHere. Your street, your say."
     }
    ]
   },
@@ -88,8 +88,8 @@
     {
      "id": "s3b",
      "voice": "narrator",
-     "tts": "He's lived in Melbourne for years, but English isn't his first language.",
-     "sub": "He's lived in Melbourne for years, but English isn't his first language."
+     "tts": "He's 34, has lived in Melbourne for eight years, and English isn't his first language.",
+     "sub": "He's 34, has lived in Melbourne for eight years, and English isn't his first language."
     },
     {
      "id": "s3c",
@@ -107,27 +107,33 @@
     {
      "id": "s4a",
      "voice": "narrator",
-     "tts": "On his grocery walk, Jason passes a Potato post.",
-     "sub": "On his grocery walk, Jason passes a POTATO post."
+     "tts": "Saturday, 8 a.m. Jason walks his dog past a HearHere post.",
+     "sub": "Saturday, 8 a.m. Jason walks his dog past a HearHere post."
     },
     {
      "id": "s4b",
      "voice": "narrator",
-     "tts": "Its screen shows verified council and community notices, so he finds things he'd never see in the mail.",
-     "sub": "Its screen shows verified council and community notices, so he finds things he'd never see in the mail."
+     "tts": "Its pillar shows verified council and community notices.",
+     "sub": "Its pillar shows verified council and community notices."
+    },
+    {
+     "id": "s4s",
+     "voice": "spud",
+     "tts": "Hi! Got something to say? I'm all ears.",
+     "sub": "Hi! Got something to say? I'm all ears."
     },
     {
      "id": "s4c",
      "voice": "narrator",
-     "tts": "Then Spud, our mascot, greets him and lists the issues closest to this spot, ranked by distance and closing date.",
-     "sub": "Then Spud, our mascot, greets him and lists the issues closest to this spot, ranked by distance and closing date."
+     "tts": "The screen under Spud lists nearby issues by distance, including a new rule for the park next door.",
+     "sub": "The screen under Spud lists nearby issues by distance, including a new rule for the park next door."
     }
    ]
   },
   {
    "id": 5,
    "name": "Understand & speak",
-   "tail": null,
+   "tail": 0.5,
    "lines": [
     {
      "id": "s5a",
@@ -151,13 +157,14 @@
      "id": "s5j",
      "voice": "jason",
      "tts": "新的公園規定讓遛狗變得很不方便，我希望可以重新考慮。",
-     "sub": "The new park rule makes walking my dog really inconvenient. I hope it can be reconsidered."
+     "sub": "The new park rule makes walking my dog really inconvenient. I hope it can be reconsidered.",
+     "phonemes": "ɕi→n tɤ kʊ→ŋɥɛ↗n kwei→ti↘ŋ ɻa↘ŋ ljou↗kou↓ pjɛ↘ntɤ↗ xə↓n pu↘ fa→ŋpjɛ↘n, wo↓ ɕi→wa↘ŋ kʰɤ↓i↓ ꭧʰʊ↗ŋɕi→n kʰau↓ly↘."
     },
     {
      "id": "s5d",
      "voice": "narrator",
-     "tts": "Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.",
-     "sub": "Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending."
+     "tts": "Spud turns it into a clear English comment, names the responsible department, and lets Jason edit before sending.",
+     "sub": "Spud turns it into a clear English comment, names the responsible department, and lets Jason edit before sending."
     },
     {
      "id": "s5e",
@@ -170,7 +177,7 @@
   {
    "id": 6,
    "name": "NFC & tracking",
-   "tail": null,
+   "tail": 0.5,
    "lines": [
     {
      "id": "s6a",
@@ -181,8 +188,8 @@
     {
      "id": "s6b",
      "voice": "narrator",
-     "tts": "The issue and his comment move to the Potato app, and the post keeps nothing.",
-     "sub": "The issue and his comment move to the POTATO app, and the post keeps nothing."
+     "tts": "The issue and his comment move to the HearHere app, and the post keeps nothing.",
+     "sub": "The issue and his comment move to the HearHere app, and the post keeps nothing."
     },
     {
      "id": "s6c",
@@ -201,6 +208,37 @@
      "voice": "narrator",
      "tts": "Notifications keep him updated.",
      "sub": "Notifications keep him updated."
+    },
+    {
+     "id": "s6f",
+     "voice": "narrator",
+     "tts": "Each new HearHere post Jason visits also earns a badge: a small reward for taking part.",
+     "sub": "Each new HearHere post Jason visits also earns a badge: a small reward for taking part."
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "name": "How it works",
+   "tail": 0.4,
+   "lines": [
+    {
+     "id": "h1",
+     "voice": "narrator",
+     "tts": "How does it all fit together? Here's the post from every side.",
+     "sub": "How does it all fit together? Here's the post from every side."
+    },
+    {
+     "id": "h2",
+     "voice": "narrator",
+     "tts": "Spud's official social media account shares only verified council posts, reaching residents where they already scroll.",
+     "sub": "Spud's official social media account shares only verified council posts, reaching residents where they already scroll."
+    },
+    {
+     "id": "h3",
+     "voice": "narrator",
+     "tts": "An AI agent answers questions, and the HearHere app tracks each issue.",
+     "sub": "An AI agent answers questions, and the HearHere app tracks each issue."
     }
    ]
   },
@@ -218,8 +256,8 @@
     {
      "id": "s7b",
      "voice": "narrator",
-     "tts": "The Q and A assistant answers from official documents, cites its sources, and hands over to a named contact when it's unsure.",
-     "sub": "The Q&A assistant answers from official documents, cites its sources, and hands over to a named contact when it's unsure."
+     "tts": "Spud's AI agent cites official sources, and hands over to a named contact when it's unsure.",
+     "sub": "Spud's AI agent cites official sources, and hands over to a named contact when it's unsure."
     },
     {
      "id": "s7c",
@@ -237,8 +275,8 @@
     {
      "id": "s8a",
      "voice": "narrator",
-     "tts": "For Jason, that means finding relevant issues on his everyday route, understanding them in his own language, knowing which department hears him, and seeing what happens next.",
-     "sub": "For Jason, that means finding relevant issues on his everyday route, understanding them in his own language, knowing which department hears him, and seeing what happens next."
+     "tts": "For Jason, that means relevant issues on his route, in his own language, a clear department to hear him, and visible progress.",
+     "sub": "For Jason, that means relevant issues on his route, in his own language, a clear department to hear him, and visible progress."
     },
     {
      "id": "s8b",
@@ -256,8 +294,8 @@
     {
      "id": "s9a",
      "voice": "narrator",
-     "tts": "Potato has limits.",
-     "sub": "POTATO has limits."
+     "tts": "HearHere has limits.",
+     "sub": "HearHere has limits."
     },
     {
      "id": "s9b",
@@ -268,27 +306,27 @@
     {
      "id": "s9c",
      "voice": "narrator",
-     "tts": "Next, we'll test a low-fidelity prototype with residents across languages, and check whether they trust and correct the AI's output.",
-     "sub": "Next, we'll test a low-fidelity prototype with residents across languages, and check whether they trust and correct the AI's output."
+     "tts": "Next, we'll test a low-fidelity prototype with residents across languages.",
+     "sub": "Next, we'll test a low-fidelity prototype with residents across languages."
     }
    ]
   },
   {
    "id": 10,
    "name": "Tagline",
-   "tail": 2.8,
+   "tail": 2.6,
    "lines": [
     {
      "id": "s10a",
      "voice": "narrator",
-     "tts": "Potato: Public Opinion Translation And Tracking Outpost.",
-     "sub": "POTATO: Public Opinion Translation And Tracking Outpost."
+     "tts": "HearHere, with Spud: the Street Post for Understanding Decisions.",
+     "sub": "HearHere, with Spud: the Street Post for Understanding Decisions."
     },
     {
      "id": "s10b",
-     "voice": "narrator",
-     "tts": "Voices from the ground up.",
-     "sub": "Voices from the ground up."
+     "voice": "spud",
+     "tts": "Speak here. Be heard!",
+     "sub": "Speak here. Be heard!"
     }
    ]
   }
@@ -351,13 +389,13 @@
   ],
   [
    "chirp",
-   "s4c",
+   "s4s",
    0.15
   ],
   [
    "pop",
    "s4c",
-   2.4
+   0.6
   ],
   [
    "tap",

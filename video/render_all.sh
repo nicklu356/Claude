@@ -9,7 +9,7 @@ mkdir -p build/seg; rm -f build/seg/*.mp4 build/seg/list.txt
 PER=$(( (TOTAL + N - 1) / N ))
 for i in $(seq 0 $((N-1))); do
   FROM=$((i*PER)); TO=$(( (i+1)*PER )); [ $TO -gt $TOTAL ] && TO=$TOTAL
-  node render.js --shadow ${SHADOW:-2048} --scale $SCALE --from $FROM --to $TO --out build/seg/seg$i.mp4 2>&1 | grep -v DEP0 &
+  node render.js --page ${PAGE:-web2d/index.html} --shadow ${SHADOW:-2048} --scale $SCALE --from $FROM --to $TO --out build/seg/seg$i.mp4 2>&1 | grep -v DEP0 &
   echo "file 'seg$i.mp4'" >> build/seg/list.txt
 done
 wait
