@@ -535,11 +535,12 @@ export function buildScenes(ctx) {
         const k2 = ease(prog(t, c - 0.2, 0.9));
         const px = lerp(lerp(2000, nearX, k1), 300, k2), py = lerp(lerp(500, nearY, k1) + bump, 110, k2);
         const sc = lerp(0.62, 1, k2), rot = lerp(lerp(18, -8, k1), 0, k2);
-        phone.style.transform = `translate(${px}px, ${py}px) rotate(${rot}deg) scale(${sc})`;
+        const fl = Math.sin(t * 1.4) * 6 * k2;
+        phone.style.transform = `translate(${px}px, ${py + fl}px) rotate(${rot}deg) scale(${sc})`;
         phone.style.transformOrigin = '0 0';
         Q('.v0').style.opacity = 1 - prog(t, tapT, 0.3);
         Q('.v1').style.opacity = prog(t, tapT, 0.3);
-        back.style.opacity = ease(prog(t, c - 0.2, 0.8));
+        back.style.opacity = ease(prog(t, c - 0.2, 0.8)); animBlobs(back, t);
         show(nfcTxt, t, b + 0.6, { kind: 'pop', out: c - 0.3 });
         const on = prog(t, c + 0.9, 0.25);
         Q('.tg').style.background = on > 0.5 ? 'var(--green)' : '#CFD3DC'; Q('.kn').style.left = `${4 + 34 * on}px`;
