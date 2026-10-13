@@ -68,173 +68,187 @@ He's lived in Melbourne for years,
 but English isn't his first language.
 
 16
-00:00:43,516 --> 00:00:48,030
-He's unhappy about a new park rule for
-dogs, yet he doesn't know who to tell,
+00:00:43,516 --> 00:00:47,222
+One day, a council letter
+announces a new park rule for dogs.
 
 17
-00:00:48,030 --> 00:00:49,320
-or which words to use.
+00:00:47,222 --> 00:00:51,562
+Jason is unhappy, but the letter is
+full of terms he doesn't understand.
 
 18
-00:00:50,020 --> 00:00:53,514
+00:00:51,562 --> 00:00:54,475
+He visits the council
+office, then sends an email,
+
+19
+00:00:54,475 --> 00:00:56,792
+but never learns if anyone listened.
+
+20
+00:00:56,792 --> 00:00:58,352
+In the end, he just gives up.
+
+21
+00:00:59,052 --> 00:01:02,546
 On his grocery walk, Jason
 passes a POTATO post.
 
-19
-00:00:53,514 --> 00:00:56,899
+22
+00:01:02,546 --> 00:01:05,931
 Its screen shows verified
 council and community notices,
 
-20
-00:00:56,899 --> 00:00:59,900
+23
+00:01:05,931 --> 00:01:08,932
 so he finds things he'd
 never see in the mail.
 
-21
-00:00:59,900 --> 00:01:04,565
+24
+00:01:08,932 --> 00:01:13,597
 Then Spud, our mascot, greets him and
 lists the issues closest to this spot,
 
-22
-00:01:04,565 --> 00:01:06,775
+25
+00:01:13,597 --> 00:01:15,807
 ranked by distance and closing date.
 
-23
-00:01:07,475 --> 00:01:09,260
+26
+00:01:16,507 --> 00:01:18,292
 Jason taps the park issue.
 
-24
-00:01:09,260 --> 00:01:12,292
+27
+00:01:18,292 --> 00:01:21,324
 A plain-language summary
 appears in his own language,
 
-25
-00:01:12,292 --> 00:01:14,285
+28
+00:01:21,324 --> 00:01:23,317
 with difficult terms explained.
 
-26
-00:01:14,285 --> 00:01:17,366
+29
+00:01:23,317 --> 00:01:26,398
 Now he simply talks to
 Spud, in his own language.
 
-27
-00:01:17,366 --> 00:01:21,085
+30
+00:01:26,398 --> 00:01:30,117
 The new park rule makes walking my dog
 really inconvenient. I hope it can be
 
-28
-00:01:21,085 --> 00:01:21,941
+31
+00:01:30,117 --> 00:01:30,973
 reconsidered.
 
-29
-00:01:21,941 --> 00:01:26,644
+32
+00:01:30,973 --> 00:01:35,676
 Spud turns that into a structured
 comment, original Chinese plus English,
 
-30
-00:01:26,644 --> 00:01:32,019
+33
+00:01:35,676 --> 00:01:41,051
 names the responsible department, and
 lets Jason review and edit before sending.
 
-31
-00:01:32,019 --> 00:01:33,356
+34
+00:01:41,051 --> 00:01:42,388
 No audio is stored.
 
-32
-00:01:34,056 --> 00:01:36,666
+35
+00:01:43,088 --> 00:01:45,698
 Jason taps his phone on the NFC pad.
 
-33
-00:01:36,666 --> 00:01:41,108
+36
+00:01:45,698 --> 00:01:50,140
 The issue and his comment move to the
 POTATO app, and the post keeps nothing.
 
-34
-00:01:41,108 --> 00:01:43,882
+37
+00:01:50,140 --> 00:01:52,914
 Tracking begins only
 because Jason chose it.
 
-35
-00:01:43,882 --> 00:01:46,625
+38
+00:01:52,914 --> 00:01:55,657
 The app shows each stage:
 Received, In review,
 
-36
-00:01:46,625 --> 00:01:50,363
+39
+00:01:55,657 --> 00:01:59,395
 then an outcome with a case
 number, or reasons if declined.
 
-37
-00:01:50,363 --> 00:01:52,426
+40
+00:01:59,395 --> 00:02:01,458
 Notifications keep him updated.
 
-38
-00:01:53,126 --> 00:01:54,519
+41
+00:02:02,158 --> 00:02:03,551
 Not sure who to ask?
 
-39
-00:01:54,519 --> 00:01:58,898
+42
+00:02:03,551 --> 00:02:07,930
 The Q&A assistant answers from
 official documents, cites its sources,
 
-40
-00:01:58,898 --> 00:02:02,355
+43
+00:02:07,930 --> 00:02:11,387
 and hands over to a named
 contact when it's unsure.
 
-41
-00:02:02,355 --> 00:02:06,645
+44
+00:02:11,387 --> 00:02:15,677
 And one tap shares a card on Instagram,
 so Jason's neighbours can join in.
 
-42
-00:02:07,345 --> 00:02:11,357
+45
+00:02:16,377 --> 00:02:20,389
 For Jason, that means finding
 relevant issues on his everyday route,
 
-43
-00:02:11,357 --> 00:02:15,781
+46
+00:02:20,389 --> 00:02:24,813
 understanding them in his own language,
 knowing which department hears him,
 
-44
-00:02:15,781 --> 00:02:17,712
+47
+00:02:24,813 --> 00:02:26,744
 and seeing what happens next.
 
-45
-00:02:17,712 --> 00:02:19,182
+48
+00:02:26,744 --> 00:02:28,214
 All without attending a meeting.
 
-46
-00:02:19,882 --> 00:02:21,330
+49
+00:02:28,914 --> 00:02:30,362
 POTATO has limits.
 
-47
-00:02:21,330 --> 00:02:25,045
+50
+00:02:30,362 --> 00:02:34,077
 Speaking in public may feel
 exposing, AI can mistranslate,
 
-48
-00:02:25,045 --> 00:02:28,276
+51
+00:02:34,077 --> 00:02:37,308
 and our fieldwork didn't
 include council staff.
 
-49
-00:02:28,276 --> 00:02:32,638
+52
+00:02:37,308 --> 00:02:41,670
 Next, we'll test a low-fidelity prototype
 with residents across languages,
 
-50
-00:02:32,638 --> 00:02:35,998
+53
+00:02:41,670 --> 00:02:45,030
 and check whether they trust
 and correct the AI's output.
 
-51
-00:02:36,698 --> 00:02:40,523
+54
+00:02:45,730 --> 00:02:49,555
 POTATO: Public Opinion
 Translation And Tracking Outpost.
 
-52
-00:02:40,523 --> 00:02:41,926
+55
+00:02:49,555 --> 00:02:50,958
 Voices from the ground up.

@@ -1,0 +1,61 @@
+POTATO narration script: each line starts at the time shown (mm:ss.s), duration in brackets.
+
+== Scene 1: Title ==
+00:00.4  [0.9s]  NARRATOR: Hi, Melbourne!
+00:01.5  [7.1s]  NARRATOR: We're Group 14, Team Sweet Potatoes, and this is POTATO — the Public Opinion Translation And Tracking Outpost.
+00:08.8  [0.9s]  NARRATOR: Why POTATO?
+00:09.9  [3.7s]  NARRATOR: Because, like a sweet potato, good ideas grow from the ground up.
+
+== Scene 2: Problem ==
+00:14.4  [4.0s]  NARRATOR: Melbourne's councils make decisions about parks, housing and transport.
+00:18.6  [4.9s]  NARRATOR: Our fieldwork with eight international residents found the barrier isn't a lack of interest.
+00:23.7  [2.2s]  NARRATOR: People can't find relevant information.
+00:26.2  [3.4s]  NARRATOR: Translated policies still use terms they don't understand.
+00:29.8  [1.9s]  NARRATOR: And they don't know where their feedback goes.
+00:31.8  [5.6s]  NARRATOR: Meanwhile, council news arrives by mail and flyers, but newer residents live on Instagram.
+
+== Scene 3: Persona & before ==
+00:38.1  [0.9s]  NARRATOR: Meet Jason.
+00:39.3  [4.0s]  NARRATOR: He's lived in Melbourne for years, but English isn't his first language.
+00:43.5  [3.5s]  NARRATOR: One day, a council letter announces a new park rule for dogs.
+00:47.2  [4.1s]  NARRATOR: Jason is unhappy, but the letter is full of terms he doesn't understand.
+00:51.6  [5.0s]  NARRATOR: He visits the council office, then sends an email, but never learns if anyone listened.
+00:56.8  [1.6s]  NARRATOR: In the end, he just gives up.
+
+== Scene 4: Discover ==
+00:59.1  [3.3s]  NARRATOR: On his grocery walk, Jason passes a POTATO post.
+01:02.5  [6.2s]  NARRATOR: Its screen shows verified council and community notices, so he finds things he'd never see in the mail.
+01:08.9  [6.9s]  NARRATOR: Then Spud, our mascot, greets him and lists the issues closest to this spot, ranked by distance and closing date.
+
+== Scene 5: Understand & speak ==
+01:16.5  [1.6s]  NARRATOR: Jason taps the park issue.
+01:18.3  [4.8s]  NARRATOR: A plain-language summary appears in his own language, with difficult terms explained.
+01:23.3  [2.9s]  NARRATOR: Now he simply talks to Spud, in his own language.
+01:26.4  [4.4s]  JASON (Mandarin): 新的公園規定讓遛狗變得很不方便，我希望可以重新考慮。
+01:31.0  [9.9s]  NARRATOR: Spud turns that into a structured comment, original Chinese plus English, names the responsible department, and lets Jason review and edit before sending.
+01:41.1  [1.3s]  NARRATOR: No audio is stored.
+
+== Scene 6: NFC & tracking ==
+01:43.1  [2.4s]  NARRATOR: Jason taps his phone on the NFC pad.
+01:45.7  [4.2s]  NARRATOR: The issue and his comment move to the POTATO app, and the post keeps nothing.
+01:50.1  [2.6s]  NARRATOR: Tracking begins only because Jason chose it.
+01:52.9  [6.3s]  NARRATOR: The app shows each stage: Received, In review, then an outcome with a case number, or reasons if declined.
+01:59.4  [2.1s]  NARRATOR: Notifications keep him updated.
+
+== Scene 7: Q&A & share ==
+02:02.2  [1.2s]  NARRATOR: Not sure who to ask?
+02:03.6  [7.6s]  NARRATOR: The Q&A assistant answers from official documents, cites its sources, and hands over to a named contact when it's unsure.
+02:11.4  [4.3s]  NARRATOR: And one tap shares a card on Instagram, so Jason's neighbours can join in.
+
+== Scene 8: Benefits ==
+02:16.4  [10.1s]  NARRATOR: For Jason, that means finding relevant issues on his everyday route, understanding them in his own language, knowing which department hears him, and seeing what happens next.
+02:26.7  [1.5s]  NARRATOR: All without attending a meeting.
+
+== Scene 9: Limits & next steps ==
+02:28.9  [1.2s]  NARRATOR: POTATO has limits.
+02:30.4  [6.7s]  NARRATOR: Speaking in public may feel exposing, AI can mistranslate, and our fieldwork didn't include council staff.
+02:37.3  [7.7s]  NARRATOR: Next, we'll test a low-fidelity prototype with residents across languages, and check whether they trust and correct the AI's output.
+
+== Scene 10: Tagline ==
+02:45.7  [3.6s]  NARRATOR: POTATO: Public Opinion Translation And Tracking Outpost.
+02:49.6  [1.4s]  NARRATOR: Voices from the ground up.
