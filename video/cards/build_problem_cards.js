@@ -480,7 +480,7 @@ const CARDS = [
   { n: 5, key: 'channels', theme: 'Channels', accent: '#F58A80', title: ['Social media vs', 'physical channels'],
     desc: ['Newer residents rely on social media,', 'but official information is mostly', 'shared through physical channels.'], scene: scene5, defs: defs5 },
 ];
-module.exports = { OUT, FONT_CSS, SANS, HAND, DEFS, EXTRA_DEFS, T, esc, sheet, pin, phone };
+module.exports = { OUT, FONT_CSS, SANS, HAND, DEFS, EXTRA_DEFS, T, esc, sheet, pin, phone, woodDesk, defs1 };
 if (require.main === module) {
   for (const c of CARDS) {
     const svg = frame({ ...c, scene: c.scene() });
