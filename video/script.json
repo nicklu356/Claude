@@ -2,213 +2,176 @@
  "scenes": [
   {
    "id": 1,
-   "name": "Title",
-   "tail": 0.3,
+   "name": "Who we are",
+   "tail": 0.4,
    "lines": [
     {
      "id": "s1a",
      "voice": "narrator",
-     "tts": "Hi! We're Group 14, Team Sweet Potatoes.",
-     "sub": "Hi! We're Group 14, Team Sweet Potatoes."
+     "tts": "Hello everyone! We're Group 14, Team Sweet Potatoes.",
+     "sub": "Hello everyone! We're Group 14, Team Sweet Potatoes."
     },
     {
      "id": "s1b",
      "voice": "narrator",
-     "tts": "We studied how international residents in Melbourne take part in council decisions.",
-     "sub": "We studied how international residents in Melbourne take part in council decisions."
+     "tts": "Our project explores how to help international residents take part in local government decisions.",
+     "sub": "Our project explores how to help international residents take part in local government decisions."
     }
    ]
   },
   {
    "id": 2,
    "name": "Five problems",
-   "tail": 0.5,
+   "tail": 0.4,
    "lines": [
     {
      "id": "s2a",
      "voice": "narrator",
-     "tts": "Our investigation found five problems.",
-     "sub": "Our investigation found five problems."
+     "tts": "During our investigation, we found five problems.",
+     "sub": "During our investigation, we found five problems."
     },
     {
      "id": "s2b",
      "voice": "narrator",
-     "tts": "One: even when it's translated, council language is hard to understand.",
-     "sub": "One: even when it's translated, council language is hard to understand."
+     "tts": "First, policy terms are hard to understand, so residents lose confidence when sharing their opinions.",
+     "sub": "First, policy terms are hard to understand, so residents lose confidence when sharing their opinions."
     },
     {
      "id": "s2c",
      "voice": "narrator",
-     "tts": "Two: time, distance and fees keep people from attending.",
-     "sub": "Two: time, distance and fees keep people from attending."
+     "tts": "Second, it's hard to attend in-person discussions with a busy daily life.",
+     "sub": "Second, it's hard to attend in-person discussions with a busy daily life."
     },
     {
      "id": "s2d",
      "voice": "narrator",
-     "tts": "Three: people only take part when an issue feels personally relevant.",
-     "sub": "Three: people only take part when an issue feels personally relevant."
+     "tts": "Third, topics that don't feel personally relevant get less attention.",
+     "sub": "Third, topics that don't feel personally relevant get less attention."
     },
     {
      "id": "s2e",
      "voice": "narrator",
-     "tts": "Four: they don't know which department to contact, or whether they were heard.",
-     "sub": "Four: they don't know which department to contact, or whether they were heard."
+     "tts": "Fourth, residents get stuck finding the right department.",
+     "sub": "Fourth, residents get stuck finding the right department."
     },
     {
      "id": "s2f",
      "voice": "narrator",
-     "tts": "Five: council news arrives by mail and flyers, but newer residents live on Instagram.",
-     "sub": "Five: council news arrives by mail and flyers, but newer residents live on Instagram."
+     "tts": "And last, newer residents rely on social media, but official information is mostly shared through physical channels.",
+     "sub": "And last, newer residents rely on social media, but official information is mostly shared through physical channels."
     }
    ]
   },
   {
    "id": 3,
    "name": "Persona & scenario",
-   "tail": null,
+   "tail": 0.4,
    "lines": [
     {
      "id": "s3a",
      "voice": "narrator",
-     "tts": "Let's meet Jason.",
-     "sub": "Let's meet Jason."
+     "tts": "Meet Jason. He's 34, an immigrant from Taiwan, and he has lived in Melbourne for eight years.",
+     "sub": "Meet Jason. He's 34, an immigrant from Taiwan, and he has lived in Melbourne for eight years."
     },
     {
      "id": "s3b",
      "voice": "narrator",
-     "tts": "He's 34, has lived in Melbourne for eight years, and English isn't his first language.",
-     "sub": "He's 34, has lived in Melbourne for eight years, and English isn't his first language."
+     "tts": "He has a dog and works full time, so he can't attend council meetings.",
+     "sub": "He has a dog and works full time, so he can't attend council meetings."
     },
     {
      "id": "s3c",
      "voice": "narrator",
-     "tts": "One Saturday morning, a new park rule limits when his dog can be off the leash.",
-     "sub": "One Saturday morning, a new park rule limits when his dog can be off the leash."
+     "tts": "One morning, he finds a flyer in his mailbox: the dog park will no longer open in the mornings.",
+     "sub": "One morning, he finds a flyer in his mailbox: the dog park will no longer open in the mornings."
     },
     {
      "id": "s3d",
      "voice": "narrator",
-     "tts": "He disagrees, but doesn't know who to tell, or which words to use.",
-     "sub": "He disagrees, but doesn't know who to tell, or which words to use."
+     "tts": "He disagrees with the new policy, but he doesn't know who to send his opinion to, or whether he's expressing it correctly.",
+     "sub": "He disagrees with the new policy, but he doesn't know who to send his opinion to, or whether he's expressing it correctly."
+    },
+    {
+     "id": "s3e",
+     "voice": "narrator",
+     "tts": "The last time he emailed the council, he never heard back.",
+     "sub": "The last time he emailed the council, he never heard back."
     }
    ]
   },
   {
    "id": 12,
    "name": "Introducing HearHere",
-   "tail": 2.2,
+   "tail": 0.4,
    "lines": [
     {
      "id": "i1",
      "voice": "narrator",
-     "tts": "So we introduce HearHere: a digital device that combines a physical information pillar with an AI customised helper.",
-     "sub": "So we introduce HearHere: a digital device that combines a physical information pillar with an AI customised helper."
+     "tts": "So we introduce HearHere: a street pillar paired with a mobile app, with a customised AI helper inside.",
+     "sub": "So we introduce HearHere: a street pillar paired with a mobile app, with a customised AI helper inside."
     },
     {
      "id": "i2",
-     "voice": "spud",
-     "tts": "Hi there! I'm Spud, the Street Post for Understanding Decisions.",
-     "sub": "Hi there! I'm Spud, the Street Post for Understanding Decisions."
-    },
-    {
-     "id": "i3",
      "voice": "narrator",
-     "tts": "Here's the post from every side.",
-     "sub": "Here's the post from every side."
-    }
-   ]
-  },
-  {
-   "id": 11,
-   "name": "How it works",
-   "tail": 0.4,
-   "lines": [
-    {
-     "id": "h2",
-     "voice": "narrator",
-     "tts": "It connects three channels. Spud's official account shares only verified council posts, where residents already scroll.",
-     "sub": "It connects three channels. Spud's official account shares only verified council posts, where residents already scroll."
-    },
-    {
-     "id": "h3",
-     "voice": "narrator",
-     "tts": "An AI agent answers questions, and the HearHere app tracks each issue.",
-     "sub": "An AI agent answers questions, and the HearHere app tracks each issue."
+     "tts": "Let's see what Jason can do with HearHere.",
+     "sub": "Let's see what Jason can do with HearHere."
     }
    ]
   },
   {
    "id": 4,
-   "name": "Discover",
-   "tail": null,
+   "name": "At the pillar",
+   "tail": 0.4,
    "lines": [
     {
      "id": "s4a",
      "voice": "narrator",
-     "tts": "Back to Saturday, 8 a.m. Jason walks his dog past a HearHere post.",
-     "sub": "Back to Saturday, 8 a.m. Jason walks his dog past a HearHere post."
+     "tts": "On his way to the park, Jason walks past a HearHere pillar.",
+     "sub": "On his way to the park, Jason walks past a HearHere pillar."
     },
     {
      "id": "s4b",
      "voice": "narrator",
-     "tts": "Its pillar shows verified council and community notices.",
-     "sub": "Its pillar shows verified council and community notices."
-    },
-    {
-     "id": "s4s",
-     "voice": "spud",
-     "tts": "Hi! Got something to say? I'm all ears.",
-     "sub": "Hi! Got something to say? I'm all ears."
+     "tts": "He taps the touch screen and finds the dog park issue among the decisions near him.",
+     "sub": "He taps the touch screen and finds the dog park issue among the decisions near him."
     },
     {
      "id": "s4c",
      "voice": "narrator",
-     "tts": "The screen under Spud lists nearby issues by distance, including a new rule for the park next door.",
-     "sub": "The screen under Spud lists nearby issues by distance, including a new rule for the park next door."
+     "tts": "The content is shown in Traditional Chinese, and difficult terms are explained simply.",
+     "sub": "The content is shown in Traditional Chinese, and difficult terms are explained simply."
     }
    ]
   },
   {
    "id": 5,
-   "name": "Understand & speak",
+   "name": "Speak to the AI helper",
    "tail": 0.5,
    "lines": [
     {
-     "id": "s5a",
-     "voice": "narrator",
-     "tts": "Jason taps the park issue.",
-     "sub": "Jason taps the park issue."
-    },
-    {
-     "id": "s5b",
-     "voice": "narrator",
-     "tts": "A plain-language summary appears in his own language, with difficult terms explained.",
-     "sub": "A plain-language summary appears in his own language, with difficult terms explained."
-    },
-    {
      "id": "s5c",
      "voice": "narrator",
-     "tts": "Now he simply talks to Spud, in his own language.",
-     "sub": "Now he simply talks to Spud, in his own language."
+     "tts": "Then Jason talks to the AI helper in Mandarin.",
+     "sub": "Then Jason talks to the AI helper in Mandarin."
     },
     {
      "id": "s5j",
      "voice": "jason",
-     "tts": "新的公園規定讓遛狗變得很不方便，我希望可以重新考慮。",
-     "sub": "The new park rule makes walking my dog really inconvenient. I hope it can be reconsidered.",
-     "phonemes": "ɕi→n tɤ kʊ→ŋɥɛ↗n kwei→ti↘ŋ ɻa↘ŋ ljou↗kou↓ pjɛ↘ntɤ↗ xə↓n pu↘ fa→ŋpjɛ↘n, wo↓ ɕi→wa↘ŋ kʰɤ↓i↓ ꭧʰʊ↗ŋɕi→n kʰau↓ly↘."
+     "tts": "希望可以保留早上的遛狗時間。",
+     "sub": "Please keep the morning dog walking hours.",
+     "phonemes": "ɕi→wa↘ŋ kʰɤ↗i↓ pau↓ljou↗ ʦau↓ʂa↘ŋ tɤ ljou↘kou↓ ʂɻ↗ʨjɛ→n."
     },
     {
      "id": "s5d",
      "voice": "narrator",
-     "tts": "Spud turns it into a clear English comment, names the responsible department, and lets Jason edit before sending.",
-     "sub": "Spud turns it into a clear English comment, names the responsible department, and lets Jason edit before sending."
+     "tts": "It turns his opinion into a clear English comment, and tells him which department is responsible.",
+     "sub": "It turns his opinion into a clear English comment, and tells him which department is responsible."
     },
     {
      "id": "s5e",
      "voice": "narrator",
-     "tts": "No audio is stored.",
-     "sub": "No audio is stored."
+     "tts": "Jason can check and edit the comment before sending, and his voice is never recorded.",
+     "sub": "Jason can check and edit the comment before sending, and his voice is never recorded."
     }
    ]
   },
@@ -220,89 +183,77 @@
     {
      "id": "s6a",
      "voice": "narrator",
-     "tts": "Jason taps his phone on the N F C pad.",
-     "sub": "Jason taps his phone on the NFC pad."
+     "tts": "After that, Jason taps his phone on the N F C connector, and the issue moves to the HearHere app.",
+     "sub": "After that, Jason taps his phone on the NFC connector, and the issue moves to the HearHere app."
     },
     {
      "id": "s6b",
      "voice": "narrator",
-     "tts": "The issue and his comment move to the HearHere app, and the post keeps nothing.",
-     "sub": "The issue and his comment move to the HearHere app, and the post keeps nothing."
-    },
-    {
-     "id": "s6c",
-     "voice": "narrator",
-     "tts": "Tracking begins only because Jason chose it.",
-     "sub": "Tracking begins only because Jason chose it."
+     "tts": "The pillar keeps none of his information.",
+     "sub": "The pillar keeps none of his information."
     },
     {
      "id": "s6d",
      "voice": "narrator",
-     "tts": "The app shows each stage: Received, In review, then an outcome with a case number, or reasons if declined.",
-     "sub": "The app shows each stage: Received, In review, then an outcome with a case number, or reasons if declined."
-    },
-    {
-     "id": "s6f",
-     "voice": "narrator",
-     "tts": "Each new HearHere post Jason visits also earns a badge: a small reward for taking part.",
-     "sub": "Each new HearHere post Jason visits also earns a badge: a small reward for taking part."
+     "tts": "In the app, he can track his comment: from received, to in review, and finally the result, with a case number, or the reasons if it's declined.",
+     "sub": "In the app, he can track his comment: from received, to in review, and finally the result, with a case number, or the reasons if it's declined."
     }
    ]
   },
   {
    "id": 7,
    "name": "Share",
-   "tail": 0.6,
+   "tail": 0.5,
    "lines": [
     {
      "id": "s7c",
      "voice": "narrator",
-     "tts": "Jason can also share the issue as a card on Instagram, so his neighbours can join in.",
-     "sub": "Jason can also share the issue as a card on Instagram, so his neighbours can join in."
+     "tts": "He can also share the issue on Instagram, so his neighbours can join in.",
+     "sub": "He can also share the issue on Instagram, so his neighbours can join in."
     }
    ]
   },
   {
    "id": 8,
    "name": "Benefits",
-   "tail": null,
+   "tail": 0.6,
    "lines": [
     {
      "id": "s8a",
      "voice": "narrator",
-     "tts": "For Jason, that means relevant issues on his route, in his own language, a clear department, and visible progress.",
-     "sub": "For Jason, that means relevant issues on his route, in his own language, a clear department, and visible progress."
-    },
-    {
-     "id": "s8b",
-     "voice": "narrator",
-     "tts": "All without attending a meeting.",
-     "sub": "All without attending a meeting."
+     "tts": "With HearHere, Jason can understand the policy in his own language, find the right department, and know his opinion has been received, all without attending a meeting.",
+     "sub": "With HearHere, Jason can understand the policy in his own language, find the right department, and know his opinion has been received, all without attending a meeting."
     }
    ]
   },
   {
    "id": 9,
-   "name": "Limits & next steps",
-   "tail": null,
+   "name": "Limits & future work",
+   "tail": 0.5,
    "lines": [
     {
      "id": "s9a",
      "voice": "narrator",
-     "tts": "HearHere has limits.",
-     "sub": "HearHere has limits."
+     "tts": "However, HearHere still has limits.",
+     "sub": "However, HearHere still has limits."
     },
     {
      "id": "s9b",
      "voice": "narrator",
-     "tts": "Speaking in public may feel exposing, AI can mistranslate, and our fieldwork didn't include council staff.",
-     "sub": "Speaking in public may feel exposing, AI can mistranslate, and our fieldwork didn't include council staff."
+     "tts": "Speaking to a device in public may feel uncomfortable, and the AI may make mistakes when translating.",
+     "sub": "Speaking to a device in public may feel uncomfortable, and the AI may make mistakes when translating."
     },
     {
      "id": "s9c",
      "voice": "narrator",
-     "tts": "Next, we'll test a low-fidelity prototype with residents across languages.",
-     "sub": "Next, we'll test a low-fidelity prototype with residents across languages."
+     "tts": "So in the future, we need to test whether residents feel comfortable speaking in public, whether translations keep their meaning, and whether people without smartphones can still use HearHere.",
+     "sub": "So in the future, we need to test whether residents feel comfortable speaking in public, whether translations keep their meaning, and whether people without smartphones can still use HearHere."
+    },
+    {
+     "id": "s9d",
+     "voice": "narrator",
+     "tts": "We also need to understand how the council would manage and respond to feedback, so residents can trust that their voices are heard.",
+     "sub": "We also need to understand how the council would manage and respond to feedback, so residents can trust that their voices are heard."
     }
    ]
   },
@@ -314,14 +265,14 @@
     {
      "id": "s10a",
      "voice": "narrator",
-     "tts": "HearHere, with Spud: the Street Post for Understanding Decisions.",
-     "sub": "HearHere, with Spud: the Street Post for Understanding Decisions."
+     "tts": "HearHere: the street pillar for understanding local decisions.",
+     "sub": "HearHere: the street pillar for understanding local decisions."
     },
     {
      "id": "s10b",
      "voice": "spud",
-     "tts": "Speak here. Be heard!",
-     "sub": "Speak here. Be heard!"
+     "tts": "Speak here, be heard!",
+     "sub": "Speak here, be heard!"
     }
    ]
   }
@@ -370,7 +321,12 @@
   [
    "pop",
    "s3c",
-   0.6
+   0.5
+  ],
+  [
+   "pop",
+   "s3e",
+   0.4
   ],
   [
    "whoosh",
@@ -383,39 +339,24 @@
    1.0
   ],
   [
-   "chirp",
-   "i2",
-   0.1
-  ],
-  [
-   "whoosh",
-   "@11",
-   0.0
-  ],
-  [
    "whoosh",
    "@4",
    0.0
   ],
   [
-   "chirp",
-   "s4s",
-   0.15
+   "tap",
+   "s4b",
+   0.6
+  ],
+  [
+   "pop",
+   "s4b",
+   1.2
   ],
   [
    "pop",
    "s4c",
-   0.6
-  ],
-  [
-   "tap",
-   "s5a",
-   0.55
-  ],
-  [
-   "pop",
-   "s5b",
-   1.6
+   0.3
   ],
   [
    "chirp",
@@ -430,7 +371,7 @@
   [
    "tap",
    "s5e",
-   0.2
+   0.4
   ],
   [
    "tap",
@@ -441,16 +382,6 @@
    "chime",
    "s6a",
    1.3
-  ],
-  [
-   "whoosh",
-   "s6c",
-   0.0
-  ],
-  [
-   "tap",
-   "s6c",
-   0.9
   ],
   [
    "pop",
@@ -466,11 +397,6 @@
    "pop",
    "s6d",
    4.4
-  ],
-  [
-   "pop",
-   "s6f",
-   0.5
   ],
   [
    "whoosh",

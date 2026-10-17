@@ -40,7 +40,7 @@ const grain = document.getElementById('grain');
 // footnote while the (fictional) park-rule scenario is on screen
 const fn = document.createElement('div');
 fn.style.cssText = 'position:absolute;right:40px;bottom:30px;z-index:41;background:rgba(255,255,255,.94);border-radius:999px;padding:8px 20px;font:800 20px Nunito;color:#C0453A;box-shadow:0 6px 18px rgba(0,0,0,.15)';
-fn.textContent = 'Scenario and park rule are fictional examples';
+fn.textContent = 'Scenario and dog park rule are fictional examples';
 document.getElementById('stage').appendChild(fn);
 const FN_SCENES = new Set([3, 4, 5, 6, 7]);   // scenario scenes
 // ?clean=1 hides the feature label and footnote (used to export stills for the slide deck)
