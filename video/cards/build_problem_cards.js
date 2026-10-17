@@ -480,9 +480,12 @@ const CARDS = [
   { n: 5, key: 'channels', theme: 'Channels', accent: '#F58A80', title: ['Social media vs', 'physical channels'],
     desc: ['Newer residents rely on social media,', 'but official information is mostly', 'shared through physical channels.'], scene: scene5, defs: defs5 },
 ];
-for (const c of CARDS) {
-  const svg = frame({ ...c, scene: c.scene() });
-  const f = path.join(OUT, `problem_${c.n}_${c.key}.svg`);
-  fs.writeFileSync(f, svg);
-  console.log('wrote', f, (svg.length / 1024).toFixed(0) + ' KB');
+module.exports = { OUT, FONT_CSS, SANS, HAND, DEFS, EXTRA_DEFS, T, esc, sheet, pin, phone };
+if (require.main === module) {
+  for (const c of CARDS) {
+    const svg = frame({ ...c, scene: c.scene() });
+    const f = path.join(OUT, `problem_${c.n}_${c.key}.svg`);
+    fs.writeFileSync(f, svg);
+    console.log('wrote', f, (svg.length / 1024).toFixed(0) + ' KB');
+  }
 }
