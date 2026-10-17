@@ -1,5 +1,5 @@
 // Full-frame (1920x1080) "Limitations & future work" card, same realistic look as the problem
-// cards: index cards on a wooden desk, each limitation (left) paired with the future work that
+// cards: index cards on a transparent background, each limitation (left) paired with the future work that
 // answers it (right).  Content only, no title.
 // Build: cd video && node cards/build_limits_card.js   -> output/problem_cards/limitations_future_work.svg
 const fs = require('fs');
@@ -34,6 +34,9 @@ function card(x, y, w, h, rot, o) {
     <rect width="${w}" height="${h}" rx="4" fill="${o.bg}" filter="url(#paper)"/>
     ${rules}<rect x="0" y="56" width="${w}" height="2.4" fill="${o.line}" opacity="0.8"/>
     <rect width="${w}" height="${h}" rx="4" fill="url(#paperShade)"/>
+    <rect width="${w}" height="${h}" rx="4" fill="url(#crease)"/>
+    <path d="M${w} ${h - 34} Q${w - 6} ${h - 6} ${w - 40} ${h} L${w} ${h}z" fill="#000" opacity="0.08"/>
+    <path d="M${w} ${h - 34} Q${w - 10} ${h - 10} ${w - 40} ${h} Q${w - 16} ${h - 16} ${w} ${h - 34}z" fill="#fff" opacity="0.5"/>
     ${T(34, 40, o.label, { size: 18, w: 900, fill: o.labelCol, ls: 3 })}
     ${o.lines.map((l, i) => T(34, 100 + i * 42, l, { size: 32, w: 800, fill: INK })).join('')}
     ${o.extra || ''}
@@ -54,18 +57,12 @@ function build() {
       <g fill="none" stroke="#0F766E" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-16 0 H15"/><path d="M4 -12 L16 0 L4 12"/></g></g>`;
     return lim + badge + fut;
   }).join('');
-  const planks = [0, 290, 610, 905].map((py) => `<rect x="0" y="${py - 2}" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="${py + 2}" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/>`).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
 <title>Limitations and future work</title>
 <defs><style>${FONT_CSS}</style>${DEFS}${EXTRA_DEFS}${defs1}
-<radialGradient id="deskVig" cx="50%" cy="50%" r="72%"><stop offset="0.5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.6"/></radialGradient>
+<linearGradient id="crease" x1="0" y1="0" x2="1" y2="0"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="0.42" stop-color="#fff" stop-opacity="0.35"/><stop offset="0.5" stop-color="#000" stop-opacity="0.04"/><stop offset="0.62" stop-color="#fff" stop-opacity="0"/></linearGradient>
 </defs>
-<rect width="1920" height="1080" filter="url(#wood1)"/>${planks}
-<rect width="1920" height="1080" fill="#1A0F08" opacity="0.18"/>
 ${rows}
-<rect width="1920" height="1080" fill="url(#warmLight)"/>
-<rect width="1920" height="1080" fill="url(#deskVig)"/>
-<rect width="1920" height="1080" filter="url(#grain)"/>
 </svg>`;
 }
 

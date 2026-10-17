@@ -45,15 +45,16 @@
 <linearGradient id="penBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B4C7E"/><stop offset="0.3" stop-color="#6F82B8"/><stop offset="0.55" stop-color="#1D2A52"/><stop offset="1" stop-color="#0B1230"/></linearGradient>
 <linearGradient id="penTip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E5E7EB"/><stop offset="0.4" stop-color="#FFFFFF"/><stop offset="1" stop-color="#8B9099"/></linearGradient>
 <linearGradient id="stickyShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.2"/><stop offset="0.7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#8A6A00" stop-opacity="0.25"/></linearGradient>
-<radialGradient id="deskVig" cx="50%" cy="50%" r="72%"><stop offset="0.5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.6"/></radialGradient>
+<linearGradient id="crease" x1="0" y1="0" x2="1" y2="0"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="0.42" stop-color="#fff" stop-opacity="0.35"/><stop offset="0.5" stop-color="#000" stop-opacity="0.04"/><stop offset="0.62" stop-color="#fff" stop-opacity="0"/></linearGradient>
 </defs>
-<rect width="1920" height="1080" filter="url(#wood1)"/><rect x="0" y="-2" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="2" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="288" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="292" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="608" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="612" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="903" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="907" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/>
-<rect width="1920" height="1080" fill="#1A0F08" opacity="0.18"/>
 <g transform="translate(100 105) rotate(-1.1 395 90)">
     <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#FCFBF7"/></g>
     <rect width="790" height="180" rx="4" fill="#FCFBF7" filter="url(#paper)"/>
     <rect x="0" y="108" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#E0544B" opacity="0.8"/>
     <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <rect width="790" height="180" rx="4" fill="url(#crease)"/>
+    <path d="M790 146 Q784 174 750 180 L790 180z" fill="#000" opacity="0.08"/>
+    <path d="M790 146 Q780 170 750 180 Q774 164 790 146z" fill="#fff" opacity="0.5"/>
     <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION 1</text>
     <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Speaking to a device in public</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">may feel uncomfortable</text>
     <g transform="translate(740 30) scale(0.6)" fill="none" stroke="#B42318" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="-11" y="-28" width="22" height="36" rx="11"/><path d="M-21 -2 a21 21 0 0 0 42 0 M0 19 v10 M-12 29 h24"/></g>
@@ -63,6 +64,9 @@
     <rect width="790" height="180" rx="4" fill="#E9F5EE" filter="url(#paper)"/>
     <rect x="0" y="108" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#1E9B8A" opacity="0.8"/>
     <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <rect width="790" height="180" rx="4" fill="url(#crease)"/>
+    <path d="M790 146 Q784 174 750 180 L790 180z" fill="#000" opacity="0.08"/>
+    <path d="M790 146 Q780 170 750 180 Q774 164 790 146z" fill="#fff" opacity="0.5"/>
     <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK 1</text>
     <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Test whether residents feel</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">comfortable speaking in public</text>
     <rect x="724" y="16" width="30" height="30" rx="5" fill="none" stroke="#0F766E" stroke-width="3.5" transform="rotate(-3 739 31)"/>
@@ -71,6 +75,9 @@
     <rect width="790" height="180" rx="4" fill="#FCFBF7" filter="url(#paper)"/>
     <rect x="0" y="108" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#E0544B" opacity="0.8"/>
     <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <rect width="790" height="180" rx="4" fill="url(#crease)"/>
+    <path d="M790 146 Q784 174 750 180 L790 180z" fill="#000" opacity="0.08"/>
+    <path d="M790 146 Q780 170 750 180 Q774 164 790 146z" fill="#fff" opacity="0.5"/>
     <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION 2</text>
     <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">The AI may make mistakes</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">when translating</text>
     <g transform="translate(740 30) scale(0.6)" fill="none" stroke="#B42318" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M-28 -24 h30 a6 6 0 0 1 6 6 v18 a6 6 0 0 1 -6 6 h-16 l-10 9 v-9 h-4 a6 6 0 0 1 -6 -6 v-18 a6 6 0 0 1 6 -6z"/><path d="M-20 -1 l7 -17 l7 17 M-17 -7 h8"/><path d="M14 -4 h12 a6 6 0 0 1 6 6 v16 a6 6 0 0 1 -6 6 h-2 v8 l-9 -8 h-9 a6 6 0 0 1 -6 -6 v-5"/><path d="M14 9 h10 M19 5 v4 M15 20 q6 -3 9 -11"/></g>
@@ -80,6 +87,9 @@
     <rect width="790" height="180" rx="4" fill="#E9F5EE" filter="url(#paper)"/>
     <rect x="0" y="108" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#1E9B8A" opacity="0.8"/>
     <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <rect width="790" height="180" rx="4" fill="url(#crease)"/>
+    <path d="M790 146 Q784 174 750 180 L790 180z" fill="#000" opacity="0.08"/>
+    <path d="M790 146 Q780 170 750 180 Q774 164 790 146z" fill="#fff" opacity="0.5"/>
     <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK 2</text>
     <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Test whether translations</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">keep their meaning</text>
     <rect x="724" y="16" width="30" height="30" rx="5" fill="none" stroke="#0F766E" stroke-width="3.5" transform="rotate(-3 739 31)"/>
@@ -88,6 +98,9 @@
     <rect width="790" height="180" rx="4" fill="#FCFBF7" filter="url(#paper)"/>
     <rect x="0" y="108" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#E0544B" opacity="0.8"/>
     <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <rect width="790" height="180" rx="4" fill="url(#crease)"/>
+    <path d="M790 146 Q784 174 750 180 L790 180z" fill="#000" opacity="0.08"/>
+    <path d="M790 146 Q780 170 750 180 Q774 164 790 146z" fill="#fff" opacity="0.5"/>
     <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION 3</text>
     <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Saving &amp; tracking an issue</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">needs a smartphone</text>
     <g transform="translate(740 30) scale(0.6)" fill="none" stroke="#B42318" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="-15" y="-28" width="30" height="56" rx="6"/><path d="M-5 20 h10"/><path d="M-26 -22 L26 24"/></g>
@@ -97,6 +110,9 @@
     <rect width="790" height="180" rx="4" fill="#E9F5EE" filter="url(#paper)"/>
     <rect x="0" y="108" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#1E9B8A" opacity="0.8"/>
     <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <rect width="790" height="180" rx="4" fill="url(#crease)"/>
+    <path d="M790 146 Q784 174 750 180 L790 180z" fill="#000" opacity="0.08"/>
+    <path d="M790 146 Q780 170 750 180 Q774 164 790 146z" fill="#fff" opacity="0.5"/>
     <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK 3</text>
     <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Test whether people without</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">smartphones can still use HearHere</text>
     <rect x="724" y="16" width="30" height="30" rx="5" fill="none" stroke="#0F766E" stroke-width="3.5" transform="rotate(-3 739 31)"/>
@@ -105,6 +121,9 @@
     <rect width="790" height="180" rx="4" fill="#FCFBF7" filter="url(#paper)"/>
     <rect x="0" y="108" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#E0544B" opacity="0.8"/>
     <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <rect width="790" height="180" rx="4" fill="url(#crease)"/>
+    <path d="M790 146 Q784 174 750 180 L790 180z" fill="#000" opacity="0.08"/>
+    <path d="M790 146 Q780 170 750 180 Q774 164 790 146z" fill="#fff" opacity="0.5"/>
     <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION 4</text>
     <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">We didn't include council</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">staff in our fieldwork</text>
     <g transform="translate(740 30) scale(0.6)" fill="none" stroke="#B42318" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M-30 -10 L0 -28 L30 -10z M-26 -10 v30 M-12 -10 v30 M2 -10 v30 M16 -10 v30 M28 -10 v30 M-32 22 h64"/></g>
@@ -114,11 +133,11 @@
     <rect width="790" height="180" rx="4" fill="#E9F5EE" filter="url(#paper)"/>
     <rect x="0" y="108" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#1E9B8A" opacity="0.8"/>
     <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <rect width="790" height="180" rx="4" fill="url(#crease)"/>
+    <path d="M790 146 Q784 174 750 180 L790 180z" fill="#000" opacity="0.08"/>
+    <path d="M790 146 Q780 170 750 180 Q774 164 790 146z" fill="#fff" opacity="0.5"/>
     <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK 4</text>
     <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Learn how the council manages feedback,</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">so residents trust they're heard</text>
     <rect x="724" y="16" width="30" height="30" rx="5" fill="none" stroke="#0F766E" stroke-width="3.5" transform="rotate(-3 739 31)"/>
   </g>
-<rect width="1920" height="1080" fill="url(#warmLight)"/>
-<rect width="1920" height="1080" fill="url(#deskVig)"/>
-<rect width="1920" height="1080" filter="url(#grain)"/>
 </svg>

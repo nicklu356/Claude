@@ -11,7 +11,7 @@ const DIR = path.resolve(__dirname, '../../output/problem_cards');
     await page.goto('file://' + path.join(DIR, f));
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(300);
-    await page.screenshot({ path: path.join(DIR, f.replace(/\.svg$/, '.png')) });
+    await page.screenshot({ path: path.join(DIR, f.replace(/\.svg$/, '.png')), omitBackground: true });
     console.log('rendered', f);
   }
   await browser.close();
