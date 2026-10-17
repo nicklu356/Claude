@@ -45,72 +45,80 @@
 <linearGradient id="penBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B4C7E"/><stop offset="0.3" stop-color="#6F82B8"/><stop offset="0.55" stop-color="#1D2A52"/><stop offset="1" stop-color="#0B1230"/></linearGradient>
 <linearGradient id="penTip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E5E7EB"/><stop offset="0.4" stop-color="#FFFFFF"/><stop offset="1" stop-color="#8B9099"/></linearGradient>
 <linearGradient id="stickyShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.2"/><stop offset="0.7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#8A6A00" stop-opacity="0.25"/></linearGradient>
-<linearGradient id="textShadeL" x1="0" x2="1" y1="0" y2="0">
-  <stop offset="0" stop-color="#140D08" stop-opacity="0.96"/><stop offset="0.3" stop-color="#140D08" stop-opacity="0.9"/>
-  <stop offset="0.4" stop-color="#140D08" stop-opacity="0.5"/><stop offset="0.47" stop-color="#140D08" stop-opacity="0"/>
-</linearGradient>
-<linearGradient id="hardboard" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9A6A3C"/><stop offset="0.5" stop-color="#7C512B"/><stop offset="1" stop-color="#5E3B1E"/></linearGradient>
-<filter id="boardTex" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" seed="8"/><feColorMatrix type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.15  0 0 0 0 0.08  0 0 0 0.55 0"/></filter>
-<linearGradient id="clipSteel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F4F6"/><stop offset="0.45" stop-color="#A9AFB8"/><stop offset="0.55" stop-color="#C9CED5"/><stop offset="1" stop-color="#6B7280"/></linearGradient>
+<radialGradient id="deskVig" cx="50%" cy="50%" r="72%"><stop offset="0.5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.6"/></radialGradient>
 </defs>
-<g id="scene"><rect width="1920" height="1080" filter="url(#wood1)"/><rect x="0" y="-2" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="2" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="288" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="292" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="608" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="612" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="903" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="907" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><g transform="translate(900 34) rotate(-1.5 480 500)">
-    <g filter="url(#shadow)"><rect width="960" height="1040" rx="26" fill="url(#hardboard)"/></g>
-    <rect width="960" height="1040" rx="26" filter="url(#boardTex)" opacity="0.5"/>
-    <rect x="2" y="2" width="956" height="1036" rx="24" fill="none" stroke="#fff" stroke-opacity="0.12" stroke-width="3"/>
-    <g transform="translate(30 70)" filter="url(#shadowLow)"><rect width="900" height="950" fill="#FBF9F4" filter="url(#paper)"/><rect width="900" height="950" fill="url(#paperShade)"/>
-    <text x="40" y="70" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="900" fill="#22344D">HearHere · what we test next</text>
-    <text x="40" y="104" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#6B7280">Each limitation we found, paired with the future work that answers it</text>
-    <rect x="40" y="132" width="820" height="2" fill="#22344D" opacity="0.6"/>
-    <rect x="40" y="160" width="380" height="44" rx="10" fill="#B42318" opacity="0.1"/><text x="58" y="190" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION</text>
-    <rect x="510" y="160" width="350" height="44" rx="10" fill="#0F766E" opacity="0.1"/><text x="528" y="190" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK</text>
-    
-      <circle cx="66" cy="322" r="19" fill="#B42318" opacity="0.12"/><text x="66" y="330" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="900" fill="#B42318" text-anchor="middle">1</text>
-      <text x="100" y="298" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">Speaking to a device in</text><text x="100" y="331" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">public may feel</text><text x="100" y="364" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">uncomfortable</text>
-      <g fill="none" stroke="#0F766E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
-        <path d="M442 324 q22 -6 50 -1"/><path d="M482 313 l12 9 l-12 10"/></g>
-      <text x="520" y="298" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">Test whether residents</text><text x="520" y="331" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">feel comfortable</text><text x="520" y="364" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">speaking in public</text>
-      <rect x="848" y="307" width="28" height="28" rx="5" fill="none" stroke="#0F766E" stroke-width="3"/><rect x="40" y="408" width="820" height="1.5" fill="#CBD2DC"/>
-      <circle cx="66" cy="494" r="19" fill="#B42318" opacity="0.12"/><text x="66" y="502" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="900" fill="#B42318" text-anchor="middle">2</text>
-      <text x="100" y="486.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">The AI may make</text><text x="100" y="519.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">mistakes when translating</text>
-      <g fill="none" stroke="#0F766E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
-        <path d="M442 496 q22 -6 50 -1"/><path d="M482 485 l12 9 l-12 10"/></g>
-      <text x="520" y="486.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">Test whether translations</text><text x="520" y="519.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">keep their meaning</text>
-      <rect x="848" y="479" width="28" height="28" rx="5" fill="none" stroke="#0F766E" stroke-width="3"/><rect x="40" y="580" width="820" height="1.5" fill="#CBD2DC"/>
-      <circle cx="66" cy="666" r="19" fill="#B42318" opacity="0.12"/><text x="66" y="674" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="900" fill="#B42318" text-anchor="middle">3</text>
-      <text x="100" y="658.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">Saving &amp; tracking an</text><text x="100" y="691.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">issue needs a smartphone</text>
-      <g fill="none" stroke="#0F766E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
-        <path d="M442 668 q22 -6 50 -1"/><path d="M482 657 l12 9 l-12 10"/></g>
-      <text x="520" y="642" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">Test whether people</text><text x="520" y="675" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">without smartphones can</text><text x="520" y="708" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">still use HearHere</text>
-      <rect x="848" y="651" width="28" height="28" rx="5" fill="none" stroke="#0F766E" stroke-width="3"/><rect x="40" y="752" width="820" height="1.5" fill="#CBD2DC"/>
-      <circle cx="66" cy="838" r="19" fill="#B42318" opacity="0.12"/><text x="66" y="846" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="900" fill="#B42318" text-anchor="middle">4</text>
-      <text x="100" y="830.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">We didn't include council</text><text x="100" y="863.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">staff in our fieldwork</text>
-      <g fill="none" stroke="#0F766E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
-        <path d="M442 840 q22 -6 50 -1"/><path d="M482 829 l12 9 l-12 10"/></g>
-      <text x="520" y="797.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">Learn how the council</text><text x="520" y="830.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">manages &amp; answers</text><text x="520" y="863.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">feedback, so residents</text><text x="520" y="896.5" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#1F2937">trust they're heard</text>
-      <rect x="848" y="823" width="28" height="28" rx="5" fill="none" stroke="#0F766E" stroke-width="3"/></g>
-    <g filter="url(#shadowLow)">
-      <rect x="320" y="18" width="320" height="96" rx="20" fill="url(#clipSteel)"/>
-      <rect x="350" y="40" width="260" height="14" rx="7" fill="#000" opacity="0.18"/>
-      <path d="M390 18 v-8 a12 12 0 0 1 12 -12 h156 a12 12 0 0 1 12 12 v8" fill="none" stroke="url(#clipSteel)" stroke-width="10"/>
-    </g>
-    <rect x="320" y="18" width="320" height="30" rx="15" fill="#fff" opacity="0.25"/>
-  </g></g>
+<rect width="1920" height="1080" filter="url(#wood1)"/><rect x="0" y="-2" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="2" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="288" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="292" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="608" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="612" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/><rect x="0" y="903" width="1920" height="4" fill="#1E1008" opacity="0.55"/><rect x="0" y="907" width="1920" height="1.5" fill="#F4C68C" opacity="0.18"/>
+<rect width="1920" height="1080" fill="#1A0F08" opacity="0.18"/>
+<g transform="translate(100 105) rotate(-1.1 395 90)">
+    <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#FCFBF7"/></g>
+    <rect width="790" height="180" rx="4" fill="#FCFBF7" filter="url(#paper)"/>
+    <rect x="0" y="108" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#E0544B" opacity="0.8"/>
+    <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION 1</text>
+    <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Speaking to a device in public</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">may feel uncomfortable</text>
+    <g transform="translate(740 30) scale(0.6)" fill="none" stroke="#B42318" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="-11" y="-28" width="22" height="36" rx="11"/><path d="M-21 -2 a21 21 0 0 0 42 0 M0 19 v10 M-12 29 h24"/></g>
+  </g><g transform="translate(960 195)" filter="url(#shadowLow)"><circle r="36" fill="#FFF7EE"/>
+      <g fill="none" stroke="#0F766E" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-16 0 H15"/><path d="M4 -12 L16 0 L4 12"/></g></g><g transform="translate(1030 105) rotate(0.8 395 90)">
+    <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#E9F5EE"/></g>
+    <rect width="790" height="180" rx="4" fill="#E9F5EE" filter="url(#paper)"/>
+    <rect x="0" y="108" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#1E9B8A" opacity="0.8"/>
+    <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK 1</text>
+    <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Test whether residents feel</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">comfortable speaking in public</text>
+    <rect x="724" y="16" width="30" height="30" rx="5" fill="none" stroke="#0F766E" stroke-width="3.5" transform="rotate(-3 739 31)"/>
+  </g><g transform="translate(100 335) rotate(0.8 395 90)">
+    <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#FCFBF7"/></g>
+    <rect width="790" height="180" rx="4" fill="#FCFBF7" filter="url(#paper)"/>
+    <rect x="0" y="108" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#E0544B" opacity="0.8"/>
+    <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION 2</text>
+    <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">The AI may make mistakes</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">when translating</text>
+    <g transform="translate(740 30) scale(0.6)" fill="none" stroke="#B42318" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M-28 -24 h30 a6 6 0 0 1 6 6 v18 a6 6 0 0 1 -6 6 h-16 l-10 9 v-9 h-4 a6 6 0 0 1 -6 -6 v-18 a6 6 0 0 1 6 -6z"/><path d="M-20 -1 l7 -17 l7 17 M-17 -7 h8"/><path d="M14 -4 h12 a6 6 0 0 1 6 6 v16 a6 6 0 0 1 -6 6 h-2 v8 l-9 -8 h-9 a6 6 0 0 1 -6 -6 v-5"/><path d="M14 9 h10 M19 5 v4 M15 20 q6 -3 9 -11"/></g>
+  </g><g transform="translate(960 425)" filter="url(#shadowLow)"><circle r="36" fill="#FFF7EE"/>
+      <g fill="none" stroke="#0F766E" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-16 0 H15"/><path d="M4 -12 L16 0 L4 12"/></g></g><g transform="translate(1030 335) rotate(-0.9 395 90)">
+    <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#E9F5EE"/></g>
+    <rect width="790" height="180" rx="4" fill="#E9F5EE" filter="url(#paper)"/>
+    <rect x="0" y="108" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#1E9B8A" opacity="0.8"/>
+    <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK 2</text>
+    <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Test whether translations</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">keep their meaning</text>
+    <rect x="724" y="16" width="30" height="30" rx="5" fill="none" stroke="#0F766E" stroke-width="3.5" transform="rotate(-3 739 31)"/>
+  </g><g transform="translate(100 565) rotate(-0.6 395 90)">
+    <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#FCFBF7"/></g>
+    <rect width="790" height="180" rx="4" fill="#FCFBF7" filter="url(#paper)"/>
+    <rect x="0" y="108" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#E0544B" opacity="0.8"/>
+    <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION 3</text>
+    <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Saving &amp; tracking an issue</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">needs a smartphone</text>
+    <g transform="translate(740 30) scale(0.6)" fill="none" stroke="#B42318" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="-15" y="-28" width="30" height="56" rx="6"/><path d="M-5 20 h10"/><path d="M-26 -22 L26 24"/></g>
+  </g><g transform="translate(960 655)" filter="url(#shadowLow)"><circle r="36" fill="#FFF7EE"/>
+      <g fill="none" stroke="#0F766E" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-16 0 H15"/><path d="M4 -12 L16 0 L4 12"/></g></g><g transform="translate(1030 565) rotate(1.1 395 90)">
+    <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#E9F5EE"/></g>
+    <rect width="790" height="180" rx="4" fill="#E9F5EE" filter="url(#paper)"/>
+    <rect x="0" y="108" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#1E9B8A" opacity="0.8"/>
+    <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK 3</text>
+    <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Test whether people without</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">smartphones can still use HearHere</text>
+    <rect x="724" y="16" width="30" height="30" rx="5" fill="none" stroke="#0F766E" stroke-width="3.5" transform="rotate(-3 739 31)"/>
+  </g><g transform="translate(100 795) rotate(1 395 90)">
+    <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#FCFBF7"/></g>
+    <rect width="790" height="180" rx="4" fill="#FCFBF7" filter="url(#paper)"/>
+    <rect x="0" y="108" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#9DBBE3" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#E0544B" opacity="0.8"/>
+    <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#B42318" letter-spacing="3">LIMITATION 4</text>
+    <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">We didn't include council</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">staff in our fieldwork</text>
+    <g transform="translate(740 30) scale(0.6)" fill="none" stroke="#B42318" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M-30 -10 L0 -28 L30 -10z M-26 -10 v30 M-12 -10 v30 M2 -10 v30 M16 -10 v30 M28 -10 v30 M-32 22 h64"/></g>
+  </g><g transform="translate(960 885)" filter="url(#shadowLow)"><circle r="36" fill="#FFF7EE"/>
+      <g fill="none" stroke="#0F766E" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-16 0 H15"/><path d="M4 -12 L16 0 L4 12"/></g></g><g transform="translate(1030 795) rotate(-0.6 395 90)">
+    <g filter="url(#shadow)"><rect width="790" height="180" rx="4" fill="#E9F5EE"/></g>
+    <rect width="790" height="180" rx="4" fill="#E9F5EE" filter="url(#paper)"/>
+    <rect x="0" y="108" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="150" width="790" height="1.6" fill="#93C7B8" opacity="0.55"/><rect x="0" y="56" width="790" height="2.4" fill="#1E9B8A" opacity="0.8"/>
+    <rect width="790" height="180" rx="4" fill="url(#paperShade)"/>
+    <text x="34" y="40" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#0F766E" letter-spacing="3">FUTURE WORK 4</text>
+    <text x="34" y="100" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">Learn how the council manages feedback,</text><text x="34" y="142" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#1F2937">so residents trust they're heard</text>
+    <rect x="724" y="16" width="30" height="30" rx="5" fill="none" stroke="#0F766E" stroke-width="3.5" transform="rotate(-3 739 31)"/>
+  </g>
 <rect width="1920" height="1080" fill="url(#warmLight)"/>
-<rect width="1920" height="1080" fill="url(#vignette)"/>
-<rect width="1920" height="1080" fill="url(#textShadeL)"/>
+<rect width="1920" height="1080" fill="url(#deskVig)"/>
 <rect width="1920" height="1080" filter="url(#grain)"/>
-<g id="text">
-  <text x="120" y="132" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#FFF7EE" opacity="0.72" letter-spacing="4">LIMITATIONS &amp; FUTURE WORK</text>
-  <rect x="120" y="160" width="64" height="7" rx="3.5" fill="#6FD0C0"/>
-  <text x="120" y="330" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" font-weight="900" fill="#6FD0C0" letter-spacing="7">HONEST REFLECTION</text>
-  <text x="120" y="430" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="70" font-weight="900" fill="#FFF7EE">HearHere</text>
-  <text x="120" y="510" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="70" font-weight="900" fill="#FFF7EE">still has limits</text>
-  <rect x="120" y="564" width="96" height="7" rx="3.5" fill="#6FD0C0"/>
-  <text x="120" y="636" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="33" font-weight="700" fill="#FFF7EE" opacity="0.84">So each limitation becomes</text><text x="120" y="684" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="33" font-weight="700" fill="#FFF7EE" opacity="0.84">something we need to</text><text x="120" y="732" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="33" font-weight="700" fill="#FFF7EE" opacity="0.84">test next.</text>
-  <g transform="translate(120 820)">
-    <rect width="190" height="46" rx="23" fill="#B42318" opacity="0.9"/><text x="95" y="30" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#fff" letter-spacing="2" text-anchor="middle">LIMITATION</text>
-    <g fill="none" stroke="#FFF7EE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"><path d="M208 23 h44"/><path d="M242 13 l12 10 l-12 10"/></g>
-    <rect x="272" width="210" height="46" rx="23" fill="#0F766E"/><text x="377" y="30" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#fff" letter-spacing="2" text-anchor="middle">FUTURE WORK</text></g>
-  <text x="120" y="1012" font-family="Nunito, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#FFF7EE" opacity="0.5">Team Sweet Potatoes · Group 14 · INFO90006 Fieldwork for Design</text>
-</g>
 </svg>
